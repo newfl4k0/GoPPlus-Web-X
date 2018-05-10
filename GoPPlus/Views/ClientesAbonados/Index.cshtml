@@ -1,0 +1,102 @@
+﻿@model GoPS.ViewModels.ClientesAbonadosViewModel
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Clientes Abonados";
+}
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatClientes", "Catálogo de Clientes Abonados"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Cliente Abonado")
+                                </th>
+                                <th data-field="Telefono" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Teléfono")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="Direccion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Dirección")
+                                </th>
+                                <th data-field="Limite_Credito" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Límite Crédito")
+                                </th>
+                                <th data-field="Fecha_Alta" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Alta")
+                                </th>
+                                <th data-field="Fecha_Baja" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Baja")
+                                </th>
+                                <th data-field="Ultimo_Servicio" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Último Servicio")
+                                </th>
+                                <th data-field="Servicios_Mensuales" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Servicios Mensuales")
+                                </th>
+                                <th data-field="Servicios_Anuales" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Servicios Anuales")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.clientesAbonados)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Limite_Credito)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Alta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Baja)
+                                </td>
+                                <td>
+                                    @Model.ObtenerUltimoServicio(item.ID_ClienteAbonado)
+                                </td>
+                                <td>
+                                    @Model.ObtenerServiciosAnuales(item.ID_ClienteAbonado)
+                                </td>
+                                <td>
+                                    @Model.ObtenerServiciosMensuales(item.ID_ClienteAbonado)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "ClientesAbonados", new { id = item.ID_ClienteAbonado }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "ClientesAbonados", new { id = item.ID_ClienteAbonado }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "ClientesAbonados", new { id = item.ID_ClienteAbonado }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

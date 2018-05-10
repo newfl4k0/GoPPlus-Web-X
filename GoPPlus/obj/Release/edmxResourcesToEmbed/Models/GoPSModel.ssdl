@@ -1,0 +1,3275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Afiliados">
+    <Key>
+      <PropertyRef Name="ID_Afiliado" />
+    </Key>
+    <Property Name="ID_Afiliado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Codigo_Postal" Type="int" Nullable="false" />
+    <Property Name="Horas_Conductor" Type="int" Nullable="false" />
+    <Property Name="Cuota_Conductor" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Porcentaje_Conductor" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ID_TipoPago" Type="int" Nullable="false" />
+    <Property Name="ID_FrecuenciaPago" Type="int" Nullable="false" />
+    <Property Name="ID_TipoServicio" Type="int" Nullable="false" />
+    <Property Name="ID_Empresa" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Afiliado" Type="bit" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+    <Property Name="IdentityUser_Id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IdentityUser_Id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoleAfiliados">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ID_Afiliado" />
+    </Key>
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+    <Property Name="IdentityUser_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="PicturePath" Type="nvarchar" MaxLength="256" />
+    <Property Name="PositionID" Type="int" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="LastLogoutDate" Type="datetime" />
+    <Property Name="IsLoged_in" Type="bit" Nullable="false" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Bancos">
+    <Key>
+      <PropertyRef Name="ID_Banco" />
+    </Key>
+    <Property Name="ID_Banco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calles">
+    <Key>
+      <PropertyRef Name="ID_Calle" />
+    </Key>
+    <Property Name="ID_Calle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Colonia" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CambiosEstatus">
+    <Key>
+      <PropertyRef Name="ID_CambioEstatus" />
+    </Key>
+    <Property Name="ID_CambioEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Seguimiento" Type="int" Nullable="false" />
+    <Property Name="ID_EstatusInicial" Type="int" Nullable="false" />
+    <Property Name="ID_EstatusFinal" Type="int" Nullable="false" />
+    <Property Name="TiempoTranscurrido" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="ID_Chat" />
+    </Key>
+    <Property Name="ID_Chat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Conductor" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Mensaje" Type="nvarchar" MaxLength="200" />
+    <Property Name="Es_Conductor" Type="int" />
+    <Property Name="ID_Despacho" Type="int" />
+    <Property Name="ID_Operador" Type="int" />
+  </EntityType>
+  <EntityType Name="Ciudades">
+    <Key>
+      <PropertyRef Name="ID_Ciudad" />
+    </Key>
+    <Property Name="ID_Ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Estado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="ID_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Calle_Origen" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior_Origen" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior_Origen" Type="nvarchar" MaxLength="10" />
+    <Property Name="ID_Calle_Destino" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior_Destino" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior_Destino" Type="nvarchar" MaxLength="10" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ClientesAbonados">
+    <Key>
+      <PropertyRef Name="ID_ClienteAbonado" />
+    </Key>
+    <Property Name="ID_ClienteAbonado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Telefono_EsCelular" Type="bit" Nullable="false" />
+    <Property Name="Limite_Credito" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Clave_Automatica" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="500" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Reportes" Type="bit" Nullable="false" />
+    <Property Name="Servicios_Automaticos" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Alta" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Baja" Type="datetime" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="CP" Type="int" Nullable="false" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Dia_Pago" Type="int" Nullable="false" />
+    <Property Name="ID_Banco" Type="int" Nullable="false" />
+    <Property Name="Clabe" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="ID_TipoAviso" Type="int" Nullable="false" />
+    <Property Name="ID_FormaPago" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientesHabituales">
+    <Key>
+      <PropertyRef Name="ID_ClienteHabitual" />
+    </Key>
+    <Property Name="ID_ClienteHabitual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Servicios_Automaticos" Type="bit" Nullable="false" />
+    <Property Name="ID_TipoAviso" Type="int" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Fecha_Alta" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Baja" Type="datetime" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Colonias">
+    <Key>
+      <PropertyRef Name="ID_Colonia" />
+    </Key>
+    <Property Name="ID_Colonia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Ciudad" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Colores">
+    <Key>
+      <PropertyRef Name="ID_Color" />
+    </Key>
+    <Property Name="ID_Color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conductores">
+    <Key>
+      <PropertyRef Name="ID_Conductor" />
+    </Key>
+    <Property Name="ID_Conductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Celular" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="NoLicencia" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="ID_Turno" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ID_Flota" Type="int" Nullable="false" />
+    <Property Name="UserID_Conductor" Type="nvarchar" MaxLength="128" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="10" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+    <Property Name="token" Type="nvarchar" MaxLength="200" />
+    <Property Name="NoTarjeton" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Vigencia_Licencia" Type="int" Nullable="false" />
+    <Property Name="Vigencia_Tarjeton" Type="int" Nullable="false" />
+    <Property Name="Liquido" Type="bit" Nullable="false" />
+    <Property Name="Archivo_CartaFianza" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_INE" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_Domicilio" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_Tarjeton" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_Licencia" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_Antidoping" Type="nvarchar" MaxLength="256" />
+    <Property Name="Archivo_NoAntecedentes" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Conexiones">
+    <Key>
+      <PropertyRef Name="ID_Conexion" />
+    </Key>
+    <Property Name="ID_Conexion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="datetime" />
+    <Property Name="Fecha_Final" Type="datetime" />
+    <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GoPS2.dbo.Configuraciones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Configuraciones">
+    <Key>
+      <PropertyRef Name="Atributo" />
+      <PropertyRef Name="Valor" />
+      <PropertyRef Name="EsConfiguracionChofer" />
+      <PropertyRef Name="TipoDato" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Atributo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="EsConfiguracionChofer" Type="int" Nullable="false" />
+    <Property Name="TipoDato" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoordenadasGeocerca">
+    <Key>
+      <PropertyRef Name="ID_CoordenadaGeocerca" />
+    </Key>
+    <Property Name="ID_CoordenadaGeocerca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="ID_Geocerca" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cupones">
+    <Key>
+      <PropertyRef Name="ID_Cupon" />
+    </Key>
+    <Property Name="ID_Cupon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Fin" Type="datetime" Nullable="false" />
+    <Property Name="Descuento" Type="int" Nullable="false" />
+    <Property Name="Primer_Servicio" Type="bit" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CuponesGenerador">
+    <Key>
+      <PropertyRef Name="idCuponGenerador" />
+    </Key>
+    <Property Name="idCuponGenerador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serie" Type="varchar" MaxLength="10" />
+    <Property Name="Dominio" Type="int" />
+    <Property Name="Secuencia" Type="int" />
+  </EntityType>
+  <EntityType Name="CuponesSeries">
+    <Key>
+      <PropertyRef Name="idCuponSerie" />
+    </Key>
+    <Property Name="idCuponSerie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serie" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Dominio" Type="int" Nullable="false" />
+    <Property Name="Consecutivo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DatosTickets">
+    <Key>
+      <PropertyRef Name="ID_DatoTicket" />
+    </Key>
+    <Property Name="ID_DatoTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Texto_1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_3" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_4" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_5" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_6" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_7" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_8" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_9" Type="nvarchar" MaxLength="10" />
+    <Property Name="Texto_10" Type="nvarchar" MaxLength="10" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fecha_Bordo" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Finalizacion" Type="bit" Nullable="false" />
+    <Property Name="No_Taxi" Type="bit" Nullable="false" />
+    <Property Name="Placas" Type="bit" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="bit" Nullable="false" />
+    <Property Name="Origen" Type="bit" Nullable="false" />
+    <Property Name="Destino" Type="bit" Nullable="false" />
+    <Property Name="Importe" Type="bit" Nullable="false" />
+    <Property Name="Observaciones" Type="bit" Nullable="false" />
+    <Property Name="Despacho" Type="bit" Nullable="false" />
+    <Property Name="Codigo" Type="bit" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Despachos">
+    <Key>
+      <PropertyRef Name="ID_Despacho" />
+    </Key>
+    <Property Name="ID_Despacho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="500" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="ID_Reserva" Type="int" Nullable="false" />
+    <Property Name="Fecha_Domicilio" Type="datetime" />
+    <Property Name="Fecha_Ocupado" Type="datetime" />
+    <Property Name="ID_FormaPago" Type="int" Nullable="false" />
+    <Property Name="Fecha_Confirmacion" Type="datetime" />
+    <Property Name="Tiempo_Espera_Min" Type="int" />
+    <Property Name="Encuesta" Type="int" />
+    <Property Name="Encuesta_Obs" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DiasFestivos">
+    <Key>
+      <PropertyRef Name="ID_DiaFestivo" />
+    </Key>
+    <Property Name="ID_DiaFestivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DireccionesAlternativas">
+    <Key>
+      <PropertyRef Name="ID_DireccionAlternativa" />
+    </Key>
+    <Property Name="ID_DireccionAlternativa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="ID_Cliente" Type="int" />
+    <Property Name="ID_ClienteAbonado" Type="int" />
+    <Property Name="ID_ClienteHabitual" Type="int" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empresas">
+    <Key>
+      <PropertyRef Name="ID_Empresa" />
+    </Key>
+    <Property Name="ID_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="ID_Estado" />
+    </Key>
+    <Property Name="ID_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="ID_Estatus" />
+    </Key>
+    <Property Name="ID_Estatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ID_Empresa" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estatus_Afiliados">
+    <Key>
+      <PropertyRef Name="ID_Estatus_Afiliado" />
+    </Key>
+    <Property Name="ID_Estatus_Afiliado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Estatus" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estatus_Reserva">
+    <Key>
+      <PropertyRef Name="ID_Estatus_Reserva" />
+    </Key>
+    <Property Name="ID_Estatus_Reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Orden" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flotas">
+    <Key>
+      <PropertyRef Name="ID_Flota" />
+    </Key>
+    <Property Name="ID_Flota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Celular" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ID_Banco" Type="int" Nullable="false" />
+    <Property Name="Clabe" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Reportes" Type="bit" Nullable="false" />
+    <Property Name="ID_FormaPago" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Liquido" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormasPago">
+    <Key>
+      <PropertyRef Name="ID_FormaPago" />
+    </Key>
+    <Property Name="ID_FormaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FrecuenciasPago">
+    <Key>
+      <PropertyRef Name="ID_FrecuenciaPago" />
+    </Key>
+    <Property Name="ID_FrecuenciaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Geocerca">
+    <Key>
+      <PropertyRef Name="ID_Geocerca" />
+    </Key>
+    <Property Name="ID_Geocerca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ID_Ciudad" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Llamadas">
+    <Key>
+      <PropertyRef Name="ID_Llamada" />
+    </Key>
+    <Property Name="ID_Llamada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Tiempo" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="ID_Operador" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marcas">
+    <Key>
+      <PropertyRef Name="ID_Marca" />
+    </Key>
+    <Property Name="ID_Marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MensajesPredefinidos">
+    <Key>
+      <PropertyRef Name="ID_MensajePredefinido" />
+    </Key>
+    <Property Name="ID_MensajePredefinido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Texto" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modelos">
+    <Key>
+      <PropertyRef Name="ID_Modelo" />
+    </Key>
+    <Property Name="ID_Modelo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Marca" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operadores">
+    <Key>
+      <PropertyRef Name="ID_Operador" />
+    </Key>
+    <Property Name="ID_Operador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior" Type="nvarchar" MaxLength="10" />
+    <Property Name="Codigo_Postal" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Objetivo_Mensual" Type="int" Nullable="false" />
+    <Property Name="ID_Turno" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserID_Operador" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParticionesCalles">
+    <Key>
+      <PropertyRef Name="ID_ParticionCalle" />
+    </Key>
+    <Property Name="ID_ParticionCalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Numero" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GoPS2.dbo.Payworks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Payworks">
+    <Key>
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Tipo" />
+      <PropertyRef Name="Respuesta" />
+    </Key>
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Respuesta" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Able" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Position" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="PuntosInteres">
+    <Key>
+      <PropertyRef Name="ID_PuntoInteres" />
+    </Key>
+    <Property Name="ID_PuntoInteres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="ID_Calle" Type="int" Nullable="false" />
+    <Property Name="Numero" Type="int" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="ID_TipoPuntoInteres" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RazonesLlamadas">
+    <Key>
+      <PropertyRef Name="ID_RazonLlamada" />
+    </Key>
+    <Property Name="ID_RazonLlamada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RazonesRechazos">
+    <Key>
+      <PropertyRef Name="ID_RazonRechazo" />
+    </Key>
+    <Property Name="ID_RazonRechazo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="ID_TipoRechazo" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservas">
+    <Key>
+      <PropertyRef Name="ID_Reserva" />
+    </Key>
+    <Property Name="ID_Reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="ID_Operador" Type="int" Nullable="false" />
+    <Property Name="Latitud_Origen" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Longitud_Origen" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Latitud_Destino" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Longitud_Destino" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ID_Cliente" Type="int" />
+    <Property Name="ID_ClienteHabitual" Type="int" />
+    <Property Name="ID_ClienteAbonado" Type="int" />
+    <Property Name="ID_Calle_Origen" Type="int" Nullable="false" />
+    <Property Name="ID_Calle_Destino" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="text" />
+    <Property Name="ID_Estatus_Reserva" Type="int" />
+    <Property Name="Numero_Exterior_Origen" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior_Destino" Type="int" Nullable="false" />
+    <Property Name="Fecha_Finalizacion" Type="datetime" />
+    <Property Name="ID_TipoVehiculo" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior_Origen" Type="nvarchar" MaxLength="10" />
+    <Property Name="Numero_Interior_Destino" Type="nvarchar" MaxLength="10" />
+    <Property Name="Origen_App" Type="text" />
+    <Property Name="Destino_App" Type="text" />
+    <Property Name="Motivo_Cancelacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_Cupon" Type="int" />
+    <Property Name="ID_TarjetaCredito" Type="int" />
+    <Property Name="ID_Codigo" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Reservas_Rechazadas">
+    <Key>
+      <PropertyRef Name="ID_Reserva_Rechazada" />
+    </Key>
+    <Property Name="ID_Reserva_Rechazada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Reserva" Type="int" Nullable="false" />
+    <Property Name="ID_RazonRechazo" Type="int" Nullable="false" />
+    <Property Name="Fecha_Rechazo" Type="datetime" Nullable="false" />
+    <Property Name="ID_Vehiculo_Conductor" Type="int" />
+    <Property Name="Es_Conductor" Type="int" />
+  </EntityType>
+  <EntityType Name="RolePermissions">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="PermissionId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rutas">
+    <Key>
+      <PropertyRef Name="ID_Ruta" />
+    </Key>
+    <Property Name="ID_Ruta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Precio" Type="int" Nullable="false" />
+    <Property Name="ID_Calle_Origen" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior_Origen" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior_Origen" Type="nvarchar" MaxLength="10" />
+    <Property Name="ID_Calle_Destino" Type="int" Nullable="false" />
+    <Property Name="Numero_Exterior_Destino" Type="int" Nullable="false" />
+    <Property Name="Numero_Interior_Destino" Type="nvarchar" MaxLength="10" />
+    <Property Name="ID_UsuarioAbonado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sanciones">
+    <Key>
+      <PropertyRef Name="ID_Sancion" />
+    </Key>
+    <Property Name="ID_Sancion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Fin" Type="datetime" Nullable="false" />
+    <Property Name="ID_Conductor" Type="int" Nullable="false" />
+    <Property Name="ID_Operador_Alta" Type="int" Nullable="false" />
+    <Property Name="ID_Operador_Baja" Type="int" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="500" />
+    <Property Name="ID_TipoSancion" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seguimiento_Despacho">
+    <Key>
+      <PropertyRef Name="ID_Seguimiento_Despacho" />
+    </Key>
+    <Property Name="ID_Despacho" Type="int" Nullable="false" />
+    <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
+    <Property Name="ID_Seguimiento_Despacho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GoPS2.dbo.Seguimiento_Despacho_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Seguimiento_Despacho_Detalle">
+    <Key>
+      <PropertyRef Name="ID_Seguimiento_Despacho" />
+      <PropertyRef Name="LatLng" />
+    </Key>
+    <Property Name="ID_Seguimiento_Despacho" Type="int" Nullable="false" />
+    <Property Name="LatLng" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="step" Type="int" />
+  </EntityType>
+  <EntityType Name="Seguimientos">
+    <Key>
+      <PropertyRef Name="ID_Seguimiento" />
+    </Key>
+    <Property Name="ID_Seguimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Vehiculo_Conductor" Type="int" />
+    <Property Name="Latitud_Actual" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud_Actual" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Latitud_Origen" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Longitud_Origen" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Latitud_Destino" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="Longitud_Destino" Type="decimal" Precision="18" Scale="15" />
+    <Property Name="ID_Estatus_Afiliado" Type="int" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seguros">
+    <Key>
+      <PropertyRef Name="ID_Seguro" />
+    </Key>
+    <Property Name="ID_Seguro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="EsCelular" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiciosAuxiliares">
+    <Key>
+      <PropertyRef Name="ID_ServicioAuxiliar" />
+    </Key>
+    <Property Name="ID_ServicioAuxiliar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="EsCelular" Type="bit" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SistemaVariables">
+    <Key>
+      <PropertyRef Name="sivaID_SISTEMA_VARIABLES" />
+    </Key>
+    <Property Name="sivaID_SISTEMA_VARIABLES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sivaVARIABLE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sivaVALOR_STRING" Type="varchar" MaxLength="200" />
+    <Property Name="sivaVALOR_INT" Type="bigint" />
+    <Property Name="sivaVALOR_DOUBLE" Type="float" />
+    <Property Name="sivaDOMINIO" Type="int" />
+  </EntityType>
+  <EntityType Name="Tarifas">
+    <Key>
+      <PropertyRef Name="ID_Tarifa" />
+    </Key>
+    <Property Name="ID_Tarifa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Tarifa_Minima" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio_Base" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio_Km" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio_Min" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Activa" Type="bit" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TarjetasCredito">
+    <Key>
+      <PropertyRef Name="ID_TarjetaCredito" />
+    </Key>
+    <Property Name="ID_TarjetaCredito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="ID_Cliente" Type="int" />
+    <Property Name="Numero" Type="nvarchar" MaxLength="200" />
+    <Property Name="Exp" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cvv" Type="nvarchar" MaxLength="200" />
+    <Property Name="Validado" Type="int" />
+    <Property Name="Control" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="TiposAvisos">
+    <Key>
+      <PropertyRef Name="ID_TipoAviso" />
+    </Key>
+    <Property Name="ID_TipoAviso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposPagos">
+    <Key>
+      <PropertyRef Name="ID_TipoPago" />
+    </Key>
+    <Property Name="ID_TipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposPrioridades">
+    <Key>
+      <PropertyRef Name="ID_TipoPrioridad" />
+    </Key>
+    <Property Name="ID_TipoPrioridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposPuntosInteres">
+    <Key>
+      <PropertyRef Name="ID_TipoPuntoInteres" />
+    </Key>
+    <Property Name="ID_TipoPuntoInteres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposRechazos">
+    <Key>
+      <PropertyRef Name="ID_TipoRechazo" />
+    </Key>
+    <Property Name="ID_TipoRechazo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposSanciones">
+    <Key>
+      <PropertyRef Name="ID_TipoSancion" />
+    </Key>
+    <Property Name="ID_TipoSancion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Horas_Penalizacion" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposServicios">
+    <Key>
+      <PropertyRef Name="ID_TipoServicio" />
+    </Key>
+    <Property Name="ID_TipoServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposTransaccion">
+    <Key>
+      <PropertyRef Name="ID_TipoTransaccion" />
+    </Key>
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_TipoTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposVehiculos">
+    <Key>
+      <PropertyRef Name="ID_TipoVehiculo" />
+    </Key>
+    <Property Name="ID_TipoVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ID_Tarifa" Type="int" Nullable="false" />
+    <Property Name="ID_Empresa" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ImagenRed" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="TiposVehiculos_Afiliados">
+    <Key>
+      <PropertyRef Name="ID_TipoVehiculo_Afiliado" />
+    </Key>
+    <Property Name="ID_TipoVehiculo_Afiliado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TipoVehiculo" Type="int" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Turnos">
+    <Key>
+      <PropertyRef Name="ID_Turno" />
+    </Key>
+    <Property Name="ID_Turno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Hora_Inicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Hora_Fin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Dias" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ubicaciones">
+    <Key>
+      <PropertyRef Name="ID_Ubicacion" />
+    </Key>
+    <Property Name="ID_Ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha_Ubicacion" Type="datetime" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="ID_Conexion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario_App">
+    <Key>
+      <PropertyRef Name="ID_Usuario" />
+    </Key>
+    <Property Name="ID_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Activo" Type="int" Nullable="false" />
+    <Property Name="Token" Type="nvarchar" MaxLength="100" />
+    <Property Name="Clave" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ID_Cliente" Type="int" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="appid" Type="nvarchar" MaxLength="100" />
+    <Property Name="FBId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Codigo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Dispositivo_Id" Type="nvarchar" MaxLength="200" />
+    <Property Name="Fecha_Cumpleans" Type="nvarchar" MaxLength="10" />
+    <Property Name="Abono" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="UsuariosAbonados">
+    <Key>
+      <PropertyRef Name="ID_UsuarioAbonado" />
+    </Key>
+    <Property Name="ID_UsuarioAbonado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Hora_Inicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Hora_Fin" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Limite_Credito" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Dias" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="ID_ClienteAbonado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehiculos">
+    <Key>
+      <PropertyRef Name="ID_Vehiculo" />
+    </Key>
+    <Property Name="ID_Vehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Matricula" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Fecha_Alta" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Baja" Type="datetime" />
+    <Property Name="Telefono_Seguro" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Telefono_Seguro_EsCelular" Type="bit" Nullable="false" />
+    <Property Name="Poliza" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Serie" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="NoLicencia" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Version" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="NoTarjeton" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="RevistaMecanica" Type="int" Nullable="false" />
+    <Property Name="KmInicial" Type="int" Nullable="false" />
+    <Property Name="KmFinal" Type="int" Nullable="false" />
+    <Property Name="ID_Flota" Type="int" Nullable="false" />
+    <Property Name="ID_Ciudad" Type="int" Nullable="false" />
+    <Property Name="ID_Modelo" Type="int" Nullable="false" />
+    <Property Name="ID_Seguro" Type="int" Nullable="false" />
+    <Property Name="ID_TipoVehiculo" Type="int" Nullable="false" />
+    <Property Name="ID_Color" Type="int" Nullable="false" />
+    <Property Name="NoPermiso" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Vigencia_Permiso" Type="int" Nullable="false" />
+    <Property Name="NoTransporte" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Externo" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehiculos_Conductores">
+    <Key>
+      <PropertyRef Name="ID_Vehiculo_Conductor" />
+    </Key>
+    <Property Name="ID_Vehiculo_Conductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Vehiculo" Type="int" Nullable="false" />
+    <Property Name="ID_Conductor" Type="int" Nullable="false" />
+    <Property Name="Fecha_Asignacion" Type="datetime" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="ID_Estatus" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwClientes">
+    <Key>
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Correo" />
+      <PropertyRef Name="Activo" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="Fecha_Creacion" />
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Activo" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_Cumpleans" Type="nvarchar" MaxLength="10" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="ID_Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Conductor">
+    <End Role="Conductores" Type="Self.Conductores" Multiplicity="1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conductores">
+        <PropertyRef Name="ID_Conductor" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="ID_Conductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Despacho">
+    <End Role="Despachos" Type="Self.Despachos" Multiplicity="0..1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Despachos">
+        <PropertyRef Name="ID_Despacho" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="ID_Despacho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seguimien__ID_Se__1293BD5E">
+    <End Role="Seguimiento_Despacho" Type="Self.Seguimiento_Despacho" Multiplicity="1" />
+    <End Role="Seguimiento_Despacho_Detalle" Type="Self.Seguimiento_Despacho_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguimiento_Despacho">
+        <PropertyRef Name="ID_Seguimiento_Despacho" />
+      </Principal>
+      <Dependent Role="Seguimiento_Despacho_Detalle">
+        <PropertyRef Name="ID_Seguimiento_Despacho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliados_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Afiliados">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliados_Empresas">
+    <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="ID_Empresa" />
+      </Principal>
+      <Dependent Role="Afiliados">
+        <PropertyRef Name="ID_Empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliados_FrecuenciasPago">
+    <End Role="FrecuenciasPago" Type="Self.FrecuenciasPago" Multiplicity="1" />
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FrecuenciasPago">
+        <PropertyRef Name="ID_FrecuenciaPago" />
+      </Principal>
+      <Dependent Role="Afiliados">
+        <PropertyRef Name="ID_FrecuenciaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliados_Tipos_Servicios">
+    <End Role="TiposServicios" Type="Self.TiposServicios" Multiplicity="1" />
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposServicios">
+        <PropertyRef Name="ID_TipoServicio" />
+      </Principal>
+      <Dependent Role="Afiliados">
+        <PropertyRef Name="ID_TipoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliados_TiposPagos">
+    <End Role="TiposPagos" Type="Self.TiposPagos" Multiplicity="1" />
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposPagos">
+        <PropertyRef Name="ID_TipoPago" />
+      </Principal>
+      <Dependent Role="Afiliados">
+        <PropertyRef Name="ID_TipoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoleAfiliados_AspNetUserRoles">
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="1" />
+    <End Role="AspNetUserRoleAfiliados" Type="Self.AspNetUserRoleAfiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AspNetUserRoleAfiliados">
+        <PropertyRef Name="RoleId" />
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Positions">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calles_Colonias">
+    <End Role="Colonias" Type="Self.Colonias" Multiplicity="1" />
+    <End Role="Calles" Type="Self.Calles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colonias">
+        <PropertyRef Name="ID_Colonia" />
+      </Principal>
+      <Dependent Role="Calles">
+        <PropertyRef Name="ID_Colonia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CambiosEstatus_Estatus_Final">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="CambiosEstatus" Type="Self.CambiosEstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="ID_Estatus" />
+      </Principal>
+      <Dependent Role="CambiosEstatus">
+        <PropertyRef Name="ID_EstatusFinal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CambiosEstatus_Estatus_Inicial">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="CambiosEstatus" Type="Self.CambiosEstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="ID_Estatus" />
+      </Principal>
+      <Dependent Role="CambiosEstatus">
+        <PropertyRef Name="ID_EstatusInicial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CambiosEstatus_Seguimientos">
+    <End Role="Seguimientos" Type="Self.Seguimientos" Multiplicity="1" />
+    <End Role="CambiosEstatus" Type="Self.CambiosEstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguimientos">
+        <PropertyRef Name="ID_Seguimiento" />
+      </Principal>
+      <Dependent Role="CambiosEstatus">
+        <PropertyRef Name="ID_Seguimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ciudades_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="ID_Estado" />
+      </Principal>
+      <Dependent Role="Ciudades">
+        <PropertyRef Name="ID_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Abonados_Bancos">
+    <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bancos">
+        <PropertyRef Name="ID_Banco" />
+      </Principal>
+      <Dependent Role="ClientesAbonados">
+        <PropertyRef Name="ID_Banco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Abonados_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="ClientesAbonados">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Abonados_Formas_Pago">
+    <End Role="FormasPago" Type="Self.FormasPago" Multiplicity="1" />
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormasPago">
+        <PropertyRef Name="ID_FormaPago" />
+      </Principal>
+      <Dependent Role="ClientesAbonados">
+        <PropertyRef Name="ID_FormaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Abonados_Tipos_Aviso">
+    <End Role="TiposAvisos" Type="Self.TiposAvisos" Multiplicity="1" />
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposAvisos">
+        <PropertyRef Name="ID_TipoAviso" />
+      </Principal>
+      <Dependent Role="ClientesAbonados">
+        <PropertyRef Name="ID_TipoAviso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_CallesDestino">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="ID_Calle_Destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_CallesOrigen">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="ID_Calle_Origen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Habituales_Tipos_Aviso">
+    <End Role="TiposAvisos" Type="Self.TiposAvisos" Multiplicity="1" />
+    <End Role="ClientesHabituales" Type="Self.ClientesHabituales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposAvisos">
+        <PropertyRef Name="ID_TipoAviso" />
+      </Principal>
+      <Dependent Role="ClientesHabituales">
+        <PropertyRef Name="ID_TipoAviso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesAbonados_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="ClientesAbonados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesHabituales_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="ClientesHabituales" Type="Self.ClientesHabituales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="ClientesHabituales">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesHabituales_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="ClientesHabituales" Type="Self.ClientesHabituales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="ClientesHabituales">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Colonias_Ciudades">
+    <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="1" />
+    <End Role="Colonias" Type="Self.Colonias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudades">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Colonias">
+        <PropertyRef Name="ID_Ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Conductores_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Conductores" Type="Self.Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Conductores">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Conductores_Flotas">
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="1" />
+    <End Role="Conductores" Type="Self.Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flotas">
+        <PropertyRef Name="ID_Flota" />
+      </Principal>
+      <Dependent Role="Conductores">
+        <PropertyRef Name="ID_Flota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Conductores_Turnos">
+    <End Role="Turnos" Type="Self.Turnos" Multiplicity="1" />
+    <End Role="Conductores" Type="Self.Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Turnos">
+        <PropertyRef Name="ID_Turno" />
+      </Principal>
+      <Dependent Role="Conductores">
+        <PropertyRef Name="ID_Turno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Conexiones_Vehiculos_Conductores">
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="1" />
+    <End Role="Conexiones" Type="Self.Conexiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Principal>
+      <Dependent Role="Conexiones">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coordenadas_Geocerca_Geocerca">
+    <End Role="Geocerca" Type="Self.Geocerca" Multiplicity="1" />
+    <End Role="CoordenadasGeocerca" Type="Self.CoordenadasGeocerca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Geocerca">
+        <PropertyRef Name="ID_Geocerca" />
+      </Principal>
+      <Dependent Role="CoordenadasGeocerca">
+        <PropertyRef Name="ID_Geocerca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cupones_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Cupones" Type="Self.Cupones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Cupones">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DatosTickets_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="DatosTickets" Type="Self.DatosTickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="DatosTickets">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Despachos_FormasPago">
+    <End Role="FormasPago" Type="Self.FormasPago" Multiplicity="1" />
+    <End Role="Despachos" Type="Self.Despachos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormasPago">
+        <PropertyRef Name="ID_FormaPago" />
+      </Principal>
+      <Dependent Role="Despachos">
+        <PropertyRef Name="ID_FormaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Despachos_Reservas">
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="1" />
+    <End Role="Despachos" Type="Self.Despachos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservas">
+        <PropertyRef Name="ID_Reserva" />
+      </Principal>
+      <Dependent Role="Despachos">
+        <PropertyRef Name="ID_Reserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Despachos_Vehiculos_Conductores">
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="1" />
+    <End Role="Despachos" Type="Self.Despachos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Principal>
+      <Dependent Role="Despachos">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DireccionesAlternativas_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="DireccionesAlternativas" Type="Self.DireccionesAlternativas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="DireccionesAlternativas">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DireccionesAlternativas_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="DireccionesAlternativas" Type="Self.DireccionesAlternativas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="DireccionesAlternativas">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DireccionesAlternativas_ClientesAbonados">
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="0..1" />
+    <End Role="DireccionesAlternativas" Type="Self.DireccionesAlternativas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesAbonados">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Principal>
+      <Dependent Role="DireccionesAlternativas">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DireccionesAlternativas_ClientesHabituales">
+    <End Role="ClientesHabituales" Type="Self.ClientesHabituales" Multiplicity="0..1" />
+    <End Role="DireccionesAlternativas" Type="Self.DireccionesAlternativas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesHabituales">
+        <PropertyRef Name="ID_ClienteHabitual" />
+      </Principal>
+      <Dependent Role="DireccionesAlternativas">
+        <PropertyRef Name="ID_ClienteHabitual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estatus_Afiliados_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Estatus_Afiliados" Type="Self.Estatus_Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Estatus_Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estatus_Afiliados_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="Estatus_Afiliados" Type="Self.Estatus_Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="ID_Estatus" />
+      </Principal>
+      <Dependent Role="Estatus_Afiliados">
+        <PropertyRef Name="ID_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estatus_Empresas">
+    <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="ID_Empresa" />
+      </Principal>
+      <Dependent Role="Estatus">
+        <PropertyRef Name="ID_Empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flotas_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Flotas">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flotas_Bancos">
+    <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bancos">
+        <PropertyRef Name="ID_Banco" />
+      </Principal>
+      <Dependent Role="Flotas">
+        <PropertyRef Name="ID_Banco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flotas_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Flotas">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flotas_Formas_Pago">
+    <End Role="FormasPago" Type="Self.FormasPago" Multiplicity="1" />
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormasPago">
+        <PropertyRef Name="ID_FormaPago" />
+      </Principal>
+      <Dependent Role="Flotas">
+        <PropertyRef Name="ID_FormaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Geocerca_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Geocerca" Type="Self.Geocerca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Geocerca">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Geocerca_Ciudades">
+    <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="1" />
+    <End Role="Geocerca" Type="Self.Geocerca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudades">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Geocerca">
+        <PropertyRef Name="ID_Ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Llamadas_Operadores">
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="1" />
+    <End Role="Llamadas" Type="Self.Llamadas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadores">
+        <PropertyRef Name="ID_Operador" />
+      </Principal>
+      <Dependent Role="Llamadas">
+        <PropertyRef Name="ID_Operador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Modelos_Marcas">
+    <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+    <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marcas">
+        <PropertyRef Name="ID_Marca" />
+      </Principal>
+      <Dependent Role="Modelos">
+        <PropertyRef Name="ID_Marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operadores_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Operadores">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operadores_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Operadores">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operadores_Turnos">
+    <End Role="Turnos" Type="Self.Turnos" Multiplicity="1" />
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Turnos">
+        <PropertyRef Name="ID_Turno" />
+      </Principal>
+      <Dependent Role="Operadores">
+        <PropertyRef Name="ID_Turno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticionesCalles_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="ParticionesCalles" Type="Self.ParticionesCalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="ParticionesCalles">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puntos_Interes_Calles">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="PuntosInteres" Type="Self.PuntosInteres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="PuntosInteres">
+        <PropertyRef Name="ID_Calle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PuntosInteres_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="PuntosInteres" Type="Self.PuntosInteres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="PuntosInteres">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PuntosInteres_TiposPuntosInteres">
+    <End Role="TiposPuntosInteres" Type="Self.TiposPuntosInteres" Multiplicity="1" />
+    <End Role="PuntosInteres" Type="Self.PuntosInteres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposPuntosInteres">
+        <PropertyRef Name="ID_TipoPuntoInteres" />
+      </Principal>
+      <Dependent Role="PuntosInteres">
+        <PropertyRef Name="ID_TipoPuntoInteres" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Razones_Rechazo_Tipos_Rechazo">
+    <End Role="TiposRechazos" Type="Self.TiposRechazos" Multiplicity="1" />
+    <End Role="RazonesRechazos" Type="Self.RazonesRechazos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposRechazos">
+        <PropertyRef Name="ID_TipoRechazo" />
+      </Principal>
+      <Dependent Role="RazonesRechazos">
+        <PropertyRef Name="ID_TipoRechazo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Calles_Destino">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Calle_Destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Calles_Origen">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Calle_Origen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Clientes_Abonados">
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="0..1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesAbonados">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Clientes_Habituales">
+    <End Role="ClientesHabituales" Type="Self.ClientesHabituales" Multiplicity="0..1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesHabituales">
+        <PropertyRef Name="ID_ClienteHabitual" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_ClienteHabitual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Cupones">
+    <End Role="Cupones" Type="Self.Cupones" Multiplicity="0..1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cupones">
+        <PropertyRef Name="ID_Cupon" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Cupon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Estatus_Reserva">
+    <End Role="Estatus_Reserva" Type="Self.Estatus_Reserva" Multiplicity="0..1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus_Reserva">
+        <PropertyRef Name="ID_Estatus_Reserva" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Estatus_Reserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_Operadores">
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadores">
+        <PropertyRef Name="ID_Operador" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_Operador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservas_TiposVehiculos">
+    <End Role="TiposVehiculos" Type="Self.TiposVehiculos" Multiplicity="1" />
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposVehiculos">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Principal>
+      <Dependent Role="Reservas">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_AspNetRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePermissions">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermissions_Permissions">
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permissions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolePermissions">
+        <PropertyRef Name="PermissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rutas_Calles_Destino">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Rutas" Type="Self.Rutas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Rutas">
+        <PropertyRef Name="ID_Calle_Destino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rutas_Calles_Origen">
+    <End Role="Calles" Type="Self.Calles" Multiplicity="1" />
+    <End Role="Rutas" Type="Self.Rutas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calles">
+        <PropertyRef Name="ID_Calle" />
+      </Principal>
+      <Dependent Role="Rutas">
+        <PropertyRef Name="ID_Calle_Origen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rutas_UsuariosAbonados">
+    <End Role="UsuariosAbonados" Type="Self.UsuariosAbonados" Multiplicity="1" />
+    <End Role="Rutas" Type="Self.Rutas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuariosAbonados">
+        <PropertyRef Name="ID_UsuarioAbonado" />
+      </Principal>
+      <Dependent Role="Rutas">
+        <PropertyRef Name="ID_UsuarioAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sanciones_OperadoresAlta">
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="1" />
+    <End Role="Sanciones" Type="Self.Sanciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadores">
+        <PropertyRef Name="ID_Operador" />
+      </Principal>
+      <Dependent Role="Sanciones">
+        <PropertyRef Name="ID_Operador_Alta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sanciones_OperadoresBaja">
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="0..1" />
+    <End Role="Sanciones" Type="Self.Sanciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadores">
+        <PropertyRef Name="ID_Operador" />
+      </Principal>
+      <Dependent Role="Sanciones">
+        <PropertyRef Name="ID_Operador_Baja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sanciones_TiposSanciones">
+    <End Role="TiposSanciones" Type="Self.TiposSanciones" Multiplicity="1" />
+    <End Role="Sanciones" Type="Self.Sanciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposSanciones">
+        <PropertyRef Name="ID_TipoSancion" />
+      </Principal>
+      <Dependent Role="Sanciones">
+        <PropertyRef Name="ID_TipoSancion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seguimientos_Estatus_Afiliados">
+    <End Role="Estatus_Afiliados" Type="Self.Estatus_Afiliados" Multiplicity="0..1" />
+    <End Role="Seguimientos" Type="Self.Seguimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus_Afiliados">
+        <PropertyRef Name="ID_Estatus_Afiliado" />
+      </Principal>
+      <Dependent Role="Seguimientos">
+        <PropertyRef Name="ID_Estatus_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seguimientos_Vehiculos_Conductores">
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="0..1" />
+    <End Role="Seguimientos" Type="Self.Seguimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Principal>
+      <Dependent Role="Seguimientos">
+        <PropertyRef Name="ID_Vehiculo_Conductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiciosAuxiliares_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="ServiciosAuxiliares" Type="Self.ServiciosAuxiliares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="ServiciosAuxiliares">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tarifas_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Tarifas" Type="Self.Tarifas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Tarifas">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TiposVehiculos_Afiliados_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="TiposVehiculos_Afiliados" Type="Self.TiposVehiculos_Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="TiposVehiculos_Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TiposVehiculos_Afiliados_TiposVehiculos">
+    <End Role="TiposVehiculos" Type="Self.TiposVehiculos" Multiplicity="1" />
+    <End Role="TiposVehiculos_Afiliados" Type="Self.TiposVehiculos_Afiliados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposVehiculos">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Principal>
+      <Dependent Role="TiposVehiculos_Afiliados">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TiposVehiculos_Empresas">
+    <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+    <End Role="TiposVehiculos" Type="Self.TiposVehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="ID_Empresa" />
+      </Principal>
+      <Dependent Role="TiposVehiculos">
+        <PropertyRef Name="ID_Empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TiposVehiculos_Tarifas">
+    <End Role="Tarifas" Type="Self.Tarifas" Multiplicity="1" />
+    <End Role="TiposVehiculos" Type="Self.TiposVehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarifas">
+        <PropertyRef Name="ID_Tarifa" />
+      </Principal>
+      <Dependent Role="TiposVehiculos">
+        <PropertyRef Name="ID_Tarifa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Turnos_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="Turnos">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ubicaciones_Conexiones">
+    <End Role="Conexiones" Type="Self.Conexiones" Multiplicity="1" />
+    <End Role="Ubicaciones" Type="Self.Ubicaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conexiones">
+        <PropertyRef Name="ID_Conexion" />
+      </Principal>
+      <Dependent Role="Ubicaciones">
+        <PropertyRef Name="ID_Conexion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Abonados_Clientes_Abonados">
+    <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="1" />
+    <End Role="UsuariosAbonados" Type="Self.UsuariosAbonados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesAbonados">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Principal>
+      <Dependent Role="UsuariosAbonados">
+        <PropertyRef Name="ID_ClienteAbonado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Ciudades">
+    <End Role="Ciudades" Type="Self.Ciudades" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudades">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_Ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Colores">
+    <End Role="Colores" Type="Self.Colores" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colores">
+        <PropertyRef Name="ID_Color" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_Color" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Conductores_Conductores">
+    <End Role="Conductores" Type="Self.Conductores" Multiplicity="1" />
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conductores">
+        <PropertyRef Name="ID_Conductor" />
+      </Principal>
+      <Dependent Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Conductor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Vehiculos_Conductores_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="ID_Estatus" />
+      </Principal>
+      <Dependent Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Conductores_Vehiculos">
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="1" />
+    <End Role="Vehiculos_Conductores" Type="Self.Vehiculos_Conductores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculos">
+        <PropertyRef Name="ID_Vehiculo" />
+      </Principal>
+      <Dependent Role="Vehiculos_Conductores">
+        <PropertyRef Name="ID_Vehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Flotas">
+    <End Role="Flotas" Type="Self.Flotas" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flotas">
+        <PropertyRef Name="ID_Flota" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_Flota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Modelos">
+    <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modelos">
+        <PropertyRef Name="ID_Modelo" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_Modelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_Seguros">
+    <End Role="Seguros" Type="Self.Seguros" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguros">
+        <PropertyRef Name="ID_Seguro" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_Seguro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehiculos_TiposVehiculos">
+    <End Role="TiposVehiculos" Type="Self.TiposVehiculos" Multiplicity="1" />
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposVehiculos">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Principal>
+      <Dependent Role="Vehiculos">
+        <PropertyRef Name="ID_TipoVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Operador">
+    <End Role="Operadores" Type="Self.Operadores" Multiplicity="0..1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadores">
+        <PropertyRef Name="ID_Operador" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="ID_Operador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Reservas_Rechazadas_RazonesRechazos_ID_RazonRechazo_fk">
+    <End Role="RazonesRechazos" Type="Self.RazonesRechazos" Multiplicity="1" />
+    <End Role="Reservas_Rechazadas" Type="Self.Reservas_Rechazadas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RazonesRechazos">
+        <PropertyRef Name="ID_RazonRechazo" />
+      </Principal>
+      <Dependent Role="Reservas_Rechazadas">
+        <PropertyRef Name="ID_RazonRechazo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Reservas_Rechazadas_Reservas_ID_Reserva_fk">
+    <End Role="Reservas" Type="Self.Reservas" Multiplicity="1" />
+    <End Role="Reservas_Rechazadas" Type="Self.Reservas_Rechazadas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservas">
+        <PropertyRef Name="ID_Reserva" />
+      </Principal>
+      <Dependent Role="Reservas_Rechazadas">
+        <PropertyRef Name="ID_Reserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Usuario_App_Clientes_ID_Cliente_fk">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="Usuario_App" Type="Self.Usuario_App" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Usuario_App">
+        <PropertyRef Name="ID_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AltaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lat_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lng_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lat_destino" Type="decimal" Mode="In" />
+    <Parameter Name="lng_destino" Type="decimal" Mode="In" />
+    <Parameter Name="userid" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <Parameter Name="id_cliente_habitual" Type="int" Mode="In" />
+    <Parameter Name="id_cliente_abonado" Type="int" Mode="In" />
+    <Parameter Name="observaciones" Type="text" Mode="In" />
+    <Parameter Name="int_origen" Type="nvarchar" Mode="In" />
+    <Parameter Name="ext_origen" Type="int" Mode="In" />
+    <Parameter Name="int_destino" Type="nvarchar" Mode="In" />
+    <Parameter Name="ext_destino" Type="int" Mode="In" />
+    <Parameter Name="id_estatus_reserva" Type="int" Mode="In" />
+    <Parameter Name="id_tipovehiculo" Type="int" Mode="In" />
+    <Parameter Name="fecha_reserva" Type="datetime" Mode="In" />
+    <Parameter Name="codigo_cupon" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BuscarReservasLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ClientCancel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+    <Parameter Name="razon_id" Type="int" Mode="In" />
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ClientCodeExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClienteActualizaReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Estatus" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ClienteAltaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lat_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lng_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lat_destino" Type="decimal" Mode="In" />
+    <Parameter Name="lng_destino" Type="decimal" Mode="In" />
+    <Parameter Name="userid" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <Parameter Name="observaciones" Type="text" Mode="In" />
+    <Parameter Name="int_origen" Type="nvarchar" Mode="In" />
+    <Parameter Name="ext_origen" Type="int" Mode="In" />
+    <Parameter Name="int_destino" Type="nvarchar" Mode="In" />
+    <Parameter Name="ext_destino" Type="int" Mode="In" />
+    <Parameter Name="id_tipovehiculo" Type="int" Mode="In" />
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="id_tarjetacredito" Type="int" Mode="In" />
+    <Parameter Name="origen" Type="nvarchar" Mode="In" />
+    <Parameter Name="destino" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_cupon" Type="int" Mode="In" />
+    <Parameter Name="id_codigo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClientIsActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClientTarifas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ClonarReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CrearSancionReservaRechazada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CuponesGenerar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerieSelector" Type="varchar" Mode="In" />
+    <Parameter Name="Origen" Type="varchar" Mode="In" />
+    <Parameter Name="Destino" Type="varchar" Mode="In" />
+    <Parameter Name="FechaIdaSalida" Type="datetime" Mode="In" />
+    <Parameter Name="FechaIdaLlegada" Type="datetime" Mode="In" />
+    <Parameter Name="FechaVueltaSalida" Type="datetime" Mode="In" />
+    <Parameter Name="FechaVueltaLlegada" Type="datetime" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Cupones" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="CuponGenerar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerieSelector" Type="varchar" Mode="In" />
+    <Parameter Name="Cupon" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="CuponInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Origen" Type="varchar" Mode="In" />
+    <Parameter Name="Destino" Type="varchar" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaVigencia" Type="datetime" Mode="In" />
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DashboardCalificacionServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardComentariosRecibidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardGrafico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardNuevosServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardServiciosCancelados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardServiciosFinalizados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUnidadesActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUnidadesActivas_0" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUsuariosEsporadicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUsuariosFrecuentes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DesactivarVehiculosConductoresPorConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Vehiculo_Conductor" Type="int" Mode="In" />
+    <Parameter Name="ID_Conductor" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DesactivarVehiculosConductoresPorFlota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Vehiculo_Conductor" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ID_Flota" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="EliminarSancion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EliminarSancion_Baja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sancid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="FinalizarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+    <Parameter Name="monto" Type="decimal" Mode="In" />
+    <Parameter Name="observaciones" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GananciaConductorPorDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Conductor" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GananciaConductorPorSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Conductor" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GananciasPorDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Conductor" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetConductorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usuario" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetIDEstatusAfiliado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+    <Parameter Name="Estatus" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GuardarUbicacionServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="latitud" Type="decimal" Mode="In" />
+    <Parameter Name="longitud" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="Ins_Payworks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="varchar" Mode="In" />
+    <Parameter Name="respuesta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ObtenerDespachosAnualesPorClienteAbonado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ClienteAbonado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerDespachosAnualesPorVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Vehiculo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerDespachosMensualesPorClienteAbonado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_ClienteAbonado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerDespachosMensualesPorVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Vehiculo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerDespachosPorEstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+    <Parameter Name="ID_Estatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerIDVehiculoConductorLibre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="afiliado_id" Type="int" Mode="In" />
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerListadoDespachosPorEstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Estatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerListadoSeguimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ocultar_servicios" Type="bit" Mode="In" />
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerListadoSeguimientosFiltrado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ocultar_servicios" Type="bit" Mode="In" />
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="id_tiposveh" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="vehiculo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ObtenerLlamadasMensualesPorOperador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Operador" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerReservasAnualesPorOperador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Operador" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerReservasMensualesPorOperador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Operador" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerRutasSeguimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerRutasSeguimientosFiltrado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="id_tiposveh" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="vehiculo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ObtenerTablaSegHistorialAvanzado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="vehiculo" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="hora_desde" Type="nvarchar" Mode="In" />
+    <Parameter Name="hora_hasta" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_despacho" Type="int" Mode="In" />
+    <Parameter Name="id_colonia" Type="int" Mode="In" />
+    <Parameter Name="km" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ObtenerTablaSegLocalizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="vehiculo" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ObtenerTablaSegTiposVehiculos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="id_tiposveh" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ObtenerUbicacionesVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_afiliado" Type="int" Mode="In" />
+    <Parameter Name="vehiculo" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="hora_desde" Type="nvarchar" Mode="In" />
+    <Parameter Name="hora_hasta" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Payment_addcard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+    <Parameter Name="Numero" Type="nvarchar" Mode="In" />
+    <Parameter Name="Exp" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cvv" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Control" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Payment_AddTran" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_Cliente" Type="int" Mode="In" />
+    <Parameter Name="Id_Reserva" Type="int" Mode="In" />
+    <Parameter Name="Respuesta" Type="text" Mode="In" />
+    <Parameter Name="Monto" Type="decimal" Mode="In" />
+    <Parameter Name="Referencia" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Numero_Control" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Codigo_Autorizacion" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Tipo" Type="int" Mode="In" />
+    <Parameter Name="accion" Type="nvarchar" Mode="In" />
+    <Parameter Name="obs" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Payment_Cancel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id_Transaccion" Type="int" Mode="In" />
+    <Parameter Name="Respuesta_Cancelacion" Type="text" Mode="In" />
+  </Function>
+  <Function Name="Payment_Get_Despacho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_Get_VC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_getcard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_TarjetaCredito" Type="int" Mode="In" />
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_GetTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Numero_Control" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Payment_GetTransaccionCancelar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_listcards" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_removecard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+    <Parameter Name="ID_TarjetaCredito" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_removeInvalidCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Payment_UpdTran" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Numero_Control" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Respuesta" Type="text" Mode="In" />
+    <Parameter Name="Referencia" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Codigo_Autorizacion" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Payment_validateCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Control" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="reporte_vc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ReportesDespachos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="NoTransporte" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+    <Parameter Name="ID_Estado" Type="int" Mode="In" />
+    <Parameter Name="ID_Ciudad" Type="int" Mode="In" />
+    <Parameter Name="ID_Colonia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SetDriverNewPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Genera_Folio_Cupon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="Folio" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_Genera_Letra_X_Rango" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menor" Type="int" Mode="In" />
+    <Parameter Name="mayor" Type="int" Mode="In" />
+    <Parameter Name="SoloMayus" Type="int" Mode="In" />
+    <Parameter Name="res" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spEstadodeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ufn_ArmaCuponDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="Origen" Type="varchar" Mode="In" />
+    <Parameter Name="Destino" Type="varchar" Mode="In" />
+    <Parameter Name="FechaVigencia" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ufn_CAMBIA_LETRA_ACENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="letra" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ufn_CIUDAD_CLAVE_CUPON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="idCiudad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ufn_ObtieneClaveUsuarioApp_ByCorreo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ufn_ObtieneCuponPorcentajeDescuento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+  <Function Name="ufn_ObtieneHorasVigenciaRegreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="ufn_ObtieneHorasVigenciaSalida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="VerificaConexion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VerificaTurno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="GoPSModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Afiliados" EntityType="Self.Afiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoleAfiliados" EntityType="Self.AspNetUserRoleAfiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calles" EntityType="Self.Calles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CambiosEstatus" EntityType="Self.CambiosEstatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ciudades" EntityType="Self.Ciudades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientesAbonados" EntityType="Self.ClientesAbonados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientesHabituales" EntityType="Self.ClientesHabituales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Colonias" EntityType="Self.Colonias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Colores" EntityType="Self.Colores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Conductores" EntityType="Self.Conductores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Conexiones" EntityType="Self.Conexiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoordenadasGeocerca" EntityType="Self.CoordenadasGeocerca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cupones" EntityType="Self.Cupones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CuponesGenerador" EntityType="Self.CuponesGenerador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CuponesSeries" EntityType="Self.CuponesSeries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatosTickets" EntityType="Self.DatosTickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Despachos" EntityType="Self.Despachos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiasFestivos" EntityType="Self.DiasFestivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DireccionesAlternativas" EntityType="Self.DireccionesAlternativas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estatus_Afiliados" EntityType="Self.Estatus_Afiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estatus_Reserva" EntityType="Self.Estatus_Reserva" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flotas" EntityType="Self.Flotas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormasPago" EntityType="Self.FormasPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FrecuenciasPago" EntityType="Self.FrecuenciasPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Geocerca" EntityType="Self.Geocerca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Llamadas" EntityType="Self.Llamadas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MensajesPredefinidos" EntityType="Self.MensajesPredefinidos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modelos" EntityType="Self.Modelos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operadores" EntityType="Self.Operadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParticionesCalles" EntityType="Self.ParticionesCalles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PuntosInteres" EntityType="Self.PuntosInteres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RazonesLlamadas" EntityType="Self.RazonesLlamadas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RazonesRechazos" EntityType="Self.RazonesRechazos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservas_Rechazadas" EntityType="Self.Reservas_Rechazadas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sanciones" EntityType="Self.Sanciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seguimiento_Despacho" EntityType="Self.Seguimiento_Despacho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seguimientos" EntityType="Self.Seguimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seguros" EntityType="Self.Seguros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosAuxiliares" EntityType="Self.ServiciosAuxiliares" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SistemaVariables" EntityType="Self.SistemaVariables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarifas" EntityType="Self.Tarifas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TarjetasCredito" EntityType="Self.TarjetasCredito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposAvisos" EntityType="Self.TiposAvisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposPagos" EntityType="Self.TiposPagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposPrioridades" EntityType="Self.TiposPrioridades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposPuntosInteres" EntityType="Self.TiposPuntosInteres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposRechazos" EntityType="Self.TiposRechazos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposSanciones" EntityType="Self.TiposSanciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposServicios" EntityType="Self.TiposServicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposTransaccion" EntityType="Self.TiposTransaccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposVehiculos" EntityType="Self.TiposVehiculos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposVehiculos_Afiliados" EntityType="Self.TiposVehiculos_Afiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ubicaciones" EntityType="Self.Ubicaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario_App" EntityType="Self.Usuario_App" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuariosAbonados" EntityType="Self.UsuariosAbonados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehiculos_Conductores" EntityType="Self.Vehiculos_Conductores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuraciones" EntityType="Self.Configuraciones" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Configuraciones].[Atributo] AS [Atributo], 
+    [Configuraciones].[Valor] AS [Valor], 
+    [Configuraciones].[EsConfiguracionChofer] AS [EsConfiguracionChofer], 
+    [Configuraciones].[TipoDato] AS [TipoDato], 
+    [Configuraciones].[ID] AS [ID]
+    FROM [dbo].[Configuraciones] AS [Configuraciones]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Payworks" EntityType="Self.Payworks" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Payworks].[Fecha] AS [Fecha], 
+    [Payworks].[Tipo] AS [Tipo], 
+    [Payworks].[Respuesta] AS [Respuesta]
+    FROM [dbo].[Payworks] AS [Payworks]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Seguimiento_Despacho_Detalle" EntityType="Self.Seguimiento_Despacho_Detalle" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Seguimiento_Despacho_Detalle].[ID_Seguimiento_Despacho] AS [ID_Seguimiento_Despacho], 
+    [Seguimiento_Despacho_Detalle].[LatLng] AS [LatLng], 
+    [Seguimiento_Despacho_Detalle].[step] AS [step]
+    FROM [dbo].[Seguimiento_Despacho_Detalle] AS [Seguimiento_Despacho_Detalle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwClientes" EntityType="Self.vwClientes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwClientes].[Nombre] AS [Nombre], 
+    [vwClientes].[Correo] AS [Correo], 
+    [vwClientes].[Activo] AS [Activo], 
+    [vwClientes].[Telefono] AS [Telefono], 
+    [vwClientes].[Fecha_Cumpleans] AS [Fecha_Cumpleans], 
+    [vwClientes].[Fecha_Creacion] AS [Fecha_Creacion], 
+    [vwClientes].[ID_Cliente] AS [ID_Cliente]
+    FROM [dbo].[vwClientes] AS [vwClientes]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="Conductor" Association="Self.Conductor">
+      <End Role="Conductores" EntitySet="Conductores" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="Despacho" Association="Self.Despacho">
+      <End Role="Despachos" EntitySet="Despachos" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seguimien__ID_Se__1293BD5E" Association="Self.FK__Seguimien__ID_Se__1293BD5E">
+      <End Role="Seguimiento_Despacho" EntitySet="Seguimiento_Despacho" />
+      <End Role="Seguimiento_Despacho_Detalle" EntitySet="Seguimiento_Despacho_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliados_Calles" Association="Self.FK_Afiliados_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Afiliados" EntitySet="Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliados_Empresas" Association="Self.FK_Afiliados_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="Afiliados" EntitySet="Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliados_FrecuenciasPago" Association="Self.FK_Afiliados_FrecuenciasPago">
+      <End Role="FrecuenciasPago" EntitySet="FrecuenciasPago" />
+      <End Role="Afiliados" EntitySet="Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliados_Tipos_Servicios" Association="Self.FK_Afiliados_Tipos_Servicios">
+      <End Role="TiposServicios" EntitySet="TiposServicios" />
+      <End Role="Afiliados" EntitySet="Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliados_TiposPagos" Association="Self.FK_Afiliados_TiposPagos">
+      <End Role="TiposPagos" EntitySet="TiposPagos" />
+      <End Role="Afiliados" EntitySet="Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoleAfiliados_AspNetUserRoles" Association="Self.FK_AspNetUserRoleAfiliados_AspNetUserRoles">
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+      <End Role="AspNetUserRoleAfiliados" EntitySet="AspNetUserRoleAfiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Positions" Association="Self.FK_AspNetUsers_Positions">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calles_Colonias" Association="Self.FK_Calles_Colonias">
+      <End Role="Colonias" EntitySet="Colonias" />
+      <End Role="Calles" EntitySet="Calles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CambiosEstatus_Estatus_Final" Association="Self.FK_CambiosEstatus_Estatus_Final">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="CambiosEstatus" EntitySet="CambiosEstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CambiosEstatus_Estatus_Inicial" Association="Self.FK_CambiosEstatus_Estatus_Inicial">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="CambiosEstatus" EntitySet="CambiosEstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CambiosEstatus_Seguimientos" Association="Self.FK_CambiosEstatus_Seguimientos">
+      <End Role="Seguimientos" EntitySet="Seguimientos" />
+      <End Role="CambiosEstatus" EntitySet="CambiosEstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ciudades_Estados" Association="Self.FK_Ciudades_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Ciudades" EntitySet="Ciudades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Abonados_Bancos" Association="Self.FK_Clientes_Abonados_Bancos">
+      <End Role="Bancos" EntitySet="Bancos" />
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Abonados_Calles" Association="Self.FK_Clientes_Abonados_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Abonados_Formas_Pago" Association="Self.FK_Clientes_Abonados_Formas_Pago">
+      <End Role="FormasPago" EntitySet="FormasPago" />
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Abonados_Tipos_Aviso" Association="Self.FK_Clientes_Abonados_Tipos_Aviso">
+      <End Role="TiposAvisos" EntitySet="TiposAvisos" />
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Afiliados" Association="Self.FK_Clientes_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_CallesDestino" Association="Self.FK_Clientes_CallesDestino">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_CallesOrigen" Association="Self.FK_Clientes_CallesOrigen">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Habituales_Tipos_Aviso" Association="Self.FK_Clientes_Habituales_Tipos_Aviso">
+      <End Role="TiposAvisos" EntitySet="TiposAvisos" />
+      <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesAbonados_Afiliados" Association="Self.FK_ClientesAbonados_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesHabituales_Afiliados" Association="Self.FK_ClientesHabituales_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesHabituales_Calles" Association="Self.FK_ClientesHabituales_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Colonias_Ciudades" Association="Self.FK_Colonias_Ciudades">
+      <End Role="Ciudades" EntitySet="Ciudades" />
+      <End Role="Colonias" EntitySet="Colonias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Conductores_Calles" Association="Self.FK_Conductores_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Conductores" EntitySet="Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Conductores_Flotas" Association="Self.FK_Conductores_Flotas">
+      <End Role="Flotas" EntitySet="Flotas" />
+      <End Role="Conductores" EntitySet="Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Conductores_Turnos" Association="Self.FK_Conductores_Turnos">
+      <End Role="Turnos" EntitySet="Turnos" />
+      <End Role="Conductores" EntitySet="Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Conexiones_Vehiculos_Conductores" Association="Self.FK_Conexiones_Vehiculos_Conductores">
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+      <End Role="Conexiones" EntitySet="Conexiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coordenadas_Geocerca_Geocerca" Association="Self.FK_Coordenadas_Geocerca_Geocerca">
+      <End Role="Geocerca" EntitySet="Geocerca" />
+      <End Role="CoordenadasGeocerca" EntitySet="CoordenadasGeocerca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cupones_Afiliados" Association="Self.FK_Cupones_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Cupones" EntitySet="Cupones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DatosTickets_Afiliados" Association="Self.FK_DatosTickets_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="DatosTickets" EntitySet="DatosTickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Despachos_FormasPago" Association="Self.FK_Despachos_FormasPago">
+      <End Role="FormasPago" EntitySet="FormasPago" />
+      <End Role="Despachos" EntitySet="Despachos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Despachos_Reservas" Association="Self.FK_Despachos_Reservas">
+      <End Role="Reservas" EntitySet="Reservas" />
+      <End Role="Despachos" EntitySet="Despachos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Despachos_Vehiculos_Conductores" Association="Self.FK_Despachos_Vehiculos_Conductores">
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+      <End Role="Despachos" EntitySet="Despachos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DireccionesAlternativas_Calles" Association="Self.FK_DireccionesAlternativas_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="DireccionesAlternativas" EntitySet="DireccionesAlternativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DireccionesAlternativas_Clientes" Association="Self.FK_DireccionesAlternativas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="DireccionesAlternativas" EntitySet="DireccionesAlternativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DireccionesAlternativas_ClientesAbonados" Association="Self.FK_DireccionesAlternativas_ClientesAbonados">
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+      <End Role="DireccionesAlternativas" EntitySet="DireccionesAlternativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DireccionesAlternativas_ClientesHabituales" Association="Self.FK_DireccionesAlternativas_ClientesHabituales">
+      <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
+      <End Role="DireccionesAlternativas" EntitySet="DireccionesAlternativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estatus_Afiliados_Afiliados" Association="Self.FK_Estatus_Afiliados_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Estatus_Afiliados" EntitySet="Estatus_Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estatus_Afiliados_Estatus" Association="Self.FK_Estatus_Afiliados_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Estatus_Afiliados" EntitySet="Estatus_Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estatus_Empresas" Association="Self.FK_Estatus_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="Estatus" EntitySet="Estatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flotas_Afiliados" Association="Self.FK_Flotas_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Flotas" EntitySet="Flotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flotas_Bancos" Association="Self.FK_Flotas_Bancos">
+      <End Role="Bancos" EntitySet="Bancos" />
+      <End Role="Flotas" EntitySet="Flotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flotas_Calles" Association="Self.FK_Flotas_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Flotas" EntitySet="Flotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flotas_Formas_Pago" Association="Self.FK_Flotas_Formas_Pago">
+      <End Role="FormasPago" EntitySet="FormasPago" />
+      <End Role="Flotas" EntitySet="Flotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Geocerca_Afiliados" Association="Self.FK_Geocerca_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Geocerca" EntitySet="Geocerca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Geocerca_Ciudades" Association="Self.FK_Geocerca_Ciudades">
+      <End Role="Ciudades" EntitySet="Ciudades" />
+      <End Role="Geocerca" EntitySet="Geocerca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Llamadas_Operadores" Association="Self.FK_Llamadas_Operadores">
+      <End Role="Operadores" EntitySet="Operadores" />
+      <End Role="Llamadas" EntitySet="Llamadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Modelos_Marcas" Association="Self.FK_Modelos_Marcas">
+      <End Role="Marcas" EntitySet="Marcas" />
+      <End Role="Modelos" EntitySet="Modelos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operadores_Afiliados" Association="Self.FK_Operadores_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Operadores" EntitySet="Operadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operadores_Calles" Association="Self.FK_Operadores_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Operadores" EntitySet="Operadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operadores_Turnos" Association="Self.FK_Operadores_Turnos">
+      <End Role="Turnos" EntitySet="Turnos" />
+      <End Role="Operadores" EntitySet="Operadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticionesCalles_Calles" Association="Self.FK_ParticionesCalles_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="ParticionesCalles" EntitySet="ParticionesCalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puntos_Interes_Calles" Association="Self.FK_Puntos_Interes_Calles">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="PuntosInteres" EntitySet="PuntosInteres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PuntosInteres_Afiliados" Association="Self.FK_PuntosInteres_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="PuntosInteres" EntitySet="PuntosInteres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PuntosInteres_TiposPuntosInteres" Association="Self.FK_PuntosInteres_TiposPuntosInteres">
+      <End Role="TiposPuntosInteres" EntitySet="TiposPuntosInteres" />
+      <End Role="PuntosInteres" EntitySet="PuntosInteres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Razones_Rechazo_Tipos_Rechazo" Association="Self.FK_Razones_Rechazo_Tipos_Rechazo">
+      <End Role="TiposRechazos" EntitySet="TiposRechazos" />
+      <End Role="RazonesRechazos" EntitySet="RazonesRechazos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Calles_Destino" Association="Self.FK_Reservas_Calles_Destino">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Calles_Origen" Association="Self.FK_Reservas_Calles_Origen">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Clientes" Association="Self.FK_Reservas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Clientes_Abonados" Association="Self.FK_Reservas_Clientes_Abonados">
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Clientes_Habituales" Association="Self.FK_Reservas_Clientes_Habituales">
+      <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Cupones" Association="Self.FK_Reservas_Cupones">
+      <End Role="Cupones" EntitySet="Cupones" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Estatus_Reserva" Association="Self.FK_Reservas_Estatus_Reserva">
+      <End Role="Estatus_Reserva" EntitySet="Estatus_Reserva" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_Operadores" Association="Self.FK_Reservas_Operadores">
+      <End Role="Operadores" EntitySet="Operadores" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservas_TiposVehiculos" Association="Self.FK_Reservas_TiposVehiculos">
+      <End Role="TiposVehiculos" EntitySet="TiposVehiculos" />
+      <End Role="Reservas" EntitySet="Reservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_AspNetRoles" Association="Self.FK_RolePermissions_AspNetRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="RolePermissions" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermissions_Permissions" Association="Self.FK_RolePermissions_Permissions">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="RolePermissions" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rutas_Calles_Destino" Association="Self.FK_Rutas_Calles_Destino">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Rutas" EntitySet="Rutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rutas_Calles_Origen" Association="Self.FK_Rutas_Calles_Origen">
+      <End Role="Calles" EntitySet="Calles" />
+      <End Role="Rutas" EntitySet="Rutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rutas_UsuariosAbonados" Association="Self.FK_Rutas_UsuariosAbonados">
+      <End Role="UsuariosAbonados" EntitySet="UsuariosAbonados" />
+      <End Role="Rutas" EntitySet="Rutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sanciones_OperadoresAlta" Association="Self.FK_Sanciones_OperadoresAlta">
+      <End Role="Operadores" EntitySet="Operadores" />
+      <End Role="Sanciones" EntitySet="Sanciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sanciones_OperadoresBaja" Association="Self.FK_Sanciones_OperadoresBaja">
+      <End Role="Operadores" EntitySet="Operadores" />
+      <End Role="Sanciones" EntitySet="Sanciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sanciones_TiposSanciones" Association="Self.FK_Sanciones_TiposSanciones">
+      <End Role="TiposSanciones" EntitySet="TiposSanciones" />
+      <End Role="Sanciones" EntitySet="Sanciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seguimientos_Estatus_Afiliados" Association="Self.FK_Seguimientos_Estatus_Afiliados">
+      <End Role="Estatus_Afiliados" EntitySet="Estatus_Afiliados" />
+      <End Role="Seguimientos" EntitySet="Seguimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seguimientos_Vehiculos_Conductores" Association="Self.FK_Seguimientos_Vehiculos_Conductores">
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+      <End Role="Seguimientos" EntitySet="Seguimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiciosAuxiliares_Afiliados" Association="Self.FK_ServiciosAuxiliares_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="ServiciosAuxiliares" EntitySet="ServiciosAuxiliares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tarifas_Afiliados" Association="Self.FK_Tarifas_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Tarifas" EntitySet="Tarifas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TiposVehiculos_Afiliados_Afiliados" Association="Self.FK_TiposVehiculos_Afiliados_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="TiposVehiculos_Afiliados" EntitySet="TiposVehiculos_Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TiposVehiculos_Afiliados_TiposVehiculos" Association="Self.FK_TiposVehiculos_Afiliados_TiposVehiculos">
+      <End Role="TiposVehiculos" EntitySet="TiposVehiculos" />
+      <End Role="TiposVehiculos_Afiliados" EntitySet="TiposVehiculos_Afiliados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TiposVehiculos_Empresas" Association="Self.FK_TiposVehiculos_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="TiposVehiculos" EntitySet="TiposVehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TiposVehiculos_Tarifas" Association="Self.FK_TiposVehiculos_Tarifas">
+      <End Role="Tarifas" EntitySet="Tarifas" />
+      <End Role="TiposVehiculos" EntitySet="TiposVehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Turnos_Afiliados" Association="Self.FK_Turnos_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="Turnos" EntitySet="Turnos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ubicaciones_Conexiones" Association="Self.FK_Ubicaciones_Conexiones">
+      <End Role="Conexiones" EntitySet="Conexiones" />
+      <End Role="Ubicaciones" EntitySet="Ubicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Abonados_Clientes_Abonados" Association="Self.FK_Usuarios_Abonados_Clientes_Abonados">
+      <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />
+      <End Role="UsuariosAbonados" EntitySet="UsuariosAbonados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Ciudades" Association="Self.FK_Vehiculos_Ciudades">
+      <End Role="Ciudades" EntitySet="Ciudades" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Colores" Association="Self.FK_Vehiculos_Colores">
+      <End Role="Colores" EntitySet="Colores" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Conductores_Conductores" Association="Self.FK_Vehiculos_Conductores_Conductores">
+      <End Role="Conductores" EntitySet="Conductores" />
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Vehiculos_Conductores_Estatus" Association="Self.Fk_Vehiculos_Conductores_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Conductores_Vehiculos" Association="Self.FK_Vehiculos_Conductores_Vehiculos">
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+      <End Role="Vehiculos_Conductores" EntitySet="Vehiculos_Conductores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Flotas" Association="Self.FK_Vehiculos_Flotas">
+      <End Role="Flotas" EntitySet="Flotas" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Modelos" Association="Self.FK_Vehiculos_Modelos">
+      <End Role="Modelos" EntitySet="Modelos" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_Seguros" Association="Self.FK_Vehiculos_Seguros">
+      <End Role="Seguros" EntitySet="Seguros" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehiculos_TiposVehiculos" Association="Self.FK_Vehiculos_TiposVehiculos">
+      <End Role="TiposVehiculos" EntitySet="TiposVehiculos" />
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="Operador" Association="Self.Operador">
+      <End Role="Operadores" EntitySet="Operadores" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="Reservas_Rechazadas_RazonesRechazos_ID_RazonRechazo_fk" Association="Self.Reservas_Rechazadas_RazonesRechazos_ID_RazonRechazo_fk">
+      <End Role="RazonesRechazos" EntitySet="RazonesRechazos" />
+      <End Role="Reservas_Rechazadas" EntitySet="Reservas_Rechazadas" />
+    </AssociationSet>
+    <AssociationSet Name="Reservas_Rechazadas_Reservas_ID_Reserva_fk" Association="Self.Reservas_Rechazadas_Reservas_ID_Reserva_fk">
+      <End Role="Reservas" EntitySet="Reservas" />
+      <End Role="Reservas_Rechazadas" EntitySet="Reservas_Rechazadas" />
+    </AssociationSet>
+    <AssociationSet Name="Usuario_App_Clientes_ID_Cliente_fk" Association="Self.Usuario_App_Clientes_ID_Cliente_fk">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Usuario_App" EntitySet="Usuario_App" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

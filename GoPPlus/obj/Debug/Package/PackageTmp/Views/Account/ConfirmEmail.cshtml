@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Confirmación de Email";
+}
+@Html.Hidden("Permiso", "Perfil")
+@{Html.RenderPartial("Breadcrumb", "Confirmar Email"); }
+<div>
+    <br/>
+    <p>
+        Gracias por confirmar su cuenta. @Html.ActionLink("De click aquí para iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

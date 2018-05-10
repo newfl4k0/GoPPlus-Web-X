@@ -1,0 +1,2077 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0FE50B9-ECCF-4A79-9831-AE5D442DEEE7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoPS</RootNamespace>
+    <AssemblyName>GoPPlus</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <LangVersion>default</LangVersion>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Bll\Report.cs" />
+    <Compile Include="Classes\DBServicios.cs" />
+    <Compile Include="Classes\DBValidaciones.cs" />
+    <Compile Include="Classes\EncryptedActionParameterAttribute.cs" />
+    <Compile Include="Classes\GmailEmailService.cs" />
+    <Compile Include="Classes\MyExtensions.cs" />
+    <Compile Include="Classes\RedirectOnError.cs" />
+    <Compile Include="Classes\StringValidationAttribute.cs" />
+    <Compile Include="Classes\Utilities.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AfiliadosController.cs" />
+    <Compile Include="Controllers\AspNetRolesController.cs" />
+    <Compile Include="Controllers\BancosController.cs" />
+    <Compile Include="Controllers\CallesController.cs" />
+    <Compile Include="Controllers\ChatsController.cs" />
+    <Compile Include="Controllers\CiudadesController.cs" />
+    <Compile Include="Controllers\ClientesAbonadosController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ClientesHabitualesController.cs" />
+    <Compile Include="Controllers\ColoniasController.cs" />
+    <Compile Include="Controllers\ColoresController.cs" />
+    <Compile Include="Controllers\ConductoresController.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
+    <Compile Include="Controllers\CuponesController.cs" />
+    <Compile Include="Controllers\DatosTicketsController.cs" />
+    <Compile Include="Controllers\DespachosController.cs" />
+    <Compile Include="Controllers\DiasFestivosController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\EstatusController.cs" />
+    <Compile Include="Controllers\EstatusReservaController.cs" />
+    <Compile Include="Controllers\FlotasController.cs" />
+    <Compile Include="Controllers\FormasPagoController.cs" />
+    <Compile Include="Controllers\FrecuenciasPagosController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\MensajesPredefinidosController.cs" />
+    <Compile Include="Controllers\ModelosController.cs" />
+    <Compile Include="Controllers\OperadoresController.cs" />
+    <Compile Include="Controllers\ParticionesCallesController.cs" />
+    <Compile Include="Controllers\PermissionsController.cs" />
+    <Compile Include="Controllers\PositionsController.cs" />
+    <Compile Include="Controllers\PuntosInteresController.cs" />
+    <Compile Include="Controllers\RazonesLlamadasController.cs" />
+    <Compile Include="Controllers\RazonesRechazosController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
+    <Compile Include="Controllers\RutasController.cs" />
+    <Compile Include="Controllers\SancionesController.cs" />
+    <Compile Include="Controllers\SegurosController.cs" />
+    <Compile Include="Controllers\ServiciosAuxiliaresController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
+    <Compile Include="Controllers\TarifasController.cs" />
+    <Compile Include="Controllers\TarjetasCreditoController.cs" />
+    <Compile Include="Controllers\TiposAvisosController.cs" />
+    <Compile Include="Controllers\TiposPagosController.cs" />
+    <Compile Include="Controllers\TiposPrioridadesController.cs" />
+    <Compile Include="Controllers\TiposPuntosInteresController.cs" />
+    <Compile Include="Controllers\TiposRechazosController.cs" />
+    <Compile Include="Controllers\TiposSancionesController.cs" />
+    <Compile Include="Controllers\TiposServiciosController.cs" />
+    <Compile Include="Controllers\TiposVehiculosController.cs" />
+    <Compile Include="Controllers\TurnosController.cs" />
+    <Compile Include="Controllers\UsuariosAbonadosController.cs" />
+    <Compile Include="Controllers\VehiculosController.cs" />
+    <Compile Include="Controllers\_GeneralController.cs" />
+    <Compile Include="CustomFilters\HasPermissionAttribute.cs" />
+    <Compile Include="DespachosDataSet.cs">
+      <DependentUpon>DespachosDataSet.xsd</DependentUpon>
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="DespachosDataSet1.Designer.cs">
+      <DependentUpon>DespachosDataSet.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="E02.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E02.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="E03.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E03.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="E04.cs">
+      <DependentUpon>E04.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="E04.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E04.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ECta01.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECta01.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EdoCta01.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EdoCta01.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EdoCta02.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EdoCta02.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GoPSDDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoPSDDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GoPSDDataSetuu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoPSDDataSetuu.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Afiliados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserRoles.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bancos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuscarReservasLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calles.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CambiosEstatus.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Chat.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CheckBoxListItem.cs" />
+    <Compile Include="Models\ch_AplicarDescuento_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_IniciarSesion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerAsignacionesSinConfirmar_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerChatConBase_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerChatConCliente_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerConexionesAbiertasSinActualizar_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerConfiguraciones_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerDatosConductor_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerEstatus_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerFechaFinReserva_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerHistorialRutaReal_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerInformacionVehiculo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerRazonesCancelacion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerServicioActivo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerServiciosPorVehiculoConductor_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerTarifaVehiculo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerUbicacionesVehiculosLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerUbicacionReservasLibresPorTipoVehiculo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ch_ObtenerUbicacionReservasLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ciudades.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Clientes.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientesAbonados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientesHabituales.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientGetCancelOptions_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientGetServiceToRate_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientGetService_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientGetSettings_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientHistory_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientLastToken_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientRegister_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientSearchAddressByName_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientServiceDriver_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientTarifas_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientVehicleTypeList_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_BuscarDireccion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_BuscaReservasLibresParaDespachar_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ContadorClientesPorCorreoPorTelefono_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_IniciarSesion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_LeeChatActivo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerConfiguraciones_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerHistorialDeServicios_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerInformacionChofer_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerRazonesDeCancelacion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerServicioActivo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerServicioFinalizado_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerTiposVehiculos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ObtenerVehiculosCercanosLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_ReenviarToken_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_Registro_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cl_VerificaCupon_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Colonias.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Colores.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conductores.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conexiones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Configuraciones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CoordenadasGeocerca.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cupones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuponesGenerador.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuponesSeries.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashboardGrafico_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashboardUnidadesActivas_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\database_firewall_rules1.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatosTickets.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Despachos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiasFestivos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DireccionesAlternativas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empresas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estatus.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estatus_Afiliados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estatus_Reserva.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flotas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormasPago.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FrecuenciasPago.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GananciasPorDia_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Geocerca.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChatBase_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChatCliente_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetConductorInfo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetConfiguraciones_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetEstatus_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetRazonesRechazo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getReservasLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetServicesByVCId_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetServicioActivo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUnidadesLibresCliente_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getUnidadesLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetVehiculoInfo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoPSModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoPSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoPSModel.cs" />
+    <Compile Include="Models\GoPSModel.Designer.cs" />
+    <Compile Include="Models\GoPSModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoPSModel1.Designer.cs">
+      <DependentUpon>GoPSModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IniciarSesion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Llamadas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Marcas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MensajesPredefinidos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Metadata\AfiliadosMetadata.cs" />
+    <Compile Include="Models\Metadata\AspNetUserMetadata.cs" />
+    <Compile Include="Models\Metadata\BancosMetadata.cs" />
+    <Compile Include="Models\Metadata\CallesMetadata.cs" />
+    <Compile Include="Models\Metadata\ChatsMetadata.cs" />
+    <Compile Include="Models\Metadata\CiudadesMetadata.cs" />
+    <Compile Include="Models\Metadata\ClientesAbonadosMetadata.cs" />
+    <Compile Include="Models\Metadata\ClientesHabitualesMetadata.cs" />
+    <Compile Include="Models\Metadata\ClientesMetadata.cs" />
+    <Compile Include="Models\Metadata\ColoniasMetadata.cs" />
+    <Compile Include="Models\Metadata\ColoresMetadata.cs" />
+    <Compile Include="Models\Metadata\ConductoresMetadata.cs" />
+    <Compile Include="Models\Metadata\CuponesMetadata.cs" />
+    <Compile Include="Models\Metadata\DatosTicketsMetadata.cs" />
+    <Compile Include="Models\Metadata\DespachosMetadata.cs" />
+    <Compile Include="Models\Metadata\DiasFestivosMetadata.cs" />
+    <Compile Include="Models\Metadata\DireccionesAlternativasMetadata.cs" />
+    <Compile Include="Models\Metadata\EmpresasMetadata.cs" />
+    <Compile Include="Models\Metadata\EstadosMetadata.cs" />
+    <Compile Include="Models\Metadata\EstatusMetadata.cs" />
+    <Compile Include="Models\Metadata\EstatusReservasMetadata.cs" />
+    <Compile Include="Models\Metadata\FlotasMetadata.cs" />
+    <Compile Include="Models\Metadata\FormasPagoMetadata.cs" />
+    <Compile Include="Models\Metadata\FrecuenciasPagoMetadata.cs" />
+    <Compile Include="Models\Metadata\GeocercaMetadata.cs" />
+    <Compile Include="Models\Metadata\MarcasMetadata.cs" />
+    <Compile Include="Models\Metadata\MensajesPredefinidosMetadata.cs" />
+    <Compile Include="Models\Metadata\ModelosMetadata.cs" />
+    <Compile Include="Models\Metadata\OperadoresMetadata.cs" />
+    <Compile Include="Models\Metadata\ParticionesCallesMetadata.cs" />
+    <Compile Include="Models\Metadata\PerfilesMetadata.cs" />
+    <Compile Include="Models\Metadata\PermissionMetadata.cs" />
+    <Compile Include="Models\Metadata\PositionsMetadata.cs" />
+    <Compile Include="Models\Metadata\PuntosInteresMetadata.cs" />
+    <Compile Include="Models\Metadata\RazonesLlamadasMetadata.cs" />
+    <Compile Include="Models\Metadata\RazonesRechazosMetadata.cs" />
+    <Compile Include="Models\Metadata\ReservasMetadata.cs" />
+    <Compile Include="Models\Metadata\RutasMetadata.cs" />
+    <Compile Include="Models\Metadata\SancionesMetadata.cs" />
+    <Compile Include="Models\Metadata\SeguimientosMetadata.cs" />
+    <Compile Include="Models\Metadata\SegurosMetadata.cs" />
+    <Compile Include="Models\Metadata\ServiciosAuxiliaresMetadata.cs" />
+    <Compile Include="Models\Metadata\TarifasMetadata.cs" />
+    <Compile Include="Models\Metadata\TarjetasCreditoMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposAvisosMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposPagosMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposPrioridadesMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposPuntosInteresMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposRechazosMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposSancionesMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposServiciosMetadata.cs" />
+    <Compile Include="Models\Metadata\TiposVehiculosMetadata.cs" />
+    <Compile Include="Models\Metadata\TurnosMetadata.cs" />
+    <Compile Include="Models\Metadata\UsuariosAbonadosMetadata.cs" />
+    <Compile Include="Models\Metadata\VehiculosConductoresMetadata.cs" />
+    <Compile Include="Models\Metadata\VehiculosMetadata.cs" />
+    <Compile Include="Models\Modelos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerDespachosPorEstatus_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerListaDespachosPorEstatus_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerListadoDespachosPorEstatus_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerListadoSeguimientosFiltrado_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerListadoSeguimientos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerListaSeguimientos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerRutasSeguimientosFiltrado_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerRutasSeguimientos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerRutasSeguimientos_Result1.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerSeguimientos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerTablaSegLocalizacion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerTablaSegTiposVehiculos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerUbicacionesVehiculo_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObtenerUltimaUbicacionLibres_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Operadores.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ParticionesCalles.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment_getcard_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment_GetTransaccionCancelar_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment_GetTransaccion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment_listcards_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payworks.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Permissions.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Positions.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PuntosInteres.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RadioButtonListItem.cs" />
+    <Compile Include="Models\RazonesLlamadas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RazonesRechazos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportesDespachos_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\reporte_vc_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reservas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reservas_Rechazadas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA01_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA02_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA03_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA04_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA05_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA06_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA07_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_ESTADODECUENTA_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_LCLIABONADOS_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_LCLIHAB_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RP_SP_SRVXCOLONIA_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rutas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sanciones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguimientos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguimiento_Despacho.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguimiento_Despacho_Detalle.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguros.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiciosAuxiliares.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SistemaVariables.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spEstadodeCuenta_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tarifas.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TarjetasCredito.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposAvisos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposPagos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposPrioridades.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposPuntosInteres.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposRechazos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposSanciones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposServicios.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposTransaccion.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposVehiculos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposVehiculos_Afiliados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transacciones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Turnos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ubicaciones.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UbicacionesServicios.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosAbonados.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario_App.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vehiculos.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vehiculos_Conductores.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerificaConexion_Result.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwClientes.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\MyataSet.cs">
+      <DependentUpon>MyataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\MyataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\ClientesAbonadosViewModel.cs" />
+    <Compile Include="ViewModels\ConfiguracionesViewModel.cs" />
+    <Compile Include="ViewModels\DespachosViewModel.cs" />
+    <Compile Include="ViewModels\FlotasViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\OperadoresViewModel.cs" />
+    <Compile Include="ViewModels\TurnosViewModel.cs" />
+    <Compile Include="ViewModels\UnidadesViewModel.cs" />
+    <Compile Include="ViewModels\VehiculosViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="androidproj.ico" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom-style.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\jquery-ui-timepicker-addon.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="css\bootstrap-table.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\datepicker.css" />
+    <Content Include="css\datepicker3.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="DespachosDataSet.xsc">
+      <DependentUpon>DespachosDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="DespachosDataSet.xss">
+      <DependentUpon>DespachosDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\Afiliados.svg" />
+    <Content Include="images\Agentes.svg" />
+    <Content Include="images\arrow-down.png" />
+    <Content Include="images\Asignado.png" />
+    <Content Include="images\Ausente.png" />
+    <Content Include="images\avataruser.png" />
+    <Content Include="images\Bancos.svg" />
+    <Content Include="images\Calles.svg" />
+    <Content Include="images\CentralMensajes.svg" />
+    <Content Include="images\Clientes.svg" />
+    <Content Include="images\ClientesAbonados.svg" />
+    <Content Include="images\ClientesHabituales.svg" />
+    <Content Include="images\ClientesRegistrados.svg" />
+    <Content Include="images\Colonias.svg" />
+    <Content Include="images\Colores-1.svg" />
+    <Content Include="images\Colores.png" />
+    <Content Include="images\Colores.svg" />
+    <Content Include="images\Colores2.svg" />
+    <Content Include="images\Coloress.svg" />
+    <Content Include="images\Conductores.svg" />
+    <Content Include="images\Config.svg" />
+    <Content Include="images\Consultas.svg" />
+    <Content Include="images\Cupones.svg" />
+    <Content Include="images\DatosTicket.svg" />
+    <Content Include="images\Despachos.svg" />
+    <Content Include="images\DiasFestivos.svg" />
+    <Content Include="images\Flotas.svg" />
+    <Content Include="images\fondobarraTop.png" />
+    <Content Include="images\Forma de Pago.svg" />
+    <Content Include="images\FrecuenciaPago.png" />
+    <Content Include="images\FrecuenciaPago.svg" />
+    <Content Include="images\FrecuenciasPagos.svg" />
+    <Content Include="images\GoPS_logo.png" />
+    <Content Include="images\home-icon.png" />
+    <Content Include="images\icon-menu.png" />
+    <Content Include="images\input-spinner.gif" />
+    <Content Include="images\Libre.png" />
+    <Content Include="images\lines-icon.png" />
+    <Content Include="images\Localiza.png" />
+    <Content Include="images\Localizacion.svg" />
+    <Content Include="images\logoemail.png" />
+    <Content Include="images\logogopplus.png" />
+    <Content Include="images\logopng.png" />
+    <Content Include="images\logout.jpg" />
+    <Content Include="images\logo_old.png" />
+    <Content Include="images\Marcas.svg" />
+    <Content Include="images\MensajesPredefinidos.svg" />
+    <Content Include="images\Menu_Catalogos.svg" />
+    <Content Include="images\Menu_Clientes.svg" />
+    <Content Include="images\Menu_Configuraciones.svg" />
+    <Content Include="images\Menu_Dashboard.svg" />
+    <Content Include="images\Menu_General.svg" />
+    <Content Include="images\Menu_Mapas.svg" />
+    <Content Include="images\Menu_Operaciones.svg" />
+    <Content Include="images\Menu_Reportes.svg" />
+    <Content Include="images\Menu_Utilidades.svg" />
+    <Content Include="images\Menu_Vehiculos.svg" />
+    <Content Include="images\Modelos.svg" />
+    <Content Include="images\NivelesPermisos.svg" />
+    <Content Include="images\Ocupado.png" />
+    <Content Include="images\Operadores.svg" />
+    <Content Include="images\Perfiles.svg" />
+    <Content Include="images\Permisos.svg" />
+    <Content Include="images\Posición.svg" />
+    <Content Include="images\PuntosInteres.svg" />
+    <Content Include="images\pype-icon.png" />
+    <Content Include="images\RazonesLlamadas.svg" />
+    <Content Include="images\RazonesRechazos.svg" />
+    <Content Include="images\Rutas.svg" />
+    <Content Include="images\Sanciones.svg" />
+    <Content Include="images\search-icon.png" />
+    <Content Include="images\segactual.png" />
+    <Content Include="images\Seguimientos.svg" />
+    <Content Include="images\seguimiento_actual_60.png" />
+    <Content Include="images\Seguros.svg" />
+    <Content Include="images\ServiciosAuxiliares.svg" />
+    <Content Include="images\StatusDeServicio.svg" />
+    <Content Include="images\Sucursales.svg" />
+    <Content Include="images\Tarifas.svg" />
+    <Content Include="images\TarjetaCredito.svg" />
+    <Content Include="images\TiposAvisos.svg" />
+    <Content Include="images\TiposdeAvisos.svg" />
+    <Content Include="images\TiposdePuntosdeInteres.svg" />
+    <Content Include="images\TiposdeRechazos.svg" />
+    <Content Include="images\TiposdeSanciones.svg" />
+    <Content Include="images\TiposdeServicios.svg" />
+    <Content Include="images\TiposPago.png" />
+    <Content Include="images\TiposPago.svg" />
+    <Content Include="images\TiposPagos.svg" />
+    <Content Include="images\TiposPrioridades.svg" />
+    <Content Include="images\TiposPuntosInteres.svg" />
+    <Content Include="images\TiposRechazos.svg" />
+    <Content Include="images\TiposSanciones.svg" />
+    <Content Include="images\TiposServicios.svg" />
+    <Content Include="images\TiposVehiculo.png" />
+    <Content Include="images\TiposVehiculo.svg" />
+    <Content Include="images\TiposVehiculos.svg" />
+    <Content Include="images\title-icon.png" />
+    <Content Include="images\Turnos.svg" />
+    <Content Include="images\Uploads\01_05_01.mp4" />
+    <Content Include="images\Uploads\01_06_01.png" />
+    <Content Include="images\Uploads\01_10_01.png" />
+    <Content Include="images\Uploads\01_13_01.png" />
+    <Content Include="images\Uploads\01_33_01.png" />
+    <Content Include="images\Uploads\14292261_1064899030255061_3438366402266103448_n.jpg" />
+    <Content Include="images\Uploads\15977312_1819626304942237_1131913792814900133_n-04122017201458227.jpg" />
+    <Content Include="images\Uploads\15977312_1819626304942237_1131913792814900133_n-16112017222317634.jpg" />
+    <Content Include="images\Uploads\15977312_1819626304942237_1131913792814900133_n-16112017222429063.jpg" />
+    <Content Include="images\Uploads\15977312_1819626304942237_1131913792814900133_n-23112017180430698.jpg" />
+    <Content Include="images\Uploads\18056959_1868983826673151_1463316628356700229_n-20112017113604328.jpg" />
+    <Content Include="images\Uploads\18581859_10212664443941786_6257994581673877015_n-27072017235259344.jpg" />
+    <Content Include="images\Uploads\18893139_1889645831273617_5918181308072341020_n-04122017235822476.jpg" />
+    <Content Include="images\Uploads\1960464.jpg" />
+    <Content Include="images\Uploads\2-27072017232541313.png" />
+    <Content Include="images\Uploads\20.jpg" />
+    <Content Include="images\Uploads\3-nopales-hear.jpg" />
+    <Content Include="images\Uploads\3.jpg" />
+    <Content Include="images\Uploads\3755718285_d22b68c0d4_o.jpg" />
+    <Content Include="images\Uploads\6793ee67dd6e0d18b2a76f79919926a1-27072017232541314.jpg" />
+    <Content Include="images\Uploads\6793ee67dd6e0d18b2a76f79919926a1.jpg" />
+    <Content Include="images\Uploads\alwaysw-27072017232541317.jpg" />
+    <Content Include="images\Uploads\Asignado.png" />
+    <Content Include="images\Uploads\Ausente.png" />
+    <Content Include="images\Uploads\CentroClinico-27072017233403661.png" />
+    <Content Include="images\Uploads\CentroClinico-28072017141810919.png" />
+    <Content Include="images\Uploads\Crear-08082017162449610.png" />
+    <Content Include="images\Uploads\Crear-27072017233506387.png" />
+    <Content Include="images\Uploads\eiffel-tower-wallpaper-vintage-27072017233235919.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162647168.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162801063.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162959966.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017170128310.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017170226484.jpg" />
+    <Content Include="images\Uploads\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-27072017232541316.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-08082017162449601.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-15082017221637877.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-21082017160958800.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-21082017165933396.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-21082017170726544.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-21082017175516159.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-27072017232541318.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-31072017002201755.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29-31082017214817686.jpg" />
+    <Content Include="images\Uploads\game-of-thrones-t-shirt-winter-is-coming %281%29.jpg" />
+    <Content Include="images\Uploads\grupo.png" />
+    <Content Include="images\Uploads\img211-27072017233627011.jpg" />
+    <Content Include="images\Uploads\img211-28072017141810222.jpg" />
+    <Content Include="images\Uploads\img212-08082017162449603.jpg" />
+    <Content Include="images\Uploads\img212-28072017141809745.jpg" />
+    <Content Include="images\Uploads\img213-08082017162449606.jpg" />
+    <Content Include="images\Uploads\img213-28072017141809286.jpg" />
+    <Content Include="images\Uploads\Libre.png" />
+    <Content Include="images\Uploads\logogopplus-08092017234541954.png" />
+    <Content Include="images\Uploads\logogopplus.png" />
+    <Content Include="images\Uploads\logo_old.png" />
+    <Content Include="images\Uploads\Ocupado.png" />
+    <Content Include="images\Uploads\publicidad1-23112017180326595.jpg" />
+    <Content Include="images\Uploads\Screenshot_2017-07-03-16-47-16.png" />
+    <Content Include="images\Uploads\SPUber-08082017162449600.png" />
+    <Content Include="images\Uploads\SPUber-08082017162449609.png" />
+    <Content Include="images\Uploads\UBER-08082017162449600.png" />
+    <Content Include="images\Uploads\ULA-28072017141808800.png" />
+    <Content Include="images\Uploads\upwork-28072017141808279.png" />
+    <Content Include="images\Uploads\usuario.jpg" />
+    <Content Include="images\Uploads\WhatsApp Image 2017-01-30 at 4.38.26 PM-27072017232541320.jpeg" />
+    <Content Include="images\Uploads\WhatsApp Image 2017-01-30 at 4.38.26 PM-28072017141800395.jpeg" />
+    <Content Include="images\Uploads\yugi 01.jpg" />
+    <Content Include="images\Uploads\índice.jfif" />
+    <Content Include="images\Uploads_Temp\15977312_1819626304942237_1131913792814900133_n-16112017222317504.jpg" />
+    <Content Include="images\Uploads_Temp\15977312_1819626304942237_1131913792814900133_n-16112017222428954.jpg" />
+    <Content Include="images\Uploads_Temp\18056959_1868983826673151_1463316628356700229_n-20112017113604163.jpg" />
+    <Content Include="images\Uploads_Temp\3.jpg" />
+    <Content Include="images\Uploads_Temp\Crear-08082017162449355.png" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-15082017220119715.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-15082017220201074.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-15082017220732511.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162618450.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162736162.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017162923307.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017163519164.jpg" />
+    <Content Include="images\Uploads_Temp\fantasy-shirt-6-Im-not-a-Princess-Im-a-Khaleesi-21082017170226281.jpg" />
+    <Content Include="images\Uploads_Temp\game-of-thrones-t-shirt-winter-is-coming %281%29-08082017162449348.jpg" />
+    <Content Include="images\Uploads_Temp\game-of-thrones-t-shirt-winter-is-coming %281%29-21082017165925303.jpg" />
+    <Content Include="images\Uploads_Temp\img212-08082017162449350.jpg" />
+    <Content Include="images\Uploads_Temp\img213-08082017162449352.jpg" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017210751723.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017211014353.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017211245390.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017211408942.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017211754542.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017212120253.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017215618845.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017222850323.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017233808243.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017234434203.png" />
+    <Content Include="images\Uploads_Temp\logogopplus-08092017234529122.png" />
+    <Content Include="images\Uploads_Temp\SPUber-08082017162449345.png" />
+    <Content Include="images\Uploads_Temp\SPUber-08082017162449354.png" />
+    <Content Include="images\Uploads_Temp\UBER-08082017162449347.png" />
+    <Content Include="images\user.jpg" />
+    <Content Include="images\Usuarios.svg" />
+    <Content Include="images\Vehiculos.svg" />
+    <Content Include="js\ActualizarAfiliadoEmpresaSelectLists.js" />
+    <Content Include="js\ActualizarAfiliadosList.js" />
+    <Content Include="js\ActualizarConductoresSelectLists.js" />
+    <Content Include="js\ActualizarConductorFlotaSelectLists.js" />
+    <Content Include="js\ActualizarDespachosPorEstatus.js" />
+    <Content Include="js\ActualizarDiasList.js" />
+    <Content Include="js\ActualizarEstatusList.js" />
+    <Content Include="js\ActualizarFechasSancion.js" />
+    <Content Include="js\ActualizarGeografiaSelectLists.js" />
+    <Content Include="js\ActualizarGeografiaSelectListsNew.js" />
+    <Content Include="js\ActualizarModeloMarcaSelectLists.js" />
+    <Content Include="js\ActualizarNombreRFC.js" />
+    <Content Include="js\ActualizarPermisosList.js" />
+    <Content Include="js\ActualizarRolesList.js" />
+    <Content Include="js\ActualizarSegTiposVehiculosList.js" />
+    <Content Include="js\ActualizarTiposVehiculosList.js" />
+    <Content Include="js\ActualizarTurnoAfiliadoSelectLists.js" />
+    <Content Include="js\ActualizarUsuarioClienteSelectLists.js" />
+    <Content Include="js\ActualizarVehiculosSelectLists.js" />
+    <Content Include="js\bootstrap-datepicker-es.js" />
+    <Content Include="js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap-table-es-MX.js" />
+    <Content Include="js\bootstrap-table-filter.js" />
+    <Content Include="js\bootstrap-table.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\chart-data.js" />
+    <Content Include="js\chart.min.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\easypiechart-data.js" />
+    <Content Include="js\easypiechart.js" />
+    <Content Include="js\globalize.culture.es-MX.js" />
+    <Content Include="js\globalize.js" />
+    <Content Include="js\html5shiv.min.js" />
+    <Content Include="js\jquery-1.11.1.min.js" />
+    <Content Include="js\jquery-3.1.1.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
+    <Content Include="js\jquery-ui-1.9.2.min.js" />
+    <Content Include="js\jquery-ui-timepicker-addon.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.validate.date.js" />
+    <Content Include="js\jquery.validate.globalize.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="js\jscolor.js" />
+    <Content Include="js\jscolor.min.js" />
+    <Content Include="js\left-bar-slider.js" />
+    <Content Include="js\lumino.glyphs.js" />
+    <Content Include="js\messages_es.js" />
+    <Content Include="js\Monitoreo.js" />
+    <Content Include="js\npm.js" />
+    <Content Include="js\respond.min.js" />
+    <Content Include="js\RoleEventsForUsers.js" />
+    <Content Include="js\ValidarFileUpload.js" />
+    <Content Include="Models\GoPSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GoPSModel.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GoPSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GoPSModel1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap-datepicker-globalize.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <Content Include="Scripts\globalize\unit.js" />
+    <Content Include="Content\images\Thumbs.db" />
+    <Content Include="GoPSDDataSet.xsc">
+      <DependentUpon>GoPSDDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="DespachosDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DespachosDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="EdoCta01.xsc">
+      <DependentUpon>EdoCta01.xsd</DependentUpon>
+    </Content>
+    <Content Include="ECta01.xsc">
+      <DependentUpon>ECta01.xsd</DependentUpon>
+    </Content>
+    <Content Include="E02.xsc">
+      <DependentUpon>E02.xsd</DependentUpon>
+    </Content>
+    <None Include="E02.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>E02.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="E02.xss">
+      <DependentUpon>E02.xsd</DependentUpon>
+    </Content>
+    <Content Include="E03.xsc">
+      <DependentUpon>E03.xsd</DependentUpon>
+    </Content>
+    <None Include="E03.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>E03.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="E03.xss">
+      <DependentUpon>E03.xsd</DependentUpon>
+    </Content>
+    <Content Include="E04.xsc">
+      <DependentUpon>E04.xsd</DependentUpon>
+    </Content>
+    <None Include="E04.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>E04.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="E04.xss">
+      <DependentUpon>E04.xsd</DependentUpon>
+    </Content>
+    <None Include="ECta01.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ECta01.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ECta01.xss">
+      <DependentUpon>ECta01.xsd</DependentUpon>
+    </Content>
+    <None Include="EdoCta01.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EdoCta01.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="EdoCta01.xss">
+      <DependentUpon>EdoCta01.xsd</DependentUpon>
+    </Content>
+    <Content Include="EdoCta02.xsc">
+      <DependentUpon>EdoCta02.xsd</DependentUpon>
+    </Content>
+    <None Include="EdoCta02.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EdoCta02.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="EdoCta02.xss">
+      <DependentUpon>EdoCta02.xsd</DependentUpon>
+    </Content>
+    <None Include="GoPSDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoPSDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="GoPSDDataSet.xss">
+      <DependentUpon>GoPSDDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="GoPSDDataSetuu.xsc">
+      <DependentUpon>GoPSDDataSetuu.xsd</DependentUpon>
+    </Content>
+    <None Include="GoPSDDataSetuu.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GoPSDDataSetuu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="GoPSDDataSetuu.xss">
+      <DependentUpon>GoPSDDataSetuu.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\gopplusdev - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\gopplusprueba - Web Deploy.pubxml" />
+    <Content Include="Reportes\MyataSet.xsc">
+      <DependentUpon>MyataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\gopplustest - Web Deploy.pubxml" />
+    <None Include="Reportes\MyataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reportes\MyataSet.xss">
+      <DependentUpon>MyataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reportes\SrvxColonia2.rdl" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.globalize.js" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ta.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tg.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uk.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\NavBar_CatBancos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatColores.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatConfiguraciones.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatCupones.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatDatosTicket.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatGenerales.cshtml" />
+    <Content Include="Views\Tarifas\Edit.cshtml" />
+    <Content Include="webErr\err.html" />
+    <Content Include="webErr\images\background.png" />
+    <Content Include="webErr\images\clouds.png" />
+    <Content Include="webErr\images\search-bg.png" />
+    <Content Include="webErr\images\search_btn.png" />
+    <Content Include="webErr\images\sitemap-bg.png" />
+    <Content Include="webErr\js\jquery.tablesorter.js" />
+    <Content Include="webErr\styless.css" />
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap-theme.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="images\Thumbs.db" />
+    <Content Include="images\Uploads\Thumbs.db" />
+    <Content Include="Reportes\Despachos.rdlc">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="sass\.sass-cache\deff34d1f5b7167181b556002c25068d6adc024d\styles.scssc" />
+    <Content Include="sass\styles.scss" />
+    <EntityDeploy Include="Models\GoPSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GoPSModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GoPSModel.edmx.diagram" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ConfirmEmail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ForgotPassword.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Login.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Register.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ResetPassword.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\SendCode.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\VerifyCode.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="tables\data1.json" />
+    <Content Include="tables\data2.json" />
+    <Content Include="webErr\images\Search Button.psd" />
+    <Content Include="Views\Afiliados\Create.cshtml" />
+    <Content Include="Views\Afiliados\Delete.cshtml" />
+    <Content Include="Views\Afiliados\Details.cshtml" />
+    <Content Include="Views\Afiliados\Edit.cshtml" />
+    <Content Include="Views\Afiliados\Index.cshtml" />
+    <Content Include="Views\AspNetRoles\Create.cshtml" />
+    <Content Include="Views\AspNetRoles\Delete.cshtml" />
+    <Content Include="Views\AspNetRoles\Details.cshtml" />
+    <Content Include="Views\AspNetRoles\Edit.cshtml" />
+    <Content Include="Views\AspNetRoles\Index.cshtml" />
+    <Content Include="Views\Bancos\Create.cshtml" />
+    <Content Include="Views\Bancos\Delete.cshtml" />
+    <Content Include="Views\Bancos\Details.cshtml" />
+    <Content Include="Views\Bancos\Edit.cshtml" />
+    <Content Include="Views\Bancos\Index.cshtml" />
+    <Content Include="Views\calles\Create.cshtml" />
+    <Content Include="Views\calles\Delete.cshtml" />
+    <Content Include="Views\calles\Details.cshtml" />
+    <Content Include="Views\calles\Edit.cshtml" />
+    <Content Include="Views\calles\Index.cshtml" />
+    <Content Include="Views\Chats\Create.cshtml" />
+    <Content Include="Views\Chats\Delete.cshtml" />
+    <Content Include="Views\Chats\Details.cshtml" />
+    <Content Include="Views\Chats\Edit.cshtml" />
+    <Content Include="Views\Chats\Index.cshtml" />
+    <Content Include="Views\Chats\SendMessage.cshtml" />
+    <Content Include="Views\Chats\SendMessage_PopUp.cshtml" />
+    <Content Include="Views\ClientesAbonados\Create.cshtml" />
+    <Content Include="Views\ClientesAbonados\Delete.cshtml" />
+    <Content Include="Views\ClientesAbonados\Details.cshtml" />
+    <Content Include="Views\ClientesAbonados\Edit.cshtml" />
+    <Content Include="Views\ClientesAbonados\Index.cshtml" />
+    <Content Include="Views\ClientesHabituales\Create.cshtml" />
+    <Content Include="Views\ClientesHabituales\Delete.cshtml" />
+    <Content Include="Views\ClientesHabituales\Details.cshtml" />
+    <Content Include="Views\ClientesHabituales\Edit.cshtml" />
+    <Content Include="Views\ClientesHabituales\Index.cshtml" />
+    <Content Include="Views\clientes\Create.cshtml" />
+    <Content Include="Views\clientes\Delete.cshtml" />
+    <Content Include="Views\clientes\Details.cshtml" />
+    <Content Include="Views\clientes\Edit.cshtml" />
+    <Content Include="Views\clientes\Index.cshtml" />
+    <Content Include="Views\colonias\Create.cshtml" />
+    <Content Include="Views\colonias\Delete.cshtml" />
+    <Content Include="Views\colonias\Details.cshtml" />
+    <Content Include="Views\colonias\Edit.cshtml" />
+    <Content Include="Views\colonias\Index.cshtml" />
+    <Content Include="Views\Colores\Create.cshtml" />
+    <Content Include="Views\Colores\Delete.cshtml" />
+    <Content Include="Views\Colores\Details.cshtml" />
+    <Content Include="Views\Colores\Edit.cshtml" />
+    <Content Include="Views\Colores\Index.cshtml" />
+    <Content Include="Views\Conductores\Assign.cshtml" />
+    <Content Include="Views\Conductores\AssignUser.cshtml" />
+    <Content Include="Views\Conductores\Create.cshtml" />
+    <Content Include="Views\Conductores\Delete.cshtml" />
+    <Content Include="Views\Conductores\Details.cshtml" />
+    <Content Include="Views\Conductores\Edit.cshtml" />
+    <Content Include="Views\Conductores\Index.cshtml" />
+    <Content Include="Views\Configuracion\Variables.cshtml" />
+    <Content Include="Views\Cupones\Create.cshtml" />
+    <Content Include="Views\Cupones\Delete.cshtml" />
+    <Content Include="Views\Cupones\Details.cshtml" />
+    <Content Include="Views\Cupones\Edit.cshtml" />
+    <Content Include="Views\Cupones\Index.cshtml" />
+    <Content Include="Views\DatosTickets\Create.cshtml" />
+    <Content Include="Views\DatosTickets\Delete.cshtml" />
+    <Content Include="Views\DatosTickets\Details.cshtml" />
+    <Content Include="Views\DatosTickets\Edit.cshtml" />
+    <Content Include="Views\DatosTickets\Index.cshtml" />
+    <Content Include="Views\Despachos\Index.cshtml" />
+    <Content Include="Views\Despachos\MoreDetails.cshtml" />
+    <Content Include="Views\DiasFestivos\Create.cshtml" />
+    <Content Include="Views\DiasFestivos\Delete.cshtml" />
+    <Content Include="Views\DiasFestivos\Details.cshtml" />
+    <Content Include="Views\DiasFestivos\Edit.cshtml" />
+    <Content Include="Views\DiasFestivos\Index.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\EstatusReserva\Create.cshtml" />
+    <Content Include="Views\EstatusReserva\Delete.cshtml" />
+    <Content Include="Views\EstatusReserva\Details.cshtml" />
+    <Content Include="Views\EstatusReserva\Edit.cshtml" />
+    <Content Include="Views\EstatusReserva\Index.cshtml" />
+    <Content Include="Views\Estatus\Create.cshtml" />
+    <Content Include="Views\Estatus\Delete.cshtml" />
+    <Content Include="Views\Estatus\Details.cshtml" />
+    <Content Include="Views\Estatus\Edit.cshtml" />
+    <Content Include="Views\Estatus\Index.cshtml" />
+    <Content Include="Views\flotas\Assign.cshtml" />
+    <Content Include="Views\flotas\Create.cshtml" />
+    <Content Include="Views\flotas\Delete.cshtml" />
+    <Content Include="Views\flotas\Details.cshtml" />
+    <Content Include="Views\flotas\Edit.cshtml" />
+    <Content Include="Views\flotas\Index.cshtml" />
+    <Content Include="Views\flotas\Liquidate.cshtml" />
+    <Content Include="Views\flotas\Transfer.cshtml" />
+    <Content Include="Views\FormasPago\Create.cshtml" />
+    <Content Include="Views\FormasPago\Delete.cshtml" />
+    <Content Include="Views\FormasPago\Details.cshtml" />
+    <Content Include="Views\FormasPago\Edit.cshtml" />
+    <Content Include="Views\FormasPago\Index.cshtml" />
+    <Content Include="Views\FrecuenciasPagos\Create.cshtml" />
+    <Content Include="Views\FrecuenciasPagos\Delete.cshtml" />
+    <Content Include="Views\FrecuenciasPagos\Details.cshtml" />
+    <Content Include="Views\FrecuenciasPagos\Edit.cshtml" />
+    <Content Include="Views\FrecuenciasPagos\Index.cshtml" />
+    <Content Include="Views\Home\Configuraciones.cshtml" />
+    <Content Include="Views\Home\Monitoreo.cshtml" />
+    <Content Include="Views\Home\Unidades.cshtml" />
+    <Content Include="Views\Home\Vehiculos.cshtml" />
+    <Content Include="Views\Account\DashboardUser.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Delete.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Details.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Edit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ResendEmail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Marcas\Create.cshtml" />
+    <Content Include="Views\Marcas\Delete.cshtml" />
+    <Content Include="Views\Marcas\Details.cshtml" />
+    <Content Include="Views\Marcas\Edit.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\MensajesPredefinidos\Create.cshtml" />
+    <Content Include="Views\MensajesPredefinidos\Delete.cshtml" />
+    <Content Include="Views\MensajesPredefinidos\Details.cshtml" />
+    <Content Include="Views\MensajesPredefinidos\Edit.cshtml" />
+    <Content Include="Views\MensajesPredefinidos\Index.cshtml" />
+    <Content Include="Views\Modelos\Create.cshtml" />
+    <Content Include="Views\Modelos\Delete.cshtml" />
+    <Content Include="Views\Modelos\Details.cshtml" />
+    <Content Include="Views\Modelos\Edit.cshtml" />
+    <Content Include="Views\Modelos\Index.cshtml" />
+    <Content Include="Views\Operadores\Create.cshtml" />
+    <Content Include="Views\Operadores\Delete.cshtml" />
+    <Content Include="Views\Operadores\Details.cshtml" />
+    <Content Include="Views\Operadores\Edit.cshtml" />
+    <Content Include="Views\Operadores\Index.cshtml" />
+    <Content Include="Views\ParticionesCalles\ConsultaLocalizacion.cshtml" />
+    <Content Include="Views\ParticionesCalles\Consultas.cshtml" />
+    <Content Include="Views\ParticionesCalles\Create.cshtml" />
+    <Content Include="Views\ParticionesCalles\Delete.cshtml" />
+    <Content Include="Views\ParticionesCalles\Details.cshtml" />
+    <Content Include="Views\ParticionesCalles\Edit.cshtml" />
+    <Content Include="Views\ParticionesCalles\Index.cshtml" />
+    <Content Include="Views\ParticionesCalles\_Calles.cshtml" />
+    <Content Include="Views\ParticionesCalles\_Colonias.cshtml" />
+    <Content Include="Views\Permissions\Create.cshtml" />
+    <Content Include="Views\Permissions\Delete.cshtml" />
+    <Content Include="Views\Permissions\Details.cshtml" />
+    <Content Include="Views\Permissions\Edit.cshtml" />
+    <Content Include="Views\Permissions\Index.cshtml" />
+    <Content Include="Views\Positions\Create.cshtml" />
+    <Content Include="Views\Positions\Delete.cshtml" />
+    <Content Include="Views\Positions\Details.cshtml" />
+    <Content Include="Views\Positions\Edit.cshtml" />
+    <Content Include="Views\Positions\Index.cshtml" />
+    <Content Include="Views\PuntosInteres\Create.cshtml" />
+    <Content Include="Views\PuntosInteres\Delete.cshtml" />
+    <Content Include="Views\PuntosInteres\Details.cshtml" />
+    <Content Include="Views\PuntosInteres\Edit.cshtml" />
+    <Content Include="Views\PuntosInteres\Index.cshtml" />
+    <Content Include="Views\RazonesLlamadas\Create.cshtml" />
+    <Content Include="Views\RazonesLlamadas\Delete.cshtml" />
+    <Content Include="Views\RazonesLlamadas\Details.cshtml" />
+    <Content Include="Views\RazonesLlamadas\Edit.cshtml" />
+    <Content Include="Views\RazonesLlamadas\Index.cshtml" />
+    <Content Include="Views\RazonesRechazos\Create.cshtml" />
+    <Content Include="Views\RazonesRechazos\Delete.cshtml" />
+    <Content Include="Views\RazonesRechazos\Details.cshtml" />
+    <Content Include="Views\RazonesRechazos\Edit.cshtml" />
+    <Content Include="Views\RazonesRechazos\Index.cshtml" />
+    <Content Include="Views\Reportes\EstadodeCuenta.cshtml" />
+    <Content Include="Views\rutas\Create.cshtml" />
+    <Content Include="Views\rutas\Delete.cshtml" />
+    <Content Include="Views\rutas\Details.cshtml" />
+    <Content Include="Views\rutas\Edit.cshtml" />
+    <Content Include="Views\rutas\Index.cshtml" />
+    <Content Include="Views\Sanciones\Cancel.cshtml" />
+    <Content Include="Views\Sanciones\Create.cshtml" />
+    <Content Include="Views\Sanciones\Delete.cshtml" />
+    <Content Include="Views\Sanciones\Details.cshtml" />
+    <Content Include="Views\Sanciones\Edit.cshtml" />
+    <Content Include="Views\Sanciones\Index.cshtml" />
+    <Content Include="Views\Seguros\Create.cshtml" />
+    <Content Include="Views\Seguros\Delete.cshtml" />
+    <Content Include="Views\Seguros\Details.cshtml" />
+    <Content Include="Views\Seguros\Edit.cshtml" />
+    <Content Include="Views\Seguros\Index.cshtml" />
+    <Content Include="Views\ServiciosAuxiliares\Create.cshtml" />
+    <Content Include="Views\ServiciosAuxiliares\Delete.cshtml" />
+    <Content Include="Views\ServiciosAuxiliares\Details.cshtml" />
+    <Content Include="Views\ServiciosAuxiliares\Edit.cshtml" />
+    <Content Include="Views\ServiciosAuxiliares\Index.cshtml" />
+    <Content Include="Views\Servicios\Create.cshtml" />
+    <Content Include="Views\Servicios\Details.cshtml" />
+    <Content Include="Views\Servicios\Index.cshtml" />
+    <Content Include="Views\Tarifas\Create.cshtml" />
+    <Content Include="Views\Tarifas\Delete.cshtml" />
+    <Content Include="Views\Tarifas\Details.cshtml" />
+    <Content Include="Views\Tarifas\Index.cshtml" />
+    <Content Include="Views\TarjetasCredito\Create.cshtml" />
+    <Content Include="Views\TarjetasCredito\Delete.cshtml" />
+    <Content Include="Views\TarjetasCredito\Details.cshtml" />
+    <Content Include="Views\TarjetasCredito\Edit.cshtml" />
+    <Content Include="Views\TarjetasCredito\Index.cshtml" />
+    <Content Include="Views\TiposAvisos\Create.cshtml" />
+    <Content Include="Views\TiposAvisos\Delete.cshtml" />
+    <Content Include="Views\TiposAvisos\Details.cshtml" />
+    <Content Include="Views\TiposAvisos\Edit.cshtml" />
+    <Content Include="Views\TiposAvisos\Index.cshtml" />
+    <Content Include="Views\TiposPagos\Create.cshtml" />
+    <Content Include="Views\TiposPagos\Delete.cshtml" />
+    <Content Include="Views\TiposPagos\Details.cshtml" />
+    <Content Include="Views\TiposPagos\Edit.cshtml" />
+    <Content Include="Views\TiposPagos\Index.cshtml" />
+    <Content Include="Views\TiposPrioridades\Create.cshtml" />
+    <Content Include="Views\TiposPrioridades\Delete.cshtml" />
+    <Content Include="Views\TiposPrioridades\Details.cshtml" />
+    <Content Include="Views\TiposPrioridades\Edit.cshtml" />
+    <Content Include="Views\TiposPrioridades\Index.cshtml" />
+    <Content Include="Views\TiposPuntosInteres\Create.cshtml" />
+    <Content Include="Views\TiposPuntosInteres\Delete.cshtml" />
+    <Content Include="Views\TiposPuntosInteres\Details.cshtml" />
+    <Content Include="Views\TiposPuntosInteres\Edit.cshtml" />
+    <Content Include="Views\TiposPuntosInteres\Index.cshtml" />
+    <Content Include="Views\TiposRechazos\Create.cshtml" />
+    <Content Include="Views\TiposRechazos\Delete.cshtml" />
+    <Content Include="Views\TiposRechazos\Details.cshtml" />
+    <Content Include="Views\TiposRechazos\Edit.cshtml" />
+    <Content Include="Views\TiposRechazos\Index.cshtml" />
+    <Content Include="Views\TiposSanciones\Create.cshtml" />
+    <Content Include="Views\TiposSanciones\Delete.cshtml" />
+    <Content Include="Views\TiposSanciones\Details.cshtml" />
+    <Content Include="Views\TiposSanciones\Edit.cshtml" />
+    <Content Include="Views\TiposSanciones\Index.cshtml" />
+    <Content Include="Views\TiposServicios\Create.cshtml" />
+    <Content Include="Views\TiposServicios\Delete.cshtml" />
+    <Content Include="Views\TiposServicios\Details.cshtml" />
+    <Content Include="Views\TiposServicios\Edit.cshtml" />
+    <Content Include="Views\TiposServicios\Index.cshtml" />
+    <Content Include="Views\TiposVehiculos\Create.cshtml" />
+    <Content Include="Views\TiposVehiculos\Delete.cshtml" />
+    <Content Include="Views\TiposVehiculos\Details.cshtml" />
+    <Content Include="Views\TiposVehiculos\Edit.cshtml" />
+    <Content Include="Views\TiposVehiculos\Index.cshtml" />
+    <Content Include="Views\Turnos\Create.cshtml" />
+    <Content Include="Views\Turnos\Delete.cshtml" />
+    <Content Include="Views\Turnos\Details.cshtml" />
+    <Content Include="Views\Turnos\Edit.cshtml" />
+    <Content Include="Views\Turnos\Index.cshtml" />
+    <Content Include="Views\UsuariosAbonados\Create.cshtml" />
+    <Content Include="Views\UsuariosAbonados\Delete.cshtml" />
+    <Content Include="Views\UsuariosAbonados\Details.cshtml" />
+    <Content Include="Views\UsuariosAbonados\Edit.cshtml" />
+    <Content Include="Views\UsuariosAbonados\Index.cshtml" />
+    <Content Include="Views\Vehiculos\Create.cshtml" />
+    <Content Include="Views\Vehiculos\Delete.cshtml" />
+    <Content Include="Views\Vehiculos\Details.cshtml" />
+    <Content Include="Views\Vehiculos\Edit.cshtml" />
+    <Content Include="Views\Vehiculos\Index.cshtml" />
+    <Content Include="Views\ViewPage1.cshtml" />
+    <Content Include="Views\vw.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CheckBoxListItem.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RadioButtonListItem.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CheckBoxListItem.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RadioButtonListItem.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
+    <Content Include="Views\Shared\Breadcrumb.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatAfiliados.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatCalles.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatCliente.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatClienteAbonado.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatClientes.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatColonias.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatMapas.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatParticionesCalles.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTiposVehiculos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatVehiculos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatConductores.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatFlotas.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatMarcas.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatModelos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatSeguros.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTarifas.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTiposSanciones.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTiposServicios.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTurnos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatVehiculo.cshtml" />
+    <Content Include="Views\Reportes\ServXColonia.cshtml" />
+    <Content Include="Views\Reportes\ClientesHabituales.cshtml" />
+    <Content Include="Views\Reportes\ClientesAbonados.cshtml" />
+    <Content Include="Views\Reportes\AbonadosADetalle.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.3\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Web.2012.1.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets'))" />
+  </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

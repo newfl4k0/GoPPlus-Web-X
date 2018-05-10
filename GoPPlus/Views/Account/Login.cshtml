@@ -1,0 +1,38 @@
+﻿@using GoPS.Models
+@using GoPS.ViewModels
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar Sesión";
+    Layout = null;
+}
+<head>
+    <title>@ViewBag.Title - Sitio Backend GoPS</title>
+</head>
+@Styles.Render("~/Content/css")
+@Styles.Render("~/css/css")
+@Scripts.Render("~/bundles/modernizr")
+<style>
+    .validation-summary-errors ul { 
+        list-style: none;
+        margin-left:-40px
+    }
+</style>
+@{
+    string Color_DB = (string)ViewBag.Color;
+}
+<div id="header">
+    <div class="header-bar" style="background-color:@(Color_DB);"></div>
+</div> 
+@Html.Partial("_LoginPartial")
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-8">
+        </div>
+    </div>
+</div>
+<div id="footer" style="background-color:@(Color_DB);">
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+}

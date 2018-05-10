@@ -1,0 +1,264 @@
+﻿@model GoPS.Models.ParticionesCalles
+@{
+    ViewBag.Title = "Crear Localización";
+}
+<style type='text/css'>
+    /*#info {
+        display: block;
+        position: relative;
+        margin: 10px auto 5px auto;
+        width: 50%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #222;
+        background: #fff;
+    }*/
+    .error {
+        border:2px solid red;
+     }
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+</style>
+@Html.Hidden("Permiso", "Mapas")
+
+    <div class="main">
+        @{Html.RenderPartial("NavBar_CatParticionesCalles", "Crear"); }
+        @*<div class="row">
+            <pre id='info'></pre>
+        </div>*@
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="map" style="height: 500px;width:100%">
+
+                </div>
+            </div>
+            @using (Html.BeginForm("Create", "ParticionesCalles", FormMethod.Post, new { id = "particionCalleForm" }))
+            {
+            @Html.AntiForgeryToken()
+            <script>
+                $(document).ready(function () {
+                    $('.validar_cambio').change(function () {
+
+                      cambio = (($('#ID_Estado').val() != $('#hdnID_Estado').val())
+                             || ($('#ID_Ciudad').val() != $('#hdnID_Ciudad').val())
+                             || ($('#ID_Colonia').val() != $('#hdnID_Colonia').val())
+                             || ($('#ID_Calle').val() != $('#hdnID_Calle').val())
+                             || ($('#Latitud').val() != $('#hdnLatitud').val())
+                             || ($('#Longitud').val() != $('#hdnLongitud').val()));
+
+                    });
+                });
+            </script>
+            <div class="col-lg-6">
+                <div class="form-horizontal">
+                    <h4>Localizaciones</h4>
+                    <hr />
+                    @Html.Hidden("hdnID_Estado")
+                    @Html.Hidden("hdnID_Ciudad")
+                    @Html.Hidden("hdnID_Colonia")
+                    @Html.Hidden("hdnID_Calle")
+                    @Html.Hidden("hdnLatitud")
+                    @Html.Hidden("hdnLongitud")
+                    
+                    @Html.ValidationSummary(true, "No se pudo crear el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.ID_Colonia, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Colonia", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Calle, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Calle", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control latitud required validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control longitud required validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Guardar" class="btn btn-default guardar" onclick="DoAjaxPostAndMore(this)" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                   <a href="~/ParticionesCalles/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                </div>
+
+            </div>
+            
+            }
+        </div>
+        <div class="row" style="margin-top:15px;">
+            @{Html.RenderPartial("_Colonias"); }
+
+            @{Html.RenderPartial("_Calles"); }
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+        <script src="~/js/ActualizarGeografiaSelectListsNew.js"></script>
+        <script type="text/javascript">
+
+            var map;
+            var myLatLng = { lat: 21.1378588, lng: -101.6854752 };
+            var marker;
+            var icon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ECC71&chf=a,s,ee00FFFF';
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    scrollwheel: true,
+                    zoom: 12,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+                //google.maps.event.addListener(map, 'mousemove', function (event) {
+                //    displayCoordinates(event.latLng);
+                //});
+
+                map.addListener('click', function (event) {
+                    var lat = event.latLng.lat();
+                    var lng = event.latLng.lng();
+                    $('.latitud').val(lat);
+                    $('.longitud').val(lng);
+                    makeMarker(event.latLng);
+                });
+            }
+
+            //function displayCoordinates(pnt) {
+            //    document.getElementById('info').innerHTML =
+            //        JSON.stringify("Latitud: " + pnt.lat() + "  Longitud: " + pnt.lng());
+            //}
+
+            function makeMarker(position) {
+                if(marker != null)
+                    marker.setMap(null);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon
+                });
+                map.panTo(position);
+            }
+
+            function fly(latitude, longitude) {
+                var position = new google.maps.LatLng(latitude, longitude);
+                map.panTo(position);
+                makeMarker(position);
+            }
+
+            function CleanFields() {
+                $("#Latitud").val('');
+                $("#Longitud").val('');
+                $("#Numero").val('');
+                $("#ID_Calle").val('');
+                $('.latitud').val('');
+                $('.longitud').val('');
+            }
+
+            $('#ID_Colonia').on('change', function () {
+                var ID = $(this).val();
+                if (ID) {
+                    $.getJSON('/Colonias/GetLatlangColony/', { ID_Colonia: ID }, function (result) {
+                        if (result != null)
+                            fly(result.Latitud, result.Longitud);
+                    });
+                }
+            });
+
+            $('#ID_Calle').on('change', function () {
+                var ID = $(this).val();
+                if (ID) {
+                    $.getJSON('/Colonias/GetLatlangCalle/', { ID_Calle: ID }, function (result) {
+                        if (result != null)
+                            fly(result.Latitud, result.Longitud);
+                    });
+                }
+            });
+
+            function validar($form)
+            {
+                $('.error').removeClass('error');
+                
+                var elements = $form.find(".required");
+
+                elements.filter(function () {
+                    if ($(this).val().length === 0) {
+                        $(this).addClass("error");
+                    }
+                });
+                var valid = $('.error').length == 0;
+                return valid;
+            }
+
+            function DoAjaxPostAndMore(btnClicked) {
+                var $form = $(btnClicked).parents('form')
+                var valid = validar($form);
+
+                if(valid)
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: $form.attr('action'),
+                        data: $form.serialize(),
+                        error: function (xhr, status, error) {
+                            //do something about the error
+                        },
+                        success: function (response) {
+                            alert(response);
+                            CleanFields();
+                        }
+                    });
+                }
+                return false;
+            }
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
+    } 

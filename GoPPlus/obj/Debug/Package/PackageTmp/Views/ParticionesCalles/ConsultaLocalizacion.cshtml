@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Consulta Localizaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<GoPS.Models.ParticionesCalles>
+<style>
+    .panel-heading
+    {
+        margin-top:0px;
+    }
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+</style>
+    <div class="col-lg-12">
+         <div id="map" style="height:300px">
+
+         </div>
+    </div>
+@Html.Hidden("Permiso", "Mapas")
+<div class="main">
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading">Catálogo de Consultas</div>
+                <div class="panel-body">
+                    <table id="consultaLocalization" data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Calles" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Calles" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Calles")
+                                </th>
+                                <th data-field="Colonias" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Colonias")
+                                </th>
+                                <th data-field="Ciudades" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Ciudades")
+                                </th>
+                                <th data-field="Localizaciones" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Localizaciones Ubicación")
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr class='clickable-row'>
+                                    <td>
+                                        <label onclick="getLocation(this,@item.ID_Calle,@item.Calles.ID_Colonia)" data-Column="1" data-color-code="#2ECC71">@item.Calles.Nombre</label>
+                                    </td>
+                                    <td>
+                                        <label onclick="getLocation(this,@item.ID_Calle,@item.Calles.ID_Colonia)" data-Column="2" data-color-code="#3399FF">@item.Calles.Colonias.Nombre</label>
+                                    </td>
+                                    <td>
+                                        <label data-Column="3" data-color-code="#FFFF00">@item.Calles.Colonias.Ciudades.Poblacion</label>
+                                    </td>
+                                    <td>
+                                        <label onclick="getLocation(this,@item.ID_Calle,@item.Calles.ID_Colonia)" data-Column="0" data-color-code="#EC1C24">@item.Latitud <br /> @item.Longitud</label>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+            var map;
+            var myLatLng = { lat: 21.1378588, lng: -101.6854752 };
+            var marker;
+            var iconLatLong = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|EC1C24&chf=a,s,ee00FFFF';
+            var iconCalle = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ECC71&chf=a,s,ee00FFFF';
+            var iconColonia = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3399FF&chf=a,s,ee00FFFF';
+            var iconCiudad = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FFFF00&chf=a,s,ee00FFFF';
+            var icon;
+            var latitude;
+            var longitude;
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    scrollwheel: true,
+                    zoom: 12,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+            }
+
+            function getLocation(tdData, id_calle, id_colonia) {
+                var label = $(tdData)[0].outerHTML;
+                event.preventDefault();
+
+                var column = $(label).data("column");
+
+                if (column == "0") {
+                    var latLong = $(label).text().split(" ");
+                    latitude = latLong[0];
+                    longitude = latLong[2];
+                    icon = iconLatLong;
+                    makeMarker(latitude, longitude);
+                }
+                else {
+                    var name = $(label).text();
+                    if (column == "1") {
+                        GetCalle(id_calle);
+                    }
+                    else if (column == "2") {
+                        GetColonia(id_colonia);
+                    }
+                }
+            }
+
+            function makeMarker(latitude, longitude) {
+                var position = new google.maps.LatLng(latitude, longitude);
+                if(marker != null)
+                    marker.setMap(null);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon
+                });
+                map.panTo(position);
+                $("html, body").animate({ scrollTop: 0 }, "100");
+            }
+
+            function GetColonia(id_colonia) {
+                if (id_colonia) {
+                    $.getJSON('/Colonias/GetLatlangColony/', { ID_Colonia: id_colonia }, function (result) {
+                        if (result != null) {
+                            latitude = result.Latitud;
+                            longitude = result.Longitud;
+                            icon = iconColonia;
+                            makeMarker(latitude, longitude);
+                        }
+                    });
+                }
+            }
+
+            function GetCalle(id_calle) {
+                if (id_calle) {
+                    $.getJSON('/Colonias/GetLatlangCalle/', { ID_Calle: id_calle }, function (result) {
+                        if (result != null) {
+                            latitude = result.Latitud;
+                            longitude = result.Longitud;
+                            icon = iconCalle;
+                            makeMarker(latitude, longitude);
+                        }
+                    });
+                }
+            }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
+    
+}

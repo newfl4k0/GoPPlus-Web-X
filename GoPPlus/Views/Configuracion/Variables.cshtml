@@ -1,0 +1,106 @@
+﻿@model List<GoPS.Models.Configuraciones>
+@using GoPS.Models
+
+@{
+    ViewBag.Title = "Variables";
+}
+
+@Html.Hidden("Permiso", "VariablesConfig_Edicion")
+@using (Html.BeginForm("Variables", "Configuracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Configuración"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @if (ViewBag.Success != null && ViewBag.Success)
+                    {
+                        <p class="text-success">Registrado Exitosamente.</p>
+                    }
+                    @if (ViewBag.Error != null && ViewBag.Error)
+                    {
+                        <p class="text-danger">No se pudieron actualizar las variables. Por favor, corrija los campos en rojo e intente de nuevo.</p>
+                    }
+
+                    @foreach (Configuraciones variable in Model)
+                    {
+
+                    <div class="form-group">
+                        @Html.Label(variable.Atributo, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @if (variable.TipoDato.ToLower() == "texto" || variable.TipoDato.ToLower() == "email"
+                                || variable.TipoDato.ToLower() == "url" || variable.TipoDato.ToLower() == "teléfono")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control" })
+                            }
+                            @if (variable.TipoDato.ToLower() == "hora")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control", @placeholder = "hh:00" })
+                            }
+                            else if (variable.TipoDato.ToLower() == "número" || variable.TipoDato.ToLower() == "decimal")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control", type = "number", min = "0", step = (variable.TipoDato.ToLower() == "decimal" ? "0.01" : "1") })
+                            }
+                            else if (variable.TipoDato.ToLower() == "fecha")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control datepicker", @readonly = "readonly" })
+                            }
+                            else if (variable.TipoDato.ToLower() == "color")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control jscolor", @readonly = "readonly" })
+                            }
+                            else if (variable.TipoDato.ToLower() == "imagen")
+                            {
+                                <div class="">
+                                    @Html.Hidden(variable.Atributo, variable.Valor, new { @class = "file_hidden" })
+                                    <div class="file_upload btn btn-default">
+                                        @Html.TextBox("File_" + variable.Atributo, variable.Valor, new { @class = "form-control", type = "file" })
+                                    </div>
+                                    <div class="show_file_image">
+                                        @if (!String.IsNullOrEmpty(variable.Atributo))
+                                        {
+                                            <span class="close_image">&times;</span>
+                                            <img class="db-image" src="~/images/Uploads/@variable.Valor" alt="" />
+                                        }
+                                    </div>
+                                    <p class="file_name"></p>
+                                </div>
+                            }
+                            @{ 
+                                string error = TempData[variable.Atributo] != null ? TempData[variable.Atributo].ToString() : "";
+                            }
+                            @Html.ValidationMessage(variable.Atributo, error, new { @class = "text-danger" })
+                        </div>
+                        @Html.Label("¿Es Configuración Chofer?", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @if (variable.EsConfiguracionChofer == 1)
+                            {
+                                @Html.CheckBox("Chofer_" + variable.Atributo, new { @checked = "checked" })
+                            }
+                            else
+                            {
+                                @Html.CheckBox("Chofer_" + variable.Atributo)
+                            }
+                        </div>
+                    </div>
+                    }
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ValidarFileUpload.js"></script>
+    <script src="~/js/jscolor.js"></script>
+}

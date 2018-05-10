@@ -1,0 +1,94 @@
+﻿@model GoPS.Models.Cupones
+
+@{
+    ViewBag.Title = "Eliminar Cupón";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Cupones > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro?
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Descripcion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Codigo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cantidad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Inicio)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Fin)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Fin)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descuento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Descuento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Primer_Servicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Primer_Servicio)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

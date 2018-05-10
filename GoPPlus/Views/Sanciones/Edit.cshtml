@@ -1,0 +1,113 @@
+﻿@model GoPS.Models.Sanciones
+
+@{
+    ViewBag.Title = "Editar Sanción";
+}
+
+<style type='text/css'>
+    .error {
+        border: 2px solid red;
+    }
+</style>
+
+@Html.Hidden("Permiso", "Configuraciones")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script>
+    $(document).ready(function () {
+        $('.validar_cambio').change(function () {
+
+            cambio = (($('#ID_Flota').val() != $('#hdnID_Flota').val())
+                || ($('#ID_TipoSancion').val() != $('#hdnID_TipoSancion').val())
+                || ($('#Fecha_Inicio').val() != $('#hdnFecha_Inicio').val())
+                || ($('#Fecha_Fin').val() != $('#hdnFecha_Fin').val())
+                || ($('#Observaciones').val() != $('#hdnObservaciones').val()));
+
+        });
+    });
+    </script>
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Sanciones > Editar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudo editar el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_Sancion)
+                    @Html.HiddenFor(model => model.ID_Operador_Alta)
+                    @Html.HiddenFor(model => model.Fecha_Creacion)
+
+                    @Html.HiddenFor(model => model.Conductores.ID_Flota, htmlAttributes: new { @id = "hdnID_Flota" })
+                    @Html.HiddenFor(model => model.ID_TipoSancion, htmlAttributes: new { @id = "hdnID_TipoSancion" })
+                    @Html.HiddenFor(model => model.Fecha_Inicio, htmlAttributes: new { @id = "hdnFecha_Inicio" })
+                    @Html.HiddenFor(model => model.Fecha_Fin, htmlAttributes: new { @id = "hdnFecha_Fin" })
+                    @Html.HiddenFor(model => model.Observaciones, htmlAttributes: new { @id = "hdnObservaciones" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Conductores.ID_Flota, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Flota", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio", @disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.Conductores.ID_Flota, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.ID_Conductor, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Conductor", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio", @disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.ID_Conductor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_TipoSancion, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_TipoSancion", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio", @disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.ID_TipoSancion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Fecha_Inicio, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.Fecha_Inicio, new { htmlAttributes = new { @class = "form-control validar_cambio", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_Inicio, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.TextBox("Hora_Inicio", Model.Fecha_Inicio.Hour + ":" + (Model.Fecha_Inicio.Minute > 0 ? (Model.Fecha_Inicio.Minute.ToString().Length==1 ? "0" + Model.Fecha_Inicio.Minute.ToString() : Model.Fecha_Inicio.Minute.ToString()) : "00"), htmlAttributes: new { @class = "form-control text-box single-line", @placeholder = "hh:mm", @readonly = "readonly" })
+                        </div>
+                        @Html.LabelFor(model => model.Fecha_Fin, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.Fecha_Fin, new { htmlAttributes = new { @class = "form-control validar_cambio", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_Fin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion confirmLink" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="leaveDialog" title="Confirmación">
+        <p>Se han realizado cambios a la información pero no se han guardado, ¿Deseas salir sin guardar los cambios? </p>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarConductorFlotaSelectLists.js"></script>
+    <script src="~/js/ActualizarFechasSancion.js"></script>
+}

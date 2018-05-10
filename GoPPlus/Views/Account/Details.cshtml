@@ -1,0 +1,112 @@
+﻿@model GoPS.Models.AspNetUsers
+@using GoPS.Helpers;
+
+@{
+    ViewBag.Title = "Ver Detalles de Usuario";
+}
+
+@Html.Hidden("Permiso", "General")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Usuarios > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EmailConfirmed)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EmailConfirmed)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TwoFactorEnabled)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LockoutEndDateUtc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LockoutEnabled)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LockoutEnabled)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AccessFailedCount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AccessFailedCount)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PositionID)
+                    </dt>
+
+                    <dd>
+                       @Html.DisplayFor(model => model.Positions.Position)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateOfBirth)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DateOfBirth)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

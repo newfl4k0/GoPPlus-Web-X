@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GoPS.Models.UsuariosAbonados>
+    @using GoPS.Helpers;
+@{
+    ViewBag.Title = "Usuarios Abonados";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Catálogo de Usuarios Abonados"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Usuario Abonado")
+                                </th>
+                                <th data-field="ClientesAbonados.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Cliente Abonado")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ClientesAbonados.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "UsuariosAbonados", new { id = item.ID_UsuarioAbonado }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "UsuariosAbonados", new { id = item.ID_UsuarioAbonado }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "UsuariosAbonados", new { id = item.ID_UsuarioAbonado }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GoPS.Models.PuntosInteres>
+@{
+    ViewBag.Title = "Puntos de Interés";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Catálogo de Puntos de Interés"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Punto de Interés")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="Latitud" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Latitud")
+                                </th>
+                                <th data-field="Longitud" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Longitud")
+                                </th>
+                                <th data-field="Direccion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Direccion")
+                                </th>
+                                <th data-field="TiposPuntosInteres.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Tipo de Punto de Interés")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Latitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Longitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TiposPuntosInteres.Nombre)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_PuntoInteres }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_PuntoInteres }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_PuntoInteres }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

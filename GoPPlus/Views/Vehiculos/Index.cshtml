@@ -1,0 +1,116 @@
+﻿@model GoPS.ViewModels.VehiculosViewModel
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Vehículos";
+}
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatVehiculos", "Catálogo de Vehículos"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Serie" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Serie")
+                                </th>
+                                <th data-field="Telefono" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Teléfono")
+                                </th>
+                                <th data-field="Version" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Versión")
+                                </th>
+                                <th data-field="Flotas.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Flota")
+                                </th>
+                                <th data-field="NoLicencia" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("No. Licencia")
+                                </th>
+                                <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Matrícula")
+                                </th>
+                                <th data-field="Modelos.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Modelo")
+                                </th>
+                                <th data-field="Modelos.Marcas.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Marca")
+                                </th>
+                                <th data-field="Colores.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Color")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="Despachos_Mensuales" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Despachos Mensuales")
+                                </th>
+                                <th data-field="Despachos_Anuales" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Despachos Anuales")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.vehiculos)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Serie)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Version)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Flotas.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NoLicencia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Matricula)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Modelos.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Modelos.Marcas.Nombre)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Colores.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @Model.ObtenerServiciosMensuales(item.ID_Vehiculo)
+                                </td>
+                                <td>
+                                    @Model.ObtenerServiciosAnuales(item.ID_Vehiculo)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "Vehiculos", new { id = item.ID_Vehiculo }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "Vehiculos", new { id = item.ID_Vehiculo }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Vehiculos", new { id = item.ID_Vehiculo }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

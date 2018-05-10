@@ -1,0 +1,189 @@
+﻿@model GoPS.Models.Clientes
+
+@{
+    ViewBag.Title = "Editar Cliente";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script>
+    $(document).ready(function () {
+        $('.validar_cambio').change(function () {
+
+            cambio = (($('#ID_Afiliado').val() != $('#hdnID_Afiliado').val())
+                || ($('#Nombre').val() != $('#hdnNombre').val())
+                || ($('#ID_Estado_Origen').val() != $('#hdnID_Estado_Origen').val())
+                || ($('#ID_Ciudad_Origen').val() != $('#hdnID_Ciudad_Origen').val())
+                || ($('#ID_Colonia_Origen').val() != $('#hdnID_Colonia_Origen').val())
+                || ($('#ID_Calle_Origen').val() != $('#hdnID_Calle_Origen').val())
+                || ($('#Numero_Exterior_Origen').val() != $('#hdnNumero_Exterior_Origen').val())
+                || ($('#Numero_Interior_Origen').val() != $('#hdnNumero_Interior_Origen').val())
+                || ($('#ID_Estado_Destino').val() != $('#hdnID_Estado_Destino').val())
+                || ($('#ID_Ciudad_Destino').val() != $('#hdnID_Ciudad_Destino').val())
+                || ($('#ID_Colonia_Destino').val() != $('#hdnID_Colonia_Destino').val())
+                || ($('#ID_Calle_Destino').val() != $('#hdnID_Calle_Destino').val())
+                || ($('#Numero_Exterior_Destino').val() != $('#hdnNumero_Exterior_Destino').val())
+                || ($('#Numero_Interior_Destino').val() != $('#hdnNumero_Interior_Destino').val()));
+
+        });
+    });
+    </script>
+    <div class="main">
+        @{Html.RenderPartial("NavBar_CatCliente", "Editar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudo editar el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_Cliente)
+                    @Html.HiddenFor(model => model.Fecha_Creacion)
+
+                    @Html.HiddenFor(model => model.ID_Afiliado, htmlAttributes: new { @id = "hdnID_Afiliado" })
+                    @Html.HiddenFor(model => model.Nombre, htmlAttributes: new { @id = "hdnNombre" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @id = "hdnID_Estado_Origen" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @id = "hdnID_Ciudad_Origen" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Colonia, htmlAttributes: new { @id = "hdnID_Colonia_Origen" })
+                    @Html.HiddenFor(model => model.Calles.ID_Calle, htmlAttributes: new { @id = "hdnID_Calle_Origen" })
+                    @Html.HiddenFor(model => model.Numero_Exterior_Origen, htmlAttributes: new { @id = "hdnNumero_Exterior_Origen" })
+                    @Html.HiddenFor(model => model.Numero_Interior_Origen, htmlAttributes: new { @id = "hdnNumero_Interior_Origen" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @id = "hdnID_Estado_Destino" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @id = "hdnID_Ciudad_Destino" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Colonia, htmlAttributes: new { @id = "hdnID_Colonia_Destino" })
+                    @Html.HiddenFor(model => model.ID_Calle_Destino, htmlAttributes: new { @id = "hdnID_Calle_Destino" })
+                    @Html.HiddenFor(model => model.Numero_Exterior_Destino, htmlAttributes: new { @id = "hdnNumero_Exterior_Destino" })
+                    @Html.HiddenFor(model => model.Numero_Interior_Destino, htmlAttributes: new { @id = "hdnNumero_Interior_Destino" })
+
+                    <div class="form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+                        @Html.LabelFor(model => model.ID_Afiliado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Afiliado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Estado Origen", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Estado_Origen", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Ciudad Origen", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Ciudad_Origen", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Colonia Origen", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Colonia_Origen", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Calle_Origen, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Calle_Origen", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle_Origen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Exterior_Origen, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Exterior_Origen, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Exterior_Origen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Interior_Origen, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Interior_Origen, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Interior_Origen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Estado Destino", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Estado_Destino", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Ciudad Destino", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Ciudad_Destino", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Colonia Destino", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Colonia_Destino", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Calle_Destino, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Calle_Destino", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle_Destino, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Exterior_Destino, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Exterior_Destino, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Exterior_Destino, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Interior_Destino, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Interior_Destino, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Interior_Destino, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="~/Clientes/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+}

@@ -1,0 +1,38 @@
+﻿@model GoPS.Models.Despachos
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.Label("DETALLES DEL SERVICIO " + Model.ID_Despacho)
+
+                    <b>Conductor:</b> @Model.Vehiculos_Conductores.Conductores.NombreCompleto<br />
+                    @if (!Model.Vehiculos_Conductores.Conductores.Liquido)
+                    {
+                        @Html.Label("(Conductor Sancionado)", new { @class = "text-danger" })<br />
+                    }
+
+                    @if (Model.Reservas.Clientes != null)
+                    {
+                        <b>Cliente:</b> @Model.Reservas.Clientes.Nombre<br />
+                    }
+                    else if (Model.Reservas.ClientesAbonados != null)
+                    {
+                        <b>Cliente:</b> @Model.Reservas.ClientesAbonados.Nombre<br />
+                    }
+                    else if (Model.Reservas.ClientesHabituales != null)
+                    {
+                        <b>Cliente:</b> @Model.Reservas.ClientesHabituales.Nombre<br />
+                    }
+                    <b>Fecha:</b> @Model.Fecha<br />
+                    <b>Monto:</b> @Model.Monto<br />
+                    <b>Dirección Origen:</b> @Model.Reservas.DireccionOrigen<br />
+                    <b>Dirección Destino</b> @Model.Reservas.DireccionDestino<br />
+                    <b>Encuesta:</b> @Model.Encuesta<br />
+                    <b>Observaciones</b> @Model.Observaciones<br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

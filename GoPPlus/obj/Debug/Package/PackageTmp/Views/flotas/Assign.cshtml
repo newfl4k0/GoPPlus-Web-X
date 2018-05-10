@@ -1,0 +1,85 @@
+﻿@model GoPS.ViewModels.FlotasViewModel
+
+@{
+    ViewBag.Title = "Asignar Vehìculo a Conductor";
+}
+
+@Html.Hidden("Permiso", "Vehiculos")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Flotas > Asignar Vehículos a Conductores"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudieron asignar los vehículos. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.Hidden("ID_Flota", Model.flotas.ID_Flota)
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.Label("Flota")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.flotas.Nombre)
+                        </dd>
+                    </dl>
+                    @if (Model.vehiculosAsignados.Count > 0)
+                    {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.Label("Conductores")
+                                </th>
+                                <th>
+                                    @Html.Label("Vehículos")
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.vehiculosAsignados)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Hidden("ID_Conductor_" + item.Key.ID_Conductor, item.Key.ID_Conductor)
+                                    
+                                    @Html.Label(item.Key.Nombre + " " + item.Key.Apellido)
+                                </td>
+                                <td>
+                                    @Html.DropDownList("ID_Vehiculo_" + item.Key.ID_Conductor, item.Value, "-Seleccione-", htmlAttributes: new { @class = "form-control vehiculosDDL" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Asignar" class="btn btn-default" />
+                        </div>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                No existen conductores en esta Flota.
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarVehiculosSelectLists.js"></script>
+}

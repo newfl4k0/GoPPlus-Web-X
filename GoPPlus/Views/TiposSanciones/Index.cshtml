@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GoPS.Models.TiposSanciones>
+    @using GoPS.Helpers;
+@{
+    ViewBag.Title = "Tipos de Sanciones";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatConfiguraciones", "Catálogo de Tipos de Sanciones"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Tipo de Sanción")
+                                </th>
+                                <th data-field="Horas_Penalizacion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Horas de Penalización")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Horas_Penalizacion)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "TiposSanciones", new { id = item.ID_TipoSancion }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "TiposSanciones", new { id = item.ID_TipoSancion }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "TiposSanciones", new { id = item.ID_TipoSancion }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

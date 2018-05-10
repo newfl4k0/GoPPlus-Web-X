@@ -1,0 +1,30 @@
+﻿@model GoPS.Models.TiposServicios
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Tipo de Servicio";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Tipos de Servicios > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "TiposServicios", new { id = Model.ID_TipoServicio }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

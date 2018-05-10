@@ -1,0 +1,44 @@
+﻿@model GoPS.Models.AspNetRoles
+
+@{
+    ViewBag.Title = "Eliminar Perfil";
+}
+
+@Html.Hidden("Permiso", "General")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Perfiles > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3> Estás seguro de eliminar este registro ?</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliado)
+                    </dd>
+                </dl>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

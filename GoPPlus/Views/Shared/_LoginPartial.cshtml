@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNet.Identity
+@using GoPS.Models
+@using GoPS.ViewModels
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar Sesión";
+}
+@*@if(!Request.IsAuthenticated)
+{*@
+@{
+    string Logo_DB = (string)ViewBag.Logo;
+
+}
+
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading"><div align="center"><img width="65" height="45" src="~/images/Uploads/logogopplus.png" /></div></div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @if (ViewBag.ResendEmail != null)
+                            {
+                                <div class="form-group text-center">
+                                    @Html.ActionLink("Reenviar Correo", "ResendEmail")
+                                </div>
+                            }
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Nombre de usuario o correo electrónico" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <input type="submit" value="Iniciar Sesión" class="btn btn-default" />
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="~/js/jquery-1.11.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/chart.min.js"></script>
+    <script src="~/js/chart-data.js"></script>
+    <script src="~/js/easypiechart.js"></script>
+    <script src="~/js/easypiechart-data.js"></script>
+    <script src="~/js/bootstrap-datepicker.js"></script>
+    <script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){
+				$(this).find('em:first').toggleClass("glyphicon-minus");
+			});
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+    </script>
+@*}*@

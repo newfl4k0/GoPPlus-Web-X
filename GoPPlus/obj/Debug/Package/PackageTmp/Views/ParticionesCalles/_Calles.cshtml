@@ -1,0 +1,177 @@
+﻿@model GoPS.Models.Calles
+    @using (Html.BeginForm("Create", "Calles", FormMethod.Post, new { id = "calleForm" }))
+    {
+    <div class="col-md-6">
+        <section class="panel">
+            <header class="panel-heading">
+                Calles
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="glyphicon glyphicon-chevron-down"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.HiddenFor(model => model.ID_Calle, new { id = "ID_Calle_Edit" })
+                            @Html.HiddenFor(model => model.Fecha_Creacion, new { id = "Fecha_Creacion_Calle" })
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control required", id = "NombreCalles" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            <div class="clearfix"></div>
+                            <!--<span id="Load" class="btn btn-default" onclick="SearchCalle(this)">Buscar Calle</span>-->
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control required latitud GetLatCalle" } })
+                            @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control required longitud GetLangCalle" } })
+                            @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required", id = "ID_EstadoCalles" })
+                            @Html.ValidationMessageFor(model => model.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Colonias.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required", id = "ID_CiudadCalles" })
+                            @Html.ValidationMessageFor(model => model.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Colonia, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Colonia", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required", id = "ID_ColoniaCalles" })
+                            @Html.ValidationMessageFor(model => model.ID_Colonia, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Guardar" onclick="DoAjaxCalles(this)" class="btn btn-default" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+}
+    <script> 
+        function DoAjaxCalles(btnCalles) {
+            var $form = $(btnCalles).parents('form');
+            var valid = validar($form);
+            var ID_EstadoVal = $('#ID_EstadoCalles').val();
+            var NombreVal = $('#NombreCalles').val();
+            var ID_CiudadVal = $('#ID_CiudadCalles').val();
+            var ID_ColoniaVal = $('#ID_ColoniaCalles').val();
+            var LatCalle = $('.GetLatCalle').val();
+            var LongCalle = $('.GetLangCalle').val();
+            var ID_Callevalue = $('#ID_Calle_Edit').val();
+            var Fecha_creacion = $('#Fecha_Creacion_Calle').val();
+            if (valid) {
+                if (ID_Callevalue) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Calles/Editcalles",
+                        //data: $form.serialize(),
+                        data: {
+                            ID_Estado: ID_EstadoVal, ID_Ciudad: ID_CiudadVal, Fecha_Creacion: Fecha_creacion,
+                            Nombre: NombreVal, Latitud: LatCalle, Longitud: LongCalle, ID_Colonia: ID_ColoniaVal, ID_Calle: ID_Callevalue
+                        },
+                        error: function (xhr, status, error) {
+                            //do something about the error
+                            alert("Se produjo un error");
+                        },
+                        success: function (response) {
+                            alert(response);
+                            clearFieldsCalles();
+                        }
+                    })
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Calles/AddCalle",
+                        //data: $form.serialize(),
+                        data: {
+                            ID_Estado: ID_EstadoVal, ID_Ciudad: ID_CiudadVal,
+                            Nombre: NombreVal, ID_Colonia: ID_ColoniaVal,
+                            Latitud: LatCalle, Longitud: LongCalle
+                        },
+                        error: function (xhr, status, error) {
+                            //do something about the error
+                            alert("Se produjo un error");
+                        },
+                        success: function (response) {
+                            alert(response);
+                            clearFieldsCalles();
+                        }
+                    })
+                }
+            }
+        }
+
+        function clearFieldsCalles() {
+            //$('#ID_Calle_Edit').val('');
+        }
+        function SearchCalle(e) {
+            var Nombrevalue = $('#NombreCalles').val().trim();
+            if (Nombrevalue) {
+                $.getJSON('/Calles/GetCallle/', { Nombre: Nombrevalue }, function (result) {
+                    if (result != null) {
+                        $('#ID_Calle_Edit').val(result.ID_Calle);
+                        $('#NombreCalles').val(result.Nombre);
+                        $('.GetLatCalle').val(result.Latitud);
+                        $('.GetLangCalle').val(result.Longitud);
+                        $('#ID_EstadoCalles').val(result.ID_Estado);
+                        var parsedDateTrans = new Date(parseInt((result.Fecha_Creacion).substr(6)));
+                        var newDate1 = new Date(parsedDateTrans);
+                        var standardDate = newDate1.getDate() + '/' + (newDate1.getMonth() + 1) + '/' + newDate1.getFullYear();
+                        $('#Fecha_Creacion_Calle').val(standardDate);
+                        if (result.ID_Estado) {
+                            $('#ID_CiudadCalles').empty();
+                            $.getJSON('/Ciudades/ObtenerCiudades/', { ID_Estado: result.ID_Estado }, function (result2) {
+                                $(result2).each(function () {
+                                    $(document.createElement('option'))
+                                        .attr('value', this.Value)
+                                        .text(this.Text)
+                                        .appendTo('#ID_CiudadCalles');
+                                });
+                                $('#ID_CiudadCalles').val(result.ID_Ciudad);
+                            });
+                        }
+                        if (result.ID_Colonia) {
+                            $('#ID_ColoniaCalles').empty();
+                            $.getJSON('/Colonias/ObtenerColonias/', { ID_Ciudad: result.ID_Ciudad }, function (result3) {
+                                $(result3).each(function () {
+                                    $(document.createElement('option'))
+                                        .attr('value', this.Value)
+                                    .text(this.Text)
+                                    .appendTo('#ID_ColoniaCalles');
+                                });
+                                $('#ID_ColoniaCalles').val(result.ID_Colonia);
+                            });
+                        }
+                    }
+                    else { alert('Calle no encontrada'); }
+                });
+            }
+        };
+    </script>

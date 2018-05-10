@@ -1,0 +1,111 @@
+﻿@model GoPS.Models.ClientesHabituales
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Cliente Habitual";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Clientes Habituales > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Servicios_Automaticos)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Servicios_Automaticos)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Alta)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Alta)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Baja)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Baja)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoAviso)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposAvisos.Nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "ClientesHabituales", new { id = Model.ID_ClienteHabitual }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+﻿
+@model GoPS.Models.CheckBoxListItem
+    @(Model.IsChecked ? (Model.Display + 
+        (Model.IsLastChecked ? "." : ",")) : "")

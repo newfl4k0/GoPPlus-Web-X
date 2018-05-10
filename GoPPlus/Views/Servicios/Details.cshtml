@@ -1,0 +1,202 @@
+﻿@model GoPS.Models.Reservas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitud_Origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud_Origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitud_Origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud_Origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitud_Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud_Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitud_Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud_Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Actualizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Actualizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Calle_Origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Calle_Origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Calle_Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Calle_Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Exterior_Origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Exterior_Origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Exterior_Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Exterior_Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Finalizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Finalizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Interior_Origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Interior_Origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Interior_Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Interior_Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientesAbonados.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientesAbonados.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientesHabituales.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientesHabituales.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus_Afiliados.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus_Afiliados.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus_Reserva.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus_Reserva.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operadores.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operadores.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiposVehiculos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiposVehiculos.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Reserva }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

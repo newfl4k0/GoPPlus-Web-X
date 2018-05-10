@@ -1,0 +1,154 @@
+﻿@model GoPS.Models.Colonias
+<!--start-->
+@using (Html.BeginForm("Create", "Colonias", FormMethod.Post, new { id = "coloniaForm" }))
+{
+    <div class="col-md-6">
+        <section class="panel">
+            <header class="panel-heading">
+                Colonias
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="glyphicon glyphicon-chevron-down"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.HiddenFor(model => model.ID_Colonia, new { id = "ID_Calonia_Edit" })
+                            @Html.HiddenFor(model => model.Fecha_Creacion, new { id = "Fecha_Creacion_Colony" })
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control required", id = "NombreCalonia" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            <div class="clearfix"></div>
+                            <!--<span id="Load" class="btn btn-default" onclick="SearchColony(this)">Buscar Colonia</span>-->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control required latitud GetLatColony" } })
+                            @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control required longitud GetLangColony" } })
+                            @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required", id = "ID_EstadoCalonias" })
+                            @Html.ValidationMessageFor(model => model.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
+                        <div class="col-md-8">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control required", id = "ID_CiudadCalonias" })
+                            @Html.ValidationMessageFor(model => model.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Guardar" onclick="DoAjaxColonias(this)" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+<!--end-->
+@*<script src="~/js/ActualizarGeografiaSelectLists.js"></script>*@
+<script> 
+    function DoAjaxColonias(CaloniasBtn) {
+        var $form = $(CaloniasBtn).parents('form');
+        var valid = validar($form);
+        var ID_EstadoVal = $('#ID_EstadoCalonias').val();
+        var NombreVal = $('#NombreCalonia').val();
+        var ID_CiudadVal = $('#ID_CiudadCalonias').val();
+        var ID_Colonyval = $('#ID_Calonia_Edit').val();
+        var LatColony = $('.GetLatColony').val();
+        var LongColony = $('.GetLangColony').val();
+        var Fecha_creacion = $('#Fecha_Creacion_Colony').val();
+        if (valid) {
+            if (ID_Colonyval) {
+                $.ajax({
+                    type: "POST",
+                    url: '/Colonias/Editcolonia',
+                    data: {
+                        ID_Colonia: ID_Colonyval, ID_Estado: ID_EstadoVal, ID_Ciudad: ID_CiudadVal, Latitud: LatColony, Longitud: LongColony,
+                        Nombre: NombreVal, Fecha_Creacion: Fecha_creacion
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Se produjo un error");
+                    },
+                    success: function (response) {
+                        alert(response);
+                        clearFieldsColonias();
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: '/Colonias/AddColonia',
+                    data: {
+                        ID_Estado: ID_EstadoVal, ID_Ciudad: ID_CiudadVal,
+                        Nombre: NombreVal, Latitud: LatColony, Longitud: LongColony
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Se produjo un error");
+                    },
+                    success: function (response) {
+                        alert(response);
+                        clearFieldsColonias();
+                    }
+                });
+            }
+        }
+    }
+    function clearFieldsColonias() {
+        //$('#ID_Calonia_Edit').val('');
+    }
+    function SearchColony(e) {
+        var Nombrevalue = $('#NombreCalonia').val().trim();
+        if (Nombrevalue) {
+            $.getJSON('/Colonias/GetColony/', { Nombre: Nombrevalue }, function (result) {
+                if (result != null) {
+                    $('#ID_Calonia_Edit').val(result.ID_Colonia);
+                    $('#NombreCalonia').val(result.Nombre);
+                    $('.GetLatColony').val(result.Latitud);
+                    $('.GetLangColony').val(result.Longitud);
+                    $('#ID_EstadoCalonias').val(result.ID_Estado);
+                    var parsedDateTrans = new Date(parseInt((result.Fecha_Creacion).substr(6)));
+                    var newDate1 = new Date(parsedDateTrans);
+                    var standardDate = newDate1.getDate() + '/' + (newDate1.getMonth() + 1) + '/' + newDate1.getFullYear();
+                    $('#Fecha_Creacion_Colony').val(standardDate);
+                    if (result.ID_Estado) {
+                        $('#ID_CiudadCalonias').empty();
+                        $.getJSON('/Ciudades/ObtenerCiudades/', { ID_Estado: result.ID_Estado }, function (result2) {
+                            $(result2).each(function () {
+                                $(document.createElement('option'))
+                                    .attr('value', this.Value)
+                                    .text(this.Text)
+                                    .appendTo('#ID_CiudadCalonias');
+                            });
+                            $('#ID_CiudadCalonias').val(result.ID_Ciudad);
+                        });
+
+                    }
+                }
+                else { alert('Colonia no encontrada'); }
+            });
+        }
+    };
+
+</script>

@@ -1,0 +1,84 @@
+﻿@using GoPS.Classes;
+@using GoPS.Helpers;
+@model IEnumerable<GoPS.Models.Sanciones>
+@{
+    ViewBag.Title = "Sanciones";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Catálogo de Sanciones"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>    
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            @if (ViewBag.Baja != null)
+            {
+                <p class="text-success">Registro Dado de Baja Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="TiposSanciones.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Tipo de Sanción")
+                                </th>
+                                <th data-field="Fecha_Inicio" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Inicio")
+                                </th>
+                                <th data-field="Fecha_Fin" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Finalización")
+                                </th>
+                                <th data-field="Conductores.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Conductor")
+                                </th>
+                                <th data-field="Observaciones" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Observaciones")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TiposSanciones.Nombre)
+                                </td>
+                                <td>
+                                    @item.Fecha_Inicio.ToString()
+                                </td>
+                                <td>
+                                    @item.Fecha_Fin.ToString()
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Conductores.NombreCompleto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observaciones)
+                                </td>
+                                <td class="div_actions">
+                                    @{ DateTime fecha_actual = new Utilities().ConvertToMexicanDate(DateTime.Now);
+                                        if (fecha_actual >= item.Fecha_Inicio && item.Fecha_Fin > fecha_actual)
+                                        {
+                                        @Html.EncodedActionLink("Dar Baja", "Cancel", "Sanciones", new { id = item.ID_Sancion }, new { @class = "_Edicion" });<span class="_Edicion pipe"> | </span>
+                                    }
+                                    }
+                                    
+                                    @Html.EncodedActionLink("Editar", "Edit", "Sanciones", new { id = item.ID_Sancion }, new { @class = "_Edicion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "Sanciones", new { id = item.ID_Sancion }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Sanciones", new { id = item.ID_Sancion }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

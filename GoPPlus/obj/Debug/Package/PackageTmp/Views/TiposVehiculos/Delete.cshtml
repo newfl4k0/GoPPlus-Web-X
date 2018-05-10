@@ -1,0 +1,79 @@
+﻿@model GoPS.Models.TiposVehiculos
+
+@{
+    ViewBag.Title = "Eliminar Tipo de Vehículo";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Tipos de Vehículos > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? 
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    @if (ViewBag.MostrarEmpresas)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ID_Empresa)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empresas.Nombre)
+                        </dd>
+                    }
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Imagen)
+                    </dt>
+
+                    <dd>
+                        @if (!String.IsNullOrEmpty(Model.Imagen))
+                        {
+                            <img class="db-image" src="@Url.Content("~/images/Uploads/" + Model.Imagen)" alt=" " />
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImagenRed)
+                    </dt>
+
+                    <dd>
+                        @if (!String.IsNullOrEmpty(Model.ImagenRed))
+                        {
+                            <img class="db-image" src="@Url.Content("~/images/Uploads/" + Model.ImagenRed)" alt=" " />
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Tarifa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Tarifas.Nombre)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

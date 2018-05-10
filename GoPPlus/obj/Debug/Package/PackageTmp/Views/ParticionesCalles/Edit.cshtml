@@ -1,0 +1,177 @@
+﻿@model GoPS.Models.ParticionesCalles
+
+@{
+    ViewBag.Title = "Editar Localización";
+}
+<style type='text/css'>
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+</style>
+
+@Html.Hidden("Permiso", "Mapas")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script>
+    $(document).ready(function () {
+        $('.validar_cambio').change(function () {
+
+            cambio = (($('#ID_Estado').val() != $('#hdnID_Estado').val())
+                || ($('#ID_Ciudad').val() != $('#hdnID_Ciudad').val())
+                || ($('#ID_Colonia').val() != $('#hdnID_Colonia').val())
+                || ($('#ID_Calle').val() != $('#hdnID_Calle').val())
+                || ($('#Latitud').val() != $('#hdnLatitud').val())
+                || ($('#Longitud').val() != $('#hdnLongitud').val()));
+
+        });
+    });
+    </script>
+    <div class="main">
+        @{Html.RenderPartial("NavBar_CatParticionesCalles", "Editar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="map" style="height:300px">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudo editar el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_ParticionCalle)
+                    @Html.HiddenFor(model => model.Fecha_Creacion)
+
+                    @Html.HiddenFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @id = "hdnID_Estado" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @id = "hdnID_Ciudad" })
+                    @Html.HiddenFor(model => model.Calles.ID_Colonia, htmlAttributes: new { @id = "hdnID_Colonia" })
+                    @Html.HiddenFor(model => model.ID_Calle, htmlAttributes: new { @id = "hdnID_Calle" })
+                    @Html.HiddenFor(model => model.Latitud, htmlAttributes: new { @id = "hdnLatitud" })
+                    @Html.HiddenFor(model => model.Longitud, htmlAttributes: new { @id = "hdnLongitud" })
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.ID_Colonia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Colonia", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Calle, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Calle", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                        </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="~/ParticionesCalles/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+    <script type="text/javascript">
+        var map;
+        var myLatLng = { lat: 21.1378588, lng: -101.6854752 };
+        var marker;
+        var icon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ECC71&chf=a,s,ee00FFFF';
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: true,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            map.addListener('click', function (event) {
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+                $('#Latitud').val(lat);
+                $('#Longitud').val(lng);
+                makeMarker(event.latLng);
+            });
+        }
+
+        function makeMarker(position) {
+            if(marker != null)
+                marker.setMap(null);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                icon: icon
+            });
+            map.panTo(position);
+        }
+
+        function fly(latitude, longitude) {
+            var position = new google.maps.LatLng(latitude, longitude);
+            map.panTo(position);
+            makeMarker(position);
+        }
+
+        window.onload = function () {
+            var ID = $('#ID_ParticionCalle').val();
+            if (ID) {
+                $.getJSON('/ParticionesCalles/GetLatLong/', { ID_ParticionCalle: ID }, function (result) {
+                    if (result != null)
+                        fly(result.Latitud, result.Longitud);
+                });
+            }
+        };
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
+
+}

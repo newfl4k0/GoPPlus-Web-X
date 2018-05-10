@@ -1,0 +1,4 @@
+﻿@model Nullable<Boolean>
+
+@{ Layout = null; }
+@(Model.HasValue && Model.Value ? "Si" : "No")

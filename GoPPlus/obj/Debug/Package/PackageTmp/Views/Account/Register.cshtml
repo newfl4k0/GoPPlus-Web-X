@@ -1,0 +1,121 @@
+﻿@model GoPS.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Crear Usuario";
+}
+
+@Html.Hidden("Permiso", "General")
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Usuarios > Crear"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @if(ViewBag.Success!=null)
+                    {
+                        <p class="text-success">Registrado Exitosamente.</p>
+                    }
+                    @Html.ValidationSummary(true, "No se pudo crear el usuario. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x=>x.Email,"",new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+							@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(m => m.DateOfBirth, new { htmlAttributes = new { @class = "form-control datepicker", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2  field-required" })
+                        <div class="col-md-4 roles_radiobuttons">
+                            @Html.HiddenFor(model => model.role)
+                            @Html.EditorFor(model => model.rolesList, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.PositionID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("PositionID", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
+                        </div>                        
+                    </div>
+                    <div class="form-group afiliados_div">
+                        @Html.Hidden("MostrarAfiliados", (object) ViewBag.MostrarAfiliados)
+                        @Html.HiddenFor(model => model.afiliados)
+                        @Html.LabelFor(m => m.afiliados, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4 afiliados_checkboxes">
+                            @Html.EditorFor(model => model.afiliadosListChecks, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.afiliados, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4 afiliados_radiobuttons">
+                            @Html.EditorFor(model => model.afiliadosListRadios, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.afiliados, "", new { @class = "text-danger" })
+                        </div>
+                    </div> 
+                    <div class="form-group pic">
+                        @Html.LabelFor(m => m.PicturePath, new { @class = "col-md-2 control-label field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.PicturePath, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_PicturePath)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_PicturePath, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.PicturePath, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crear" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarAfiliadosList.js"></script>
+    <script src="~/js/RoleEventsForUsers.js"></script>
+    <script src="~/js/ValidarFileUpload.js"></script>
+}

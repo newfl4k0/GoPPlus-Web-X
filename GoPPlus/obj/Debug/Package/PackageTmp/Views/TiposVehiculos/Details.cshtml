@@ -1,0 +1,71 @@
+﻿@model GoPS.Models.TiposVehiculos
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Tipo de Vehículo";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Tipos de Vehículos > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    @if (ViewBag.MostrarEmpresas)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ID_Empresa)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empresas.Nombre)
+                        </dd>
+                    }
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Imagen)
+                    </dt>
+
+                    <dd>
+                        @if (!String.IsNullOrEmpty(Model.Imagen))
+                        {
+                            <img class="db-image" src="@Url.Content("~/images/Uploads/" + Model.Imagen)" alt=" " />
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImagenRed)
+                    </dt>
+
+                    <dd>
+                        @if (!String.IsNullOrEmpty(Model.ImagenRed))
+                        {
+                            <img class="db-image" src="@Url.Content("~/images/Uploads/" + Model.ImagenRed)" alt="" />
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Tarifa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Tarifas.Nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "TiposVehiculos", new { id = Model.ID_TipoVehiculo }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<GoPS.Models.Tarifas>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Tarifas";
+}
+@Html.Hidden("Permiso","Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatVehiculos", "Catálogo de Tarifas"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Tarifa")
+                                </th>
+                                <th data-field="Descripcion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Descripción")
+                                </th>
+                                <th data-field="Tarifa_Minima" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Tarifa Mínima")
+                                </th>
+                                <th data-field="Precio_Base" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Precio Base")
+                                </th>
+                                <th data-field="Precio_Km" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Precio Km")
+                                </th>
+                                <th data-field="Precio_Min" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Precio Minuto")
+                                </th>
+                                <th data-field="Afiliados.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Afiliado")
+                                </th>
+                                <th data-field="Activa" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Activa")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tarifa_Minima)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Precio_Base)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Precio_Km)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Precio_Min)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Afiliados.Nombre) -
+                                    @Html.DisplayFor(modelItem => item.Afiliados.Calles.Colonias.Ciudades.Poblacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Activa)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "Tarifas", new { id = item.ID_Tarifa }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "Tarifas", new { id = item.ID_Tarifa }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Tarifas", new { id = item.ID_Tarifa }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

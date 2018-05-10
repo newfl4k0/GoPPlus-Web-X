@@ -1,0 +1,7 @@
+﻿
+@model GoPS.Models.RadioButtonListItem
+
+<div class="radiobuttonsCheck">
+    @Html.RadioButton("radiobuttons", Model.ID, Model.IsChecked, new { @class = "radiobuttons" })
+    @Model.Display
+</div>

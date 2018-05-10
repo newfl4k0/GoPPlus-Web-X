@@ -1,0 +1,47 @@
+﻿@model GoPS.Models.RazonesRechazos
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Razón de Rechazo";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Razones de Rechazos > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Activo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Activo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoRechazo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposRechazos.Nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "RazonesRechazos", new { id = Model.ID_RazonRechazo }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

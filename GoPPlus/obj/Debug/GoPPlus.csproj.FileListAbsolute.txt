@@ -1,0 +1,838 @@
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\ApplicationInsights.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csproj.CoreCompileInputs.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\ApplicationInsights.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Owin.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\WebGrease.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csproj.CoreCompileInputs.cache
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+E:\Desarrollos\Repos\GoPPlus Dev Flecha Local\GoPPlus Dev Flecha\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\ApplicationInsights.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csproj.CoreCompileInputs.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csproj.CopyComplete
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Documents\Speqtrum\GoPPlus Dev Speqtrum\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\_ExternalLoginsListPartial.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ConfirmEmail.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ExternalLoginConfirmation.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ExternalLoginFailure.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ForgotPassword.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ForgotPasswordConfirmation.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Login.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Register.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResetPassword.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResetPasswordConfirmation.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\SendCode.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\VerifyCode.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\DashboardUser.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Delete.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Details.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Edit.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Index.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResendEmail.cshtml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\ctorres\Source\Workspaces\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\msvcr120.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\msvcr120.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\_ExternalLoginsListPartial.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ConfirmEmail.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ExternalLoginConfirmation.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ExternalLoginFailure.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ForgotPassword.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ForgotPasswordConfirmation.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Login.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Register.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResetPassword.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResetPasswordConfirmation.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\SendCode.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\VerifyCode.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\DashboardUser.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Delete.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Details.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Edit.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\Index.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Views\Account\ResendEmail.cshtml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.dll.config
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\GoPPlus.pdb
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.exe
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.exe.config
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csc.rsp
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.exe
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.exe.config
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\csi.rsp
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.AppContext.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Console.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.Compression.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Claims.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Threading.Thread.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.ValueTuple.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.exe
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.exe.config
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\vbc.rsp
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Antlr3.Runtime.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.SqlServer.Types.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Newtonsoft.Json.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Owin.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Helpers.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Mvc.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Optimization.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Razor.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\WebGrease.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Build.Framework.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Antlr3.Runtime.pdb
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\EntityFramework.SqlServer.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\Newtonsoft.Json.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Helpers.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Mvc.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Optimization.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.Razor.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\bin\System.Web.WebPages.Razor.xml
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\GoPPlus.dll
+C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\GoPPlus.pdb

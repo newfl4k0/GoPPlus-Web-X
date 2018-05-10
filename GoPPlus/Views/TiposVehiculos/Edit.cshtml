@@ -1,0 +1,122 @@
+﻿@model GoPS.Models.TiposVehiculos
+
+@{
+    ViewBag.Title = "Editar Tipo de Servicio";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+@using (Html.BeginForm("Edit", "TiposVehiculos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <script>
+        $(document).ready(function () {
+            $('.validar_cambio').change(function () {
+                
+                cambio = (($('#Nombre').val() != $('#hdnNombre').val())
+                    || ($('#ddlTarifa').val() != $('#hdnTarifa').val()));
+                
+            });
+        });
+    </script>
+
+    <div class="main">
+        
+        @{Html.RenderPartial("NavBar_CatTiposVehiculos", "Editar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudo editar el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_TipoVehiculo)
+                    @Html.HiddenFor(model => model.Fecha_Creacion)
+                    @Html.HiddenFor(model => model.Nombre, htmlAttributes: new { @id = "hdnNombre" })
+                    @Html.HiddenFor(model => model.ID_Tarifa, htmlAttributes: new { @id = "hdnTarifa" })
+
+                    <div class="form-group @(@ViewBag.MostrarEmpresas ? "show" : "hide")">
+                        @Html.LabelFor(model => model.ID_Empresa, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Empresa", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_Empresa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Imagen, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Imagen)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Imagen, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <div class="show_file_image">
+                                    @if (!String.IsNullOrEmpty(Model.Imagen))
+                                    {
+                                        <span class="close_image">&times;</span>
+                                        <img class="db-image" src="~/images/Uploads/@Model.Imagen" alt=" " />
+                                    }
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImagenRed, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.ImagenRed, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_ImagenRed)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_ImagenRed, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <div class="show_file_image">
+                                    @if (!String.IsNullOrEmpty(Model.ImagenRed))
+                                    {
+                                        <span class="close_image">&times;</span>
+                                        <img class="db-image" src="~/images/Uploads/@Model.ImagenRed" alt="" />
+                                    }
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Tarifa, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Tarifa", null, "--Seleccione--", htmlAttributes: new { @class = "form-control validar_cambio", @id = "ddlTarifa" })
+                            @Html.ValidationMessageFor(model => model.ID_Tarifa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="~/TiposVehiculos/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ValidarFileUpload.js"></script>
+}

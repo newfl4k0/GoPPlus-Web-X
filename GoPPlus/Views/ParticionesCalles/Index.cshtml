@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GoPS.Models.ParticionesCalles>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Localizaciones";
+}
+@Html.Hidden("Permiso", "Mapas")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatMapas", "Catálogo de Localización"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Calles" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true">Sel</th>
+                                <th data-field="Latitud" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Latitud")
+                                </th>
+                                <th data-field="Longitud" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Longitud")
+                                </th>                               
+                                <th data-field="Calles" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Calle")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <label class="tdlabel">@item.Latitud</label>
+                                </td>
+                                <td>
+                                    <label class="tdlabel">@item.Longitud</label>
+                                </td>                               
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calles.Nombre)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "ParticionesCalles", new { id = item.ID_ParticionCalle }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "ParticionesCalles", new { id = item.ID_ParticionCalle }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "ParticionesCalles", new { id = item.ID_ParticionCalle }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

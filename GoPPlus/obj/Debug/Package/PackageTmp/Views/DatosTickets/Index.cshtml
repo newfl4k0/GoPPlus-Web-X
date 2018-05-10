@@ -1,0 +1,184 @@
+﻿@model IEnumerable<GoPS.Models.DatosTickets>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Tickets";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatConfiguraciones", "Catálogo de Tickets"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Texto_1" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Texto_1" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 1")
+                                </th>
+                                <th data-field="Texto_2" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 2")
+                                </th>
+                                <th data-field="Texto_3" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 3")
+                                </th>
+                                <th data-field="Texto_4" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 4")
+                                </th>
+                                <th data-field="Texto_5" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 5")
+                                </th>
+                                <th data-field="Texto_6" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 6")
+                                </th>
+                                <th data-field="Texto_7" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 7")
+                                </th>
+                                <th data-field="Texto_8" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 8")
+                                </th>
+                                <th data-field="Texto_9" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 9")
+                                </th>
+                                <th data-field="Testo_10"  data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Texto 10")
+                                </th>
+                                <th data-field="Imagen">
+                                    @Html.Label("Imagen")
+                                </th>
+                                <th data-field="Fecha_Bordo" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha Abordo")
+                                </th>
+                                <th data-field="Fecha_Finalizacion" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Finalización")
+                                </th>
+                                <th data-field="No_Taxi" data-sortable="true" data-sorter="customorter">
+                                    @Html.Label("No. Taxi")
+                                </th>
+                                <th data-field="Placas" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Placas")
+                                </th>
+                                <th data-field="Nombre_Cliente" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Nombre de Cliente")
+                                </th>
+                                <th data-field="Origen" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Origen")
+                                </th>
+                                <th data-field="Destino" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Destino")
+                                </th>
+                                <th data-field="Importe" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Importe")
+                                </th>
+                                <th data-field="Observaciones" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Observaciones")
+                                </th>
+                                <th data-field="Despacho" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Despacho")
+                                </th>
+                                <th data-field="Codigo" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Código")
+                                </th>
+                                <th data-field="Afiliados.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Afiliado")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_3)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_4)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_5)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_6)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_7)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_8)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_9)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Texto_10)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(model => model.Imagen)*@
+                                    @if (!String.IsNullOrEmpty(item.Imagen))
+                                    {
+                                        <img class="db-image" src="@Url.Content("~/images/Uploads/" + item.Imagen)" alt=" " />
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Bordo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Finalizacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.No_Taxi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Placas)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre_Cliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Origen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Destino)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Importe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observaciones)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Despacho)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Codigo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Afiliados.Nombre)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "DatosTickets", new { id = item.ID_DatoTicket }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "DatosTickets", new { id = item.ID_DatoTicket }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "DatosTickets", new { id = item.ID_DatoTicket }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

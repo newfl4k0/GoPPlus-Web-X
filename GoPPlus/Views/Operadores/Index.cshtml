@@ -1,0 +1,102 @@
+﻿@model GoPS.ViewModels.OperadoresViewModel
+
+@{
+    ViewBag.Title = "Operadores";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Catálogo de Operadores"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Usuario" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Usuario" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Usuario")
+                                </th>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Operador")
+                                </th>
+                                <th data-field="Afiliados.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Afiliado")
+                                </th>
+                                <th data-field="Estatus" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Estatus")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="ResXMes" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Res por Mes")
+                                </th>
+                                <th data-field="ResXAño" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Res por Año")
+                                </th>
+                                <th data-field="Llamadas_Mensuales" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Llamadas Mensuales")
+                                </th>
+                                <th data-field="Ultimo_Login" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Último Login")
+                                </th>
+                                <th data-field="Ultimo_Logout" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Último Logout")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.operadores)
+                        {
+                            <tr>
+                                <td>
+                                    @Model.ObtenerUsuario(item.UserID_Operador)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Afiliados.Nombre)
+                                </td>
+                                <td>
+                                    @Model.ObtenerEstatusUsuario(item.UserID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @Model.ObtenerResAnuales(item.ID_Operador)
+                                </td>
+                                <td>
+                                    @Model.ObtenerResMensuales(item.ID_Operador)
+                                </td>
+                                <td>
+                                    @Model.ObtenerLlamadasMes(item.ID_Operador)
+                                </td>
+                                <td>
+                                    @Model.ObtenerUltimoLoginUsuario(item.UserID)
+                                </td>
+                                <td>
+                                    @Model.ObtenerUltimoLogoutUsuario(item.UserID)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_Operador }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_Operador }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Operador }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,238 @@
+﻿@model GoPS.Models.Conductores
+@using GoPS.Helpers;
+
+@{
+    ViewBag.Title = "Ver Detalles de Conductor";
+}
+
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Conductores > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Apellido)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Apellido)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Celular)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RFC)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RFC)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoLicencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoLicencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Vigencia_Licencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Vigencia_Licencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoTarjeton)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoTarjeton)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Vigencia_Tarjeton)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Vigencia_Tarjeton)
+                    </dd>
+                    
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Nacimiento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Liquidó")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Liquido)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Flota)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Flotas.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Turno)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Turnos.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserID_Conductor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUsers.UserName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_Antidoping)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">                          
+                               <img src="~/images/Uploads/@Model.Archivo_Antidoping" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_CartaFianza)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_CartaFianza" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_Domicilio)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_Domicilio" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                   <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_INE)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_INE" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_Licencia)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_Licencia" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_NoAntecedentes)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_NoAntecedentes" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Archivo_Tarjeton)
+                    </dt>
+
+                    <dd>
+                        <div class="show_file_image">
+                            <img src="~/images/Uploads/@Model.Archivo_Tarjeton" width="100" height="100" />
+                        </div>
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions"> 
+                @Html.EncodedActionLink("Editar", "Edit", "Conductores", new { id = Model.ID_Conductor }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+﻿@model GoPS.ViewModels.FlotasViewModel
+
+@{
+    ViewBag.Title = "Liquidar Comisión a Conductores";
+}
+<style>
+    .error {
+        border: 2px solid #A94442;
+    }
+</style>
+
+@Html.Hidden("Permiso", "Vehiculos")
+
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Flotas > Transferir"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-horizontal">
+                <hr />
+                @Html.Hidden("ID_Flota", Model.flotas.ID_Flota)
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.Label("Flota")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.flotas.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Comisión")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.flotas.Afiliados.Porcentaje_Conductor)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Frecuencia")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.flotas.Afiliados.FrecuenciasPago.Nombre)
+                    </dd>
+                </dl>
+                @if (Model.servicios.Count > 0)
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.Label("Conductores")
+                                </th>
+                                <th>
+                                    @Html.Label("Servicios")
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.servicios)
+                        {
+                            <tr class="@(item.Key.Liquido ? "" : "error")">
+                                <td>
+                                    @Html.Hidden("ID_Conductor_" + item.Key.ID_Conductor, item.Key.ID_Conductor)
+                                    @Html.Label(item.Key.Nombre + " " + item.Key.Apellido)
+                                    @if (!item.Key.Liquido)
+                                    {
+                                        @Html.Label("Conductor Sancionado", new { @class = "text-danger" })
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var serv in item.Value)
+                                    {
+                                        <div>
+                                            @if (serv.Reservas.Clientes != null)
+                                            {
+                                                <b>Cliente:</b> @serv.Reservas.Clientes.Nombre<br />
+                                            }
+                                            else if (serv.Reservas.ClientesAbonados != null)
+                                            {
+                                                <b>Cliente:</b> @serv.Reservas.ClientesAbonados.Nombre<br />
+                                            }
+                                            else if (serv.Reservas.ClientesHabituales != null)
+                                            {
+                                                <b>Cliente:</b> @serv.Reservas.ClientesHabituales.Nombre<br />
+                                            }
+                                            <b>Fecha:</b> @serv.Fecha<br />
+                                            <b>Monto:</b> @serv.Monto<br />
+                                            @Html.ActionLink("+ Detalles", "MoreDetails", "Despachos", new { id = serv.ID_Despacho }, new { @class = "modalLink" })
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Transferir" class="btn btn-default" />
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            No existen conductores en esta Flota.
+                        </div>
+                    </div>
+                }
+            </div>
+            <div>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </div>
+            <div id="my-dialog" title="Detalles de Servicio"></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        var dialog;
+        $(document).ready(function () {
+            dialog = $("#my-dialog").dialog({
+                autoOpen: false,
+                width: 800,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        dialog.dialog("close");
+                    }
+                },
+                close: function () {
+                    dialog.dialog("close");
+                }
+            });
+
+            $(".modalLink").click(function () {
+                $("#my-dialog").load(this.href, function () {
+                    $(this).dialog("open");
+                });
+                return false;
+            });
+        });
+    </script>
+}

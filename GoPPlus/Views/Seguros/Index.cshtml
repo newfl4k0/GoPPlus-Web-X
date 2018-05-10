@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GoPS.Models.Seguros>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Seguros";
+}
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatVehiculos", "Catálogo de Seguros"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Seguro")
+                                </th>
+                                <th data-field="Telefono" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Teléfono")
+                                </th>
+                                <th data-field="EsCelular" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Es Celular")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EsCelular)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "Seguros", new { id = item.ID_Seguro }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "Seguros", new { id = item.ID_Seguro }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Seguros", new { id = item.ID_Seguro }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
