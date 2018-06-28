@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\Package\PackageTmp" />
-  <setAcl path="C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\Users\ctorres\Downloads\GoPPlus Dev X - Copy\GoPPlus Dev X - Copy\GoPPlus\GoPPlus\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="F:\Downloads\Ger\GoPPlus\obj\Debug\Package\PackageTmp" />
+  <setAcl path="F:\Downloads\Ger\GoPPlus\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="F:\Downloads\Ger\GoPPlus\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

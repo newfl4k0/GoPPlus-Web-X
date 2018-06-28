@@ -48,12 +48,16 @@ namespace GoPS.ViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Nueva Contraseña")]
+        [MinLength(8, ErrorMessage ="La contraseña debe contener como mínimo 8 caracteres.")]
+        [MaxLength(16, ErrorMessage ="La contraseña tiene como máximo 16 caracteres.")]
         [Required(ErrorMessage = "El campo Nueva Contraseña es requerido.")]
-        [RegularExpression(@"((?=.*\d)(?=.*[A-Z])(?=.*\W).{6,45})", ErrorMessage = "La nueva contraseña debe tener mínimo una letra en mayúscula, un caracter especial y un número.")]
+        [RegularExpression(@"((?=.*\d)(?=.*[A-Z])(?=.*\W).{6,45})", ErrorMessage = "La nueva contraseña debe tener mínimo una letra minúscula, una letra mayúscula, un caracter especial y un número.")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Nueva Contraseña")]
+        [MinLength(8, ErrorMessage = "La contraseña debe contener como mínimo 8 caracteres.")]
+        [MaxLength(16, ErrorMessage = "La contraseña tiene como máximo 16 caracteres.")]
         [Compare("NewPassword", ErrorMessage = "La nueva contraseña y la confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
     }

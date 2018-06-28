@@ -10,7 +10,6 @@ using GoPS.Classes;
 using GoPS.CustomFilters;
 using GoPS.Filters;
 using System.Web.Routing;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace GoPS.Controllers
@@ -32,20 +31,7 @@ namespace GoPS.Controllers
         /// </summary>
         protected UserManager<ApplicationUser> UserManager { get; set; }             
        
-        
-        public CallesController()
-        {            
-            /*this.ApplicationDbContext = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
-            var uid = UserManager.FindById(User.Identity.GetUserId());            
-            int cAfiliado = db.AspNetUserRoles.Where(x => x.UserId == uid.Id.ToString()).FirstOrDefault().ID_Afiliado;
-            var or = db.GetCiudadAfiliado(cAfiliado);
-            var calles = db.Calles.Include(c => c.Colonias);
-            int idciudad = or.FirstOrDefault().Value;
-            calles = calles.Where(x => x.Colonias.ID_Ciudad == idciudad);
-            vcalles = calles;*/ 
-        }
-        
+                       
         // GET: Calles
         [HasPermission("Mapas_Visualizacion")]
         public ActionResult Index()
@@ -56,7 +42,7 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var calles = db.Calles.Include(c => c.Colonias).Where(x=> x.Colonias.ID_Ciudad==1).ToList();
+            var calles = db.Calles.Include(c => c.Colonias).Where(x => x.Colonias.ID_Ciudad == 1 && x.Colonias.ID_Colonia<2000);            
             return View(calles);
 
         }
@@ -73,7 +59,11 @@ namespace GoPS.Controllers
             Calles calles = db.Calles.Find(id);
             if (calles == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(calles);
         }
@@ -128,7 +118,7 @@ namespace GoPS.Controllers
                     calles.UserID = User.Identity.GetUserId();
                     db.Calles.Add(calles);
                     db.SaveChanges();
-                    return Json("Guardado exitosamente", JsonRequestBehavior.AllowGet);
+                    return Json("Registro Exitoso.", JsonRequestBehavior.AllowGet);
                 }
                 return Json(string.Join("\n", ViewData.ModelState.Values.SelectMany(e => e.Errors).Select(e => e.ErrorMessage)),
                                 JsonRequestBehavior.AllowGet);
@@ -181,7 +171,11 @@ namespace GoPS.Controllers
             Calles calles = db.Calles.Find(id);
             if (calles == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ObtenerGeografiaSelectList(calles);
             return View(calles);
@@ -220,11 +214,16 @@ namespace GoPS.Controllers
             Calles calles = db.Calles.Find(id);
             if (calles == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.Eliminar = db.Conductores.Where(c => c.ID_Calle == calles.ID_Calle).Count() == 0
                     && db.Conductores.Where(c => c.Flotas.ID_Calle == calles.ID_Calle).Count() == 0
                     && db.Conductores.Where(c => c.Flotas.Afiliados.ID_Calle == calles.ID_Calle).Count() == 0;
+            ViewBag.Mess = MensajeDelete;
             return View(calles);
         }
 
@@ -258,15 +257,7 @@ namespace GoPS.Controllers
                 ViewBag.ID_Colonia = new SelectList(ciudad.Colonias.OrderBy(o => o.Nombre), "ID_Colonia", "Nombre", calles.ID_Colonia);
             }
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
     }
 }
 public class CustomControllerClass : Controller

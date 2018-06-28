@@ -143,6 +143,12 @@ namespace GoPS.Controllers
                         config.Valor = System.Text.RegularExpressions.Regex.Replace(config.Valor, @"\s+", " ");
                         config.Valor = config.Valor.TrimStart();
                     }
+                    if (config.TipoDato.ToLower() == "string")
+                    {
+                        
+                       
+                        config.Valor = config.Valor.TrimStart();
+                    }
                     if (config.TipoDato.ToLower() == "imagen")
                     {
                         HttpPostedFileBase imagen = Request.Files["File_" + config.Atributo];

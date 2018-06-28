@@ -10,7 +10,7 @@ namespace GoPS.ViewModels
 {
     public class ConfiguracionesViewModel
     {
-        [Required(ErrorMessage = "El campo Offset UTC es requerido.")]
+/*        [Required(ErrorMessage = "El campo Offset UTC es requerido.")]
         [RegularExpression(@"^(0[0-9]|1[0-2]):00$", ErrorMessage = "El formato del campo Offset UTC no es válido.")]
         [Display(Name = "Offset UTC")]
         public string OffsetUTC { get; set; }
@@ -95,7 +95,7 @@ namespace GoPS.ViewModels
             correoFacturaUrl = variables.Where(v => v.Atributo.ToLower() == "correofacturaurl").FirstOrDefault().Valor;
             endpointAppCliente = variables.Where(v => v.Atributo.ToLower() == "endpointappcliente").FirstOrDefault().Valor;
             urlTerminosCondiciones = variables.Where(v => v.Atributo.ToLower() == "urlterminoscondiciones").FirstOrDefault().Valor;
-        }
+        }*/
 
     }
 }

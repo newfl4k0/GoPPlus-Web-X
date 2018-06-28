@@ -6,13 +6,13 @@
 
 @Html.Hidden("Permiso", "Configuraciones")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Frecuencia de Pago > Eliminar"); }
+    @{Html.RenderPartial("NavBar_CatFrecuenciaPago", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
 @if (ViewBag.Eliminar)
             {
             <h3>
-                ¿Estás seguro de eliminar este registro? 
+                @ViewBag.Mess
             </h3>
 }
 else

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc0d6dfbd1194b38b51095c800ae6466" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="GoPSModel.Afiliados" Width="1.5" PointX="9.75" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Bancos" Width="1.5" PointX="12.75" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Calles" Width="1.5" PointX="7.5" PointY="47.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.CambiosEstatus" Width="1.5" PointX="19.5" PointY="59.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Ciudades" Width="1.5" PointX="3" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Clientes" Width="1.5" PointX="12" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.ClientesAbonados" Width="1.5" PointX="15" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.ClientesHabituales" Width="1.5" PointX="12" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.CoordenadasGeocerca" Width="1.5" PointX="20.25" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Cupones" Width="1.5" PointX="12" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.DatosTickets" Width="1.5" PointX="12" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.DiasFestivos" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.DireccionesAlternativas" Width="1.5" PointX="23.25" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Estados" Width="1.5" PointX="0.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Estatus" Width="1.5" PointX="9.75" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Estatus_Afiliados" Width="1.5" PointX="12" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Flotas" Width="1.5" PointX="18" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.FormasPago" Width="1.5" PointX="12.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Geocerca" Width="1.5" PointX="18" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Llamadas" Width="1.5" PointX="16.5" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Marcas" Width="1.5" PointX="18.75" PointY="79.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.MensajesPredefinidos" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Modelos" Width="1.5" PointX="21" PointY="78.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.ParticionesCalles" Width="1.5" PointX="9.75" PointY="75.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.PuntosInteres" Width="1.5" PointX="18" PointY="53.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.RazonesLlamadas" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.RazonesRechazos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Rutas" Width="1.5" PointX="22.5" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Sanciones" Width="1.5" PointX="19.5" PointY="66.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Seguros" Width="1.5" PointX="21" PointY="82.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.ServiciosAuxiliares" Width="1.5" PointX="12" PointY="89.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Tarifas" Width="1.5" PointX="12" PointY="93" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TarjetasCredito" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposAvisos" Width="1.5" PointX="12.75" PointY="72.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposPrioridades" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposPuntosInteres" Width="1.5" PointX="15.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposRechazos" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposSanciones" Width="1.5" PointX="17.25" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.TiposServicios" Width="1.5" PointX="7.5" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.Turnos" Width="1.5" PointX="12" PointY="97.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.UsuariosAbonados" Width="1.5" PointX="17.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoPSModel.vwClientes" Width="1.5" PointX="13.75" PointY="8.375" />
+        <AssociationConnector Association="GoPSModel.FK_Afiliados_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Afiliados_Tipos_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_ClientesAbonados_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_ClientesHabituales_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Cupones_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Datos_Ticket_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Estatus_Afiliados_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Flotas_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Geocerca_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_PuntosInteres_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_ServiciosAuxiliares_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Tarifas_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Turnos_Afiliados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Abonados_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Flotas_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Abonados_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_CallesDestino" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_CallesOrigen" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_ClientesHabituales_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_DireccionesAlternativas_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Flotas_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_ParticionesCalles_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Puntos_Interes_Calles" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Rutas_Calles_Destino" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Rutas_Calles_Origen" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_CambiosEstatus_Estatus_Final" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_CambiosEstatus_Estatus_Inicial" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Ciudades_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Geocerca_Ciudades" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_DireccionesAlternativas_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Abonados_Formas_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Abonados_Tipos_Aviso" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_DireccionesAlternativas_ClientesAbonados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Usuarios_Abonados_Clientes_Abonados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Clientes_Habituales_Tipos_Aviso" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_DireccionesAlternativas_ClientesHabituales" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Coordenadas_Geocerca_Geocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Estatus_Afiliados_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Flotas_Formas_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Modelos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_PuntosInteres_TiposPuntosInteres" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Razones_Rechazo_Tipos_Rechazo" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Rutas_UsuariosAbonados" ManuallyRouted="false" />
+        <AssociationConnector Association="GoPSModel.FK_Sanciones_TiposSanciones" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GoPSModel.AspNetRoles" Width="1.5" PointX="9.75" PointY="6.875" />
+        <EntityTypeShape EntityType="GoPSModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="10.25" />
+        <EntityTypeShape EntityType="GoPSModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="13.125" />
+        <EntityTypeShape EntityType="GoPSModel.AspNetUserRoles" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="GoPSModel.AspNetUsers" Width="1.5" PointX="8" PointY="10.125" />
+        <EntityTypeShape EntityType="GoPSModel.database_firewall_rules1" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GoPSModel.Estatus_Reserva" Width="1.5" PointX="18.375" PointY="39.5" />
+        <EntityTypeShape EntityType="GoPSModel.Permissions" Width="1.5" PointX="12" PointY="6.875" />
+        <AssociationConnector Association="GoPSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GoPSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GoPSModel.RolePermissions" />
+        <AssociationConnector Association="GoPSModel.FK_AspNetUserRoles_AspNetRoles" />
+        <AssociationConnector Association="GoPSModel.FK_AspNetUserRoles_AspNetUsers" />
+        <AssociationConnector Association="GoPSModel.AspNetUserRoleAfiliados1" />
+        <EntityTypeShape EntityType="GoPSModel.Positions" Width="1.5" PointX="5.75" PointY="15.125" />
+        <AssociationConnector Association="GoPSModel.FK_AspNetUsers_Positions" />
+        <EntityTypeShape EntityType="GoPSModel.C__MigrationHistory" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="GoPSModel.Empresas" Width="1.5" PointX="14.375" PointY="3.75" />
+        <AssociationConnector Association="GoPSModel.FK_Afiliados_Empresas" />
+        <EntityTypeShape EntityType="GoPSModel.Ubicaciones" Width="1.5" PointX="5" PointY="17.875" />
+        <EntityTypeShape EntityType="GoPSModel.TiposVehiculos" Width="1.5" PointX="14.25" PointY="93.625" />
+        <AssociationConnector Association="GoPSModel.FK_TiposVehiculos_Tarifas" />
+        <EntityTypeShape EntityType="GoPSModel.Vehiculos" Width="1.5" PointX="23.25" PointY="68.5" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Ciudades" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Flotas" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Modelos" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Seguros" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_TiposVehiculos" />
+        <EntityTypeShape EntityType="GoPSModel.Despachos" Width="1.5" PointX="27.875" PointY="49.625" />
+        <AssociationConnector Association="GoPSModel.FK_Despachos_FormasPago" />
+        <EntityTypeShape EntityType="GoPSModel.Seguimientos" Width="1.5" PointX="14.25" PointY="54.875" />
+        <AssociationConnector Association="GoPSModel.FK_CambiosEstatus_Seguimientos" />
+        <AssociationConnector Association="GoPSModel.FK_Seguimientos_Estatus_Afiliados" />
+        <AssociationConnector Association="GoPSModel.FK_Ubicaciones_Estatus_Reserva" />
+        <EntityTypeShape EntityType="GoPSModel.Conexiones" Width="1.5" PointX="28.125" PointY="68.5" />
+        <EntityTypeShape EntityType="GoPSModel.Reservas" Width="1.5" PointX="26" PointY="59.25" />
+        <EntityTypeShape EntityType="GoPSModel.Configuraciones" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Calles_Destino" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Calles_Origen" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Clientes" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Clientes_Abonados" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Clientes_Habituales" />
+        <AssociationConnector Association="GoPSModel.FK_Ubicaciones_Conexiones" />
+        <AssociationConnector Association="GoPSModel.FK_Despachos_Reservas" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Estatus_Reserva" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_TiposVehiculos" />
+        <EntityTypeShape EntityType="GoPSModel.Usuario_App" Width="1.5" PointX="14.25" PointY="38.625" />
+        <AssociationConnector Association="GoPSModel.Usuario_App_Clientes_ID_Cliente_fk" />
+        <EntityTypeShape EntityType="GoPSModel.Reservas_Rechazadas" Width="1.5" PointX="28.25" PointY="32.75" />
+        <EntityTypeShape EntityType="GoPSModel.Vehiculos_Conductores" Width="1.5" PointX="28.5" PointY="63.5" />
+        <AssociationConnector Association="GoPSModel.FK_Conexiones_Vehiculos_Conductores" />
+        <AssociationConnector Association="GoPSModel.FK_Despachos_Vehiculos_Conductores" />
+        <AssociationConnector Association="GoPSModel.Fk_Vehiculos_Conductores_Estatus" />
+        <AssociationConnector Association="GoPSModel.Reservas_Rechazadas_RazonesRechazos_ID_RazonRechazo_fk" />
+        <AssociationConnector Association="GoPSModel.Reservas_Rechazadas_Reservas_ID_Reserva_fk" />
+        <AssociationConnector Association="GoPSModel.FK_Seguimientos_Vehiculos_Conductores" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Conductores_Vehiculos" />
+        <EntityTypeShape EntityType="GoPSModel.Conductores" Width="1.5" PointX="20.25" PointY="72" />
+        <AssociationConnector Association="GoPSModel.FK_Conductores_Calles" />
+        <AssociationConnector Association="GoPSModel.FK_Conductores_Flotas" />
+        <AssociationConnector Association="GoPSModel.FK_Conductores_Turnos" />
+        <AssociationConnector Association="GoPSModel.FK_Sanciones_Conductores" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Conductores_Conductores" />
+        <EntityTypeShape EntityType="GoPSModel.Colores" Width="1.5" PointX="3.375" PointY="7.875" />
+        <AssociationConnector Association="GoPSModel.FK_Vehiculos_Colores" />
+        <EntityTypeShape EntityType="GoPSModel.Chat" Width="1.5" PointX="31.125" PointY="62.5" />
+        <EntityTypeShape EntityType="GoPSModel.Operadores" Width="1.5" PointX="15.25" PointY="71" />
+        <AssociationConnector Association="GoPSModel.FK_Operadores_Afiliados" />
+        <AssociationConnector Association="GoPSModel.FK_Operadores_Calles" />
+        <AssociationConnector Association="GoPSModel.Conductor" />
+        <AssociationConnector Association="GoPSModel.Despacho" />
+        <AssociationConnector Association="GoPSModel.Operador" />
+        <AssociationConnector Association="GoPSModel.FK_Llamadas_Operadores" />
+        <AssociationConnector Association="GoPSModel.FK_Operadores_Turnos" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Operadores" />
+        <AssociationConnector Association="GoPSModel.FK_Sanciones_OperadoresAlta" />
+        <AssociationConnector Association="GoPSModel.FK_Sanciones_OperadoresBaja" />
+        <EntityTypeShape EntityType="GoPSModel.Colonias" Width="1.5" PointX="5.25" PointY="48.375" />
+        <AssociationConnector Association="GoPSModel.FK_Calles_Colonias" />
+        <AssociationConnector Association="GoPSModel.FK_Colonias_Ciudades" />
+        <AssociationConnector Association="GoPSModel.FK_Reservas_Cupones" />
+        <EntityTypeShape EntityType="GoPSModel.FrecuenciasPago" Width="1.5" PointX="7.5" PointY="53.75" />
+        <EntityTypeShape EntityType="GoPSModel.TiposPagos" Width="1.5" PointX="12.375" PointY="9.875" />
+        <AssociationConnector Association="GoPSModel.FK_Afiliados_FrecuenciasPago" />
+        <AssociationConnector Association="GoPSModel.FK_Afiliados_TiposPagos" />
+        <AssociationConnector Association="GoPSModel.FK_Estatus_Empresas" />
+        <AssociationConnector Association="GoPSModel.FK_TiposVehiculos_Empresas" />
+        <EntityTypeShape EntityType="GoPSModel.TiposVehiculos_Afiliados" Width="1.5" PointX="17.5" PointY="71.75" />
+        <AssociationConnector Association="GoPSModel.FK_TiposVehiculos_Afiliados_Afiliados" />
+        <AssociationConnector Association="GoPSModel.FK_TiposVehiculos_Afiliados_TiposVehiculos" />
+        <EntityTypeShape EntityType="GoPSModel.CuponesGenerador" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GoPSModel.CuponesSeries" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="GoPSModel.Seguimiento_Despacho" Width="1.5" PointX="10.75" PointY="0.875" />
+        <EntityTypeShape EntityType="GoPSModel.SistemaVariables" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GoPSModel.TiposTransaccion" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GoPSModel.Payworks" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GoPSModel.Seguimiento_Despacho_Detalle" Width="1.5" PointX="13" PointY="0.875" />
+        <AssociationConnector Association="GoPSModel.FK__Seguimien__ID_Se__1293BD5E" />
+        <EntityTypeShape EntityType="GoPSModel.Transacciones" Width="1.5" PointX="15.375" PointY="11.75" />
+        <EntityTypeShape EntityType="GoPSModel.UbicacionesServicios" Width="1.5" PointX="30.125" PointY="51.125" />
+        <AssociationConnector Association="GoPSModel.FK_UbicacionesServicios_Despachos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

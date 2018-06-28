@@ -1,13 +1,10 @@
 ﻿using GoPS.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 
 namespace GoPS.Classes
@@ -956,12 +953,12 @@ namespace GoPS.Classes
 
         #region Perfiles
 
-        public async Task EliminarPerfil(string id)
+       /* public Task EliminarPerfil(int id)
         {
-            AspNetRoles perfiles = db.AspNetRoles.Find(id);
-
-            await EliminarPerfil(perfiles);
+            AspNetRoles perfiles = db.AspNetRoles.Where(k=>k.newId==id).FirstOrDefault();
+            //await EliminarPerfil(perfiles);
             db.SaveChanges();
+            return db.SaveChanges() ;
         }
 
         public async Task EliminarPerfil(AspNetRoles perfiles)
@@ -974,9 +971,9 @@ namespace GoPS.Classes
             var role = roleManager.FindByName(perfiles.Name);
             roleManager.Delete(role);
 
-            //db.AspNetRoles.Remove(perfiles);
-            //db.SaveChanges();
-        }
+            db.AspNetRoles.Remove(perfiles);
+            db.SaveChanges();
+        }*/
 
         private async Task EliminarUserRoleAfiliadosPorPerfil(AspNetRoles perfiles)
         {

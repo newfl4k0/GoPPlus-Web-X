@@ -1,12 +1,12 @@
 ﻿@model GoPS.Models.Estatus
 @using GoPS.Helpers;
 @{
-    ViewBag.Title = "Ver Detalles de Status de Servicio";
+    ViewBag.Title = "Ver Detalles de Estatus de Servicio";
 }
 
 @Html.Hidden("Permiso", "Configuraciones")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Status > Detalles"); }
+    @{Html.RenderPartial("NavBar_CatEstatus", "Detalles"); }
     <div class="row">
         <div class="col-lg-12">
             <div>

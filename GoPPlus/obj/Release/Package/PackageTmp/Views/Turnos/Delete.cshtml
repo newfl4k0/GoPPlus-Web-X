@@ -1,0 +1,78 @@
+﻿@model GoPS.Models.Turnos
+
+@{
+    ViewBag.Title = "Eliminar Turno";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Turnos > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? 
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Hora_Inicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Hora_I_Format)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Hora_Fin)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Hora_F_Format)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Dias)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.diasList)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

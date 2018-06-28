@@ -301,14 +301,7 @@
                                 @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
                             </div>
                         </div>
-
-                        @Html.Label("Liquidó", htmlAttributes: new { @class = "control-label col-md-2 field-required" })
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.Liquido)
-                                @Html.ValidationMessageFor(model => model.Liquido, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="form-group">

@@ -1,0 +1,512 @@
+﻿@using Microsoft.AspNet.Identity
+@using GoPS.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    @*<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/js/jquery.cookie.js"></script>
+    <script language="JavaScript">
+        var cambio; //VAriablle para identificar si en los formularios ha cambiado algun valor antes de avandonar la pantalla sin guardar la información
+        cambio = false;
+        
+        //********************************************************
+        // Codigo para recordar si el menu esta colapsado o abierto - Inicio
+        //********************************************************
+
+        function colapsarBar() {
+
+        }
+
+        if (typeof $.cookie('staticCollapse') === 'undefined') {
+            //no cookie
+            $.cookie("staticCollapse", "0"); // Sample 1
+        }
+
+        colapsarBar.staticCollapse = $.cookie("staticCollapse");
+
+        // Codigo para recordar si el menu esta colapsado o abierto - Inicio
+        
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Sitio Backend GoPS</title>
+    <link href="~/Content/custom-style.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/datepicker3.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <section id="container">
+        @{
+
+            string Logo_DB = this.ViewContext.RouteData.Values["Logo"] == null ?
+                                        ViewBag.Logo : this.ViewContext.RouteData.Values["Logo"].ToString();
+            string Color_DB = this.ViewContext.RouteData.Values["Color"] == null ?
+                                ViewBag.Color : this.ViewContext.RouteData.Values["Color"].ToString();
+            if (!User.Identity.IsAuthenticated || !Request.IsAuthenticated)
+            {
+                Response.RedirectToRoute("GetIn");
+            }
+            GoPSEntities db = new GoPSEntities();
+            string NM = (db.DashboardMensajesNuevos().FirstOrDefault() ?? 0).ToString();
+        }
+
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="container-fluid" style="background-color:@(Color_DB);">
+                <div class="navbar-header" style="background-color:@(Color_DB);">
+                    <button type="button" class="glyphicon navbar-toggle collapseclick" data-toggle="collapse" id="sidebarbtn">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div id="divLogo">
+                        <a class="navbar-brand confirmLink" href="~/Home/Index"><img class="logo" style="align-content:center;" max-width: 99%; height="60" width="80" src="~/images/Uploads/logogopplus.png" /></a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <em class="fa fa-bell"></em><span class="label label-info"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <em class="fa fa-envelope"></em> @(NM) Nuevos Mensajes                                           
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+            <hr />
+            <div class="profile-sidebar">
+
+                <div class="profile-userpic">
+                    <img src="~/images/user.jpg" class="img-responsive" alt="" />
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">@User.Identity.GetUserName()</div>
+                        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                    </div>
+                }
+                <div class="clear"></div>
+            </div>
+            <div class="divider"></div>
+            @if (Request.IsAuthenticated)
+            {
+                string[] PermisosUser = this.ViewContext.RouteData.Values["PermisosUser"] as string[];
+                if (PermisosUser == null)
+                {
+                    PermisosUser = new string[2];
+                    PermisosUser.SetValue("Account", 0);
+                    PermisosUser.SetValue("ConfirmEmail", 1);
+                }
+                string permisosString = string.Join(",", PermisosUser);
+                @Html.Hidden("permisosString", permisosString)
+
+                <ul class="nav menu">
+                    @if (PermisosUser.Contains("Dashboard"))
+                {
+                        <li class="active"><a href="~/Home/Index" class="confirmLink"><img src="~/images/Menu_Dashboard.svg" width="25" height="25" /> Indicadores</a></li>
+                    }
+                    @if (PermisosUser.Contains("Mapas_Visualizacion") || PermisosUser.Contains("Clientes_Visualizacion") || PermisosUser.Contains("General_Visualizacion") || PermisosUser.Contains("Configuraciones_Visualizacion") || PermisosUser.Contains("Vehiculos_Visualizacion"))
+                {
+                        <li class="parent">
+                            <a data-toggle="collapse" href="#sub-item-1">
+                                <img src="~/images/Menu_Catalogos.svg" width="25" height="25" /> Catálogos <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"></span>
+                            </a>
+                            <ul class="children collapse" id="sub-item-1">
+                                @if (PermisosUser.Contains("Mapas_Visualizacion"))
+                                {
+                                    <li>
+                                        <a class="icon-menu confirmLink" href="~/Home/About">
+                                            <img src="~/images/Menu_Mapas.svg" width="25" height="25" />Mapas
+                                        </a>
+                                    </li>
+                                }
+                                @if (PermisosUser.Contains("Clientes_Visualizacion"))
+                                {
+                                    <li>
+                                        <a class="icon-menu confirmLink" href="~/Home/Contact">
+                                            <img src="~/images/Menu_Clientes.svg" width="25" height="25" />Clientes
+                                        </a>
+                                    </li>
+                                }
+                                @if (PermisosUser.Contains("General_Visualizacion"))
+                                {
+                                    <li>
+                                        <a class="icon-menu confirmLink" href="~/Account/DashboardUser">
+                                            <img src="~/images/Menu_General.svg" width="25" height="25" />General
+                                        </a>
+                                    </li>
+                                }
+                                @if (PermisosUser.Contains("Configuraciones_Visualizacion"))
+                                {
+                                    <li>
+                                        <a class="icon-menu confirmLink" href="~/Home/Configuraciones">
+                                            <img src="~/images/Menu_Configuraciones.svg" width="25" height="25" />Configuraciones
+                                        </a>
+                                    </li>
+                                }
+                                @if (PermisosUser.Contains("Vehiculos_Visualizacion"))
+                                {
+                                    <li>
+                                        <a class="icon-menu confirmLink" href="~/Home/Vehiculos">
+                                            <img src="~/images/Menu_Vehiculos.svg" width="25" height="25" />Vehículos
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (PermisosUser.Contains("Monitoreo_Visualizacion"))
+                {
+                        <li class="parent ">
+                            <a data-toggle="collapse" href="#sub-item-2">
+                                <img src="~/images/Menu_Operaciones.svg" width="25" height="25" /> Operaciones<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"></span>
+                            </a>
+                            <ul class="children collapse" id="sub-item-2">
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Home/Monitoreo">
+                                        <img src="~/images/Menu_Operaciones.svg" width="25" height="25" /> Monitoreo
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (PermisosUser.Contains("Reportes"))
+                {
+                        <li class="parent ">
+                            <a data-toggle="collapse" href="#sub-item-3">
+                                <img src="~/images/Menu_Reportes.svg" width="25" height="25" /> Reportes<span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"></span>
+                            </a>
+                            <ul class="children collapse" id="sub-item-3">
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Reportes/EstadodeCuenta" style="font-size:small;">
+                                        <img src="~/images/Menu_Reportes.svg" width="25" height="25" />Estado de Cuenta
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Reportes/ServXColonia" style="font-size:small;">
+                                        <img src="~/images/Menu_Reportes.svg" width="25" height="25" />Servicios por Colonia
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Reportes/ClientesHabituales" style="font-size:small;">
+                                        <img src="~/images/Menu_Reportes.svg" width="25" height="25" />Clientes Habituales
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Reportes/ClientesAbonados" style="font-size:small;">
+                                        <img src="~/images/Menu_Reportes.svg" width="25" height="25" />Clientes Abonados
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon-menu confirmLink" href="~/Reportes/AbonadosADetalle" style="font-size:small;">
+                                        <img src="~/images/Menu_Reportes.svg" width="25" height="25" />Abonados A Detalle
+                                    </a>
+                                </li>                                
+                            </ul>
+                        </li>
+                    }
+                    <li class=""><a href="~/Manage/Index" class="confirmLink"><em class="fa fa-pencil">&nbsp;</em> Mi Perfil</a></li>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                        @Html.AntiForgeryToken()
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="confirmLink"><em class="fa fa-power-off">&nbsp; </em> Cerrar Sesión</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <section id="main-content" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+            <fieldset>
+                @RenderBody()
+            </fieldset>
+            <footer>
+                <p align="center">&copy; @DateTime.Now.Year - Sitio Administrativo GoPPlus Web ver. 11.0 </p>
+            </footer>
+            <div class="clearfix"></div>
+        </section>
+        <div id="footer" style="background-color:@(Color_DB);"></div>
+    </section>
+    <div id="leaveDialog" title="Confirmación">
+        <p>Se han realizado cambios a la información pero no se han guardado, ¿Deseas salir sin guardar los cambios? </p>
+    </div>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>*@
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/js/left-bar-slider.js"></script>
+    @RenderSection("scripts", required: false)    
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/chart.min.js"></script>
+    <script src="~/js/chart-data.js"></script>
+    <script src="~/js/easypiechart.js"></script>
+    <script src="~/js/easypiechart-data.js"></script>
+    <script src="~/js/bootstrap-datepicker.js"></script>
+    <script src="~/js/bootstrap-datepicker-es.js"></script>
+    <script src="~/js/jquery.validate.date.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/custom.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#leaveDialog').dialog({
+                open: function (event, ui) {
+                    $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+                },
+                bgiframe: true,
+                width: 500,
+                height: 200,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                },
+                autoOpen: false,
+                modal: true //Dialog options
+
+            });
+
+            $('.guardar').click(function () {
+                //alert('guardando...');
+                cambio = false;
+            });
+
+            //********************************************************
+            // Codigo para recordar si el menu esta colapsado o abierto - Inicio
+            //********************************************************
+
+            if (colapsarBar.staticCollapse == "0") {
+                $("#sidebar-collapse").toggle(true);
+                $('#main-content').removeClass("col-sm-12").addClass("col-sm-9");
+                $('#main-content').addClass("col-sm-offset-3");
+                $('#main-content').removeClass("col-lg-12").addClass("col-lg-10");
+                $('#main-content').addClass("col-sm-offset-2");
+            }
+            else {
+                $("#sidebar-collapse").toggle(false);
+                $('#main-content').removeClass("col-sm-9").addClass("col-sm-12");
+                $('#main-content').removeClass("col-lg-10").addClass("col-lg-12");
+                $('#main-content').removeClass("col-sm-offset-3");   
+                $('#main-content').removeClass("col-lg-offset-2");
+                $("#main-content").toggle(true);
+            }
+
+            $("#sidebarbtn").click(function (e) {
+
+                if (colapsarBar.staticCollapse == "0") 
+                    $.cookie("staticCollapse", "1");
+
+                else
+                    $.cookie("staticCollapse", "0");
+
+                colapsarBar.staticCollapse = $.cookie("staticCollapse");
+            });
+
+            // Codigo para recordar si el menu esta colapsado o abierto - Final
+
+            $(".confirmLink").click(function (e) {
+                e.preventDefault();
+                var targetUrl = $(this).attr("href");
+
+                $("#leaveDialog").dialog({
+                    buttons: {
+                        "Aceptar": function () {
+                            window.location.href = targetUrl;
+                        },
+                        "Cancelar": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                if (cambio == true) {
+                    $("#leaveDialog").dialog("open");
+                }
+                else {
+                    window.location.href = targetUrl;
+                }
+            });
+
+            ShowByPermissions();
+
+            $("form").attr("novalidate", "novalidate");
+
+            $("img").error(function () {
+                $(this).hide();
+            });
+
+            $(':input[type="number"]').on('keypress', function (evt) {
+                if (evt.keyCode == 69 || evt.keyCode == 101)
+                    return false;
+                return true;
+            });
+
+            var required = $('.field-required');
+            required.append(" <span class='text-danger font-weight-normal'>(*)</span>");
+
+            $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+            $.fn.datepicker.defaults.language = 'es';
+            $('#calendar,.datepicker').datepicker({ dateFormat: "dd/MM/yyyy" });
+
+            $('.datepickerCal').datepicker({ dateFormat: "dd/MM/yyyy" }).on('changeDate', function () {
+                var date = $(this).val();
+                if (date != '') {
+                    var age = _calculateAge(date);
+                    if (parseInt(age, 10) < 18) {
+                        alert('Edad menor a 18 años. Debes ser mayor de edad para registrarte.');
+                    }
+                }
+            });
+        });
+
+        function _calculateAge(getDate) {
+            var newdate = getDate.split('/');
+            var dateFormat = newdate[2] + "-" + newdate[1] + "-" + newdate[0];
+            return new Date(new Date - new Date(dateFormat)).getFullYear() - 1970
+        }
+
+        function ShowByPermissions() {
+            var actions = ["_Edicion", "_Visualizacion"];
+            var permiso = $('#Permiso').val();
+            var permisosString = $('#permisosString').val();
+            var permisosUser = permisosString.split(',');
+            $.each(actions, function (index, value) {
+                if (jQuery.inArray(permiso + value, permisosUser) !== -1) {
+                    $('.' + value).show();
+                }
+                else {
+                    $('.' + value).hide();
+                }
+            });
+            if ($(".div_actions").length) {
+                var lastPipe = $(".div_actions").children(":visible").last();
+                if (lastPipe.hasClass("pipe"))
+                    lastPipe.addClass("hide");
+            }
+        }
+
+        $(function () {
+            $("form").submit(function (event) {
+                var sancion = $('#ID_Sancion').length;
+                var fecha_exists = $('#Fecha_Creacion').length;
+                var hab_exists = $('#Habilitado').length;
+                var able_exists = $('#Able').length;
+                var act_exists = $('#Activo').length;
+                var checkbox = hab_exists ? $('#Habilitado') : (act_exists ? $('#Activo') : (able_exists ? $('#Able') : null));
+                if ((checkbox != null && !fecha_exists) || sancion) {
+                    if (!$(this).hasClass('submited')) {
+                        event.preventDefault();
+                        if (sancion) {
+                            $('#ID_Conductor').prop('disabled', false);
+                            $('#ID_TipoSancion').prop('disabled', false);
+                        }
+                        else {
+                            checkbox.prop("disabled", false);
+                        }
+                        $(this).toggleClass('submited');
+                        $(this).submit();
+                    }
+                }
+            });
+        })
+
+        $(function () {
+            $('#hover, #striped, #condensed').click(function () {
+                var classes = 'table';
+
+                if ($('#hover').prop('checked')) {
+                    classes += ' table-hover';
+                }
+                if ($('#condensed').prop('checked')) {
+                    classes += ' table-condensed';
+                }
+                $('#table-style').bootstrapTable('destroy')
+                    .bootstrapTable({
+                        classes: classes,
+                        striped: $('#striped').prop('checked')
+                    });
+            });
+        });
+
+        function rowStyle(row, index) {
+            var classes = ['active', 'success', 'info', 'warning', 'danger'];
+
+            if (index % 2 === 0 && index / 2 < classes.length) {
+                return {
+                    classes: classes[index / 2]
+                };
+            }
+            return {};
+        }
+
+        function customSorter(a, b) {
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            if (a > b) return 1;
+            if (a < b) return -1;
+            return 0;
+        }
+
+        function dateSorter(a, b) {
+            var d1 = new Date(a);
+            var d2 = new Date(b);
+
+            if (d1 < d2) return -1;
+            if (d1 > d2) return 1;
+            return 0;
+        }
+
+        function numberSorter(a, b) {
+            var n1 = a.trim() == '%' ? 0 : parseFloat(a.trim().replace(',', '.').replace('%', ''));
+            var n2 = b.trim() == '%' ? 0 : parseFloat(b.trim().replace(',', '.').replace('%', ''));
+
+            if (n1 < n2) return -1;
+            if (n1 > n2) return 1;
+            return 0;
+        }
+    </script>
+
+    <script>
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        })
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+    </script>
+</body>
+</html>

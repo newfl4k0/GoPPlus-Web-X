@@ -102,12 +102,12 @@ namespace GoPS.Models
         public virtual DbSet<Seguimiento_Despacho> Seguimiento_Despacho { get; set; }
         public virtual DbSet<SistemaVariables> SistemaVariables { get; set; }
         public virtual DbSet<TiposTransaccion> TiposTransaccion { get; set; }
-        public virtual DbSet<Configuraciones> Configuraciones { get; set; }
         public virtual DbSet<Payworks> Payworks { get; set; }
         public virtual DbSet<Seguimiento_Despacho_Detalle> Seguimiento_Despacho_Detalle { get; set; }
         public virtual DbSet<vwClientes> vwClientes { get; set; }
         public virtual DbSet<Transacciones> Transacciones { get; set; }
         public virtual DbSet<UbicacionesServicios> UbicacionesServicios { get; set; }
+        public virtual DbSet<Configuraciones> Configuraciones { get; set; }
     
         public virtual int CerrarSesion(Nullable<int> conexion_id)
         {
@@ -3241,6 +3241,20 @@ namespace GoPS.Models
                 new ObjectParameter("idafiliado", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetCiudadAfiliado", idafiliadoParameter);
+        }
+    
+        public virtual ObjectResult<string> ObtenerConfiguracion(string atributo)
+        {
+            var atributoParameter = atributo != null ?
+                new ObjectParameter("Atributo", atributo) :
+                new ObjectParameter("Atributo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ObtenerConfiguracion", atributoParameter);
+        }
+    
+        public virtual ObjectResult<DashboardGrafico2_Result> DashboardGrafico2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DashboardGrafico2_Result>("DashboardGrafico2");
         }
     }
 }

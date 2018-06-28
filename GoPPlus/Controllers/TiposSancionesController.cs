@@ -40,7 +40,11 @@ namespace GoPS.Controllers
             TiposSanciones tiposSanciones = db.TiposSanciones.Find(id);
             if (tiposSanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposSanciones);
         }
@@ -84,7 +88,11 @@ namespace GoPS.Controllers
             TiposSanciones tiposSanciones = db.TiposSanciones.Find(id);
             if (tiposSanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposSanciones);
         }
@@ -120,8 +128,13 @@ namespace GoPS.Controllers
             TiposSanciones tiposSanciones = db.TiposSanciones.Find(id);
             if (tiposSanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(tiposSanciones);
         }
 

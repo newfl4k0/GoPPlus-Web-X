@@ -18,14 +18,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class ConductoresController : Controller
+    public class ConductoresController : _GeneralController
     {
-        //private Entities ent = new Entities();
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Conductores
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -41,7 +35,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Conductores/Details/5
-         
+
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Details(int? id)
         {
@@ -52,7 +46,11 @@ namespace GoPS.Controllers
             Conductores conductores = db.Conductores.Find(id);
             if (conductores == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatConductores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(conductores);
         }
@@ -98,7 +96,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Conductores/Edit/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Edit(int? id)
         {
@@ -109,7 +107,11 @@ namespace GoPS.Controllers
             Conductores conductores = db.Conductores.Find(id);
             if (conductores == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatConductores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
 
             ObtenerGeografiaSelectList(conductores);
@@ -136,7 +138,7 @@ namespace GoPS.Controllers
                 CheckUser(conductores);
                 conductores.Fecha_Actualizacion = util.ConvertToMexicanDate(DateTime.Now);
                 conductores.UserID = User.Identity.GetUserId();
-                db.Entry(conductores).State = EntityState.Modified;            
+                db.Entry(conductores).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -217,7 +219,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Conductores/Assign/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Assign(int? id)
         {
@@ -228,7 +230,11 @@ namespace GoPS.Controllers
             Conductores conductores = db.Conductores.Find(id);
             if (conductores == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatConductores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             Vehiculos_Conductores vehiculos_Conductores = conductores.Vehiculos_Conductores.Where(c => c.Activo).OrderByDescending(c => c.Fecha_Asignacion).FirstOrDefault();
             if (vehiculos_Conductores != null)
@@ -251,30 +257,58 @@ namespace GoPS.Controllers
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Assign([Bind(Include = "ID_Vehiculo_Conductor,ID_Vehiculo,ID_Conductor,Fecha_Asignacion,Activo,Fecha_Creacion,Fecha_Actualizacion,UserID")] Vehiculos_Conductores vehiculos_Conductores)
         {
-            Conductores conductores = db.Conductores.Find(vehiculos_Conductores.ID_Conductor);
-            
-            Vehiculos_Conductores vh = conductores.Vehiculos_Conductores.Where(vc => vc.Activo).OrderByDescending(vc => vc.Fecha_Asignacion).FirstOrDefault();
-            if (ModelState.IsValid)
+            if (vehiculos_Conductores.ID_Vehiculo==0)
             {
-                if (vh == null || vh.ID_Vehiculo != vehiculos_Conductores.ID_Vehiculo)
+                Conductores conductores = db.Conductores.Find(vehiculos_Conductores.ID_Conductor);
+
+                Vehiculos_Conductores vh = conductores.Vehiculos_Conductores.Where(vc => vc.Activo).OrderByDescending(vc => vc.Fecha_Asignacion).FirstOrDefault();
+                if (ModelState.IsValid)
                 {
-                    vehiculos_Conductores.Fecha_Asignacion = util.ConvertToMexicanDate(DateTime.Now);
-                    vehiculos_Conductores.Fecha_Creacion = util.ConvertToMexicanDate(DateTime.Now);
-                    vehiculos_Conductores.UserID = User.Identity.GetUserId();
-                    db.Vehiculos_Conductores.Add(vehiculos_Conductores);
-                    db.SaveChanges();
-                    db.DesactivarVehiculosConductoresPorConductor(vehiculos_Conductores.ID_Vehiculo_Conductor, vehiculos_Conductores.ID_Conductor, User.Identity.GetUserId());
+                    if (vh == null || vh.ID_Vehiculo != vehiculos_Conductores.ID_Vehiculo)
+                    {
+                        vehiculos_Conductores.Fecha_Asignacion = util.ConvertToMexicanDate(DateTime.Now);
+                        vehiculos_Conductores.Fecha_Creacion = util.ConvertToMexicanDate(DateTime.Now);
+                        vehiculos_Conductores.UserID = User.Identity.GetUserId();
+                        //db.Vehiculos_Conductores.Add(vehiculos_Conductores);
+                        //db.SaveChanges();
+                        db.DesactivarVehiculosConductoresPorConductor(vehiculos_Conductores.ID_Vehiculo_Conductor, vehiculos_Conductores.ID_Conductor, User.Identity.GetUserId());
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                vehiculos_Conductores.Conductores = conductores;
+                ViewBag.ID_Vehiculo = new SelectList(db.Vehiculos.OrderBy(o => o.Matricula), "ID_Vehiculo", "Matricula", vehiculos_Conductores.ID_Vehiculo);
+                return View(vehiculos_Conductores);
             }
-            vehiculos_Conductores.Conductores = conductores;
-            ViewBag.ID_Vehiculo = new SelectList(db.Vehiculos.OrderBy(o => o.Matricula), "ID_Vehiculo", "Matricula", vehiculos_Conductores.ID_Vehiculo);
-            return View(vehiculos_Conductores);
+            else
+            {
+                Conductores conductores = db.Conductores.Find(vehiculos_Conductores.ID_Conductor);
+
+                Vehiculos_Conductores vh = conductores.Vehiculos_Conductores.Where(vc => vc.Activo).OrderByDescending(vc => vc.Fecha_Asignacion).FirstOrDefault();
+                if (ModelState.IsValid)
+                {
+                    if (vh == null || vh.ID_Vehiculo != vehiculos_Conductores.ID_Vehiculo)
+                    {
+                        vehiculos_Conductores.Fecha_Asignacion = util.ConvertToMexicanDate(DateTime.Now);
+                        vehiculos_Conductores.Fecha_Creacion = util.ConvertToMexicanDate(DateTime.Now);
+                        vehiculos_Conductores.UserID = User.Identity.GetUserId();
+                        db.Vehiculos_Conductores.Add(vehiculos_Conductores);
+                        db.SaveChanges();
+                        db.DesactivarVehiculosConductoresPorConductor(vehiculos_Conductores.ID_Vehiculo_Conductor, vehiculos_Conductores.ID_Conductor, User.Identity.GetUserId());
+                    }
+                    return RedirectToAction("Index");
+                }
+                vehiculos_Conductores.Conductores = conductores;
+                ViewBag.ID_Vehiculo = new SelectList(db.Vehiculos.OrderBy(o => o.Matricula), "ID_Vehiculo", "Matricula", vehiculos_Conductores.ID_Vehiculo);
+                return View(vehiculos_Conductores);
+            }
+            
         }
 
 
+
+
         // GET: Conductores/Assign/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult AssignUser(int? id)
         {
@@ -285,7 +319,11 @@ namespace GoPS.Controllers
             Conductores conductores = db.Conductores.Find(id);
             if (conductores == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatConductores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.UserID_Conductor = new SelectList(db.AspNetUsers.Where(u => u.AspNetUserRoles.FirstOrDefault().AspNetRoles.Name.ToLower() == "driver").OrderBy(o => o.UserName), "Id", "UserName", conductores.UserID_Conductor);
             return View(conductores);
@@ -307,13 +345,13 @@ namespace GoPS.Controllers
             conductores_user.Fecha_Actualizacion = util.ConvertToMexicanDate(DateTime.Now);
             conductores_user.UserID = User.Identity.GetUserId();
             db.Entry(conductores_user).State = EntityState.Modified;
-            
+
             if (valid.ValidaAssignUser(ModelState, conductores_user))
             {
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
             //}
             ViewBag.UserID_Conductor = new SelectList(db.AspNetUsers.Where(u => u.AspNetUserRoles.FirstOrDefault().AspNetRoles.Name.ToLower() == "driver" && !db.Conductores.Select(c => c.UserID_Conductor).Contains(u.Id)).OrderBy(o => o.UserName), "Id", "UserName", conductores.UserID_Conductor);
             return View(conductores);
@@ -334,7 +372,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Conductores/Delete/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Delete(int? id)
         {
@@ -345,8 +383,13 @@ namespace GoPS.Controllers
             Conductores conductores = db.Conductores.Find(id);
             if (conductores == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatConductores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(conductores);
         }
 
@@ -391,13 +434,7 @@ namespace GoPS.Controllers
             return Json(conductores, JsonRequestBehavior.AllowGet);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
+
     }
 }

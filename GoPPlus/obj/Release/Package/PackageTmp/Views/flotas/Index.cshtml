@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GoPS.Models.Flotas>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Flotas";
+}
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatVehiculos", "Catálogo de Flotas"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Flota")
+                                </th>
+                                <th data-field="Bancos.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Banco")
+                                </th>
+                                <th data-field="Clabe" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Clabe")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="NoUnidades" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("No. Unidades")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Bancos.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Clabe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @item.Vehiculos.Where(i => i.Habilitado).Count().ToString()
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Asignar", "Assign", "Flotas", new { id = item.ID_Flota }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Editar", "Edit", "Flotas", new { id = item.ID_Flota }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @if (item.Afiliados.TiposPagos.Nombre.ToUpper() == "LIQUIDACIÓN")
+                                    {
+                                        @Html.EncodedActionLink("Liquidar", "Liquidate", "Flotas", new { id = item.ID_Flota }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    }
+                                    @if (item.Afiliados.TiposPagos.Nombre.ToUpper() == "COMISIÓN POR VIAJE")
+                                    {
+                                        @Html.EncodedActionLink("Transferir", "Transfer", "Flotas", new { id = item.ID_Flota }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    }
+                                    @Html.EncodedActionLink("Detalles", "Details", "Flotas", new { id = item.ID_Flota }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Flotas", new { id = item.ID_Flota }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,7 +25,7 @@ tr.atraso-red td {
 
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Despachos"); }
+    @{Html.RenderPartial("NavBar_CatOperaciones", "Despachos"); }
     <div class="row">
         <div class="col-lg-12">            
             @Html.HiddenFor(model => model.search)
@@ -35,7 +35,7 @@ tr.atraso-red td {
                     <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
                         @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })                      
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,10 +46,10 @@ tr.atraso-red td {
                     </div>
                     <input id="btnInterval" type="button" value="Detener Actualización" class="btn btn-default" />
                 <div class="panel-body" style="font-size:small;">
-                        <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-maintain-selected="true data-select-item-name="toolbar1" data-sort-name="Abordo" data-sort-order="asc">
+                        <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Abordo" data-sort-order="desc">
                             <thead>
                                 <tr>
-                                    <th data-field="Abordo" data-sortable="true" data-sorter="dateSorter">
+                                    <th data-field="Abordo" data-sortable="true" data-sorter="dateSorter" >
                                         @Html.Label("Abordo")
                                     </th>
                                     <th data-field="Finalización" data-sortable="true" data-sorter="dateSorter">
@@ -74,7 +74,7 @@ tr.atraso-red td {
                                         @Html.Label("Vehículo")
                                     </th>
                                     <th data-field="Transporte_Ejecutivo" data-sortable="true" data-sorter="customSorter">
-                                        @Html.Label("No. Transporte Ejecutivo")
+                                        @Html.Label("No. Transporte Ejecutivo",new {@class="cent"})
                                     </th>
                                     <th data-field="Conductor" data-sortable="true" data-sorter="customSorter">
                                         @Html.Label("Conductor")
@@ -86,7 +86,7 @@ tr.atraso-red td {
                                         @Html.Label("Cliente")
                                     </th>
                                     <th data-field="Observaciones" data-sortable="true" data-sorter="customSorter">
-                                        @Html.Label("Obv")
+                                        @Html.Label("Obv", new { @class = "cent" })
                                     </th>
                                     <th>
                                         @Html.Label("Acciones")
@@ -131,12 +131,13 @@ tr.atraso-red td {
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Cliente)
-                            </td>
+                            </td>   
                             <td>
                                 @Html.DisplayFor(modelItem => item.Observaciones)
                             </td>
                             <td>
-                                @Html.EncodedActionLink("Enviar Mensaje al Conductor", "SendMessage", "Chats", new { id = item.ID_Conductor }, new { @class = "modalLink" })
+                                @Html.EncodedActionLink("Enviar Mensaje al Conductor", "SendMessage", "Chats", new { id = item.ID_Conductor }, new { @class = "_Visualizacion" })<span class="_Edicion pipe"> | </span>
+                                @Html.EncodedActionLink("Detalles", "MoreDetails", "Despachos", new { id = item.iddesp }, new { @class = "_Visualizacion" })
                             </td>
                         </tr>
                             }
@@ -144,7 +145,6 @@ tr.atraso-red td {
                 </div>
                 }
             </div>
-            <div id="my-dialog" title="Enviar Mensaje"></div>
         </div>
     </div>
 </div>
@@ -154,17 +154,8 @@ tr.atraso-red td {
     <script type="text/javascript">
         var interval;
         var dialog;
-        $(document).ready(function () {
-            //var srch_str = $("#search").val()
-            //var bstable_first_load = true;
-
-            //$('.table-id').on('load-success.bs.table', function () {//when the table is loaded the first time and visible, set the search string...
-            //    if (srch_str.length > 0 && bstable_first_load) {
-            //        $('.fixed-table-toolbar').find('.search > :input').val(srch_str);
-            //        bstable_first_load = false
-            //    };
-            //});
-            //$("#error-dialog").hide();
+        $(document).ready(function () {            
+            const _intervalo_recarga = 15000;
 
             dialog = $("#my-dialog").dialog({
                 autoOpen: false,
@@ -194,11 +185,11 @@ tr.atraso-red td {
                     clearInterval(interval);
                 }
                 else {
-                    interval = setInterval(function () { $("form").submit(); }, 10000);
+                    interval = setInterval(function () { $("form").submit(); }, _intervalo_recarga);
                 }
             });
 
-            interval = setInterval(function () { $("form").submit(); }, 10000);
+            interval = setInterval(function () { $("form").submit(); }, _intervalo_recarga);
         });
 
         function sendMessage() {

@@ -53,11 +53,11 @@ namespace GoPS.Models
         [StringLength(50, ErrorMessage = "El campo Imagen debe tener una longitud máxima de 50 caracteres")]
         [DisplayName("Imagen")]
         public string Imagen { get; set; }
-        [DisplayName("¿Fecha Bordo?")]
+        [DisplayName("¿Fecha Abordaje?")]
         public bool Fecha_Bordo { get; set; }
         [DisplayName("¿Fecha Finalización?")]
         public bool Fecha_Finalizacion { get; set; }
-        [DisplayName("¿No. Taxi?")]
+        [DisplayName("No. de Unidad")]
         public bool No_Taxi { get; set; }
         [DisplayName("¿Placas?")]
         public bool Placas { get; set; }

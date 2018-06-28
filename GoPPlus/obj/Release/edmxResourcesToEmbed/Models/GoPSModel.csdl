@@ -2326,6 +2326,357 @@
       <Parameter Name="res" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="spEstadodeCuenta" ReturnType="Collection(GoPSModel.spEstadodeCuenta_Result)" />
+    <EntitySet Name="Transacciones" EntityType="GoPSModel.Transacciones" />
+    <EntitySet Name="UbicacionesServicios" EntityType="GoPSModel.UbicacionesServicios" />
+    <AssociationSet Name="FK_UbicacionesServicios_Despachos" Association="GoPSModel.FK_UbicacionesServicios_Despachos">
+      <End Role="Despachos" EntitySet="Despachos" />
+      <End Role="UbicacionesServicios" EntitySet="UbicacionesServicios" />
+    </AssociationSet>
+    <FunctionImport Name="ch_ActualizarNombreConductor">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellido" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizarServicioFechaConfirmacion">
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizarServicioFechaDomicilio">
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizarServicioFechaFinalizado">
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+      <Parameter Name="reserva_id" Mode="In" Type="Int32" />
+      <Parameter Name="monto" Mode="In" Type="Decimal" />
+      <Parameter Name="observaciones" Mode="In" Type="String" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="credit" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizarServicioFechaOcupado">
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+      <Parameter Name="reserva_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizarTokenPush">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizaSeguimiento">
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+      <Parameter Name="afiliado_id" Mode="In" Type="Int32" />
+      <Parameter Name="estatus_id" Mode="In" Type="Int32" />
+      <Parameter Name="lat" Mode="In" Type="Decimal" />
+      <Parameter Name="lng" Mode="In" Type="Decimal" />
+      <Parameter Name="lat_origen" Mode="In" Type="Decimal" />
+      <Parameter Name="lng_origen" Mode="In" Type="Decimal" />
+      <Parameter Name="lat_destino" Mode="In" Type="Decimal" />
+      <Parameter Name="lng_destino" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="ch_AplicarDescuento" ReturnType="Collection(GoPSModel.ch_AplicarDescuento_Result)">
+      <Parameter Name="ID_Reserva" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_CancelarReserva">
+      <Parameter Name="reserva_id" Mode="In" Type="Int32" />
+      <Parameter Name="razon_id" Mode="In" Type="Int32" />
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+      <Parameter Name="es_admin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_CerrarSesion">
+      <Parameter Name="conexion_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ComentarServicio">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="obs" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_EscribirChatConBase">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+      <Parameter Name="mensaje" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_EscribirChatConCliente">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+      <Parameter Name="mensaje" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ForzarCerrarSesion" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_GenerarSeguimientoDespacho" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="origen" Mode="In" Type="String" />
+      <Parameter Name="destino" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_GenerarSeguimientoDespachoDetalle">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="latlng" Mode="In" Type="String" />
+      <Parameter Name="step" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_GuardaUbicacion">
+      <Parameter Name="conexion_id" Mode="In" Type="Int32" />
+      <Parameter Name="estatus" Mode="In" Type="Int32" />
+      <Parameter Name="latitud" Mode="In" Type="Decimal" />
+      <Parameter Name="longitud" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="ch_IniciarSesion" ReturnType="Collection(GoPSModel.ch_IniciarSesion_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerAsignacionesSinConfirmar" ReturnType="Collection(GoPSModel.ch_ObtenerAsignacionesSinConfirmar_Result)" />
+    <FunctionImport Name="ch_ObtenerChatConBase" ReturnType="Collection(GoPSModel.ch_ObtenerChatConBase_Result)">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerChatConCliente" ReturnType="Collection(GoPSModel.ch_ObtenerChatConCliente_Result)">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerConductoresSinActualizarSeguimientos" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="ch_ObtenerConexionesAbiertasSinActualizar" ReturnType="Collection(GoPSModel.ch_ObtenerConexionesAbiertasSinActualizar_Result)" />
+    <FunctionImport Name="ch_ObtenerConfiguraciones" ReturnType="Collection(GoPSModel.ch_ObtenerConfiguraciones_Result)" />
+    <FunctionImport Name="ch_ObtenerDatosConductor" ReturnType="Collection(GoPSModel.ch_ObtenerDatosConductor_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerEstatus" ReturnType="Collection(GoPSModel.ch_ObtenerEstatus_Result)" />
+    <FunctionImport Name="ch_ObtenerFechaFinReserva" ReturnType="Collection(GoPSModel.ch_ObtenerFechaFinReserva_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerHistorialRutaReal" ReturnType="Collection(GoPSModel.ch_ObtenerHistorialRutaReal_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerIdUsuarioDeLaReserva" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerInformacionVehiculo" ReturnType="Collection(GoPSModel.ch_ObtenerInformacionVehiculo_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerRazonesCancelacion" ReturnType="Collection(GoPSModel.ch_ObtenerRazonesCancelacion_Result)" />
+    <FunctionImport Name="ch_ObtenerServicioActivo" ReturnType="Collection(GoPSModel.ch_ObtenerServicioActivo_Result)">
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerServiciosPorVehiculoConductor" ReturnType="Collection(GoPSModel.ch_ObtenerServiciosPorVehiculoConductor_Result)">
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerTarifaVehiculo" ReturnType="Collection(GoPSModel.ch_ObtenerTarifaVehiculo_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerTokenPushConductor" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerTokenPushVehiculoConductor" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerUbicacionesVehiculosLibres" ReturnType="Collection(GoPSModel.ch_ObtenerUbicacionesVehiculosLibres_Result)">
+      <Parameter Name="vc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerUbicacionReservasLibres" ReturnType="Collection(GoPSModel.ch_ObtenerUbicacionReservasLibres_Result)" />
+    <FunctionImport Name="ch_ObtenerUbicacionReservasLibresPorGeocerca" ReturnType="Collection(String)">
+      <Parameter Name="latitud" Mode="In" Type="Decimal" />
+      <Parameter Name="longitud" Mode="In" Type="Decimal" />
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ObtenerUbicacionReservasLibresPorTipoVehiculo" ReturnType="Collection(GoPSModel.ch_ObtenerUbicacionReservasLibresPorTipoVehiculo_Result)">
+      <Parameter Name="vid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_RechazarServicio">
+      <Parameter Name="id_reserva" Mode="In" Type="Int32" />
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+      <Parameter Name="es_admin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ValidarConexionSigueAbierta" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ValidaTurnoConexionAbierta" ReturnType="Collection(Int32)">
+      <Parameter Name="id_vc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ActivarCliente" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ActualizaContrasenaToken" ReturnType="Collection(Int32)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="token" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ActualizaPerfil">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="fecha" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ActualizaToken">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="device_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_BuscarDireccion" ReturnType="Collection(GoPSModel.cl_BuscarDireccion_Result)">
+      <Parameter Name="street" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_BuscaReservasLibresParaDespachar" ReturnType="Collection(GoPSModel.cl_BuscaReservasLibresParaDespachar_Result)" />
+    <FunctionImport Name="cl_CalificarServicio">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="encuesta" Mode="In" Type="Int32" />
+      <Parameter Name="obs" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_CambiaContrasena">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="clave" Mode="In" Type="String" />
+      <Parameter Name="newclave" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_CancelarServicio">
+      <Parameter Name="reserva_id" Mode="In" Type="Int32" />
+      <Parameter Name="razon_id" Mode="In" Type="Int32" />
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ContadorClientesPorCorreoPorTelefono" ReturnType="Collection(GoPSModel.cl_ContadorClientesPorCorreoPorTelefono_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_CrearDespacho" ReturnType="Collection(Int32)">
+      <Parameter Name="id_vehiculo_conductor" Mode="In" Type="Int32" />
+      <Parameter Name="monto" Mode="In" Type="Decimal" />
+      <Parameter Name="observaciones" Mode="In" Type="String" />
+      <Parameter Name="id_reserva" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_EscribeChatActivo">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+      <Parameter Name="mensaje" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_GuardaAppId">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="appid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_IniciarSesion" ReturnType="Collection(GoPSModel.cl_IniciarSesion_Result)">
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="clave" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_LeeChatActivo" ReturnType="Collection(GoPSModel.cl_LeeChatActivo_Result)">
+      <Parameter Name="conductor_id" Mode="In" Type="Int32" />
+      <Parameter Name="despacho_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerConfiguraciones" ReturnType="Collection(GoPSModel.cl_ObtenerConfiguraciones_Result)" />
+    <FunctionImport Name="cl_ObtenerHistorialDeServicios" ReturnType="Collection(GoPSModel.cl_ObtenerHistorialDeServicios_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerInformacionChofer" ReturnType="Collection(GoPSModel.cl_ObtenerInformacionChofer_Result)">
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerRazonesDeCancelacion" ReturnType="Collection(GoPSModel.cl_ObtenerRazonesDeCancelacion_Result)" />
+    <FunctionImport Name="cl_ObtenerRutaServicioFinalizado" ReturnType="Collection(String)">
+      <Parameter Name="id_seguimiento" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerServicioActivo" ReturnType="Collection(GoPSModel.cl_ObtenerServicioActivo_Result)">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerServicioFinalizado" ReturnType="Collection(GoPSModel.cl_ObtenerServicioFinalizado_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerTiposVehiculos" ReturnType="Collection(GoPSModel.cl_ObtenerTiposVehiculos_Result)" />
+    <FunctionImport Name="cl_ObtenerTokenIDParaEnviarPushNotification" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ObtenerVehiculosCercanosLibres" ReturnType="Collection(GoPSModel.cl_ObtenerVehiculosCercanosLibres_Result)">
+      <Parameter Name="lat_cliente" Mode="In" Type="Decimal" />
+      <Parameter Name="lng_cliente" Mode="In" Type="Decimal" />
+      <Parameter Name="type" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ReconfiguraContrasena">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="token" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ReenviarToken" ReturnType="Collection(GoPSModel.cl_ReenviarToken_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cl_Registro" ReturnType="Collection(GoPSModel.cl_Registro_Result)">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="clave" Mode="In" Type="String" />
+      <Parameter Name="token" Mode="In" Type="String" />
+      <Parameter Name="fbid" Mode="In" Type="String" />
+      <Parameter Name="fecha" Mode="In" Type="String" />
+      <Parameter Name="activo" Mode="In" Type="Int32" />
+      <Parameter Name="codigo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_ValidaAppID" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="appid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cl_VerificaCupon" ReturnType="Collection(GoPSModel.cl_VerificaCupon_Result)">
+      <Parameter Name="Codigo" Mode="In" Type="String" />
+      <Parameter Name="ID_Cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DashboardUnidadesAsignadas" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="DashboardUnidadesAusentes" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="DashboardUnidadesOcupadas" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="RP_SP_ESTADODECUENTA" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA01" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA01_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA02" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA02_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA03" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA03_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA04" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA04_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA05" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA05_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA06" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA06_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_ESTADODECUENTA07" ReturnType="Collection(GoPSModel.RP_SP_ESTADODECUENTA07_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="RFC" Mode="In" Type="String" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ch_ActualizaEstatusLibre">
+      <Parameter Name="vc_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DashboardServiciosLibres" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="RP_SP_LCLIABONADOS" ReturnType="Collection(GoPSModel.RP_SP_LCLIABONADOS_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_LCLIHAB" ReturnType="Collection(GoPSModel.RP_SP_LCLIHAB_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RP_SP_SRVXCOLONIA" ReturnType="Collection(GoPSModel.RP_SP_SRVXCOLONIA_Result)">
+      <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="Fecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="idcolonia" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Afiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DashboardMensajesNuevos" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetCiudadAfiliado" ReturnType="Collection(Int32)">
+      <Parameter Name="idafiliado" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="true" />
@@ -2417,6 +2768,7 @@
     <NavigationProperty Name="AspNetUserLogins" Relationship="GoPSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="AspNetUserRoles" Relationship="GoPSModel.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
     <NavigationProperty Name="Positions" Relationship="GoPSModel.FK_AspNetUsers_Positions" FromRole="AspNetUsers" ToRole="Positions" />
+    <Property Name="newId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="database_firewall_rules1">
     <Key>
@@ -2805,6 +3157,7 @@
     <NavigationProperty Name="Chat" Relationship="GoPSModel.Despacho" FromRole="Despachos" ToRole="Chat" />
     <Property Name="Encuesta" Type="Int32" />
     <Property Name="Encuesta_Obs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UbicacionesServicios" Relationship="GoPSModel.FK_UbicacionesServicios_Despachos" FromRole="Despachos" ToRole="UbicacionesServicios" />
   </EntityType>
   <Association Name="FK_Despachos_FormasPago">
     <End Type="GoPSModel.FormasPago" Role="FormasPago" Multiplicity="1" />
@@ -2936,6 +3289,7 @@
     <NavigationProperty Name="Cupones" Relationship="GoPSModel.FK_Reservas_Cupones" FromRole="Reservas" ToRole="Cupones" />
     <Property Name="ID_TarjetaCredito" Type="Int32" />
     <Property Name="ID_Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Reserva_Anterior" Type="Int32" />
   </EntityType>
   <Association Name="FK_Reservas_Calles_Destino">
     <End Type="GoPSModel.Calles" Role="Calles" Multiplicity="1" />
@@ -3384,7 +3738,7 @@
       <PropertyRef Name="ID_Color" />
     </Key>
     <Property Name="ID_Color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Vehiculos" Relationship="GoPSModel.FK_Vehiculos_Colores" FromRole="Colores" ToRole="Vehiculos" />
     <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
@@ -3835,6 +4189,7 @@
     <Property Type="Int32" Name="Calificacion" Nullable="false" />
     <Property Type="String" Name="Origen" Nullable="false" MaxLength="154" />
     <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Destino" Nullable="false" />
   </ComplexType>
   <Association Name="FK_Estatus_Empresas">
     <End Type="GoPSModel.Empresas" Role="Empresas" Multiplicity="1" />
@@ -3923,6 +4278,8 @@
     <Property Name="ID_Vehiculo_Conductor" Type="Int32" Nullable="false" />
     <Property Name="ID_Seguimiento_Despacho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Seguimiento_Despacho_Detalle" Relationship="GoPSModel.FK__Seguimien__ID_Se__1293BD5E" FromRole="Seguimiento_Despacho" ToRole="Seguimiento_Despacho_Detalle" />
+    <Property Name="Inicio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Fin" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SistemaVariables">
     <Key>
@@ -4131,5 +4488,414 @@
     <Property Type="String" Name="Archivo_Licencia" Nullable="true" MaxLength="256" />
     <Property Type="String" Name="Archivo_Antidoping" Nullable="true" MaxLength="256" />
     <Property Type="String" Name="Archivo_NoAntecedentes" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <EntityType Name="Transacciones">
+    <Key>
+      <PropertyRef Name="Id_Transaccion" />
+    </Key>
+    <Property Name="Id_Transaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Id_Reserva" Type="Int32" />
+    <Property Name="Id_TipoTransaccion" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Referencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Numero_Control" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Codigo_Autorizacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Accion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UbicacionesServicios">
+    <Key>
+      <PropertyRef Name="ID_UbicacionServicio" />
+    </Key>
+    <Property Name="ID_UbicacionServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Latitud" Type="Decimal" Nullable="false" Precision="18" Scale="15" />
+    <Property Name="Longitud" Type="Decimal" Nullable="false" Precision="18" Scale="15" />
+    <Property Name="ID_Despacho" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Despachos" Relationship="GoPSModel.FK_UbicacionesServicios_Despachos" FromRole="UbicacionesServicios" ToRole="Despachos" />
+  </EntityType>
+  <Association Name="FK_UbicacionesServicios_Despachos">
+    <End Type="GoPSModel.Despachos" Role="Despachos" Multiplicity="1" />
+    <End Type="GoPSModel.UbicacionesServicios" Role="UbicacionesServicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Despachos">
+        <PropertyRef Name="ID_Despacho" />
+      </Principal>
+      <Dependent Role="UbicacionesServicios">
+        <PropertyRef Name="ID_Despacho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ch_AplicarDescuento_Result">
+    <Property Type="Int32" Name="status" Nullable="true" />
+    <Property Type="String" Name="message" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="motivo_descuento" Nullable="true" MaxLength="100" />
+    <Property Type="Double" Name="descuento_codigo" Nullable="true" />
+    <Property Type="Decimal" Name="creditos_cliente" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="id_usuario" Nullable="true" />
+    <Property Type="Decimal" Name="nuevo_abono_usuario" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ch_IniciarSesion_Result">
+    <Property Type="String" Name="mensaje" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estatus" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerAsignacionesSinConfirmar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="id_vc" Nullable="false" />
+    <Property Type="Int32" Name="diff" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerChatConBase_Result">
+    <Property Type="String" Name="mensaje" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="fecha" Nullable="true" MaxLength="17" />
+    <Property Type="Int32" Name="es_conductor" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerChatConCliente_Result">
+    <Property Type="String" Name="mensaje" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="fecha" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="es_conductor" Nullable="true" />
+    <Property Type="String" Name="img" Nullable="true" MaxLength="210" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerConexionesAbiertasSinActualizar_Result">
+    <Property Type="Int32" Name="conexion_id" Nullable="false" />
+    <Property Type="Int32" Name="vc_id" Nullable="false" />
+    <Property Type="Int32" Name="vehiculo_id" Nullable="false" />
+    <Property Type="Int32" Name="conductor_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerConfiguraciones_Result">
+    <Property Type="String" Name="k" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="v" Nullable="false" MaxLength="300" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerDatosConductor_Result">
+    <Property Type="String" Name="completo" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="afiliado" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="licencia" Nullable="false" MaxLength="13" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerEstatus_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerFechaFinReserva_Result">
+    <Property Type="String" Name="fecha_default" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fecha" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerHistorialRutaReal_Result">
+    <Property Type="String" Name="ruta" Nullable="true" />
+    <Property Type="String" Name="inicio" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="fin" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerInformacionVehiculo_Result">
+    <Property Type="String" Name="tarjeton" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="revista" Nullable="false" />
+    <Property Type="String" Name="version" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="modelo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="marca" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="licencia" Nullable="false" MaxLength="13" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerRazonesCancelacion_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="razon" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerServicioActivo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idd" Nullable="false" />
+    <Property Type="Decimal" Name="lat_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lat_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="String" Name="origen" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="destino" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="usuario_id" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="minutos" Nullable="true" />
+    <Property Type="String" Name="observaciones" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="estatus_reserva" Nullable="false" />
+    <Property Type="String" Name="estatus_reserva_nombre" Nullable="false" MaxLength="20" />
+    <Property Type="Decimal" Name="monto" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="fecha_domicilio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="fecha_confirmacion" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="tipo_vehiculo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="nombre_cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="telefono_cliente" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="tipo_cliente" Nullable="false" MaxLength="8" />
+    <Property Type="Decimal" Name="estimacion" Nullable="false" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerServiciosPorVehiculoConductor_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="origen" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="destino" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="fecha_despacho" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="fecha_finalizado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="estatus" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="es_historial" Nullable="false" MaxLength="2" />
+    <Property Type="Decimal" Name="lat_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lat_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Int32" Name="vc_id" Nullable="false" />
+    <Property Type="String" Name="ruta" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerTarifaVehiculo_Result">
+    <Property Type="Decimal" Name="minimo" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="base" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="km" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="minuto" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerUbicacionesVehiculosLibres_Result">
+    <Property Type="Decimal" Name="lat" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng" Nullable="false" Precision="18" Scale="15" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerUbicacionReservasLibres_Result">
+    <Property Type="Decimal" Name="Latitud_Origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="Longitud_Origen" Nullable="true" Precision="18" Scale="15" />
+  </ComplexType>
+  <ComplexType Name="ch_ObtenerUbicacionReservasLibresPorTipoVehiculo_Result">
+    <Property Type="Decimal" Name="Latitud_Origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="Longitud_Origen" Nullable="true" Precision="18" Scale="15" />
+  </ComplexType>
+  <ComplexType Name="cl_BuscarDireccion_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="address" Nullable="false" MaxLength="102" />
+    <Property Type="Decimal" Name="latitude" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="longitude" Nullable="false" Precision="18" Scale="15" />
+  </ComplexType>
+  <ComplexType Name="cl_BuscaReservasLibresParaDespachar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Decimal" Name="lat" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Int32" Name="afiliado_id" Nullable="false" />
+    <Property Type="Int32" Name="usuario" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="cl_ContadorClientesPorCorreoPorTelefono_Result">
+    <Property Type="Int32" Name="correos" Nullable="true" />
+    <Property Type="Int32" Name="telefonos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="cl_IniciarSesion_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="esActivo" Nullable="false" />
+    <Property Type="String" Name="fbid" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="codigo" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="cliente" Nullable="false" />
+    <Property Type="String" Name="fechac" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="afiliado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="cl_LeeChatActivo_Result">
+    <Property Type="String" Name="mensaje" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="fecha" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="es_conductor" Nullable="true" />
+    <Property Type="String" Name="img" Nullable="true" MaxLength="210" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerConfiguraciones_Result">
+    <Property Type="String" Name="k" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="v" Nullable="false" MaxLength="300" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerHistorialDeServicios_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="fecha_actualizacion" Nullable="false" MaxLength="30" />
+    <Property Type="Decimal" Name="lat_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lat_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="String" Name="origen" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="destino" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="estatus" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="fecha_domicilio" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="tipo_vehiculo" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="id_conductor" Nullable="true" />
+    <Property Type="String" Name="conductor" Nullable="false" MaxLength="101" />
+    <Property Type="Decimal" Name="monto" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="fecha_ocupado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="fecha_finalizacion" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="encuesta" Nullable="false" />
+    <Property Type="String" Name="fecha_rechazo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="placas" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="color" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ruta" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerInformacionChofer_Result">
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="101" />
+    <Property Type="Decimal" Name="lat" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="String" Name="placas" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="modelo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="marca" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="color" Nullable="false" MaxLength="50" />
+    <Property Type="Double" Name="calificacion" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerRazonesDeCancelacion_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerServicioActivo_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idd" Nullable="true" />
+    <Property Type="Decimal" Name="lat_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_origen" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lat_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="lng_destino" Nullable="true" Precision="18" Scale="15" />
+    <Property Type="String" Name="origen" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="destino" Nullable="false" MaxLength="Max" />
+    <Property Type="Int32" Name="estatus_reserva" Nullable="false" />
+    <Property Type="String" Name="estatus_reserva_nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="fecha_domicilio" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="estatus_vehiculo" Nullable="false" />
+    <Property Type="String" Name="tipo_vehiculo" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="vc_id" Nullable="false" />
+    <Property Type="Int32" Name="id_afiliado" Nullable="false" />
+    <Property Type="Int32" Name="id_conductor" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerServicioFinalizado_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Decimal" Name="precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="conductor" Nullable="false" />
+    <Property Type="String" Name="nombre_conductor" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="fecha" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerTiposVehiculos_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="minima" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="precio_min" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="precio_base" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="precio_km" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="precio_minimo" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="unselected" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="selected" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="cl_ObtenerVehiculosCercanosLibres_Result">
+    <Property Type="Int32" Name="ID_Vehiculo_Conductor" Nullable="false" />
+    <Property Type="Decimal" Name="latitude" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="Decimal" Name="longitude" Nullable="false" Precision="18" Scale="15" />
+    <Property Type="Double" Name="dist" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="cl_ReenviarToken_Result">
+    <Property Type="String" Name="token" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="mensaje" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="cl_Registro_Result">
+    <Property Type="Int32" Name="user_id" Nullable="true" />
+    <Property Type="Int32" Name="client_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="cl_VerificaCupon_Result">
+    <Property Type="Boolean" Name="status" Nullable="true" />
+    <Property Type="String" Name="message" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="id_cupon" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="descuento" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="es_primer_servicio" Nullable="true" />
+    <Property Type="Int32" Name="cantidad" Nullable="true" />
+    <Property Type="Int32" Name="finalizados_cupon" Nullable="true" />
+    <Property Type="Int32" Name="finalizados_cliente_cupon" Nullable="true" />
+    <Property Type="Int32" Name="finalizados_cliente" Nullable="true" />
+    <Property Type="Double" Name="descuento_codigo" Nullable="true" />
+    <Property Type="Int32" Name="usuario_codigo" Nullable="true" />
+    <Property Type="Int32" Name="abono_codigo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Destino" Nullable="false" MaxLength="204" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA01_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Destino" Nullable="false" MaxLength="204" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA02_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA03_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA04_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA05_Result">
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA06_Result">
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Destino" Nullable="false" MaxLength="204" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_ESTADODECUENTA07_Result">
+    <Property Type="DateTime" Name="FECHA" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ENCUESTA" Nullable="true" />
+    <Property Type="String" Name="Encuesta_Obs" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_LCLIABONADOS_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TipoVehiculo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cliente" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="15" />
+    <Property Type="Boolean" Name="Activo" Nullable="false" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_LCLIHAB_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Estatus" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TipoVehiculo" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RP_SP_SRVXCOLONIA_Result">
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Origen" Nullable="false" MaxLength="204" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="101" />
+    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Encuesta" Nullable="true" />
+    <Property Type="String" Name="Estatus" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="TipoVehiculo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="FormaPago" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

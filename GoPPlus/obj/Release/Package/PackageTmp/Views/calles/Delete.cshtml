@@ -1,0 +1,77 @@
+﻿@model GoPS.Models.Calles
+
+@{
+    ViewBag.Title = "Eliminar Calle";
+}
+
+@Html.Hidden("Permiso", "Mapas")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Calles > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+@if (ViewBag.Eliminar)
+            {
+            <h3> ¿Estás seguro de eliminar este registro? </h3>
+}
+else
+{
+    <h3>
+        Este registro no se puede eliminar ya que tiene Conductores asociados.
+    </h3>
+}
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Latitud)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Latitud)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Longitud)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Longitud)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Colonia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Colonias.Nombre)
+                    </dd>
+
+                </dl>
+
+                @if (ViewBag.Eliminar)
+                {
+                    using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color div_actions">
+                            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                            @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                        </div>
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                }
+            </div>
+        </div>
+    </div>
+</div>

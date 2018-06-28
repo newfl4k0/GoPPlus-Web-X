@@ -1,0 +1,79 @@
+﻿@model GoPS.Models.Chat
+
+@{
+    ViewBag.Title = "Eliminar Chat";
+}
+
+@Html.Hidden("Permiso", "Monitoreo")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Chats > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro?
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Mensaje)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mensaje)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Es_Conductor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Es_Conductor)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Operador)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Operadores.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Conductor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Conductores.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Despachos.Observaciones)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Despachos.Observaciones)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,7 +42,11 @@ namespace GoPS.Controllers
             Permissions permisos = db.Permissions.Find(id);
             if (permisos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPermisos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(permisos);
         }
@@ -115,7 +119,11 @@ namespace GoPS.Controllers
             Permissions permisos = db.Permissions.Find(id);
             if (permisos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPermisos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             permisos.roles = string.Join(",", permisos.AspNetRoles.Select(a => a.Id).Select(a => a.ToString()).ToArray());
             permisos.rolesList = util.ObtenerCheckBoxRolesList(permisos.roles);
@@ -153,8 +161,13 @@ namespace GoPS.Controllers
             Permissions permisos = db.Permissions.Find(id);
             if (permisos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPermisos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(permisos);
         }
 

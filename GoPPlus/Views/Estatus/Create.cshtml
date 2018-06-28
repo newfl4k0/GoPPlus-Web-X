@@ -1,7 +1,7 @@
 ﻿@model GoPS.Models.Estatus
 
 @{
-    ViewBag.Title = "Crear Status de Servicio";
+    ViewBag.Title = "Crear Estatus de Servicio";
 }
 
 @Html.Hidden("Permiso", "Configuraciones")
@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="main">
-        @{Html.RenderPartial("Breadcrumb", "Status > Crear"); }
+        @{Html.RenderPartial("NavBar_CatEstatus", "Crear"); }
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-horizontal">

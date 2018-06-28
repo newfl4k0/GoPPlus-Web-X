@@ -1,0 +1,71 @@
+﻿@model GoPS.Models.Sanciones
+
+@{
+    ViewBag.Title = "Eliminar Sanción";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Sanciones > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro?
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Conductor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Conductores.NombreCompleto)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Inicio)
+                    </dt>
+
+                    <dd>
+                        @Model.Fecha_Inicio.ToString()
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Fin)
+                    </dt>
+
+                    <dd>
+                        @Model.Fecha_Fin.ToString()
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoSancion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposSanciones.Nombre)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

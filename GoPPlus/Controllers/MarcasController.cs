@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using GoPS.Classes;
+using GoPS.CustomFilters;
+using GoPS.Filters;
+using GoPS.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using GoPS.Models;
- 
-using Microsoft.AspNet.Identity;
-using GoPS.Classes;
-using GoPS.CustomFilters;
-using GoPS.Filters;
 
 namespace GoPS.Controllers
 {
@@ -19,13 +15,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class MarcasController : Controller
+    public class MarcasController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Marcas
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -50,7 +41,11 @@ namespace GoPS.Controllers
             Marcas marcas = db.Marcas.Find(id);
             if (marcas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMarcas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(marcas);
         }
@@ -95,7 +90,11 @@ namespace GoPS.Controllers
             Marcas marcas = db.Marcas.Find(id);
             if (marcas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMarcas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(marcas);
         }
@@ -132,8 +131,14 @@ namespace GoPS.Controllers
             Marcas marcas = db.Marcas.Find(id);
             if (marcas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMarcas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
+
             }
+            ViewBag.Mess = MensajeDelete;
             return View(marcas);
         }
 
@@ -147,14 +152,6 @@ namespace GoPS.Controllers
             TempData["Delete"] = true;
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

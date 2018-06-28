@@ -40,7 +40,11 @@ namespace GoPS.Controllers
             DiasFestivos diasFestivos = db.DiasFestivos.Find(id);
             if (diasFestivos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDiasFestivos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(diasFestivos);
         }
@@ -84,7 +88,11 @@ namespace GoPS.Controllers
             DiasFestivos diasFestivos = db.DiasFestivos.Find(id);
             if (diasFestivos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDiasFestivos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(diasFestivos);
         }
@@ -120,8 +128,13 @@ namespace GoPS.Controllers
             DiasFestivos diasFestivos = db.DiasFestivos.Find(id);
             if (diasFestivos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDiasFestivos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(diasFestivos);
         }
 

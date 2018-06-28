@@ -42,7 +42,11 @@ namespace GoPS.Controllers
             FrecuenciasPago frecuenciasPago = db.FrecuenciasPago.Find(id);
             if (frecuenciasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFrecuenciaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(frecuenciasPago);
         }
@@ -86,7 +90,11 @@ namespace GoPS.Controllers
             FrecuenciasPago frecuenciasPago = db.FrecuenciasPago.Find(id);
             if (frecuenciasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFrecuenciaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(frecuenciasPago);
         }
@@ -122,8 +130,13 @@ namespace GoPS.Controllers
             FrecuenciasPago frecuenciasPago = db.FrecuenciasPago.Find(id);
             if (frecuenciasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFrecuenciaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             ViewBag.Eliminar = db.Conductores.Where(c => c.Flotas.Afiliados.ID_FrecuenciaPago == frecuenciasPago.ID_FrecuenciaPago).Count() == 0;
             return View(frecuenciasPago);
         }

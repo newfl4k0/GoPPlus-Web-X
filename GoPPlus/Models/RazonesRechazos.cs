@@ -27,6 +27,7 @@ namespace GoPS.Models
         public System.DateTime Fecha_Creacion { get; set; }
         public Nullable<System.DateTime> Fecha_Actualizacion { get; set; }
         public string UserID { get; set; }
+        public bool Eliminado { get; set; }
     
         public virtual TiposRechazos TiposRechazos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

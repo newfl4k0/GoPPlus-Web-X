@@ -1,6 +1,9 @@
-﻿using GoPS.Models;
+﻿using GoPS.Classes;
+using GoPS.CustomFilters;
+using GoPS.Models;
+using System.Linq;
 using System.Web.Mvc;
-using GoPS.Classes;
+using System;
 
 namespace GoPS.Controllers
 {
@@ -8,11 +11,7 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [ValidateInput(false)]
     public partial class _GeneralController : Controller
-    {
-        //*******************************************************************
-        //*** Variables locales
-        //*******************************************************************
-
+    {        
         #region Variables
 
         protected GoPSEntities db = new GoPSEntities();
@@ -22,9 +21,46 @@ namespace GoPS.Controllers
 
         #endregion
 
-        //*******************************************************************
-        //*** Métodos
-        //*******************************************************************
+        #region Properties
+
+        
+        public string MensajeDelete
+        {
+            get
+            {
+                string mess = db.ObtenerConfiguracion("MensajeEliminacion").FirstOrDefault();
+                return mess.ToString();
+            }
+        }
+
+        public int AtrasoYellow
+        {
+            get
+            {
+                string mess = db.ObtenerConfiguracion("AtrasoYellow").FirstOrDefault();
+                return Convert.ToInt32(mess);
+            }
+        }
+
+        public int AtrasoWhite
+        {
+            get
+            {
+                string mess = db.ObtenerConfiguracion("AtrasoWhite").FirstOrDefault();
+                return Convert.ToInt32(mess);
+            }
+        }
+
+        public string MensajeNotFound
+        {
+            get
+            {
+                string mnf = db.ObtenerConfiguracion("MensajeNotFound").FirstOrDefault();
+                return mnf.ToString();
+            }
+        }
+
+        #endregion
 
         #region Métodos
 
@@ -38,5 +74,21 @@ namespace GoPS.Controllers
         }
 
         #endregion
+
+        #region Acciones
+
+        [HasPermission("Configuraciones_Edicion")]
+        public ActionResult ItemNotFound(int? id)
+        {
+
+           ViewBag.Mess = TempData["Mess"];
+           ViewBag.NavBar = TempData["NavBar"];
+           ViewBag.BackLink = TempData["BackLink"];
+
+            return View();
+        }
+
+        #endregion
+
     }
 }

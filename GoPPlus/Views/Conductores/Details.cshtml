@@ -7,7 +7,7 @@
 
 @Html.Hidden("Permiso", "Vehiculos")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Conductores > Detalles"); }
+    @{Html.RenderPartial("NavBar_CatConductores", "Detalles"); }
     <div class="row">
         <div class="col-lg-12">
             <div>
@@ -115,14 +115,6 @@
 
                     <dd>
                         @Html.DisplayFor(model => model.Habilitado)
-                    </dd>
-
-                    <dt>
-                        @Html.Label("Liquidó")
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Liquido)
                     </dd>
 
                     <dt>

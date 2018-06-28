@@ -25,6 +25,7 @@ namespace GoPS.Models
         public string Name { get; set; }
         public bool Afiliado { get; set; }
         public string Discriminator { get; set; }
+        public short newId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Permissions> Permissions { get; set; }

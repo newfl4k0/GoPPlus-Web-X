@@ -44,7 +44,7 @@ namespace GoPS.Models
         [DisplayName("Teléfono")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "El campo Serie es requerido")]
-        [StringLength(18, MinimumLength = 18, ErrorMessage = "El campo Serie debe tener una longitud máxima de 18 caracteres")]
+        [StringLength(18, MinimumLength = 18, ErrorMessage = "El campo Serie debe tener una longitud de 18 caracteres")]
         [DisplayName("Serie")]
         public string Serie { get; set; }
         [DisplayName("¿Habilitado?")]

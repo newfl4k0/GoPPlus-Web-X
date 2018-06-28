@@ -1,0 +1,111 @@
+﻿@model GoPS.Models.Afiliados
+
+@{
+    ViewBag.Title = "Eliminar Afiliado";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Afiliados > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+@if (ViewBag.Eliminar)
+            {
+            <h3> ¿Estás seguro de eliminar este registro? </h3>
+}
+else
+{
+    <h3>
+        Este registro no se puede eliminar ya que tiene Conductores asociados.
+    </h3>
+}
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    @if (ViewBag.MostrarEmpresas)
+                    {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Empresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Empresas.Nombre)
+                    </dd>
+                    }
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RFC)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RFC)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Codigo_Postal)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Codigo_Postal)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoServicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposServicios.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                </dl>
+
+                @if (ViewBag.Eliminar)
+                {
+                    using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color div_actions">
+                            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                            @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                        </div>
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                }
+            </div>
+        </div>
+    </div>
+</div>

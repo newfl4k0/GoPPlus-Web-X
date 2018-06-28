@@ -16,14 +16,18 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class HomeController : Controller
+    public class HomeController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-
-        public JsonResult GetGraphicData()
+        public List<DashboardGrafico_Result> GetGraphicData()
         {
-            var data = db.DashboardGrafico().ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
+            List<DashboardGrafico_Result> data = db.DashboardGrafico().ToList();
+            return data; 
+        }
+
+        public List<DashboardGrafico2_Result> GetGraphicData2()
+        {
+            List<DashboardGrafico2_Result> data = db.DashboardGrafico2().ToList();
+            return data;
         }
 
         [HasPermission("Dashboard")]
@@ -53,7 +57,43 @@ namespace GoPS.Controllers
             ViewBag.Unidades_Asignadas = asignados;
             var deslibres = (db.DashboardServiciosLibres().FirstOrDefault() ?? 0).ToString();            
             ViewBag.Servicios_Libres = deslibres;
+			List<DashboardGrafico_Result> res = GetGraphicData();
+            List<DashboardGrafico2_Result> res2 = GetGraphicData2();
+            StoreFormat4Graphic(res);
+            StoreFormat4Graphic2(res2);
             return View();
+ }
+
+		public void StoreFormat4Graphic(List<DashboardGrafico_Result> res)
+        {            
+            string ejey = "";
+            string meses = "";
+            for (int a = 0; a < res.Count(); a++)
+            {
+            
+                ejey = (a == 0 ? "" : ejey + ",") + res[a].Servicios;
+                meses = (a==0 ? "" : meses + ",") + res[a].Mes;
+            }
+            
+            ViewBag.data1 = ejey;
+            ViewBag.data0 = meses;
+
+        }
+
+        public void StoreFormat4Graphic2(List<DashboardGrafico2_Result> res)
+        {
+
+            string ejey = "";
+            string meses = "";
+            for (int a = 0; a < res.Count(); a++)
+            {
+
+                ejey = (a == 0 ? "" : ejey + ",") + res[a].Servicios;
+                meses = (a == 0 ? "" : meses + ",") + res[a].Mes;
+            }
+
+            ViewBag.data2 = ejey;
+
         }
 
         [HasPermission("Mapas_Visualizacion")]
@@ -124,7 +164,6 @@ namespace GoPS.Controllers
                 return null;
         }
 
-
         public JsonResult GetLocation(bool ocultar, int id_afiliado, string id_tiposveh, string vehiculo)
         {
             if (id_afiliado > 0)
@@ -190,6 +229,30 @@ namespace GoPS.Controllers
             Utilities util = new Utilities();
             UnidadesViewModel viewModel = new UnidadesViewModel();
             ViewBag.Message = "Página de Unidades y Servicios";
+            List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
+            ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
+            int ID_Afiliado = ID_Afiliados.Count == 1 ? ID_Afiliados.FirstOrDefault() : 0;
+            ViewBag.ID_Afiliado = new SelectList(db.Afiliados.ToList().Where(c => ID_Afiliados.Contains(c.ID_Afiliado)).OrderBy(o => o.NombreRFC), "ID_Afiliado", "Nombre", ID_Afiliado);
+            if (ID_Afiliado > 0)
+            {
+                Calles calle = db.Afiliados.Find(ID_Afiliado).Calles;
+                ViewBag.lat = calle.Latitud;
+                ViewBag.lon = calle.Longitud;
+                int ID_Ciudad = calle.Colonias.Ciudades.ID_Ciudad;
+                ViewBag.hist_colonia = new SelectList(db.Colonias.Where(c => c.ID_Ciudad == ID_Ciudad).OrderBy(o => o.Nombre), "ID_Colonia", "Nombre");
+            }
+            else
+                ViewBag.hist_colonia = new SelectList(Enumerable.Empty<SelectListItem>());
+            viewModel.tiposVehiculosList = util.ObtenerTiposVehiculosList();
+            return View(viewModel);
+        }
+
+        [HasPermission("Monitoreo_Visualizacion")]
+        public ActionResult TrazaRuta()
+        {
+            Utilities util = new Utilities();
+            UnidadesViewModel viewModel = new UnidadesViewModel();
+            ViewBag.Message = "Vista para trazado de rutas.";
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
             int ID_Afiliado = ID_Afiliados.Count == 1 ? ID_Afiliados.FirstOrDefault() : 0;

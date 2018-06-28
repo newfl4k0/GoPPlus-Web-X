@@ -35,16 +35,20 @@ namespace GoPS.Controllers
 
         // GET: AspNetRoles/Details/5
         [HasPermission("General_Visualizacion")]
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetRoles aspNetRole = db.AspNetRoles.Find(id);
+            AspNetRoles aspNetRole = db.AspNetRoles.Where(p => p.newId == id).FirstOrDefault();
             if (aspNetRole == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAspNetRoles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(aspNetRole);
         }
@@ -120,16 +124,21 @@ namespace GoPS.Controllers
 
         // GET: AspNetRoles/Edit/5
         [HasPermission("General_Edicion")]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetRoles aspNetRole = db.AspNetRoles.Find(id);
+
+            AspNetRoles aspNetRole = db.AspNetRoles.Where(p => p.newId == id).FirstOrDefault();
             if (aspNetRole == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAspNetRoles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             aspNetRole.permisos = string.Join(",", aspNetRole.Permissions.Select(a => a.Id).Select(a => a.ToString()).ToArray());
             aspNetRole.permisosList = util.ObtenerPermisosList(aspNetRole.permisos);
@@ -162,17 +171,22 @@ namespace GoPS.Controllers
 
         // GET: AspNetRoles/Delete/5
         [HasPermission("General_Edicion")]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetRoles aspNetRole = db.AspNetRoles.Find(id);
+            AspNetRoles aspNetRole = db.AspNetRoles.Where(p=>p.newId==id).FirstOrDefault();
             if (aspNetRole == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAspNetRoles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(aspNetRole);
         }
 
@@ -180,9 +194,11 @@ namespace GoPS.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [HasPermission("General_Edicion")]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            await serv.EliminarPerfil(id);
+            AspNetRoles asprole = db.AspNetRoles.Where(p => p.newId == id).FirstOrDefault();
+            db.AspNetRoles.Remove(asprole);
+            db.SaveChanges();
             TempData["Delete"] = true;
             return RedirectToAction("Index");
         }

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=52.176.55.203,1433;Initial Catalog=GoPSD;User ID=gopplus;Password=Gopplus2017++;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Desarrollos\\Repos\\GoPPlus\ Dev\ Web-X\\GoPPlus\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="GoPSEntities-Web.config Connection String" description="GoPSEntities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.GoPSModel.csdl|res://*/Models.GoPSModel.ssdl|res://*/Models.GoPSModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=52.176.55.203,1433;initial catalog=GoPSD;user id=gopplus;password=Gopplus2017++;MultipleActiveResultSets=True;connect timeout=30;encrypt=True;TrustServerCertificate=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Desarrollos\\Repos\\GoPPlus\ Dev\ Web-X\\GoPPlus\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GoPSEntities']/@connectionString" />
+  </parameter>
+  <parameter name="GoPSDConnectionString-Web.config Connection String" description="GoPSDConnectionString Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=52.176.55.203;Initial Catalog=GoPSD;Persist Security Info=True;User ID=gopplus;Password=Gopplus2017++;MultipleActiveResultSets=True;TrustServerCertificate=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Desarrollos\\Repos\\GoPPlus\ Dev\ Web-X\\GoPPlus\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GoPSDConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

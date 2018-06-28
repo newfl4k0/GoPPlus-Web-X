@@ -27,6 +27,7 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
+			var _list = db.Bancos.ToList();
             return View(db.Bancos.ToList());
         }
 
@@ -41,7 +42,11 @@ namespace GoPS.Controllers
             Bancos bancos = db.Bancos.Find(id);
             if (bancos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatBancos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(bancos);
         }
@@ -85,7 +90,11 @@ namespace GoPS.Controllers
             Bancos bancos = db.Bancos.Find(id);
             if (bancos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatBancos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(bancos);
         }
@@ -121,9 +130,14 @@ namespace GoPS.Controllers
             Bancos bancos = db.Bancos.Find(id);
             if (bancos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatBancos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.Eliminar = db.Conductores.Where(c => c.Flotas.ID_Banco == bancos.ID_Banco).Count() == 0;
+			ViewBag.Mess = MensajeDelete;
             return View(bancos);
         }
 

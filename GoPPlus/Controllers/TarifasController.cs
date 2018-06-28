@@ -17,13 +17,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class TarifasController : Controller
+    public class TarifasController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Tarifas
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -50,7 +45,11 @@ namespace GoPS.Controllers
             Tarifas tarifas = db.Tarifas.Find(id);
             if (tarifas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarifas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tarifas);
         }
@@ -113,7 +112,11 @@ namespace GoPS.Controllers
             Tarifas tarifas = db.Tarifas.Find(id);
             if (tarifas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarifas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -158,8 +161,13 @@ namespace GoPS.Controllers
             Tarifas tarifas = db.Tarifas.Find(id);
             if (tarifas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarifas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(tarifas);
         }
 
@@ -173,14 +181,6 @@ namespace GoPS.Controllers
             TempData["Delete"] = true;
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

@@ -20,5 +20,6 @@ namespace GoPS.Models
         public Nullable<long> sivaVALOR_INT { get; set; }
         public Nullable<double> sivaVALOR_DOUBLE { get; set; }
         public Nullable<int> sivaDOMINIO { get; set; }
+        public bool Eliminado { get; set; }
     }
 }

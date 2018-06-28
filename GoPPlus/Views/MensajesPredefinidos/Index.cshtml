@@ -5,7 +5,7 @@
 }
 @Html.Hidden("Permiso", "Configuraciones")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Catálogo de Mensajes Predefinidos"); }
+    @{Html.RenderPartial("NavBar_CatConfiguraciones", "Catálogo de Mensajes Predefinidos"); }
     <div class="row">
         <div class="col-lg-12">
             <br />
@@ -18,7 +18,7 @@
             }
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Texto" data-sort-order="asc">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Texto" data-sort-order="asc">
                         <thead>
                             <tr>
                                 <th data-field="Texto" data-sortable="true" data-sorter="customSorter">

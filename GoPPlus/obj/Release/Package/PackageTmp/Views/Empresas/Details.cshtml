@@ -1,0 +1,29 @@
+﻿@model GoPS.Models.Empresas
+
+@{
+    ViewBag.Title = "Ver Detalles de Empresa";
+}
+
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Empresas > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_Empresa })<span class="pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index")
+            </p>
+        </div>
+    </div>
+</div>

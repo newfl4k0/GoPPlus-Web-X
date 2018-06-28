@@ -27,7 +27,7 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var colonias = db.Colonias.Include(c => c.Ciudades);
+            var colonias = db.Colonias.Where(c=>c.ID_Colonia<2000).Include(c => c.Ciudades).Where(c=>c.ID_Ciudad ==1 );
             return View(colonias.ToList());
         }
 
@@ -43,7 +43,11 @@ namespace GoPS.Controllers
             Colonias colonias = db.Colonias.Find(id);
             if (colonias == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatColonias";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(colonias);
         }
@@ -149,7 +153,11 @@ namespace GoPS.Controllers
             Colonias colonias = db.Colonias.Find(id);
             if (colonias == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = "El elemento que deseas consultar/eliminar ya no se encuentra disponible en la base de datos";
+                TempData["NavBar"] = "NavBar_CatColonias";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ObtenerGeografiaSelectList(colonias);
             return View(colonias);
@@ -188,8 +196,13 @@ namespace GoPS.Controllers
             Colonias colonias = db.Colonias.Find(id);
             if (colonias == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = "El elemento que deseas consultar/eliminar ya no se encuentra disponible en la base de datos";
+                TempData["NavBar"] = "NavBar_CatColonias";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             ViewBag.Eliminar = db.Conductores.Where(c => c.Calles.ID_Colonia == colonias.ID_Colonia).Count() == 0
                                 && db.Conductores.Where(c => c.Flotas.Calles.ID_Colonia == colonias.ID_Colonia).Count() == 0
                                 && db.Conductores.Where(c => c.Flotas.Afiliados.Calles.ID_Colonia == colonias.ID_Colonia).Count() == 0;
@@ -254,15 +267,6 @@ namespace GoPS.Controllers
                 ViewBag.ID_Estado = new SelectList(db.Estados.OrderBy(o => o.Nombre), "ID_Estado", "Nombre", estado.ID_Estado);
                 ViewBag.ID_Ciudad = new SelectList(estado.Ciudades.OrderBy(o => o.Poblacion), "ID_Ciudad", "Poblacion", colonias.ID_Ciudad);
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        }        
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dc0d6dfbd1194b38b51095c800ae6466" Name="Diagram1" ZoomLevel="63">
+      <Diagram DiagramId="dc0d6dfbd1194b38b51095c800ae6466" Name="Diagram1" ZoomLevel="30">
         <EntityTypeShape EntityType="GoPSModel.Afiliados" Width="1.5" PointX="9.75" PointY="46.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GoPSModel.Bancos" Width="1.5" PointX="12.75" PointY="33.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GoPSModel.Calles" Width="1.5" PointX="7.5" PointY="47.25" IsExpanded="true" />
@@ -128,7 +128,6 @@
         <AssociationConnector Association="GoPSModel.FK_Ubicaciones_Estatus_Reserva" />
         <EntityTypeShape EntityType="GoPSModel.Conexiones" Width="1.5" PointX="28.125" PointY="68.5" />
         <EntityTypeShape EntityType="GoPSModel.Reservas" Width="1.5" PointX="26" PointY="59.25" />
-        <EntityTypeShape EntityType="GoPSModel.Configuraciones" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="GoPSModel.FK_Reservas_Calles_Destino" />
         <AssociationConnector Association="GoPSModel.FK_Reservas_Calles_Origen" />
         <AssociationConnector Association="GoPSModel.FK_Reservas_Clientes" />
@@ -193,6 +192,7 @@
         <EntityTypeShape EntityType="GoPSModel.Transacciones" Width="1.5" PointX="15.375" PointY="11.75" />
         <EntityTypeShape EntityType="GoPSModel.UbicacionesServicios" Width="1.5" PointX="30.125" PointY="51.125" />
         <AssociationConnector Association="GoPSModel.FK_UbicacionesServicios_Despachos" />
+        <EntityTypeShape EntityType="GoPSModel.Configuraciones" Width="1.5" PointX="15.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

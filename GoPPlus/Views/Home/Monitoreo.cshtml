@@ -5,7 +5,7 @@
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
     @{Html.RenderPartial("Breadcrumb", "Opciones de Monitoreo"); }    
-    <div class="row">
+	<div class="row">
         <div class="col-xs-12 col-md-6 col-lg-3">
             <div class="panel panel-blue panel-widget ">
                 <div class="row no-padding">
@@ -23,16 +23,75 @@
                 </div>
             </div>
         </div>
+        
+      
+        @if(User.Identity.Name.Contains("mov"))
+        {
         <div class="col-xs-12 col-md-6 col-lg-3">
             <div class="panel panel-blue panel-widget ">
                 <div class="row no-padding">
                     <div class="col-sm-3 col-lg-5">
-                        <a href="~/Despachos/Index">
+                        <a href="~/DespachosMov/Index">
                             <img src="~/images/Despachos.svg" class="imgMenu" />
                         </a>
-</div>
+                    </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <a href="~/Despachos/Index">
+                        <a href="~/DespachosMov/Index">
+                            <div class="large"></div>
+                            <div class="text-muted"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        else
+        {
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-blue panel-widget ">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5">
+                            <a href="~/Despachos/Index">
+                                <img src="~/images/Despachos.svg" class="imgMenu" />
+                            </a>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <a href="~/Despachos/Index">
+                                <div class="large"></div>
+                                <div class="text-muted"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-blue panel-widget ">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5">
+                            <a href="~/DespachosMov/Index">
+                                <img src="~/images/DespachosMov.svg" class="imgMenu" />
+                            </a>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <a href="~/DespachosMov/Index">
+                                <div class="large"></div>
+                                <div class="text-muted"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-blue panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5">
+						<a href="~/Home/TrazaRuta">
+                            <img src="~/images/TrazaRuta.svg" class="imgMenu" />
+                        </a>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <a href="~/Home/TrazaRuta">
                             <div class="large"></div>
                             <div class="text-muted"></div>
                         </a>
@@ -58,5 +117,5 @@
             </div>
         </div>        
     </div>
-    </div>
+</div>
      

@@ -1,0 +1,93 @@
+﻿@model GoPS.Models.Metadata.ParametrosCA
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Clientes Abonados";
+}
+
+<style>
+    .img-responsive {
+    margin: 0 auto;
+}
+</style>
+
+@Html.Hidden("Permiso", "Reportes")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Reportes > Clientes Abonados"); }    
+    <div class="row">   
+        <div class="col-lg-12">
+            <div class="form-horizontal">
+                <hr />
+                <div class="form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+                    @Html.LabelFor(model => model.ID_Afiliado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_Afiliado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fecha_Inicio, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Fecha_Inicio, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Fecha_Inicio, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.Fecha_Fin, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Fecha_Fin, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Fecha_Fin, "", new { @class = "text-danger" })
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Generar Reporte" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    @if (Model != null && Model.ID_Afiliado.HasValue && Model.ID_Afiliado > 0)
+                    {
+    <div class="row">
+        <div class="col-md-4">
+            <h2>PDF</h2>
+            <p>
+                <a class="btn btn-default" href="@Url.Action("GeneraClientesAbonados", "Reportes", new {reportType = "pdf", download = false, fecha_inicio = Model.Fecha_Inicio,
+                                                fecha_fin = Model.Fecha_Fin, id_afiliado = Model.ID_Afiliado })" target="_blank">Visualizar &raquo;</a>
+            </p>
+            <p>
+                <a class="btn btn-default" href="@Url.Action("GeneraClientesAbonados", "Reportes", new { reportType = "pdf", download = true, fecha_inicio = Model.Fecha_Inicio,
+                                                fecha_fin = Model.Fecha_Fin, id_afiliado = Model.ID_Afiliado })">Descargar &raquo;</a>
+
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Word</h2>
+            <p>
+                <a class="btn btn-default" href="@Url.Action("GeneraClientesAbonados", "Reportes", new { reportType = "word", download = true, fecha_inicio = Model.Fecha_Inicio,
+                                                fecha_fin = Model.Fecha_Fin, id_afiliado = Model.ID_Afiliado })">Descargar &raquo;</a>
+
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Excel</h2>
+            <p>
+                <a class="btn btn-default" href="@Url.Action("GeneraClientesAbonados", "Reportes", new { reportType = "excel", download = true, fecha_inicio = Model.Fecha_Inicio,
+                                                fecha_fin = Model.Fecha_Fin, id_afiliado = Model.ID_Afiliado })">Descargar &raquo;</a>
+
+            </p>
+        </div>
+    </div>
+            }
+        </div>
+        }
+
+        @section Scripts {
+            @*@Scripts.Render("~/bundles/jqueryval")*@
+            <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+        }

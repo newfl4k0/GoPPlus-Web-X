@@ -18,5 +18,6 @@ namespace GoPS.Models
         public string ContextKey { get; set; }
         public byte[] Model { get; set; }
         public string ProductVersion { get; set; }
+        public bool Eliminado { get; set; }
     }
 }

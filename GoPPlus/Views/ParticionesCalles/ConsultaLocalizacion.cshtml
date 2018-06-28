@@ -23,13 +23,14 @@
     </div>
 @Html.Hidden("Permiso", "Mapas")
 <div class="main">
+    @{Html.RenderPartial("NavBar_CatMapas", "Crear"); }
     <div class="row">
         <div class="col-lg-12">
             <br />
             <div class="panel panel-default">
                 <div class="panel-heading">Catálogo de Consultas</div>
                 <div class="panel-body">
-                    <table id="consultaLocalization" data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Calles" data-sort-order="asc">
+                    <table id="consultaLocalization" data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Calles" data-sort-order="asc">
                         <thead>
                             <tr>
                                 <th data-field="Calles" data-sortable="true" data-sorter="customSorter">

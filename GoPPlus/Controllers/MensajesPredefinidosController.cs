@@ -40,7 +40,11 @@ namespace GoPS.Controllers
             MensajesPredefinidos mensajesPredefinidos = db.MensajesPredefinidos.Find(id);
             if (mensajesPredefinidos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMensajes";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(mensajesPredefinidos);
         }
@@ -84,7 +88,11 @@ namespace GoPS.Controllers
             MensajesPredefinidos mensajesPredefinidos = db.MensajesPredefinidos.Find(id);
             if (mensajesPredefinidos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMensajes";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(mensajesPredefinidos);
         }
@@ -120,8 +128,13 @@ namespace GoPS.Controllers
             MensajesPredefinidos mensajesPredefinidos = db.MensajesPredefinidos.Find(id);
             if (mensajesPredefinidos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatMensajes";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(mensajesPredefinidos);
         }
 

@@ -1,0 +1,54 @@
+﻿@model GoPS.Models.Estatus_Reserva
+
+@{
+    ViewBag.Title = "Eliminar Estatus Reserva";
+}
+
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Estatus Reservas > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? 
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Descripcion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Orden)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Orden)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -40,6 +40,7 @@ namespace GoPS.Models
         public Nullable<System.DateTime> Fecha_Actualizacion { get; set; }
         public string UserID { get; set; }
         public string UserID_Operador { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
     
         public virtual Afiliados Afiliados { get; set; }
         public virtual Calles Calles { get; set; }

@@ -41,7 +41,7 @@ namespace GoPS.Models
         public Nullable<System.DateTime> LastLogoutDate { get; set; }
         public bool IsLoged_in { get; set; }
         public string Discriminator { get; set; }
-        public int newId { get; set; }
+        public Nullable<int> newId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }

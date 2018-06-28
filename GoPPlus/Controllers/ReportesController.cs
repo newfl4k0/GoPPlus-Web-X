@@ -9,11 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using GoPS.Classes;
 using GoPS.Filters;
-using System.Web.UI.WebControls;
 using System.Data;
-using GoPS.Reportes;
-using System.Data.SqlClient;
-using System.Runtime;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GoPS.Controllers
@@ -211,7 +207,7 @@ namespace GoPS.Controllers
                     break;
             }
 
-            Uri gopplus = new Uri(@"http://40.84.145.220/ReportServer");
+            Uri gopplus = new Uri(@"http://52.176.55.203/ReportServer");
             rpc.Add(Inicio);
             rpc.Add(Fin);
             rpc.Add(RFC);
@@ -281,7 +277,7 @@ namespace GoPS.Controllers
                     break;
             }
 
-            Uri gopplus = new Uri(@"http://40.84.145.220/ReportServer");
+            Uri gopplus = new Uri(@"http://52.176.55.203/ReportServer");
             rpc.Add(Inicio);
             rpc.Add(Fin);
             rpc.Add(ic);
@@ -350,7 +346,7 @@ namespace GoPS.Controllers
                     break;
             }
 
-            Uri gopplus = new Uri(@"http://40.84.145.220/ReportServer");
+            Uri gopplus = new Uri(@"http://52.176.55.203/ReportServer");
             rpc.Add(Inicio);
             rpc.Add(Fin);            
             rpc.Add(idafiliado);
@@ -418,7 +414,7 @@ namespace GoPS.Controllers
                     break;
             }
 
-            Uri gopplus = new Uri(@"http://40.84.145.220/ReportServer");
+            Uri gopplus = new Uri(@"http://52.176.55.203/ReportServer");
             rpc.Add(Inicio);
             rpc.Add(Fin);            
             rpc.Add(idafiliado);
@@ -485,7 +481,7 @@ namespace GoPS.Controllers
                     break;
             }
 
-            Uri gopplus = new Uri(@"http://40.84.145.220/ReportServer");
+            Uri gopplus = new Uri(@"http://52.176.55.203/ReportServer");
             rpc.Add(Inicio);
             rpc.Add(Fin);
             rpc.Add(idafiliado);

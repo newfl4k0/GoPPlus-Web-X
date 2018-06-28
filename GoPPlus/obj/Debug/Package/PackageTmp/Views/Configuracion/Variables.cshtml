@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
 
     <div class="main">
-        @{Html.RenderPartial("Breadcrumb", "Configuración"); }
+        @{Html.RenderPartial("NavBar_CatConfiguraciones", "Configuración"); }
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-horizontal">
@@ -33,6 +33,10 @@
                         <div class="col-md-4">
                             @if (variable.TipoDato.ToLower() == "texto" || variable.TipoDato.ToLower() == "email"
                                 || variable.TipoDato.ToLower() == "url" || variable.TipoDato.ToLower() == "teléfono")
+                            {
+                                @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control" })
+                            }
+                            @if (variable.TipoDato.ToLower() == "string")
                             {
                                 @Html.TextBox(variable.Atributo, variable.Valor, new { @class = "form-control" })
                             }

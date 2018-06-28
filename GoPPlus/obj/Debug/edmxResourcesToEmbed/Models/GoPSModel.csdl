@@ -210,6 +210,7 @@
     <Property Name="Latitud" Type="Decimal" Precision="18" Scale="15" Nullable="false" />
     <Property Name="ID_Geocerca" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Geocerca" Relationship="Self.FK_Coordenadas_Geocerca_Geocerca" FromRole="CoordenadasGeocerca" ToRole="Geocerca" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Cupones">
     <Key>
@@ -290,6 +291,7 @@
     <NavigationProperty Name="Clientes" Relationship="Self.FK_DireccionesAlternativas_Clientes" FromRole="DireccionesAlternativas" ToRole="Clientes" />
     <NavigationProperty Name="ClientesAbonados" Relationship="Self.FK_DireccionesAlternativas_ClientesAbonados" FromRole="DireccionesAlternativas" ToRole="ClientesAbonados" />
     <NavigationProperty Name="ClientesHabituales" Relationship="Self.FK_DireccionesAlternativas_ClientesHabituales" FromRole="DireccionesAlternativas" ToRole="ClientesHabituales" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Estados">
     <Key>
@@ -391,6 +393,7 @@
     <NavigationProperty Name="Afiliados" Relationship="Self.FK_Geocerca_Afiliados" FromRole="Geocerca" ToRole="Afiliados" />
     <NavigationProperty Name="Ciudades" Relationship="Self.FK_Geocerca_Ciudades" FromRole="Geocerca" ToRole="Ciudades" />
     <NavigationProperty Name="CoordenadasGeocerca" Relationship="Self.FK_Coordenadas_Geocerca_Geocerca" FromRole="Geocerca" ToRole="CoordenadasGeocerca" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Llamadas">
     <Key>
@@ -405,6 +408,7 @@
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Operadores" Relationship="GoPSModel.FK_Llamadas_Operadores" FromRole="Llamadas" ToRole="Operadores" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Marcas">
     <Key>
@@ -473,6 +477,7 @@
     <NavigationProperty Name="Afiliados" Relationship="Self.FK_PuntosInteres_Afiliados" FromRole="PuntosInteres" ToRole="Afiliados" />
     <NavigationProperty Name="Calles" Relationship="Self.FK_Puntos_Interes_Calles" FromRole="PuntosInteres" ToRole="Calles" />
     <NavigationProperty Name="TiposPuntosInteres" Relationship="Self.FK_PuntosInteres_TiposPuntosInteres" FromRole="PuntosInteres" ToRole="TiposPuntosInteres" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="RazonesLlamadas">
     <Key>
@@ -484,6 +489,7 @@
     <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="RazonesRechazos">
     <Key>
@@ -498,6 +504,7 @@
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TiposRechazos" Relationship="Self.FK_Razones_Rechazo_Tipos_Rechazo" FromRole="RazonesRechazos" ToRole="TiposRechazos" />
     <NavigationProperty Name="Reservas_Rechazadas" Relationship="GoPSModel.Reservas_Rechazadas_RazonesRechazos_ID_RazonRechazo_fk" FromRole="RazonesRechazos" ToRole="Reservas_Rechazadas" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Rutas">
     <Key>
@@ -624,6 +631,7 @@
     <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposPuntosInteres">
     <Key>
@@ -635,6 +643,7 @@
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PuntosInteres" Relationship="Self.FK_PuntosInteres_TiposPuntosInteres" FromRole="TiposPuntosInteres" ToRole="PuntosInteres" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposRechazos">
     <Key>
@@ -646,6 +655,7 @@
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="RazonesRechazos" Relationship="Self.FK_Razones_Rechazo_Tipos_Rechazo" FromRole="TiposRechazos" ToRole="RazonesRechazos" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposSanciones">
     <Key>
@@ -2188,7 +2198,6 @@
     <EntitySet Name="Seguimiento_Despacho" EntityType="GoPSModel.Seguimiento_Despacho" />
     <EntitySet Name="SistemaVariables" EntityType="GoPSModel.SistemaVariables" />
     <EntitySet Name="TiposTransaccion" EntityType="GoPSModel.TiposTransaccion" />
-    <EntitySet Name="Configuraciones" EntityType="GoPSModel.Configuraciones" />
     <EntitySet Name="Payworks" EntityType="GoPSModel.Payworks" />
     <EntitySet Name="Seguimiento_Despacho_Detalle" EntityType="GoPSModel.Seguimiento_Despacho_Detalle" />
     <EntitySet Name="vwClientes" EntityType="GoPSModel.vwClientes" />
@@ -2677,6 +2686,11 @@
     <FunctionImport Name="GetCiudadAfiliado" ReturnType="Collection(Int32)">
       <Parameter Name="idafiliado" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="ObtenerConfiguracion" ReturnType="Collection(String)">
+      <Parameter Name="Atributo" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Configuraciones" EntityType="GoPSModel.Configuraciones" />
+    <FunctionImport Name="DashboardGrafico2" ReturnType="Collection(GoPSModel.DashboardGrafico2_Result)" />
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="true" />
@@ -2703,6 +2717,7 @@
     <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Permissions" Relationship="GoPSModel.RolePermissions" FromRole="AspNetRoles" ToRole="Permissions" />
     <NavigationProperty Name="AspNetUserRoles" Relationship="GoPSModel.FK_AspNetUserRoles_AspNetRoles" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+    <Property Name="newId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="AspNetUserClaims">
     <Key>
@@ -2768,7 +2783,7 @@
     <NavigationProperty Name="AspNetUserLogins" Relationship="GoPSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="AspNetUserRoles" Relationship="GoPSModel.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
     <NavigationProperty Name="Positions" Relationship="GoPSModel.FK_AspNetUsers_Positions" FromRole="AspNetUsers" ToRole="Positions" />
-    <Property Name="newId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="newId" Type="Int32" annotation:StoreGeneratedPattern="None" Nullable="true" />
   </EntityType>
   <EntityType Name="database_firewall_rules1">
     <Key>
@@ -2785,6 +2800,7 @@
     <Property Name="end_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Estatus_Reserva">
     <Key>
@@ -2962,6 +2978,7 @@
     <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
     <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Empresas">
     <Key>
@@ -2975,6 +2992,7 @@
     <NavigationProperty Name="Afiliados" Relationship="GoPSModel.FK_Afiliados_Empresas" FromRole="Empresas" ToRole="Afiliados" />
     <NavigationProperty Name="Estatus" Relationship="GoPSModel.FK_Estatus_Empresas" FromRole="Empresas" ToRole="Estatus" />
     <NavigationProperty Name="TiposVehiculos" Relationship="GoPSModel.FK_TiposVehiculos_Empresas" FromRole="Empresas" ToRole="TiposVehiculos" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Afiliados_Empresas">
     <End Type="GoPSModel.Empresas" Role="Empresas" Multiplicity="1" />
@@ -3290,6 +3308,7 @@
     <Property Name="ID_TarjetaCredito" Type="Int32" />
     <Property Name="ID_Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="ID_Reserva_Anterior" Type="Int32" />
+    <Property Name="kmAR" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <Association Name="FK_Reservas_Calles_Destino">
     <End Type="GoPSModel.Calles" Role="Calles" Multiplicity="1" />
@@ -3842,6 +3861,7 @@
     <NavigationProperty Name="Reservas" Relationship="GoPSModel.FK_Reservas_Operadores" FromRole="Operadores" ToRole="Reservas" />
     <NavigationProperty Name="Sanciones" Relationship="GoPSModel.FK_Sanciones_OperadoresAlta" FromRole="Operadores" ToRole="Sanciones" />
     <NavigationProperty Name="Sanciones1" Relationship="GoPSModel.FK_Sanciones_OperadoresBaja" FromRole="Operadores" ToRole="Sanciones" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="true" />
   </EntityType>
   <Association Name="FK_Operadores_Afiliados">
     <End Type="GoPSModel.Afiliados" Role="Afiliados" Multiplicity="1" />
@@ -4025,6 +4045,13 @@
     <Property Type="Int32" Name="ID_Conductor" Nullable="false" />
     <Property Type="Int32" Name="Atraso" Nullable="true" />
     <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Observaciones" Nullable="false" />
+    <Property Type="DateTime" Name="Peticion" Nullable="true" />
+    <Property Type="String" Name="Destino" Nullable="false" />
+    <Property Type="String" Name="Mapa" Nullable="false" />
+    <Property Type="String" Name="Mapa2" Nullable="false" />
+    <Property Type="Int32" Name="vc" Nullable="false" />
+    <Property Type="Int32" Name="iddesp" Nullable="false" />
   </ComplexType>
   <ComplexType Name="ObtenerListadoSeguimientosFiltrado_Result">
     <Property Type="Decimal" Name="Latitud_Actual" Nullable="false" Precision="18" Scale="15" />
@@ -4157,7 +4184,6 @@
     <Property Type="Decimal" Name="longitude" Nullable="false" Precision="18" Scale="15" />
   </ComplexType>
   <ComplexType Name="DashboardGrafico_Result">
-    <Property Type="Int32" Name="MesNro" Nullable="true" />
     <Property Type="String" Name="Mes" Nullable="true" MaxLength="30" />
     <Property Type="Int32" Name="Servicios" Nullable="true" />
   </ComplexType>
@@ -4291,6 +4317,7 @@
     <Property Name="sivaVALOR_INT" Type="Int64" />
     <Property Name="sivaVALOR_DOUBLE" Type="Double" />
     <Property Name="sivaDOMINIO" Type="Int32" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposTransaccion">
     <Key>
@@ -4298,20 +4325,6 @@
     </Key>
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ID_TipoTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-  </EntityType>
-  <EntityType Name="Configuraciones">
-    <Key>
-      <PropertyRef Name="Atributo" />
-      <PropertyRef Name="Valor" />
-      <PropertyRef Name="EsConfiguracionChofer" />
-      <PropertyRef Name="TipoDato" />
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="Atributo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Valor" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="EsConfiguracionChofer" Type="Int32" Nullable="false" />
-    <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="Payworks">
     <Key>
@@ -4897,5 +4910,19 @@
     <Property Type="String" Name="Matricula" Nullable="false" MaxLength="7" />
     <Property Type="String" Name="TipoVehiculo" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="FormaPago" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Configuraciones">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Atributo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Valor" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="EsConfiguracionChofer" Type="Int32" Nullable="false" />
+    <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="DashboardGrafico2_Result">
+    <Property Type="String" Name="Mes" Nullable="true" />
+    <Property Type="Int32" Name="Servicios" Nullable="true" />
   </ComplexType>
 </Schema>

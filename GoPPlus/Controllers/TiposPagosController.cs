@@ -42,7 +42,11 @@ namespace GoPS.Controllers
             TiposPagos tiposPagos = db.TiposPagos.Find(id);
             if (tiposPagos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposPagos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposPagos);
         }
@@ -86,7 +90,11 @@ namespace GoPS.Controllers
             TiposPagos tiposPagos = db.TiposPagos.Find(id);
             if (tiposPagos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposPagos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposPagos);
         }
@@ -122,8 +130,13 @@ namespace GoPS.Controllers
             TiposPagos tiposPagos = db.TiposPagos.Find(id);
             if (tiposPagos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposPagos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             ViewBag.Eliminar = db.Conductores.Where(c => c.Flotas.Afiliados.ID_TipoPago == tiposPagos.ID_TipoPago).Count() == 0;
             return View(tiposPagos);
         }

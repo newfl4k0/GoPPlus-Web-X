@@ -1,0 +1,90 @@
+﻿@model GoPS.Models.Afiliados
+@using GoPS.Helpers;
+
+@{
+    ViewBag.Title = "Ver Detalles de Afiliado";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Afiliados > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    @if (ViewBag.MostrarEmpresas)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ID_Empresa)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empresas.Nombre)
+                        </dd>
+                    }
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RFC)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RFC)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Codigo_Postal)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Codigo_Postal)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoServicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposServicios.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "Afiliados", new { id = Model.ID_Afiliado }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

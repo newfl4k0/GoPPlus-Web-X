@@ -44,7 +44,11 @@ namespace GoPS.Controllers
             TiposVehiculos tiposVehiculos = db.TiposVehiculos.Find(id);
             if (tiposVehiculos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposVehiculos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Empresas = RouteData.Values["ID_Empresas"] as List<int>;
             bool isSAdmin = Boolean.Parse(RouteData.Values["SAdministrador"].ToString());
@@ -141,7 +145,11 @@ namespace GoPS.Controllers
             TiposVehiculos tiposVehiculos = db.TiposVehiculos.Find(id);
             if (tiposVehiculos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposVehiculos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             bool isSAdmin = Boolean.Parse(RouteData.Values["SAdministrador"].ToString());
             List<int> ID_Empresas = RouteData.Values["ID_Empresas"] as List<int>;
@@ -193,8 +201,13 @@ namespace GoPS.Controllers
             TiposVehiculos tiposVehiculos = db.TiposVehiculos.Find(id);
             if (tiposVehiculos == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposVehiculos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             List<int> ID_Empresas = RouteData.Values["ID_Empresas"] as List<int>;
             bool isSAdmin = Boolean.Parse(RouteData.Values["SAdministrador"].ToString());
             ViewBag.MostrarEmpresas = ID_Empresas.Count() > 1 && isSAdmin;

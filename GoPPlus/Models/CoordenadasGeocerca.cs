@@ -18,6 +18,7 @@ namespace GoPS.Models
         public decimal Longitud { get; set; }
         public decimal Latitud { get; set; }
         public int ID_Geocerca { get; set; }
+        public bool Eliminado { get; set; }
     
         public virtual Geocerca Geocerca { get; set; }
     }

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
- 
 using Microsoft.AspNet.Identity;
 using GoPS.Classes;
 using GoPS.CustomFilters;
@@ -19,13 +15,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class SegurosController : Controller
+    public class SegurosController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Seguros
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -50,7 +41,11 @@ namespace GoPS.Controllers
             Seguros seguros = db.Seguros.Find(id);
             if (seguros == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSeguros";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(seguros);
         }
@@ -95,7 +90,11 @@ namespace GoPS.Controllers
             Seguros seguros = db.Seguros.Find(id);
             if (seguros == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSeguros";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(seguros);
         }
@@ -132,8 +131,13 @@ namespace GoPS.Controllers
             Seguros seguros = db.Seguros.Find(id);
             if (seguros == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSeguros";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(seguros);
         }
 
@@ -147,14 +151,6 @@ namespace GoPS.Controllers
             TempData["Delete"] = true;
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

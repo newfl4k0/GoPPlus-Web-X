@@ -1,0 +1,84 @@
+﻿@model IEnumerable<GoPS.Models.Cupones>
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Cupones";
+}
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatConfiguraciones", "Catálogo de Cupones"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Codigo" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Clave Automática")
+                                </th>
+                                <th data-field="Descripcion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Descripción")
+                                </th>
+                                <th data-field="Fecha_Inicio" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Inicio")
+                                </th>
+                                <th data-field="Fecha_Fin" data-sortable="true" data-sorter="dateSorter">
+                                    @Html.Label("Fecha de Finalización")
+                                </th>
+                                <th data-field="Cantidad" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Cantidad")
+                                </th>
+                                <th data-field="Descuento" data-sortable="true" data-sorter="numberSorter">
+                                    @Html.Label("Descuento")
+                                </th>
+                                <th data-field="Primer_Servicio" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Primer Servicio")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Codigo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Inicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha_Fin)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cantidad)
+                                </td>
+                                <td style="text-align:right;">
+                                    @Html.DisplayFor(modelItem => item.Descuento)
+                                </td>
+                                <td style="text-align:center;">
+                                    @Html.DisplayFor(modelItem => item.Primer_Servicio)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.EncodedActionLink("Editar", "Edit", "Cupones", new { id = item.ID_Cupon }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.EncodedActionLink("Detalles", "Details", "Cupones", new { id = item.ID_Cupon }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Cupones", new { id = item.ID_Cupon }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

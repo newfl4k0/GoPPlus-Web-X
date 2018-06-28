@@ -77,5 +77,6 @@ namespace GoPS.Models
         [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "No especificado")]
         [DisplayName("Puesto de Trabajo")]
         public Nullable<int> PositionID { get; set; }
+        public Nullable<int> newId { get; set; }
     }
 }

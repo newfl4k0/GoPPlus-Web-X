@@ -27,6 +27,7 @@ namespace GoPS.Classes
         Regex regexLatitud = new Regex(@"\-?(90|[0-8]?[0-9]\.[0-9]{0,7})");
         Regex regexLongitud = new Regex(@"\-?(180|(1[0-7][0-9]|[0-9]{0,2})\.[0-9]{0,7})");
         Regex regexnoNumNeg = new Regex(@"^[+]?\d+([.]\d+)?$");
+
         Regex regexPhone = new Regex(@"^(\+?\d{1,3}[ ]?)?([0-9]{3})?[ ]?([0-9]{3})[ ]?([0-9]{4})$");
        
 
@@ -38,12 +39,16 @@ namespace GoPS.Classes
 
         #region AspNetUsers
 
-        public void ValidarUser(ModelStateDictionary ModelState, RegisterViewModel model, bool isRolPic)
+        public void ValidarUser(ModelStateDictionary ModelState, RegisterViewModel model, bool isRolPic, bool isedit = false)
         {
             bool error;
             if (!String.IsNullOrEmpty(model.UserName))
             {
                 error = db.AspNetUsers.Where(c => c.Id != model.Id && c.UserName == model.UserName).Count() > 0;
+				if (isedit)
+                {
+                    error = false;
+                }
                 if (error)
                     ModelState.AddModelError("UserName", "El nombre de usuario ya se encuentra registrado.");
                 if (!regexPalabraNumerosUserName.IsMatch(model.UserName))
@@ -56,6 +61,10 @@ namespace GoPS.Classes
             if (!String.IsNullOrEmpty(model.Email))
             {
                 error = db.AspNetUsers.Where(c => c.Id != model.Id && c.Email == model.Email).Count() > 0;
+				if (isedit)
+               {
+                   error = false;
+               }
                 if (error)
                     ModelState.AddModelError("Email", "El email del usuario ya se encuentra registrado.");
                 if (!regexEmail.IsMatch(model.Email))
@@ -1264,10 +1273,19 @@ namespace GoPS.Classes
             bool error;            
             if (sanciones.Fecha_Inicio != null)
             {
-                error = (sanciones.Fecha_Inicio <= new Utilities().ConvertToMexicanDate(DateTime.Now)
+                error = (sanciones.Fecha_Inicio.Date < new Utilities().ConvertToMexicanDate(DateTime.Now).Date
                             && sanciones.ID_Sancion == 0);
                 if (error)
                     ModelState.AddModelError("Fecha_Inicio", "La fecha de inicio no puede ser menor a la fecha actual.");
+                else
+                {
+                    error = (sanciones.Fecha_Inicio.Hour <= new Utilities().ConvertToMexicanDate(DateTime.Now).Hour
+                            && sanciones.Fecha_Inicio.Minute <= new Utilities().ConvertToMexicanDate(DateTime.Now).Minute
+                            && sanciones.ID_Sancion == 0);
+                    if (error)
+                        ModelState.AddModelError("Fecha_Inicio", "La hora de inicio debe ser mayor a la hora actual.");
+
+                }
             }
             if (sanciones.Fecha_Inicio != null && sanciones.Fecha_Fin != null)
             {

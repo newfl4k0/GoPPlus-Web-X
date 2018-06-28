@@ -1,0 +1,306 @@
+﻿@model GoPS.Models.ClientesAbonados
+
+@{
+    ViewBag.Title = "Editar Cliente Abonado";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <script>
+    $(document).ready(function () {
+        $('.validar_cambio').change(function () {
+
+            cambio = (($('#ID_Afiliado').val() != $('#hdnID_Afiliado').val())
+                || ($('#Nombre').val() != $('#hdnNombre').val())
+                || ($('#Telefono').val() != $('#hdnTelefono').val())
+                || ($('#Telefono_EsCelular').val() != $('#hdnTelefono_EsCelular').val())
+                || ($('#Limite_Credito').val() != $('#hdnLimite_Credito').val())
+                || ($('#Email').val() != $('#hdnEmail').val())
+                || ($('#Clave_Automatica').val() != $('#hdnClave_Automatica').val())
+                || ($('#Observaciones').val() != $('#hdnObservaciones').val())
+                || ($('#Servicios_Automaticos').val() != $('#hdnServicios_Automaticos').val())
+                || ($('#ID_Estado').val() != $('#hdnID_Estado').val())
+                || ($('#ID_Ciudad').val() != $('#hdnID_Ciudad').val())
+                || ($('#ID_Colonia').val() != $('#hdnID_Colonia').val())
+                || ($('#ID_Calle').val() != $('#hdnID_Calle').val())
+                || ($('nNumero_Interior').val() != $('#hdnNumero_Interior').val())
+                || ($('#CP').val() != $('#hdnCP').val())
+                || ($('#RFC').val() != $('#hdnRFC').val())
+                || ($('#Dia_Pago').val() != $('#hdnDia_Pago').val())
+                || ($('#ID_Banco').val() != $('#hdnID_Banco').val())
+                || ($('#Clabe').val() != $('#hdnClabe').val())
+                || ($('#ID_TipoAviso').val() != $('#hdnID_TipoAviso').val())
+                || ($('#ID_FormaPago').val() != $('#hdnID_FormaPago').val()));
+        });
+    });
+    </script>
+    <div class="main">
+        @{Html.RenderPartial("NavBar_CatClienteAbonado", "Editar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudo editar el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID_ClienteAbonado)
+                    @Html.HiddenFor(model => model.Fecha_Creacion)
+
+                    @Html.HiddenFor(model => model.ID_Afiliado, htmlAttributes: new { @id = "hdnID_Afiliado" })
+                    @Html.HiddenFor(model => model.Nombre, htmlAttributes: new { @id = "hdnNombre" })
+                    @Html.HiddenFor(model => model.Telefono, htmlAttributes: new { @id = "hdnTelefono" })
+                    @Html.HiddenFor(model => model.Telefono_EsCelular, htmlAttributes: new { @id = "hdnTelefono_EsCelular" })
+                    @Html.HiddenFor(model => model.Limite_Credito, htmlAttributes: new { @id = "hdnLimite_Credito" })
+                    @Html.HiddenFor(model => model.Email, htmlAttributes: new { @id = "hdnEmail" })
+                    @Html.HiddenFor(model => model.Clave_Automatica, htmlAttributes: new { @id = "hdnClave_Automatica" })
+                    @Html.HiddenFor(model => model.Observaciones, htmlAttributes: new { @id = "hdnObservaciones" })
+                    @Html.HiddenFor(model => model.Servicios_Automaticos, htmlAttributes: new { @id = "hdnServicios_Automaticos" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @id = "hdnID_Estado" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @id = "hdnID_Ciudad" })
+                    @Html.HiddenFor(model => model.Calles.Colonias.ID_Colonia, htmlAttributes: new { @id = "hdnID_Colonia" })
+                    @Html.HiddenFor(model => model.ID_Calle, htmlAttributes: new { @id = "hdnID_Calle" })
+                    @Html.HiddenFor(model => model.Numero_Interior, htmlAttributes: new { @id = "hdnNumero_Interior" })
+                    @Html.HiddenFor(model => model.CP, htmlAttributes: new { @id = "hdnCP" })
+                    @Html.HiddenFor(model => model.RFC, htmlAttributes: new { @id = "hdnRFC" })
+                    @Html.HiddenFor(model => model.Dia_Pago, htmlAttributes: new { @id = "hdnDia_Pago" })
+                    @Html.HiddenFor(model => model.ID_Banco, htmlAttributes: new { @id = "hdnID_Banco" })
+                    @Html.HiddenFor(model => model.Clabe, htmlAttributes: new { @id = "hdnClabe" })
+                    @Html.HiddenFor(model => model.ID_TipoAviso, htmlAttributes: new { @id = "hdnID_TipoAviso" })
+                    @Html.HiddenFor(model => model.ID_FormaPago, htmlAttributes: new { @id = "hdnID_FormaPago" })
+
+
+                    <div class="form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+                        @Html.LabelFor(model => model.ID_Afiliado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Afiliado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefono_EsCelular, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Telefono_EsCelular, new { htmlAttributes = new { @class = "validar_cambio" } })
+                                @Html.ValidationMessageFor(model => model.Telefono_EsCelular, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Limite_Credito, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Limite_Credito, new { htmlAttributes = new { @type = "number", @step = "0.01", @max = "100.00", @value = "0.00", @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Limite_Credito, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">    
+                        @Html.LabelFor(model => model.Clave_Automatica, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Clave_Automatica, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Clave_Automatica, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control noresize validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                       <text  </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Habilitado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Habilitado)
+                                @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Reportes, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Reportes)
+                                @Html.ValidationMessageFor(model => model.Reportes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Servicios_Automaticos, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Servicios_Automaticos, new { htmlAttributes = new { @class = "validar_cambio" } })
+                                @Html.ValidationMessageFor(model => model.Servicios_Automaticos, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Fecha_Alta, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Fecha_Alta, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_Alta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Fecha_Baja, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Fecha_Baja, new { htmlAttributes = new { @class = "form-control datepicker", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_Baja, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.ID_Colonia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Colonia", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Calle, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Calle", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Exterior, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Exterior, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Exterior, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Interior, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Numero_Interior, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Interior, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CP, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CP, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.CP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dia_Pago, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("Dia_Pago", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.Dia_Pago, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Banco, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Banco", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_Banco, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Clabe, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Clabe, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.ValidationMessageFor(model => model.Clabe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_TipoAviso, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_TipoAviso", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_TipoAviso, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_FormaPago, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_FormaPago", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.ValidationMessageFor(model => model.ID_FormaPago, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="~/ClientesAbonados/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+}

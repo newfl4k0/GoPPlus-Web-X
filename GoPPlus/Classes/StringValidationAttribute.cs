@@ -16,20 +16,20 @@ namespace GoPS.Classes
             _uppercase = uppercase;
         }
 
-    public void OnMetadataCreated(ModelMetadata metadata)
+        public void OnMetadataCreated(ModelMetadata metadata)
         {
             metadata.AdditionalValues["Uppercase"] = _uppercase;
         }
     }
-}   
+}
 
-public class StringBinder : IModelBinder
+/*public class StringBinder : IModelBinder
 {
     public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
     {
-        string valorResult;
+       string valorResult="";
 
-        ValueProviderResult result = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+       ValueProviderResult result = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
 
         if (result == null)
             return null;
@@ -59,4 +59,4 @@ public class StringBinder : IModelBinder
     {
         return obj?.ToString() ?? string.Empty;
     }
-}
+}*/

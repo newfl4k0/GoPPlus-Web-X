@@ -40,7 +40,11 @@ namespace GoPS.Controllers
             Colores colores = db.Colores.Find(id);
             if (colores == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatColores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(colores);
         }
@@ -84,7 +88,11 @@ namespace GoPS.Controllers
             Colores colores = db.Colores.Find(id);
             if (colores == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatColores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(colores);
         }
@@ -120,8 +128,13 @@ namespace GoPS.Controllers
             Colores colores = db.Colores.Find(id);
             if (colores == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatColores";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(colores);
         }
 

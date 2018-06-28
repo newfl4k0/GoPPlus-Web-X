@@ -1,0 +1,63 @@
+﻿@model GoPS.Models.AspNetRoles
+@{
+    ViewBag.Title = "Crear Perfil";
+}
+
+@Html.Hidden("Permiso", "General")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Perfiles > Crear"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @if (ViewBag.Success != null)
+                    {
+                        <p class="text-success">Registrado Exitosamente.</p>
+                    }
+                    @Html.ValidationSummary(true, "No se pudo crear el registro, revise los campos en rojo.", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Afiliado, htmlAttributes: new { @class = "control-label col-md-2 " })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Afiliado)
+                                @Html.ValidationMessageFor(model => model.Afiliado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.permisos, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-10">
+                            @Html.HiddenFor(model => model.permisos)
+                            @Html.EditorFor(model => model.permisosList, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.permisos, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crear" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                </div>
+            </div>
+        </div>
+    </div>}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarPermisosList.js"></script>
+}

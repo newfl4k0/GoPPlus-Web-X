@@ -30,7 +30,6 @@ namespace GoPS
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ModelBinders.Binders.Add(typeof(string), new StringBinder());
         }
 
         protected void Session_Start(object sender, EventArgs e)

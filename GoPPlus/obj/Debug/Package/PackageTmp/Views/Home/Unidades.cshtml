@@ -179,12 +179,11 @@
 
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Operaciones > Monitoreo"); }
+    @{Html.RenderPartial("NavBar_CatOperaciones", "Seguimientos"); }
 
     <div class="row checkBoxes">
         <label><input type="checkbox" id="autoupdate" checked="checked" value="Actualizar">Actualizar Mapa</label>
-        <label><input type="checkbox" id="Ocultar" checked="checked" value="Ocultar">Ocultar Asignados</label>
-        <!--<label><input type="checkbox" id="Mostrar_Ruta" disabled value="Mostrar_Ruta">Mostrar Ruta</label>-->
+        <label><input type="checkbox" id="Ocultar" checked="checked" value="Ocultar">Ocultar Asignados</label>        
     </div>
     <hr />
     <div class="row">
@@ -208,8 +207,7 @@
                 <div><img src="~/images/Libre.png" />Libre</div>
                 <div><img src="~/images/Asignado.png" />Asignado</div>
                 <div><img src="~/images/Ausente.png" />Ausente</div>
-                <div><img src="~/images/Ocupado.png" />Ocupado</div>*@
-            </div>
+                <div><img src="~/images/Ocupado.png" />Ocupado</div>*@            </div>
             <div class="row">
                 <div class="col-lg-8" id="map"></div>
                 <div class="col-lg-4" id="div-table-filter">
@@ -480,21 +478,8 @@
                     if (data != null) {
                         $.each(data, function (index, value) {
                             var latLng = { lat: value.Latitud, lng: value.Longitud };
-                            var icon = value.Icon;
-                            //if (value.Estatus.toLowerCase() == "libre")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Libre.png';
-                            //else if (value.Estatus.toLowerCase() == "asignado")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Asignado.png';
-                            //else if (value.Estatus.toLowerCase() == "ausente")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Ausente.png';
-                            //else if (value.Estatus.toLowerCase() == "ocupado")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Ocupado.png';
-
-                            //var content = '<b>Conductor:</b>: ' + value.Conductor + '.<br />' +
-                            //                '<b>Vehículo:</b> ' + value.Marca + ' ' + value.Modelo + ' ' + value.Color + '.<br />' +
-                            //                '<b>Matrícula:</b> ' + value.Matricula + '.';
+                            var icon = value.Icon;                           
                             var content = '<b>Hora:</b>: ' + value.Hora + '.';
-
                             makeMarker(latLng, icon, map, content);
                         });
                     }
@@ -797,10 +782,10 @@
         $("#Check_TiposVehiculos").on("change", function () {
             var check = $(this).is(":checked");
             if (check) {
-                $('#seguimientoDiv input:checkbox').attr('checked', 'checked');
+                $('#seguimientoDiv input:checkbox').prop('checked', true);
             }
             else {
-                $('#seguimientoDiv input:checkbox').removeAttr('checked');
+                $('#seguimientoDiv input:checkbox').prop('checked', false);
             }
         });
 

@@ -106,6 +106,7 @@
     <Property Name="LastLogoutDate" Type="datetime" />
     <Property Name="IsLoged_in" Type="bit" Nullable="false" />
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+    <Property Name="newId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Bancos">
     <Key>
@@ -252,7 +253,7 @@
       <PropertyRef Name="ID_Color" />
     </Key>
     <Property Name="ID_Color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -304,7 +305,7 @@
     <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'GoPS2.dbo.Configuraciones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Configuraciones">
     <Key>
       <PropertyRef Name="Atributo" />
@@ -647,7 +648,7 @@ warning 6002: The table/view 'GoPS2.dbo.Configuraciones' does not have a primary
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'GoPS2.dbo.Payworks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Payworks">
     <Key>
       <PropertyRef Name="Fecha" />
@@ -747,6 +748,7 @@ warning 6002: The table/view 'GoPS2.dbo.Payworks' does not have a primary key de
     <Property Name="ID_Cupon" Type="int" />
     <Property Name="ID_TarjetaCredito" Type="int" />
     <Property Name="ID_Codigo" Type="nvarchar" MaxLength="20" />
+    <Property Name="ID_Reserva_Anterior" Type="int" />
   </EntityType>
   <EntityType Name="Reservas_Rechazadas">
     <Key>
@@ -809,9 +811,11 @@ warning 6002: The table/view 'GoPS2.dbo.Payworks' does not have a primary key de
     <Property Name="ID_Despacho" Type="int" Nullable="false" />
     <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
     <Property Name="ID_Seguimiento_Despacho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Inicio" Type="nvarchar" MaxLength="200" />
+    <Property Name="Fin" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'GoPS2.dbo.Seguimiento_Despacho_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GoPSD.dbo.Seguimiento_Despacho_Detalle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Seguimiento_Despacho_Detalle">
     <Key>
       <PropertyRef Name="ID_Seguimiento_Despacho" />
@@ -1010,6 +1014,23 @@ warning 6002: The table/view 'GoPS2.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
+  <EntityType Name="Transacciones">
+    <Key>
+      <PropertyRef Name="Id_Transaccion" />
+    </Key>
+    <Property Name="Id_Transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cliente" Type="int" Nullable="false" />
+    <Property Name="Id_Reserva" Type="int" />
+    <Property Name="Id_TipoTransaccion" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Referencia" Type="nvarchar(max)" />
+    <Property Name="Numero_Control" Type="nvarchar(max)" />
+    <Property Name="Codigo_Autorizacion" Type="nvarchar(max)" />
+    <Property Name="Monto" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Respuesta" Type="text" />
+    <Property Name="Accion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Turnos">
     <Key>
       <PropertyRef Name="ID_Turno" />
@@ -1035,6 +1056,16 @@ warning 6002: The table/view 'GoPS2.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
     <Property Name="Estatus" Type="int" Nullable="false" />
     <Property Name="ID_Conexion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UbicacionesServicios">
+    <Key>
+      <PropertyRef Name="ID_UbicacionServicio" />
+    </Key>
+    <Property Name="ID_UbicacionServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
+    <Property Name="ID_Despacho" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario_App">
     <Key>
@@ -1121,7 +1152,7 @@ warning 6002: The table/view 'GoPS2.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="ID_Estatus" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vwClientes">
     <Key>
       <PropertyRef Name="Nombre" />
@@ -2245,6 +2276,18 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UbicacionesServicios_Despachos">
+    <End Role="Despachos" Type="Self.Despachos" Multiplicity="1" />
+    <End Role="UbicacionesServicios" Type="Self.UbicacionesServicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Despachos">
+        <PropertyRef Name="ID_Despacho" />
+      </Principal>
+      <Dependent Role="UbicacionesServicios">
+        <PropertyRef Name="ID_Despacho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Usuarios_Abonados_Clientes_Abonados">
     <End Role="ClientesAbonados" Type="Self.ClientesAbonados" Multiplicity="1" />
     <End Role="UsuariosAbonados" Type="Self.UsuariosAbonados" Multiplicity="*" />
@@ -2433,6 +2476,279 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <Parameter Name="codigo_cupon" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="BuscarReservasLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ActualizaEstatusLibre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarNombreConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarServicioFechaConfirmacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarServicioFechaDomicilio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarServicioFechaFinalizado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+    <Parameter Name="monto" Type="decimal" Mode="In" />
+    <Parameter Name="observaciones" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="credit" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarServicioFechaOcupado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizarTokenPush" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_ActualizaSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+    <Parameter Name="afiliado_id" Type="int" Mode="In" />
+    <Parameter Name="estatus_id" Type="int" Mode="In" />
+    <Parameter Name="lat" Type="decimal" Mode="In" />
+    <Parameter Name="lng" Type="decimal" Mode="In" />
+    <Parameter Name="lat_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lng_origen" Type="decimal" Mode="In" />
+    <Parameter Name="lat_destino" Type="decimal" Mode="In" />
+    <Parameter Name="lng_destino" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="ch_AplicarDescuento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_CancelarReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+    <Parameter Name="razon_id" Type="int" Mode="In" />
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+    <Parameter Name="es_admin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_CerrarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conexion_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ComentarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="obs" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_EscribirChatConBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+    <Parameter Name="mensaje" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_EscribirChatConCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="mensaje" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_ForzarCerrarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_GenerarSeguimientoDespacho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="origen" Type="nvarchar" Mode="In" />
+    <Parameter Name="destino" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_GenerarSeguimientoDespachoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="latlng" Type="nvarchar" Mode="In" />
+    <Parameter Name="step" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_GuardaUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conexion_id" Type="int" Mode="In" />
+    <Parameter Name="estatus" Type="int" Mode="In" />
+    <Parameter Name="latitud" Type="decimal" Mode="In" />
+    <Parameter Name="longitud" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="ch_IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="nvarchar" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerAsignacionesSinConfirmar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerChatConBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerChatConCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerConductoresSinActualizarSeguimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerConexionesAbiertasSinActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerConfiguraciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerDatosConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerEstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerFechaFinReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerHistorialRutaReal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerIdUsuarioDeLaReserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerInformacionVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerRazonesCancelacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerServicioActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerServiciosPorVehiculoConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerTarifaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerTokenPushConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerTokenPushVehiculoConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerUbicacionesVehiculosLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerUbicacionReservasLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ch_ObtenerUbicacionReservasLibresPorGeocerca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="latitud" Type="decimal" Mode="In" />
+    <Parameter Name="longitud" Type="decimal" Mode="In" />
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ObtenerUbicacionReservasLibresPorTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_RechazarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_reserva" Type="int" Mode="In" />
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+    <Parameter Name="es_admin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ValidarConexionSigueAbierta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ch_ValidaTurnoConexionAbierta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_vc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ActivarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_ActualizaContrasenaToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_ActualizaPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_ActualizaToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="device_id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_BuscarDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="street" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_BuscaReservasLibresParaDespachar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="cl_CalificarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="encuesta" Type="int" Mode="In" />
+    <Parameter Name="obs" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_CambiaContrasena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="clave" Type="nvarchar" Mode="In" />
+    <Parameter Name="newclave" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_CancelarServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="reserva_id" Type="int" Mode="In" />
+    <Parameter Name="razon_id" Type="int" Mode="In" />
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ContadorClientesPorCorreoPorTelefono" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_CrearDespacho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_vehiculo_conductor" Type="int" Mode="In" />
+    <Parameter Name="monto" Type="decimal" Mode="In" />
+    <Parameter Name="observaciones" Type="nvarchar" Mode="In" />
+    <Parameter Name="id_reserva" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_EscribeChatActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+    <Parameter Name="mensaje" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_GuardaAppId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="appid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="clave" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_LeeChatActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+    <Parameter Name="despacho_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerConfiguraciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="cl_ObtenerHistorialDeServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerInformacionChofer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vc_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerRazonesDeCancelacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="cl_ObtenerRutaServicioFinalizado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_seguimiento" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerServicioActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerServicioFinalizado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerTiposVehiculos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="cl_ObtenerTokenIDParaEnviarPushNotification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ObtenerVehiculosCercanosLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lat_cliente" Type="decimal" Mode="In" />
+    <Parameter Name="lng_cliente" Type="decimal" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_ReconfiguraContrasena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_ReenviarToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="cl_Registro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+    <Parameter Name="clave" Type="nvarchar" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+    <Parameter Name="fbid" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha" Type="nvarchar" Mode="In" />
+    <Parameter Name="activo" Type="int" Mode="In" />
+    <Parameter Name="codigo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_ValidaAppID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="appid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="cl_VerificaCupon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Cliente" Type="int" Mode="In" />
+  </Function>
   <Function Name="ClientCancel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="reserva_id" Type="int" Mode="In" />
     <Parameter Name="razon_id" Type="int" Mode="In" />
@@ -2501,11 +2817,16 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
   <Function Name="DashboardCalificacionServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardComentariosRecibidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardGrafico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardMensajesNuevos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardNuevosServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardServiciosCancelados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardServiciosFinalizados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardServiciosLibres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardUnidadesActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardUnidadesActivas_0" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUnidadesAsignadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUnidadesAusentes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardUnidadesOcupadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardUsuariosEsporadicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardUsuariosFrecuentes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DesactivarVehiculosConductoresPorConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2528,6 +2849,9 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <Parameter Name="monto" Type="decimal" Mode="In" />
     <Parameter Name="observaciones" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="fnc_ObtenerRuta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
   <Function Name="GananciaConductorPorDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_Conductor" Type="int" Mode="In" />
     <Parameter Name="Fecha" Type="datetime" Mode="In" />
@@ -2539,6 +2863,9 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
   <Function Name="GananciasPorDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_Conductor" Type="int" Mode="In" />
     <Parameter Name="Fecha" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetCiudadAfiliado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idafiliado" Type="int" Mode="In" />
   </Function>
   <Function Name="GetConductorInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="usuario" Type="nvarchar" Mode="In" />
@@ -2701,6 +3028,70 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <Parameter Name="ID_Ciudad" Type="int" Mode="In" />
     <Parameter Name="ID_Colonia" Type="int" Mode="In" />
   </Function>
+  <Function Name="RP_SP_ESTADODECUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA04" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA05" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA06" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_ESTADODECUENTA07" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="RFC" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_LCLIABONADOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_LCLIHAB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RP_SP_SRVXCOLONIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="idcolonia" Type="int" Mode="In" />
+    <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
   <Function Name="SetDriverNewPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="pass" Type="nvarchar" Mode="In" />
     <Parameter Name="id" Type="int" Mode="In" />
@@ -2716,6 +3107,9 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <Parameter Name="res" Type="varchar" Mode="InOut" />
   </Function>
   <Function Name="spEstadodeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TurnoValido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="conductor_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="ufn_ArmaCuponDescripcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
     <Parameter Name="Origen" Type="varchar" Mode="In" />
     <Parameter Name="Destino" Type="varchar" Mode="In" />
@@ -2811,8 +3205,10 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <EntitySet Name="TiposTransaccion" EntityType="Self.TiposTransaccion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposVehiculos" EntityType="Self.TiposVehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposVehiculos_Afiliados" EntityType="Self.TiposVehiculos_Afiliados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ubicaciones" EntityType="Self.Ubicaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UbicacionesServicios" EntityType="Self.UbicacionesServicios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario_App" EntityType="Self.Usuario_App" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsuariosAbonados" EntityType="Self.UsuariosAbonados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
@@ -3214,6 +3610,10 @@ warning 6002: The table/view 'GoPS2.dbo.vwClientes' does not have a primary key 
     <AssociationSet Name="FK_Ubicaciones_Conexiones" Association="Self.FK_Ubicaciones_Conexiones">
       <End Role="Conexiones" EntitySet="Conexiones" />
       <End Role="Ubicaciones" EntitySet="Ubicaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UbicacionesServicios_Despachos" Association="Self.FK_UbicacionesServicios_Despachos">
+      <End Role="Despachos" EntitySet="Despachos" />
+      <End Role="UbicacionesServicios" EntitySet="UbicacionesServicios" />
     </AssociationSet>
     <AssociationSet Name="FK_Usuarios_Abonados_Clientes_Abonados" Association="Self.FK_Usuarios_Abonados_Clientes_Abonados">
       <End Role="ClientesAbonados" EntitySet="ClientesAbonados" />

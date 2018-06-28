@@ -677,6 +677,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="GoPSModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="newId" ColumnName="newId" />
           <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
           <ScalarProperty Name="IsLoged_in" ColumnName="IsLoged_in" />
           <ScalarProperty Name="LastLogoutDate" ColumnName="LastLogoutDate" />
@@ -916,6 +917,7 @@
     <EntitySetMapping Name="Reservas">
       <EntityTypeMapping TypeName="GoPSModel.Reservas">
         <MappingFragment StoreEntitySet="Reservas">
+          <ScalarProperty Name="ID_Reserva_Anterior" ColumnName="ID_Reserva_Anterior" />
           <ScalarProperty Name="ID_Codigo" ColumnName="ID_Codigo" />
           <ScalarProperty Name="ID_TarjetaCredito" ColumnName="ID_TarjetaCredito" />
           <ScalarProperty Name="ID_Cupon" ColumnName="ID_Cupon" />
@@ -1321,6 +1323,8 @@
     <EntitySetMapping Name="Seguimiento_Despacho">
       <EntityTypeMapping TypeName="GoPSModel.Seguimiento_Despacho">
         <MappingFragment StoreEntitySet="Seguimiento_Despacho">
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
           <ScalarProperty Name="ID_Seguimiento_Despacho" ColumnName="ID_Seguimiento_Despacho" />
           <ScalarProperty Name="ID_Vehiculo_Conductor" ColumnName="ID_Vehiculo_Conductor" />
           <ScalarProperty Name="ID_Despacho" ColumnName="ID_Despacho" />
@@ -1576,5 +1580,632 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Transacciones">
+      <EntityTypeMapping TypeName="GoPSModel.Transacciones">
+        <MappingFragment StoreEntitySet="Transacciones">
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Codigo_Autorizacion" ColumnName="Codigo_Autorizacion" />
+          <ScalarProperty Name="Numero_Control" ColumnName="Numero_Control" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_TipoTransaccion" ColumnName="Id_TipoTransaccion" />
+          <ScalarProperty Name="Id_Reserva" ColumnName="Id_Reserva" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Id_Transaccion" ColumnName="Id_Transaccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UbicacionesServicios">
+      <EntityTypeMapping TypeName="GoPSModel.UbicacionesServicios">
+        <MappingFragment StoreEntitySet="UbicacionesServicios">
+          <ScalarProperty Name="ID_Despacho" ColumnName="ID_Despacho" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ID_UbicacionServicio" ColumnName="ID_UbicacionServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ch_ActualizarNombreConductor" FunctionName="GoPSModel.Store.ch_ActualizarNombreConductor" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizarServicioFechaConfirmacion" FunctionName="GoPSModel.Store.ch_ActualizarServicioFechaConfirmacion" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizarServicioFechaDomicilio" FunctionName="GoPSModel.Store.ch_ActualizarServicioFechaDomicilio" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizarServicioFechaFinalizado" FunctionName="GoPSModel.Store.ch_ActualizarServicioFechaFinalizado" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizarServicioFechaOcupado" FunctionName="GoPSModel.Store.ch_ActualizarServicioFechaOcupado" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizarTokenPush" FunctionName="GoPSModel.Store.ch_ActualizarTokenPush" />
+    <FunctionImportMapping FunctionImportName="ch_ActualizaSeguimiento" FunctionName="GoPSModel.Store.ch_ActualizaSeguimiento" />
+    <FunctionImportMapping FunctionImportName="ch_AplicarDescuento" FunctionName="GoPSModel.Store.ch_AplicarDescuento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_AplicarDescuento_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="motivo_descuento" ColumnName="motivo_descuento" />
+          <ScalarProperty Name="descuento_codigo" ColumnName="descuento_codigo" />
+          <ScalarProperty Name="creditos_cliente" ColumnName="creditos_cliente" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nuevo_abono_usuario" ColumnName="nuevo_abono_usuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_CancelarReserva" FunctionName="GoPSModel.Store.ch_CancelarReserva" />
+    <FunctionImportMapping FunctionImportName="ch_CerrarSesion" FunctionName="GoPSModel.Store.ch_CerrarSesion" />
+    <FunctionImportMapping FunctionImportName="ch_ComentarServicio" FunctionName="GoPSModel.Store.ch_ComentarServicio" />
+    <FunctionImportMapping FunctionImportName="ch_EscribirChatConBase" FunctionName="GoPSModel.Store.ch_EscribirChatConBase" />
+    <FunctionImportMapping FunctionImportName="ch_EscribirChatConCliente" FunctionName="GoPSModel.Store.ch_EscribirChatConCliente" />
+    <FunctionImportMapping FunctionImportName="ch_ForzarCerrarSesion" FunctionName="GoPSModel.Store.ch_ForzarCerrarSesion" />
+    <FunctionImportMapping FunctionImportName="ch_GenerarSeguimientoDespacho" FunctionName="GoPSModel.Store.ch_GenerarSeguimientoDespacho" />
+    <FunctionImportMapping FunctionImportName="ch_GenerarSeguimientoDespachoDetalle" FunctionName="GoPSModel.Store.ch_GenerarSeguimientoDespachoDetalle" />
+    <FunctionImportMapping FunctionImportName="ch_GuardaUbicacion" FunctionName="GoPSModel.Store.ch_GuardaUbicacion" />
+    <FunctionImportMapping FunctionImportName="ch_IniciarSesion" FunctionName="GoPSModel.Store.ch_IniciarSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_IniciarSesion_Result">
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerAsignacionesSinConfirmar" FunctionName="GoPSModel.Store.ch_ObtenerAsignacionesSinConfirmar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerAsignacionesSinConfirmar_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_vc" ColumnName="id_vc" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerChatConBase" FunctionName="GoPSModel.Store.ch_ObtenerChatConBase">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerChatConBase_Result">
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="es_conductor" ColumnName="es_conductor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerChatConCliente" FunctionName="GoPSModel.Store.ch_ObtenerChatConCliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerChatConCliente_Result">
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="es_conductor" ColumnName="es_conductor" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerConductoresSinActualizarSeguimientos" FunctionName="GoPSModel.Store.ch_ObtenerConductoresSinActualizarSeguimientos" />
+    <FunctionImportMapping FunctionImportName="ch_ObtenerConexionesAbiertasSinActualizar" FunctionName="GoPSModel.Store.ch_ObtenerConexionesAbiertasSinActualizar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerConexionesAbiertasSinActualizar_Result">
+          <ScalarProperty Name="conexion_id" ColumnName="conexion_id" />
+          <ScalarProperty Name="vc_id" ColumnName="vc_id" />
+          <ScalarProperty Name="vehiculo_id" ColumnName="vehiculo_id" />
+          <ScalarProperty Name="conductor_id" ColumnName="conductor_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerConfiguraciones" FunctionName="GoPSModel.Store.ch_ObtenerConfiguraciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerConfiguraciones_Result">
+          <ScalarProperty Name="k" ColumnName="k" />
+          <ScalarProperty Name="v" ColumnName="v" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerDatosConductor" FunctionName="GoPSModel.Store.ch_ObtenerDatosConductor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerDatosConductor_Result">
+          <ScalarProperty Name="completo" ColumnName="completo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="afiliado" ColumnName="afiliado" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="licencia" ColumnName="licencia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerEstatus" FunctionName="GoPSModel.Store.ch_ObtenerEstatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerEstatus_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerFechaFinReserva" FunctionName="GoPSModel.Store.ch_ObtenerFechaFinReserva">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerFechaFinReserva_Result">
+          <ScalarProperty Name="fecha_default" ColumnName="fecha_default" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerHistorialRutaReal" FunctionName="GoPSModel.Store.ch_ObtenerHistorialRutaReal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerHistorialRutaReal_Result">
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="inicio" ColumnName="inicio" />
+          <ScalarProperty Name="fin" ColumnName="fin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerIdUsuarioDeLaReserva" FunctionName="GoPSModel.Store.ch_ObtenerIdUsuarioDeLaReserva" />
+    <FunctionImportMapping FunctionImportName="ch_ObtenerInformacionVehiculo" FunctionName="GoPSModel.Store.ch_ObtenerInformacionVehiculo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerInformacionVehiculo_Result">
+          <ScalarProperty Name="tarjeton" ColumnName="tarjeton" />
+          <ScalarProperty Name="revista" ColumnName="revista" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="licencia" ColumnName="licencia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerRazonesCancelacion" FunctionName="GoPSModel.Store.ch_ObtenerRazonesCancelacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerRazonesCancelacion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerServicioActivo" FunctionName="GoPSModel.Store.ch_ObtenerServicioActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerServicioActivo_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idd" ColumnName="idd" />
+          <ScalarProperty Name="lat_origen" ColumnName="lat_origen" />
+          <ScalarProperty Name="lng_origen" ColumnName="lng_origen" />
+          <ScalarProperty Name="lat_destino" ColumnName="lat_destino" />
+          <ScalarProperty Name="lng_destino" ColumnName="lng_destino" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="minutos" ColumnName="minutos" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="estatus_reserva" ColumnName="estatus_reserva" />
+          <ScalarProperty Name="estatus_reserva_nombre" ColumnName="estatus_reserva_nombre" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecha_domicilio" ColumnName="fecha_domicilio" />
+          <ScalarProperty Name="fecha_confirmacion" ColumnName="fecha_confirmacion" />
+          <ScalarProperty Name="tipo_vehiculo" ColumnName="tipo_vehiculo" />
+          <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+          <ScalarProperty Name="telefono_cliente" ColumnName="telefono_cliente" />
+          <ScalarProperty Name="tipo_cliente" ColumnName="tipo_cliente" />
+          <ScalarProperty Name="estimacion" ColumnName="estimacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerServiciosPorVehiculoConductor" FunctionName="GoPSModel.Store.ch_ObtenerServiciosPorVehiculoConductor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerServiciosPorVehiculoConductor_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="fecha_despacho" ColumnName="fecha_despacho" />
+          <ScalarProperty Name="fecha_finalizado" ColumnName="fecha_finalizado" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="es_historial" ColumnName="es_historial" />
+          <ScalarProperty Name="lat_origen" ColumnName="lat_origen" />
+          <ScalarProperty Name="lng_origen" ColumnName="lng_origen" />
+          <ScalarProperty Name="lat_destino" ColumnName="lat_destino" />
+          <ScalarProperty Name="lng_destino" ColumnName="lng_destino" />
+          <ScalarProperty Name="vc_id" ColumnName="vc_id" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerTarifaVehiculo" FunctionName="GoPSModel.Store.ch_ObtenerTarifaVehiculo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerTarifaVehiculo_Result">
+          <ScalarProperty Name="minimo" ColumnName="minimo" />
+          <ScalarProperty Name="base" ColumnName="base" />
+          <ScalarProperty Name="km" ColumnName="km" />
+          <ScalarProperty Name="minuto" ColumnName="minuto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerTokenPushConductor" FunctionName="GoPSModel.Store.ch_ObtenerTokenPushConductor" />
+    <FunctionImportMapping FunctionImportName="ch_ObtenerTokenPushVehiculoConductor" FunctionName="GoPSModel.Store.ch_ObtenerTokenPushVehiculoConductor" />
+    <FunctionImportMapping FunctionImportName="ch_ObtenerUbicacionesVehiculosLibres" FunctionName="GoPSModel.Store.ch_ObtenerUbicacionesVehiculosLibres">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerUbicacionesVehiculosLibres_Result">
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerUbicacionReservasLibres" FunctionName="GoPSModel.Store.ch_ObtenerUbicacionReservasLibres">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerUbicacionReservasLibres_Result">
+          <ScalarProperty Name="Latitud_Origen" ColumnName="Latitud_Origen" />
+          <ScalarProperty Name="Longitud_Origen" ColumnName="Longitud_Origen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ObtenerUbicacionReservasLibresPorGeocerca" FunctionName="GoPSModel.Store.ch_ObtenerUbicacionReservasLibresPorGeocerca" />
+    <FunctionImportMapping FunctionImportName="ch_ObtenerUbicacionReservasLibresPorTipoVehiculo" FunctionName="GoPSModel.Store.ch_ObtenerUbicacionReservasLibresPorTipoVehiculo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ch_ObtenerUbicacionReservasLibresPorTipoVehiculo_Result">
+          <ScalarProperty Name="Latitud_Origen" ColumnName="Latitud_Origen" />
+          <ScalarProperty Name="Longitud_Origen" ColumnName="Longitud_Origen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_RechazarServicio" FunctionName="GoPSModel.Store.ch_RechazarServicio" />
+    <FunctionImportMapping FunctionImportName="ch_ValidarConexionSigueAbierta" FunctionName="GoPSModel.Store.ch_ValidarConexionSigueAbierta" />
+    <FunctionImportMapping FunctionImportName="ch_ValidaTurnoConexionAbierta" FunctionName="GoPSModel.Store.ch_ValidaTurnoConexionAbierta" />
+    <FunctionImportMapping FunctionImportName="cl_ActivarCliente" FunctionName="GoPSModel.Store.cl_ActivarCliente" />
+    <FunctionImportMapping FunctionImportName="cl_ActualizaContrasenaToken" FunctionName="GoPSModel.Store.cl_ActualizaContrasenaToken" />
+    <FunctionImportMapping FunctionImportName="cl_ActualizaPerfil" FunctionName="GoPSModel.Store.cl_ActualizaPerfil" />
+    <FunctionImportMapping FunctionImportName="cl_ActualizaToken" FunctionName="GoPSModel.Store.cl_ActualizaToken" />
+    <FunctionImportMapping FunctionImportName="cl_BuscarDireccion" FunctionName="GoPSModel.Store.cl_BuscarDireccion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_BuscarDireccion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_BuscaReservasLibresParaDespachar" FunctionName="GoPSModel.Store.cl_BuscaReservasLibresParaDespachar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_BuscaReservasLibresParaDespachar_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="afiliado_id" ColumnName="afiliado_id" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_CalificarServicio" FunctionName="GoPSModel.Store.cl_CalificarServicio" />
+    <FunctionImportMapping FunctionImportName="cl_CambiaContrasena" FunctionName="GoPSModel.Store.cl_CambiaContrasena" />
+    <FunctionImportMapping FunctionImportName="cl_CancelarServicio" FunctionName="GoPSModel.Store.cl_CancelarServicio" />
+    <FunctionImportMapping FunctionImportName="cl_ContadorClientesPorCorreoPorTelefono" FunctionName="GoPSModel.Store.cl_ContadorClientesPorCorreoPorTelefono">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ContadorClientesPorCorreoPorTelefono_Result">
+          <ScalarProperty Name="correos" ColumnName="correos" />
+          <ScalarProperty Name="telefonos" ColumnName="telefonos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_CrearDespacho" FunctionName="GoPSModel.Store.cl_CrearDespacho" />
+    <FunctionImportMapping FunctionImportName="cl_EscribeChatActivo" FunctionName="GoPSModel.Store.cl_EscribeChatActivo" />
+    <FunctionImportMapping FunctionImportName="cl_GuardaAppId" FunctionName="GoPSModel.Store.cl_GuardaAppId" />
+    <FunctionImportMapping FunctionImportName="cl_IniciarSesion" FunctionName="GoPSModel.Store.cl_IniciarSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_IniciarSesion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+          <ScalarProperty Name="fbid" ColumnName="fbid" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="fechac" ColumnName="fechac" />
+          <ScalarProperty Name="afiliado" ColumnName="afiliado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_LeeChatActivo" FunctionName="GoPSModel.Store.cl_LeeChatActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_LeeChatActivo_Result">
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="es_conductor" ColumnName="es_conductor" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerConfiguraciones" FunctionName="GoPSModel.Store.cl_ObtenerConfiguraciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerConfiguraciones_Result">
+          <ScalarProperty Name="k" ColumnName="k" />
+          <ScalarProperty Name="v" ColumnName="v" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerHistorialDeServicios" FunctionName="GoPSModel.Store.cl_ObtenerHistorialDeServicios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerHistorialDeServicios_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+          <ScalarProperty Name="lat_origen" ColumnName="lat_origen" />
+          <ScalarProperty Name="lng_origen" ColumnName="lng_origen" />
+          <ScalarProperty Name="lat_destino" ColumnName="lat_destino" />
+          <ScalarProperty Name="lng_destino" ColumnName="lng_destino" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fecha_domicilio" ColumnName="fecha_domicilio" />
+          <ScalarProperty Name="tipo_vehiculo" ColumnName="tipo_vehiculo" />
+          <ScalarProperty Name="id_conductor" ColumnName="id_conductor" />
+          <ScalarProperty Name="conductor" ColumnName="conductor" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecha_ocupado" ColumnName="fecha_ocupado" />
+          <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+          <ScalarProperty Name="encuesta" ColumnName="encuesta" />
+          <ScalarProperty Name="fecha_rechazo" ColumnName="fecha_rechazo" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerInformacionChofer" FunctionName="GoPSModel.Store.cl_ObtenerInformacionChofer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerInformacionChofer_Result">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerRazonesDeCancelacion" FunctionName="GoPSModel.Store.cl_ObtenerRazonesDeCancelacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerRazonesDeCancelacion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerRutaServicioFinalizado" FunctionName="GoPSModel.Store.cl_ObtenerRutaServicioFinalizado" />
+    <FunctionImportMapping FunctionImportName="cl_ObtenerServicioActivo" FunctionName="GoPSModel.Store.cl_ObtenerServicioActivo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerServicioActivo_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idd" ColumnName="idd" />
+          <ScalarProperty Name="lat_origen" ColumnName="lat_origen" />
+          <ScalarProperty Name="lng_origen" ColumnName="lng_origen" />
+          <ScalarProperty Name="lat_destino" ColumnName="lat_destino" />
+          <ScalarProperty Name="lng_destino" ColumnName="lng_destino" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="estatus_reserva" ColumnName="estatus_reserva" />
+          <ScalarProperty Name="estatus_reserva_nombre" ColumnName="estatus_reserva_nombre" />
+          <ScalarProperty Name="fecha_domicilio" ColumnName="fecha_domicilio" />
+          <ScalarProperty Name="estatus_vehiculo" ColumnName="estatus_vehiculo" />
+          <ScalarProperty Name="tipo_vehiculo" ColumnName="tipo_vehiculo" />
+          <ScalarProperty Name="vc_id" ColumnName="vc_id" />
+          <ScalarProperty Name="id_afiliado" ColumnName="id_afiliado" />
+          <ScalarProperty Name="id_conductor" ColumnName="id_conductor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerServicioFinalizado" FunctionName="GoPSModel.Store.cl_ObtenerServicioFinalizado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerServicioFinalizado_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="conductor" ColumnName="conductor" />
+          <ScalarProperty Name="nombre_conductor" ColumnName="nombre_conductor" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerTiposVehiculos" FunctionName="GoPSModel.Store.cl_ObtenerTiposVehiculos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerTiposVehiculos_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="minima" ColumnName="minima" />
+          <ScalarProperty Name="precio_min" ColumnName="precio_min" />
+          <ScalarProperty Name="precio_base" ColumnName="precio_base" />
+          <ScalarProperty Name="precio_km" ColumnName="precio_km" />
+          <ScalarProperty Name="precio_minimo" ColumnName="precio_minimo" />
+          <ScalarProperty Name="unselected" ColumnName="unselected" />
+          <ScalarProperty Name="selected" ColumnName="selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ObtenerTokenIDParaEnviarPushNotification" FunctionName="GoPSModel.Store.cl_ObtenerTokenIDParaEnviarPushNotification" />
+    <FunctionImportMapping FunctionImportName="cl_ObtenerVehiculosCercanosLibres" FunctionName="GoPSModel.Store.cl_ObtenerVehiculosCercanosLibres">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ObtenerVehiculosCercanosLibres_Result">
+          <ScalarProperty Name="ID_Vehiculo_Conductor" ColumnName="ID_Vehiculo_Conductor" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="dist" ColumnName="dist" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ReconfiguraContrasena" FunctionName="GoPSModel.Store.cl_ReconfiguraContrasena" />
+    <FunctionImportMapping FunctionImportName="cl_ReenviarToken" FunctionName="GoPSModel.Store.cl_ReenviarToken">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_ReenviarToken_Result">
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_Registro" FunctionName="GoPSModel.Store.cl_Registro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_Registro_Result">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cl_ValidaAppID" FunctionName="GoPSModel.Store.cl_ValidaAppID" />
+    <FunctionImportMapping FunctionImportName="cl_VerificaCupon" FunctionName="GoPSModel.Store.cl_VerificaCupon">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.cl_VerificaCupon_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="es_primer_servicio" ColumnName="es_primer_servicio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="finalizados_cupon" ColumnName="finalizados_cupon" />
+          <ScalarProperty Name="finalizados_cliente_cupon" ColumnName="finalizados_cliente_cupon" />
+          <ScalarProperty Name="finalizados_cliente" ColumnName="finalizados_cliente" />
+          <ScalarProperty Name="descuento_codigo" ColumnName="descuento_codigo" />
+          <ScalarProperty Name="usuario_codigo" ColumnName="usuario_codigo" />
+          <ScalarProperty Name="abono_codigo" ColumnName="abono_codigo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DashboardUnidadesAsignadas" FunctionName="GoPSModel.Store.DashboardUnidadesAsignadas" />
+    <FunctionImportMapping FunctionImportName="DashboardUnidadesAusentes" FunctionName="GoPSModel.Store.DashboardUnidadesAusentes" />
+    <FunctionImportMapping FunctionImportName="DashboardUnidadesOcupadas" FunctionName="GoPSModel.Store.DashboardUnidadesOcupadas" />
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA01" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA01">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA01_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA02" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA02">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA02_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA03" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA03">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA03_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA04" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA04">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA04_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA05" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA05">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA05_Result">
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA06" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA06">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA06_Result">
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Destino" ColumnName="Destino" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_ESTADODECUENTA07" FunctionName="GoPSModel.Store.RP_SP_ESTADODECUENTA07">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_ESTADODECUENTA07_Result">
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="ENCUESTA" ColumnName="ENCUESTA" />
+          <ScalarProperty Name="Encuesta_Obs" ColumnName="Encuesta_Obs" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ch_ActualizaEstatusLibre" FunctionName="GoPSModel.Store.ch_ActualizaEstatusLibre" />
+    <FunctionImportMapping FunctionImportName="DashboardServiciosLibres" FunctionName="GoPSModel.Store.DashboardServiciosLibres" />
+    <FunctionImportMapping FunctionImportName="RP_SP_LCLIABONADOS" FunctionName="GoPSModel.Store.RP_SP_LCLIABONADOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_LCLIABONADOS_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="TipoVehiculo" ColumnName="TipoVehiculo" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_LCLIHAB" FunctionName="GoPSModel.Store.RP_SP_LCLIHAB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_LCLIHAB_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="TipoVehiculo" ColumnName="TipoVehiculo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RP_SP_SRVXCOLONIA" FunctionName="GoPSModel.Store.RP_SP_SRVXCOLONIA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.RP_SP_SRVXCOLONIA_Result">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Encuesta" ColumnName="Encuesta" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="TipoVehiculo" ColumnName="TipoVehiculo" />
+          <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DashboardMensajesNuevos" FunctionName="GoPSModel.Store.DashboardMensajesNuevos" />
+    <FunctionImportMapping FunctionImportName="GetCiudadAfiliado" FunctionName="GoPSModel.Store.GetCiudadAfiliado" />
   </EntityContainerMapping>
 </Mapping>

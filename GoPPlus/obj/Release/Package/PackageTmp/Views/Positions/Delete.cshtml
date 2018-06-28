@@ -1,0 +1,38 @@
+﻿@model GoPS.Models.Positions
+
+@{
+    ViewBag.Title = "Eliminar Posición";
+}
+
+@Html.Hidden("Permiso", "General")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Posiciones > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3> Estás seguro de eliminar este registro ?</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Position)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Position)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

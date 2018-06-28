@@ -45,7 +45,11 @@ namespace GoPS.Controllers
             Afiliados afiliados = db.Afiliados.Find(id);
             if (afiliados == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAfiliados";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Empresas = RouteData.Values["ID_Empresas"] as List<int>;
             bool isSAdmin = Boolean.Parse(RouteData.Values["SAdministrador"].ToString());
@@ -254,8 +258,13 @@ namespace GoPS.Controllers
             Afiliados afiliados = db.Afiliados.Find(id);
             if (afiliados == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAfiliados";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             List<int> ID_Empresas = RouteData.Values["ID_Empresas"] as List<int>;
             bool isSAdmin = Boolean.Parse(RouteData.Values["SAdministrador"].ToString());
             ViewBag.MostrarEmpresas = ID_Empresas.Count() > 1 && isSAdmin;

@@ -1,0 +1,281 @@
+﻿@model GoPS.Models.Conductores
+
+@{
+    ViewBag.Title = "Crear Conductor";
+}
+
+@Html.Hidden("Permiso", "Vehiculos")
+@using (Html.BeginForm("Create", "Conductores", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="main">
+        @{Html.RenderPartial("NavBar_CatConductores", "Crear"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @if (ViewBag.Success != null)
+                    {
+                        <p class="text-success">Registrado Exitosamente.</p>
+                    }
+                    @Html.ValidationSummary(true, "No se pudo crear el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Liquido)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.Colonias.Ciudades.ID_Estado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Estado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.Ciudades.ID_Estado, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Calles.Colonias.ID_Ciudad, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Ciudad", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Calles.Colonias.ID_Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Calles.ID_Colonia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Colonia", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Calles.ID_Colonia, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.ID_Calle, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Calle", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_Calle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Numero_Exterior, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Numero_Exterior, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Exterior, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Numero_Interior, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Numero_Interior, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Numero_Interior, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.Fecha_Nacimiento, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Fecha_Nacimiento, new { htmlAttributes = new { @class = "form-control datepicker", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Fecha_Nacimiento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NoLicencia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.NoLicencia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NoLicencia, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.Vigencia_Licencia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Vigencia_Licencia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Vigencia_Licencia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NoTarjeton, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.NoTarjeton, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NoTarjeton, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.Vigencia_Tarjeton, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.Vigencia_Tarjeton, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Vigencia_Tarjeton, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="text-primary">
+                        <div class="row">
+                            Formatos: JPG y PNG. Tamaño: Max 1Mb por documento.                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Archivo_CartaFianza, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_CartaFianza, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_CartaFianza)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_CartaFianza, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_CartaFianza, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.LabelFor(model => model.Archivo_INE, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_INE, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_INE)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_INE, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_INE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Archivo_Domicilio, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_Domicilio, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_Domicilio)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_Domicilio, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_Domicilio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.LabelFor(model => model.Archivo_Tarjeton, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_Tarjeton, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_Tarjeton)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_Tarjeton, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_Tarjeton, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Archivo_Licencia, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_Licencia, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_Licencia)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_Licencia, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_Licencia, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.LabelFor(model => model.Archivo_Antidoping, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_Antidoping, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_Antidoping)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_Antidoping, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_Antidoping, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Archivo_NoAntecedentes, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="">
+                                @Html.HiddenFor(model => model.Archivo_NoAntecedentes, new { @class = "file_hidden" })
+                                @Html.HiddenFor(model => model.Peso_Archivo_NoAntecedentes)
+                                <div class="file_upload btn btn-default">
+                                    @Html.EditorFor(model => model.File_Archivo_NoAntecedentes, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                </div>
+                                <p class="file_name"></p>
+                                @Html.ValidationMessageFor(model => model.Archivo_NoAntecedentes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_Flota, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Flota", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_Flota, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.LabelFor(model => model.ID_Turno, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("ID_Turno", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_Turno, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Habilitado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Habilitado, new { htmlAttributes = new { @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.Habilitado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.LabelFor(model => model.UserID_Conductor, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+                            @Html.DropDownList("UserID_Conductor", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserID_Conductor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crear" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarGeografiaSelectLists.js"></script>
+    <script src="~/js/ValidarFileUpload.js"></script>
+}

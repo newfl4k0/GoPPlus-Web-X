@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<GoPS.Models.ClientesHabituales>
-    @using GoPS.Helpers;
+@using GoPS.Helpers;
 @{
     ViewBag.Title = "Clientes Habituales";
 }
 @Html.Hidden("Permiso", "Clientes")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Catálogo de Clientes Habituales"); }
+    @{Html.RenderPartial("NavBar_CatCliente", "Catálogo de Clientes Habituales"); }
     <div class="row">
         <div class="col-lg-12">
             <br />
             <p>
-                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
             </p>
             @if (ViewBag.Delete != null)
             {
@@ -18,7 +17,7 @@
             }
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
                         <thead>
                             <tr>
                                 <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
@@ -29,9 +28,6 @@
                                 </th>
                                 <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
                                     @Html.Label("Habilitado")
-                                </th>
-                                <th data-field="Direccion" data-sortable="true" data-sorter="customSorter">
-                                    @Html.Label("Dirección")
                                 </th>
                                 <th data-field="Fecha_Alta" data-sortable="true" data-sorter="dateSorter">
                                     @Html.Label("Fecha de Alta")
@@ -58,9 +54,6 @@
                                     @Html.DisplayFor(modelItem => item.Habilitado)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Direccion)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.Fecha_Alta)
                                 </td>
                                 <td>
@@ -70,7 +63,6 @@
                                     @Html.DisplayFor(modelItem => item.TiposAvisos.Nombre)
                                 </td>
                                 <td class="div_actions">
-                                    @Html.EncodedActionLink("Editar", "Edit", "ClientesHabituales", new { id = item.ID_ClienteHabitual }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
                                     @Html.EncodedActionLink("Detalles", "Details", "ClientesHabituales", new { id = item.ID_ClienteHabitual }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
                                     @Html.EncodedActionLink("Eliminar", "Delete", "ClientesHabituales", new { id = item.ID_ClienteHabitual }, new { @class = "_Edicion" })
                                 </td>

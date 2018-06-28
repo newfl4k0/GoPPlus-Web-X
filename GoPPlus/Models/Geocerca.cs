@@ -28,6 +28,7 @@ namespace GoPS.Models
         public System.DateTime Fecha_Creacion { get; set; }
         public Nullable<System.DateTime> Fecha_Actualizacion { get; set; }
         public string UserID { get; set; }
+        public bool Eliminado { get; set; }
     
         public virtual Afiliados Afiliados { get; set; }
         public virtual Ciudades Ciudades { get; set; }

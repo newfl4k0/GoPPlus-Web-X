@@ -52,7 +52,8 @@ namespace GoPS.CustomFilters
             if (isAuthenticated)
             {
                 userId = filterContext.HttpContext.User.Identity.GetUserId();
-                userRole = db.AspNetUsers.Find(userId).AspNetUserRoles.FirstOrDefault();
+                AspNetUsers userR = db.AspNetUsers.Find(userId);
+                userRole = db.AspNetUserRoles.Where(h => h.RoleId == userR.roles.ToString() && h.UserId == userR.Id).FirstOrDefault();
                 permisosUser = userRole.AspNetRoles.Permissions.Select(p => p.Name).Distinct().ToList();
                 filterContext.RouteData.Values.Add("PermisosUser", permisosUser.ToArray());
                 filterContext.RouteData.Values.Add("SAdministrador", userRole.AspNetRoles.Name.ToUpper() == "SADMINISTRADOR");

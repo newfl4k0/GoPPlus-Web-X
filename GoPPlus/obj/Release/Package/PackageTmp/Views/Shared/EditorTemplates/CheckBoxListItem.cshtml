@@ -1,0 +1,8 @@
+﻿
+@model GoPS.Models.CheckBoxListItem
+
+<div class="diasCheck">
+    @Html.HiddenFor(x => x.ID, new { @class = "ids" })
+    @Html.CheckBoxFor(x => x.IsChecked, new { @class = "dias" })
+    @Model.Display
+</div>

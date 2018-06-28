@@ -1,0 +1,95 @@
+﻿@model GoPS.Models.Tarifas
+
+@{
+    ViewBag.Title = "Eliminar Tarifa";
+}
+
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Tarifas > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? 
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Descripcion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Tarifa_Minima)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Tarifa_Minima)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Precio_Base)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Precio_Base)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Precio_Km)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Precio_Km)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Precio_Min)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Precio_Min)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Activa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Activa)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

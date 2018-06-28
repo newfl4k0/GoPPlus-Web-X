@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GoPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="GoPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
@@ -9,6 +9,7 @@
     <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
     <Property Name="Model" Type="varbinary(max)" Nullable="false" />
     <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Afiliados">
     <Key>
@@ -40,6 +41,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="Afiliado" Type="bit" Nullable="false" />
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
+    <Property Name="newId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetUserClaims">
     <Key>
@@ -106,7 +108,7 @@
     <Property Name="LastLogoutDate" Type="datetime" />
     <Property Name="IsLoged_in" Type="bit" Nullable="false" />
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" />
-    <Property Name="newId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="newId" Type="int" />
   </EntityType>
   <EntityType Name="Bancos">
     <Key>
@@ -304,21 +306,15 @@
     <Property Name="Fecha_Final" Type="datetime" />
     <Property Name="ID_Vehiculo_Conductor" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Configuraciones">
     <Key>
-      <PropertyRef Name="Atributo" />
-      <PropertyRef Name="Valor" />
-      <PropertyRef Name="EsConfiguracionChofer" />
-      <PropertyRef Name="TipoDato" />
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="Atributo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Valor" Type="nvarchar" MaxLength="300" Nullable="false" />
     <Property Name="EsConfiguracionChofer" Type="int" Nullable="false" />
     <Property Name="TipoDato" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CoordenadasGeocerca">
     <Key>
@@ -328,6 +324,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="Longitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
     <Property Name="Latitud" Type="decimal" Precision="18" Scale="15" Nullable="false" />
     <Property Name="ID_Geocerca" Type="int" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Cupones">
     <Key>
@@ -379,6 +376,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
     <Property Name="create_date" Type="datetime" Nullable="false" />
     <Property Name="modify_date" Type="datetime" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="DatosTickets">
     <Key>
@@ -456,6 +454,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="ID_ClienteAbonado" Type="int" />
     <Property Name="ID_ClienteHabitual" Type="int" />
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Empresas">
     <Key>
@@ -466,6 +465,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Estados">
     <Key>
@@ -568,6 +568,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Llamadas">
     <Key>
@@ -581,6 +582,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Marcas">
     <Key>
@@ -633,6 +635,7 @@ warning 6002: The table/view 'GoPSD.dbo.Configuraciones' does not have a primary
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserID_Operador" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="ParticionesCalles">
     <Key>
@@ -691,6 +694,7 @@ warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key de
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RazonesLlamadas">
     <Key>
@@ -702,6 +706,7 @@ warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key de
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RazonesRechazos">
     <Key>
@@ -714,6 +719,7 @@ warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key de
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Reservas">
     <Key>
@@ -749,6 +755,7 @@ warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key de
     <Property Name="ID_TarjetaCredito" Type="int" />
     <Property Name="ID_Codigo" Type="nvarchar" MaxLength="20" />
     <Property Name="ID_Reserva_Anterior" Type="int" />
+    <Property Name="kmAR" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Reservas_Rechazadas">
     <Key>
@@ -877,6 +884,7 @@ warning 6002: The table/view 'GoPSD.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="sivaVALOR_INT" Type="bigint" />
     <Property Name="sivaVALOR_DOUBLE" Type="float" />
     <Property Name="sivaDOMINIO" Type="int" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Tarifas">
     <Key>
@@ -940,6 +948,7 @@ warning 6002: The table/view 'GoPSD.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposPuntosInteres">
     <Key>
@@ -950,6 +959,7 @@ warning 6002: The table/view 'GoPSD.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposRechazos">
     <Key>
@@ -960,6 +970,7 @@ warning 6002: The table/view 'GoPSD.dbo.Seguimiento_Despacho_Detalle' does not h
     <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TiposSanciones">
     <Key>
@@ -2817,6 +2828,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
   <Function Name="DashboardCalificacionServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardComentariosRecibidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardGrafico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DashboardGrafico2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardMensajesNuevos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardNuevosServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="DashboardServiciosCancelados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2882,6 +2894,9 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
   <Function Name="Ins_Payworks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tipo" Type="varchar" Mode="In" />
     <Parameter Name="respuesta" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ObtenerConfiguracion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Atributo" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="ObtenerDespachosAnualesPorClienteAbonado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_ClienteAbonado" Type="int" Mode="In" />
@@ -3154,6 +3169,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <EntitySet Name="Colores" EntityType="Self.Colores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Conductores" EntityType="Self.Conductores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Conexiones" EntityType="Self.Conexiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuraciones" EntityType="Self.Configuraciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CoordenadasGeocerca" EntityType="Self.CoordenadasGeocerca" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cupones" EntityType="Self.Cupones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CuponesGenerador" EntityType="Self.CuponesGenerador" Schema="dbo" store:Type="Tables" />
@@ -3213,15 +3229,6 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <EntitySet Name="UsuariosAbonados" EntityType="Self.UsuariosAbonados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehiculos_Conductores" EntityType="Self.Vehiculos_Conductores" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Configuraciones" EntityType="Self.Configuraciones" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Configuraciones].[Atributo] AS [Atributo], 
-    [Configuraciones].[Valor] AS [Valor], 
-    [Configuraciones].[EsConfiguracionChofer] AS [EsConfiguracionChofer], 
-    [Configuraciones].[TipoDato] AS [TipoDato], 
-    [Configuraciones].[ID] AS [ID]
-    FROM [dbo].[Configuraciones] AS [Configuraciones]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="Payworks" EntityType="Self.Payworks" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Payworks].[Fecha] AS [Fecha], 

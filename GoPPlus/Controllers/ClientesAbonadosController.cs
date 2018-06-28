@@ -47,7 +47,11 @@ namespace GoPS.Controllers
             ClientesAbonados clientesAbonados = db.ClientesAbonados.Find(id);
             if (clientesAbonados == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteAbonado";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(clientesAbonados);
         }
@@ -116,7 +120,11 @@ namespace GoPS.Controllers
             ClientesAbonados clientesAbonados = db.ClientesAbonados.Find(id);
             if (clientesAbonados == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteAbonado";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.Dia_Pago = new SelectList(util.ObtenerDias(), "Key", "Value", clientesAbonados.Dia_Pago);
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
@@ -168,8 +176,13 @@ namespace GoPS.Controllers
             ClientesAbonados clientesAbonados = db.ClientesAbonados.Find(id);
             if (clientesAbonados == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteAbonado";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(clientesAbonados);
         }
 

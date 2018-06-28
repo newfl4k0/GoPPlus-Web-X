@@ -1,5 +1,5 @@
 ﻿.main{
-    margin-left:0!important;
+    margin-left:0 !important;
     width:100% !important;
 }
 .navbar-toggle {
@@ -65,3 +65,4 @@ input.spinner[type="text"]{
     -webkit-box-shadow: 0px 0px 20px #E6E6E6;
     box-shadow: 0px 0px 20px #E6E6E6;
 }
+

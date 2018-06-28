@@ -18,7 +18,7 @@
             }
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
                         <thead>
                             <tr>
                                 <th data-field="Codigo" data-sortable="true" data-sorter="customSorter">
@@ -63,10 +63,10 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Cantidad)
                                 </td>
-                                <td>
+                                <td style="text-align:right;">
                                     @Html.DisplayFor(modelItem => item.Descuento)
                                 </td>
-                                <td>
+                                <td style="text-align:center;">
                                     @Html.DisplayFor(modelItem => item.Primer_Servicio)
                                 </td>
                                 <td class="div_actions">

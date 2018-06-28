@@ -1040,3 +1040,8 @@ p.back-link {
 .upper {
     text-transform: uppercase;
 }
+
+.cent {
+    text-align:center;
+    vertical-align:middle;    
+}

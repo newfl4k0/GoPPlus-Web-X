@@ -38,7 +38,11 @@ namespace GoPS.Controllers
             Positions tblPosition = db.Positions.Find(id);
             if (tblPosition == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPosiciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tblPosition);
         }
@@ -80,7 +84,11 @@ namespace GoPS.Controllers
             Positions tblPosition = db.Positions.Find(id);
             if (tblPosition == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPosiciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tblPosition);
         }
@@ -114,8 +122,13 @@ namespace GoPS.Controllers
             Positions tblPosition = db.Positions.Find(id);
             if (tblPosition == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatPosiciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(tblPosition);
         }
 

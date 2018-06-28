@@ -6,12 +6,12 @@
 
 @Html.Hidden("Permiso", "Clientes")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Afiliados > Eliminar"); }
+    @{Html.RenderPartial("NavBar_CatAfiliados", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
 @if (ViewBag.Eliminar)
             {
-            <h3> ¿Estás seguro de eliminar este registro? </h3>
+            <h3> @ViewBag.Mess </h3>
 }
 else
 {

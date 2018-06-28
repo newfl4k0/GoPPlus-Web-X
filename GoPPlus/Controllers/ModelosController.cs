@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
- 
 using Microsoft.AspNet.Identity;
 using GoPS.Classes;
 using GoPS.CustomFilters;
@@ -19,13 +16,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class ModelosController : Controller
+    public class ModelosController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Modelos
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -51,7 +43,11 @@ namespace GoPS.Controllers
             Modelos modelos = db.Modelos.Find(id);
             if (modelos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatModelos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(modelos);
         }
@@ -98,7 +94,11 @@ namespace GoPS.Controllers
             Modelos modelos = db.Modelos.Find(id);
             if (modelos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatModelos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.ID_Marca = new SelectList(db.Marcas.OrderBy(o => o.Nombre), "ID_Marca", "Nombre", modelos.ID_Marca);
             return View(modelos);
@@ -137,8 +137,13 @@ namespace GoPS.Controllers
             Modelos modelos = db.Modelos.Find(id);
             if (modelos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatModelos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(modelos);
         }
 
@@ -158,14 +163,6 @@ namespace GoPS.Controllers
             var modelos = new SelectList(db.Modelos.Where(c => c.ID_Marca == ID_Marca).OrderBy(o => o.Nombre), "ID_Modelo", "Nombre");
             return Json(modelos, JsonRequestBehavior.AllowGet);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

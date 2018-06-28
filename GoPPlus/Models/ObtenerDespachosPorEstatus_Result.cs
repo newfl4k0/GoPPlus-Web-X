@@ -17,7 +17,6 @@ namespace GoPS.Models
         public Nullable<System.DateTime> Finalizacion { get; set; }
         public Nullable<decimal> Costo { get; set; }
         public Nullable<int> Calificacion { get; set; }
-        public string Observaciones { get; set; }
         public string Transporte_Ejecutivo { get; set; }
         public string Cancelacion { get; set; }
         public string Origen { get; set; }
@@ -27,5 +26,12 @@ namespace GoPS.Models
         public int ID_Conductor { get; set; }
         public Nullable<int> Atraso { get; set; }
         public string Cliente { get; set; }
+        public string Observaciones { get; set; }
+        public Nullable<System.DateTime> Peticion { get; set; }
+        public string Destino { get; set; }
+        public string Mapa { get; set; }
+        public string Mapa2 { get; set; }
+        public int vc { get; set; }
+        public int iddesp { get; set; }
     }
 }

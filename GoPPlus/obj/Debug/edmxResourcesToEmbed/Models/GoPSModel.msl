@@ -149,6 +149,7 @@
     <EntitySetMapping Name="CoordenadasGeocerca">
       <EntityTypeMapping TypeName="GoPSModel.CoordenadasGeocerca">
         <MappingFragment StoreEntitySet="CoordenadasGeocerca">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_CoordenadaGeocerca" ColumnName="ID_CoordenadaGeocerca" />
           <ScalarProperty Name="Longitud" ColumnName="Longitud" />
           <ScalarProperty Name="Latitud" ColumnName="Latitud" />
@@ -222,6 +223,7 @@
     <EntitySetMapping Name="DireccionesAlternativas">
       <EntityTypeMapping TypeName="GoPSModel.DireccionesAlternativas">
         <MappingFragment StoreEntitySet="DireccionesAlternativas">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_DireccionAlternativa" ColumnName="ID_DireccionAlternativa" />
           <ScalarProperty Name="ID_Calle" ColumnName="ID_Calle" />
           <ScalarProperty Name="Numero_Exterior" ColumnName="Numero_Exterior" />
@@ -308,6 +310,7 @@
     <EntitySetMapping Name="Geocerca">
       <EntityTypeMapping TypeName="GoPSModel.Geocerca">
         <MappingFragment StoreEntitySet="Geocerca">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_Geocerca" ColumnName="ID_Geocerca" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -322,6 +325,7 @@
     <EntitySetMapping Name="Llamadas">
       <EntityTypeMapping TypeName="GoPSModel.Llamadas">
         <MappingFragment StoreEntitySet="Llamadas">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_Llamada" ColumnName="ID_Llamada" />
           <ScalarProperty Name="Numero" ColumnName="Numero" />
           <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
@@ -384,6 +388,7 @@
     <EntitySetMapping Name="PuntosInteres">
       <EntityTypeMapping TypeName="GoPSModel.PuntosInteres">
         <MappingFragment StoreEntitySet="PuntosInteres">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_PuntoInteres" ColumnName="ID_PuntoInteres" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
@@ -402,6 +407,7 @@
     <EntitySetMapping Name="RazonesLlamadas">
       <EntityTypeMapping TypeName="GoPSModel.RazonesLlamadas">
         <MappingFragment StoreEntitySet="RazonesLlamadas">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_RazonLlamada" ColumnName="ID_RazonLlamada" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -414,6 +420,7 @@
     <EntitySetMapping Name="RazonesRechazos">
       <EntityTypeMapping TypeName="GoPSModel.RazonesRechazos">
         <MappingFragment StoreEntitySet="RazonesRechazos">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_RazonRechazo" ColumnName="ID_RazonRechazo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -537,6 +544,7 @@
     <EntitySetMapping Name="TiposPrioridades">
       <EntityTypeMapping TypeName="GoPSModel.TiposPrioridades">
         <MappingFragment StoreEntitySet="TiposPrioridades">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_TipoPrioridad" ColumnName="ID_TipoPrioridad" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
@@ -548,6 +556,7 @@
     <EntitySetMapping Name="TiposPuntosInteres">
       <EntityTypeMapping TypeName="GoPSModel.TiposPuntosInteres">
         <MappingFragment StoreEntitySet="TiposPuntosInteres">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_TipoPuntoInteres" ColumnName="ID_TipoPuntoInteres" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
@@ -559,6 +568,7 @@
     <EntitySetMapping Name="TiposRechazos">
       <EntityTypeMapping TypeName="GoPSModel.TiposRechazos">
         <MappingFragment StoreEntitySet="TiposRechazos">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_TipoRechazo" ColumnName="ID_TipoRechazo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
@@ -633,12 +643,13 @@
     <FunctionImportMapping FunctionImportName="ObtenerReservasAnualesPorOperador" FunctionName="GoPSModel.Store.ObtenerReservasAnualesPorOperador" />
     <FunctionImportMapping FunctionImportName="ObtenerReservasMensualesPorOperador" FunctionName="GoPSModel.Store.ObtenerReservasMensualesPorOperador" />
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="GoPSModel.AspNetRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(GoPSModel.AspNetRoles)">
         <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
-          <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="newId" ColumnName="newId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -674,35 +685,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="GoPSModel.AspNetUsers">
-        <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="newId" ColumnName="newId" />
-          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
-          <ScalarProperty Name="IsLoged_in" ColumnName="IsLoged_in" />
-          <ScalarProperty Name="LastLogoutDate" ColumnName="LastLogoutDate" />
-          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-          <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="database_firewall_rules1Set">
       <EntityTypeMapping TypeName="GoPSModel.database_firewall_rules1">
         <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="modify_date" ColumnName="modify_date" />
           <ScalarProperty Name="create_date" ColumnName="create_date" />
           <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
@@ -782,6 +768,7 @@
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="GoPSModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
           <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -792,6 +779,7 @@
     <EntitySetMapping Name="Empresas">
       <EntityTypeMapping TypeName="GoPSModel.Empresas">
         <MappingFragment StoreEntitySet="Empresas">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Fecha_Actualizacion" ColumnName="Fecha_Actualizacion" />
           <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
@@ -917,6 +905,7 @@
     <EntitySetMapping Name="Reservas">
       <EntityTypeMapping TypeName="GoPSModel.Reservas">
         <MappingFragment StoreEntitySet="Reservas">
+          <ScalarProperty Name="kmAR" ColumnName="kmAR" />
           <ScalarProperty Name="ID_Reserva_Anterior" ColumnName="ID_Reserva_Anterior" />
           <ScalarProperty Name="ID_Codigo" ColumnName="ID_Codigo" />
           <ScalarProperty Name="ID_TarjetaCredito" ColumnName="ID_TarjetaCredito" />
@@ -1108,6 +1097,7 @@
           <ScalarProperty Name="Numero_Exterior" ColumnName="Numero_Exterior" />
           <ScalarProperty Name="ID_Calle" ColumnName="ID_Calle" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="ID_Operador" ColumnName="ID_Operador" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -1238,7 +1228,6 @@
     <FunctionImportMapping FunctionImportName="DashboardGrafico" FunctionName="GoPSModel.Store.DashboardGrafico">
       <ResultMapping>
         <ComplexTypeMapping TypeName="GoPSModel.DashboardGrafico_Result">
-          <ScalarProperty Name="MesNro" ColumnName="MesNro" />
           <ScalarProperty Name="Mes" ColumnName="Mes" />
           <ScalarProperty Name="Servicios" ColumnName="Servicios" />
         </ComplexTypeMapping>
@@ -1334,6 +1323,7 @@
     <EntitySetMapping Name="SistemaVariables">
       <EntityTypeMapping TypeName="GoPSModel.SistemaVariables">
         <MappingFragment StoreEntitySet="SistemaVariables">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="sivaDOMINIO" ColumnName="sivaDOMINIO" />
           <ScalarProperty Name="sivaVALOR_DOUBLE" ColumnName="sivaVALOR_DOUBLE" />
           <ScalarProperty Name="sivaVALOR_INT" ColumnName="sivaVALOR_INT" />
@@ -1348,17 +1338,6 @@
         <MappingFragment StoreEntitySet="TiposTransaccion">
           <ScalarProperty Name="ID_TipoTransaccion" ColumnName="ID_TipoTransaccion" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Configuraciones">
-      <EntityTypeMapping TypeName="GoPSModel.Configuraciones">
-        <MappingFragment StoreEntitySet="Configuraciones">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
-          <ScalarProperty Name="EsConfiguracionChofer" ColumnName="EsConfiguracionChofer" />
-          <ScalarProperty Name="Valor" ColumnName="Valor" />
-          <ScalarProperty Name="Atributo" ColumnName="Atributo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2207,5 +2186,44 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DashboardMensajesNuevos" FunctionName="GoPSModel.Store.DashboardMensajesNuevos" />
     <FunctionImportMapping FunctionImportName="GetCiudadAfiliado" FunctionName="GoPSModel.Store.GetCiudadAfiliado" />
+    <FunctionImportMapping FunctionImportName="ObtenerConfiguracion" FunctionName="GoPSModel.Store.ObtenerConfiguracion" />
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(GoPSModel.AspNetUsers)">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="newId" ColumnName="newId" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="IsLoged_in" ColumnName="IsLoged_in" />
+          <ScalarProperty Name="LastLogoutDate" ColumnName="LastLogoutDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuraciones">
+      <EntityTypeMapping TypeName="GoPSModel.Configuraciones">
+        <MappingFragment StoreEntitySet="Configuraciones">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+          <ScalarProperty Name="EsConfiguracionChofer" ColumnName="EsConfiguracionChofer" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Atributo" ColumnName="Atributo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DashboardGrafico2" FunctionName="GoPSModel.Store.DashboardGrafico2" />
   </EntityContainerMapping>
 </Mapping>

@@ -1,26 +1,30 @@
 ﻿@model GoPS.Models.Chat
 
 @{
-    ViewBag.Title = "Enviar Chat";
+    ViewBag.Title = "Enviar Chat";    
 }
 
 @Html.Hidden("Permiso", "Monitoreo")
-@using (Html.BeginForm())
+@using (Html.BeginForm("SendMessage","Chats",FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="main">
-        @{Html.RenderPartial("Breadcrumb", "Chats > Enviar Mensaje"); }
+        @{Html.RenderPartial("NavBar_CatChats", "Enviar Mensaje"); }
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-horizontal">
                     <hr />
                     @Html.ValidationSummary(true, "No se pudo crear el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.ID_Conductor)
+                    @Html.HiddenFor(model => model.ID_Operador)
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ID_Operador, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
-                        <div class="col-md-4">
-                            @Html.DropDownList("ID_Operador", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ID_Operador, "", new { @class = "text-danger" })
+                        <div class="col-md-12">
+                            <span id="error-dialog" class="text-danger" style="display:none">El campo Mensaje es requerido.</span>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            @Html.Label("Enviar mensaje a: " + Model.Conductores.NombreCompleto)
                         </div>
                         @Html.LabelFor(model => model.Mensaje, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
                         <div class="col-md-4">
@@ -28,10 +32,9 @@
                             @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Enviar" class="btn btn-default" />
+                            <input type="submit" value="Enviar" class="btn btn-sm btn-primary" />
                         </div>
                     </div>
                 </div>
@@ -44,6 +47,4 @@
     </div>
             }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+

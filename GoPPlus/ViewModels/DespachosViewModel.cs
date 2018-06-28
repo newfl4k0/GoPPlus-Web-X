@@ -1,10 +1,5 @@
 ﻿using GoPS.Models;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace GoPS.ViewModels
 {
@@ -24,7 +19,13 @@ namespace GoPS.ViewModels
         public int ID_Conductor { get; set; }
         public int Atraso { get; set; }
         public string Cliente { get; set; }
-        public string ClassName { get; set; }        
+        public string ClassName { get; set; }
+        public string Peticion { get; set; }
+        public string Destino { get; set; }
+        public string Mapa { get; set; }
+        public string Mapa2 { get; set; }
+        public int vc { get; set; }
+        public int iddesp { get; set; }
     }
 
     public class DespachosViewModel

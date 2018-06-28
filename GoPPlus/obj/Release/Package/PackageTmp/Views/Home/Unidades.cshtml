@@ -1,0 +1,1056 @@
+﻿@model GoPS.ViewModels.UnidadesViewModel
+@{
+    ViewBag.Title = "Seguimientos";
+}
+<style type='text/css'>
+    .error {
+        border:2px solid red;
+     }
+
+    .table>thead>tr>th {
+        height:auto;
+        font-size: 11px;
+    }
+    #map{
+        /*width:100%;*/        
+        height:700px;
+    }
+
+    #container-map {
+        
+        display:block;
+    }
+
+    #info {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 50%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #222;
+        background: #fff;
+    }
+
+    /*#info label {
+        font-size:11px;
+    }*/
+
+    .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    input[type="checkbox"] {
+        line-height: normal;
+        margin: 4px;
+    }
+
+    .filter-div {
+        background-color: #303030;
+        border-top: 1px solid #505050;
+        bottom: 0;
+        color: white;
+        height: 30%;
+        left: 0;
+        padding: 10px;
+        z-index: 10;
+    }
+
+    .filter-div input[type=text],
+    .filter-div select
+    {
+        color:black;
+    }
+
+    .btnfilter {
+        cursor: pointer;
+    }
+
+    #intro {
+        padding-left: 30px;
+        margin-top: 15px;
+    }
+
+    .rob-lowe-icon {
+        border:red
+    }
+    
+    #inputs,
+    #errors,
+    #directions {
+        position: absolute;
+        width: 33.3333%;
+        max-width: 300px;
+        min-width: 200px;
+    }
+
+    #inputs {
+        z-index: 10;
+        top: 10px;
+        left: 10px;
+    }
+
+    #directions {
+        z-index: 99; max-height: 91px;
+        background: rgba(0,0,0,.8);
+        top: 0;
+        right: 15px;
+        bottom: 0;
+        overflow: auto;
+    }
+
+    #errors {
+        z-index: 8;
+        opacity: 0;
+        padding: 10px;
+        border-radius: 0 0 3px 3px;
+        background: rgba(0,0,0,.25);
+        top: 90px;
+        left: 10px;
+    }
+
+    .legend {
+        background: rgba(0,0,0,.8);
+        border-radius: 3px;
+        top: 50px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        font-size: 12px;
+    }
+
+    .legend h4 {
+        margin: 0 0 7px 0;
+        color: white;
+    }
+
+    .legend div {
+        margin-top:3px;
+        color: white;
+    }
+
+    .legend div img {
+        margin-right:3px;
+    }
+
+    .checkBoxes {
+        margin-top: 20px;
+    }
+
+    #div-table-filter {
+        padding:10px;
+        /*width: 20%;
+        float: right;*/
+        background-color: black;
+        /*color: white;*/
+        transition: all .25s;
+        height:600px;
+    }
+
+    .datepicker {
+        padding: 0px;
+        border-radius: 0;
+    }
+
+    /*#div-table-filter {
+        padding:10px;
+        width: 20%;
+        position: relative;
+        right: 0;
+        background-color: black;
+        color: white;
+        transition: all .25s;
+    }*/
+
+    /*#div-table-filter.collapsed {
+        right: -20%;
+        margin-left: -20%;
+    }*/
+
+</style>
+
+@Html.Hidden("Permiso", "Monitoreo")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Operaciones > Monitoreo"); }
+
+    <div class="row checkBoxes">
+        <label><input type="checkbox" id="autoupdate" checked="checked" value="Actualizar">Actualizar Mapa</label>
+        <label><input type="checkbox" id="Ocultar" checked="checked" value="Ocultar">Ocultar Asignados</label>
+        <!--<label><input type="checkbox" id="Mostrar_Ruta" disabled value="Mostrar_Ruta">Mostrar Ruta</label>-->
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+            @Html.Hidden("lat", (object)ViewBag.lat)
+            @Html.Hidden("lon", (object)ViewBag.lon)
+            @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <input id="tableBtn" type="button" value=">" class="btn btn-default pull-right" />
+        </div>
+    </div>
+    <div id="container-map" class="row">
+        @Html.Hidden("idDivVehiculo")
+        <div class="col-lg-12">
+            <div id='state-legend' class='legend'>
+                @*<h4>Estatus</h4>
+                <div><img src="~/images/Libre.png" />Libre</div>
+                <div><img src="~/images/Asignado.png" />Asignado</div>
+                <div><img src="~/images/Ausente.png" />Ausente</div>
+                <div><img src="~/images/Ocupado.png" />Ocupado</div>*@
+            </div>
+            <div class="row">
+                <div class="col-lg-8" id="map"></div>
+                <div class="col-lg-4" id="div-table-filter">
+                    <table id="table-filter" data-toggle="table">
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Colonia</th>
+                                <th>Fecha</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-filter">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row filter-div">
+        <a class="btnfilter">Mostrar Filtros</a>
+        <div id="intro">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input id="seguimientoBtn" type="button" value="Seguimiento" class="btn btn-default" />
+                        </div>
+                        <div class="col-lg-6">
+                            <input id="avanzadoBtn" type="button" value="Avanzado" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input id="historicoBtn" type="button" value="Histórico" class="btn btn-default" />
+                        </div>
+                        <div class="col-lg-6">
+                            <input id="localizacionBtn" type="button" value="Localización" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <input id="clearBtn" type="button" value="Limpiar Filtros" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div id="seguimientoDiv" class="col-lg-9">
+                    <label>Tipos de Vehículos</label>
+                    <label><input type="checkbox" id="Check_TiposVehiculos" checked="checked" value="Check">Seleccionar todos</label>
+                    <div class="row">
+                            @Html.Hidden("seg_tiposVehiculos")
+                            @Html.EditorFor(model => model.tiposVehiculosList, new { htmlAttributes = new { @class = "col-md-6" } })
+                    </div>
+                    <input type="button" id="seg_filtrar" value="Filtrar" class="btn btn-default" />
+                </div>
+                <div id="avanzadoDiv" class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Localización por Vehículo</label>
+                                <div class="row form-group">
+                                    @Html.Label("Vehículo", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("loc_vehiculo", "", htmlAttributes: new { @class = "col-md-8" })
+                                </div>
+                                <div class="row form-group">
+                                    @Html.Label("Fecha", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("loc_fecha", "", htmlAttributes: new { @class = "col-md-8 datepicker" })
+                                </div>
+                                <input type="button" id="loc_buscar" value="Buscar Vehículo" class="btn btn-default pull-right" />
+                            </div>
+                        <div class="col-lg-8">
+                            <label>Historial por Colonia</label>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row form-group">
+                                        @Html.Label("Colonia", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.DropDownList("hist_colonia", null, "-Seleccione-", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row form-group">
+                                        @Html.Label("Km", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_km", "", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="row form-group">
+                                        @Html.Label("Fecha", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_fecha", "", htmlAttributes: new { @class = "col-md-8 datepicker" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row form-group">
+                                        @Html.Label("De", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_desde", "", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row form-group">
+                                        @Html.Label("a", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_hasta", "", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row form-group">
+                                        @Html.Label("Vehículo", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_vehiculo", "", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row form-group">
+                                        @Html.Label("Despacho", htmlAttributes: new { @class = "col-md-4" })
+                                        @Html.TextBox("hist_despacho", "", htmlAttributes: new { @class = "col-md-8" })
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" id="hist_ver" value="Ver Historial" class="btn btn-default pull-right" />
+                        </div>
+                    </div>
+                </div>
+                <div id="historicoDiv" class="col-lg-9">
+                    <label>Histórico</label>
+                    
+                    <input type="button" id="histor_enviar" value="Enviar" class="btn btn-default" />
+                </div>
+                <div id="localizacionDiv" class="col-lg-9">
+                    <div class="row">
+                        <label>Localización</label>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row form-group">
+                                    @Html.Label("Vehículo", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("local_vehiculo", "", htmlAttributes: new { @class = "col-md-8" })
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row form-group">
+                                    @Html.Label("Fecha", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("local_fecha", "", htmlAttributes: new { @class = "col-md-8 datepicker" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row form-group">
+                                    @Html.Label("De", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("local_desde", "", htmlAttributes: new { @class = "col-md-8" })
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row form-group">
+                                    @Html.Label("a", htmlAttributes: new { @class = "col-md-4" })
+                                    @Html.TextBox("local_hasta", "", htmlAttributes: new { @class = "col-md-8" })
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" id="local_buscar" value="Buscar" class="btn btn-default pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/ActualizarSegTiposVehiculosList.js"></script>
+    <script type="text/javascript">
+
+        var id_afiliado;
+        var interval;
+        var map;
+        var marker;
+        var directionsService;
+        var directionsDisplay;
+        var directionsDisplays = [];
+        var directionsServices = [];
+        var bounds = null;
+        var icon_start = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_house|2ECC71';
+        var icon_end = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_flag|EC1C24';
+        var myLatLng = { lat: 23.634501, lng: -102.552784 };
+        var gmarkers = [];
+        var apply_filters;
+        var idDivVehiculo;
+
+        $("#intro").hide();
+        $("#seguimientoDiv").hide();
+        $("#avanzadoDiv").hide();
+        $("#historicoDiv").hide();
+        $("#localizacionDiv").hide();
+
+        function initMap() {
+            // Create a map object and specify the DOM element for display.
+            $("#state-legend").hide();
+            $("#tableBtn").click().hide();
+            apply_filters = false;
+            idDivVehiculo = "";
+            id_afiliado = $('#ID_Afiliado').val();
+            ObtenerEstatus(id_afiliado);
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: true,
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            if (id_afiliado > 0) {
+                changeCenter(parseFloat($('#lat').val()), parseFloat($('#lon').val()), 12);
+            }
+
+            interval = setInterval(function () { updateMap() }, 2000);
+        }
+
+        function clearMarkers() {
+            for (var i = 0; i < gmarkers.length; i++) {
+                gmarkers[i].setMap(null);
+            }
+            gmarkers = [];
+        }
+
+        function EnglishDate(spanishDate)
+        {
+            var spanish = spanishDate.split("/");
+            var dd = spanish[0];
+            var mm = spanish[1];
+            var yyyy = spanish[2];
+            var english = mm + "/" + dd + "/" + yyyy;
+            return english;
+        }
+
+        function CompleteHour(hour)
+        {
+            var vec = hour.split(":");
+            var complete = vec.length > 1 ? hour : hour + ":00";
+            return complete;
+        }
+
+        function CargarUbicacionesVehiculo()
+        {
+            clearMarkers();
+            var vehiculo = $("#local_vehiculo").val();
+            var fecha = $("#local_fecha").val();
+            var desde = $("#local_desde").val();
+            var hasta = $("#local_hasta").val();
+            if (!id_afiliado)
+                id_afiliado = 0;
+
+            var link = '@Url.Action("GetLocationsVehiculo", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", vehiculo == "" ? null : vehiculo);
+            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+            link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
+            link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (index, value) {
+                            var latLng = { lat: value.Latitud, lng: value.Longitud };
+                            var icon = value.Icon;
+                            //if (value.Estatus.toLowerCase() == "libre")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Libre.png';
+                            //else if (value.Estatus.toLowerCase() == "asignado")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Asignado.png';
+                            //else if (value.Estatus.toLowerCase() == "ausente")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Ausente.png';
+                            //else if (value.Estatus.toLowerCase() == "ocupado")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Ocupado.png';
+
+                            //var content = '<b>Conductor:</b>: ' + value.Conductor + '.<br />' +
+                            //                '<b>Vehículo:</b> ' + value.Marca + ' ' + value.Modelo + ' ' + value.Color + '.<br />' +
+                            //                '<b>Matrícula:</b> ' + value.Matricula + '.';
+                            var content = '<b>Hora:</b>: ' + value.Hora + '.';
+
+                            makeMarker(latLng, icon, map, content);
+                        });
+                    }
+                },
+            });
+        }
+
+        function CargarVehiculos() {
+            clearMarkers();
+            var ocultar_servicios = $("#Ocultar").is(":checked");
+            var tiposVehiculos = $("#seg_tiposVehiculos").val();
+            var vehiculo = idDivVehiculo != "" ? $("#" + idDivVehiculo).val() : "";
+            if (!id_afiliado)
+                id_afiliado = 0;
+
+            var link = '@Url.Action("GetLocation", "Home")?ocultar=-1&id_afiliado=-2&id_tiposveh=-3&vehiculo=-4';
+            link = link.replace("-1", ocultar_servicios);
+            link = link.replace("-2", id_afiliado);
+            link = link.replace("-3", tiposVehiculos);
+            link = link.replace("-4", vehiculo);
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (index, value) {
+                            var latLng = { lat: value.Latitud_Actual, lng: value.Longitud_Actual };
+                            var icon = value.Icon;
+                            //if (value.Estatus.toUpperCase() == "libre")
+                            //   icon = 'https://gopplus.azurewebsites.net/images/Libre.png';
+                            //else if (value.Estatus.toUpperCase() == "asignado")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Asignado.png';
+                            //else if (value.Estatus.toUpperCase() == "ausente")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Ausente.png';
+                            //else if (value.Estatus.toUpperCase() == "ocupado")
+                            //    icon = 'https://gopplus.azurewebsites.net/images/Ocupado.png';
+
+                            var content = '<b>Conductor:</b>: ' + value.Conductor + '.<br />' +
+                                            '<b>Vehículo:</b> ' + value.Marca + ' ' + value.Modelo + ' ' + value.Color + '.<br />' +
+                                            '<b>Matrícula:</b> ' + value.Matricula + '.';
+
+                            makeMarker(latLng, icon, map, content);
+                        });
+                    }
+                },
+            });
+        }
+
+        function MostrarRutas() {
+            clearRoutes();
+            var tiposVehiculos = $("#seg_tiposVehiculos").val();
+            var vehiculo = idDivVehiculo != "" ? $("#" + idDivVehiculo).val() : "";
+            if (!id_afiliado)
+                id_afiliado = 0;
+
+            var link = '@Url.Action("GetRoutes", "Home")?id_afiliado=-1&id_tiposveh=-2&vehiculo=-3';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", tiposVehiculos);
+            link = link.replace("-3", vehiculo);
+
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (index, value) {
+
+                            var locations = new Array();
+                            //var bounds = new google.maps.LatLngBounds();
+
+                            locations.push(new google.maps.LatLng(value.Latitud_Origen, value.Longitud_Origen));
+                            //bounds.extend(locations[locations.length - 1]);
+
+                            var ubicaciones = value.Ubicaciones.split(',');
+
+                            if (ubicaciones.length > 0) {
+                                $.each(ubicaciones, function (index, value) {
+                                    var latlong = value.split(' ');
+                                    locations.push(new google.maps.LatLng(latlong[0], latlong[1]));
+                                    //bounds.extend(locations[locations.length - 1]);
+                                });
+                            }
+
+                            locations.push(new google.maps.LatLng(value.Latitud_Destino, value.Longitud_Destino));
+                            //bounds.extend(locations[locations.length - 1]);
+
+                            //map.fitBounds(bounds);
+                            //google.maps.event.addDomListener(window, 'resize', function () {
+                            //    google.maps.event.trigger(map, 'resize');
+                            //    map.fitBounds(bounds);
+                            //});
+
+                            if (locations.length <= 25) {
+                                drawRouteMap(locations);
+                            }
+                            else {
+                                var index = 0;
+                                var waypt = 25;
+                                var stop = waypt;
+
+                                while (index <= locations.length) {
+                                    var tmp_locations = new Array();
+                                    for (var i = index; i < stop; i++) {
+                                        tmp_locations.push(locations[i]);
+                                    }
+                                    drawRouteMap(tmp_locations);
+                                    index = stop;
+                                    stop = index + waypt;
+                                    if (stop > locations.length)
+                                        stop = locations.length - index;
+                                    if((locations.length - stop) < 3)
+                                    {
+                                        stop = stop - 1;
+                                        waypt = locations.length - stop + 1;
+                                    }
+
+                                }
+                            }
+                            //requestDirections(latLngOrigen, latLngDestino, waypoints);
+                        });
+                    }
+                },
+            });
+        }
+
+        function clearRoutes()
+        {
+            for (var i = 0; i < directionsDisplays.length; i++) {
+                directionsDisplays[i].setMap(null);
+            }
+        }
+
+        function drawRouteMap(locations) {
+
+            var start, end;
+            var waypts = [];
+
+            for (var k = 0; k < locations.length; k++) {
+                if (k >= 1 && k <= locations.length - 2) {
+                    waypts.push({
+                        location: locations[k],
+                        stopover: false
+                    });
+                }
+                if (k == 0)
+                    start = locations[k];
+
+                if (k == locations.length - 1)
+                    end = locations[k];
+
+            }
+            var request = {
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            console.log(request);
+
+            directionsServices.push(new google.maps.DirectionsService());
+            var instance = directionsServices.length - 1;
+            directionsDisplays.push(new google.maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true }));
+            directionsDisplays[instance].setMap(map);
+            directionsServices[instance].route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    console.log(status);
+                    //if (!bounds) bounds = response.bounds;
+                    //else bounds.union(response.bounds);
+                    directionsDisplays[instance].setDirections(response);
+                    //if (instance > 0) map.fitBounds(bounds);
+                    var leg = response.routes[0].legs[0];
+                    var content_start = leg.start_address;
+                    var content_end = leg.end_address;
+                    makeMarker(leg.start_location, icon_start, map, content_start);
+                    makeMarker(leg.end_location, icon_end, map, content_end);
+                }
+            });
+        }
+
+        function makeMarker(position, icon, map, content) {
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                icon: icon,
+                clickable: true
+            });
+
+            var markerinfowindow = new google.maps.InfoWindow()
+
+            google.maps.event.addListener(marker, 'click', (function (marker, content, markerinfowindow) {
+                return function () {
+                    markerinfowindow.setContent(content);
+                    markerinfowindow.open(map, marker);
+                };
+            })(marker, content, markerinfowindow));
+            gmarkers.push(marker);
+        }
+
+        function requestDirections(start, end, waypts) {
+            directionsService.route({
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            }, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    renderDirections(result);
+                }
+            });
+        }
+
+        function renderDirections(result) {
+            var renderer = new google.maps.DirectionsRenderer();
+            renderer.setMap(map);
+            renderer.setDirections(result);
+            //var step = 1;
+            //var infow = new google.maps.InfoWindow();
+            //infow.setContent(result.routes[0].legs[0].steps[step].distance.text + "<br>" + result.routes[0].legs[0].steps[step].duration.text + " ");
+            //infow.setPosition(result.routes[0].legs[0].steps[step].end_location);
+            //infow.open(map);
+        }
+
+        //google.maps.event.addDomListener(window, 'load', initMap);
+
+        function updateMap() {
+            var ocultar_servicios = $("#Ocultar").is(":checked");
+            var mostrar_ruta = $("#Mostrar_Ruta").is(":checked");
+            if (!id_afiliado)
+                id_afiliado = 0;
+            CargarVehiculos();
+            if (!ocultar_servicios && mostrar_ruta)
+                MostrarRutas();
+            if (idDivVehiculo != "")
+                $("#" + idDivVehiculo).click();
+        }
+
+        $('.btnfilter').click(function (e) {
+            $('#intro').slideToggle();
+            $(this).text($(this).text() == 'Ocultar Filtros' ? "Mostrar Filtros" : "Ocultar Filtros"); // using ternary operator.
+        });
+
+        $("#autoupdate").on("change", function () {
+            if ($("#autoupdate").is(":checked")) {
+                interval = setInterval(function () { updateMap() }, 2000);
+            }
+            else {
+                clearInterval(interval);
+            }
+        });
+
+        $("#Ocultar").on("change", function () {
+            var ocultar_servicios = $(this).is(":checked");
+            CargarVehiculos();
+            if (ocultar_servicios) {
+                $('#Mostrar_Ruta').prop("disabled", true);
+                $('#Mostrar_Ruta').prop("checked", false);
+                clearRoutes();
+            }
+            else {
+                $("#Mostrar_Ruta").prop("disabled", false);
+            }
+        });
+
+        $("#seguimientoBtn").on("click", function () {
+            $("#avanzadoDiv").hide();
+            $("#historicoDiv").hide();
+            $("#localizacionDiv").hide();
+            $("#seguimientoDiv").show();
+        });
+
+        $("#avanzadoBtn").on("click", function () {
+            $("#seguimientoDiv").hide();
+            $("#historicoDiv").hide();
+            $("#localizacionDiv").hide();
+            $("#avanzadoDiv").show();
+        });
+
+        $("#historicoBtn").on("click", function () {
+            $("#seguimientoDiv").hide();
+            $("#avanzadoDiv").hide();
+            $("#localizacionDiv").hide();
+            $("#historicoDiv").show();
+        });
+
+        $("#localizacionBtn").on("click", function () {
+            $("#seguimientoDiv").hide();
+            $("#avanzadoDiv").hide();
+            $("#historicoDiv").hide();
+            $("#localizacionDiv").show();
+        });
+
+        $("#Check_TiposVehiculos").on("change", function () {
+            var check = $(this).is(":checked");
+            if (check) {
+                $('#seguimientoDiv input:checkbox').prop('checked', true);
+            }
+            else {
+                $('#seguimientoDiv input:checkbox').prop('checked', false);
+            }
+        });
+
+        $("#Mostrar_Ruta").on("change", function () {
+            var mostrar_ruta = $(this).is(":checked");
+            CargarVehiculos();
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            else {
+                clearRoutes();
+            }
+        });
+
+        function ObtenerEstatus(id_afiliado)
+        {
+            $.getJSON('/Home/GetEstatus/', { ID_Afiliado: id_afiliado }, function (result) {
+                if (result != null) {
+                    var str = "<h4>Estatus</h4>";
+                    for (var key in result) {
+                        str = str + "<div><img src='" + result[key] + "' />" + key.toUpperCase() + "</div>";
+                    }
+
+                    $("#state-legend").html(str);
+                    $("#state-legend").show();
+                }
+                else
+                    $("#state-legend").hide();
+            });
+        }
+
+        $('#ID_Afiliado').on('change', function () {
+
+            id_afiliado = $(this).val();
+            //actualizar posicion (centro) del mapa
+            if (id_afiliado && id_afiliado > 0) {
+                $.getJSON('/Afiliados/ObtenerCoordenadasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
+                    if (result != null) {
+                        changeCenter(result.Latitud, result.Longitud, 12);
+                    }
+                    else
+                        changeCenter(23.634501, -102.552784, 6);
+                });
+                ObtenerEstatus(id_afiliado);
+            }
+            else
+            {          
+                changeCenter(23.634501, -102.552784, 6);
+                $("#state-legend").hide();
+            }
+
+
+            //actualizar vehiculos por afiliado
+            updateMap();
+
+            //actualizar DDL de colonias
+            var dll_hist_colonia = $('#hist_colonia');
+            dll_hist_colonia.empty();
+            $(document.createElement('option')).attr('value', '').text('-Seleccione-').appendTo(dll_hist_colonia);
+            if (id_afiliado) {
+                $.getJSON('/Colonias/ObtenerColoniasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
+                    $(result).each(function () {
+                        $(document.createElement('option'))
+                            .attr('value', this.Value)
+                            .text(this.Text)
+                            .appendTo(dll_hist_colonia);
+                    });
+                });
+            }
+        });
+
+        function changeCenter(latitude, longitude, zoom) {
+            var position = new google.maps.LatLng(latitude, longitude);
+            map.panTo(position);
+            map.setZoom(zoom);
+            $("html, body").animate({ scrollTop: 0 }, "100");
+        }
+
+        $("#clearBtn").on("click", function () {
+            $("#avanzadoDiv").hide();
+            $("#seguimientoDiv").hide();
+            $("#historicoDiv").hide();
+            $("#localizacionDiv").hide();
+            var aux = $("#intro:input[text]");
+            $("#intro").find('input:text').val("");
+            $('#hist_colonia').prop('selectedIndex', 0);
+            idDivVehiculo = "";
+            updateMap();
+        });
+
+        $("#seg_filtrar").on("click", function () {
+            CargarVehiculos();
+            var mostrar_ruta = $(this).is(":checked");
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            var tiposVehiculos = $("#seg_tiposVehiculos").val();
+            var link = '@Url.Action("GetTableTiposVehiculos", "Home")?id_afiliado=-1&id_tiposveh=-2';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", tiposVehiculos);
+            if (!($("#tableBtn").is(':visible')))
+                $("#tableBtn").show().click();
+            MostrarTabla(link);
+        });
+
+        $("#loc_buscar").on("click", function () {
+            idDivVehiculo = "loc_vehiculo";
+            CargarVehiculos();
+            var mostrar_ruta = $(this).is(":checked");
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            var vehiculo = $("#loc_vehiculo").val();
+            var fecha = $("#loc_fecha").val();
+            var link = '@Url.Action("GetTableLocalizacion", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", vehiculo);
+            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+            if (!($("#tableBtn").is(':visible')))
+                $("#tableBtn").show().click();
+            MostrarTabla(link);
+        });
+
+        $("#hist_ver").on("click", function () {
+
+            $(".error").removeClass("error");
+            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
+            var intRegex = /^\d+$/;
+            var valid = true;
+
+            var vehiculo = $("#hist_vehiculo").val();
+            var fecha = $("#hist_fecha").val();
+            var desde = $("#hist_desde").val();
+            var hasta = $("#hist_hasta").val();
+            var despacho = $("#hist_despacho").val();
+            var colonia = $("#hist_colonia").val();
+            var km = $("#hist_km").val();
+
+            if (!timeRegex.test(desde))
+            {
+                valid = false;
+                $("#hist_desde").addClass('error');
+            }
+            if (!timeRegex.test(hasta)) {
+                valid = false;
+                $("#hist_hasta").addClass('error');
+            }
+            if (despacho != "" && !intRegex.test(despacho)) {
+                valid = false;
+                $("#hist_despacho").addClass('error');
+            }
+            if (colonia != "" && km != "" && !intRegex.test(km)) {
+                valid = false;
+                $("#hist_km").addClass('error');
+            }
+
+            if (valid) {
+                idDivVehiculo = "hist_vehiculo";
+                CargarVehiculos();
+                var mostrar_ruta = $(this).is(":checked");
+                if (mostrar_ruta) {
+                    MostrarRutas();
+                }
+
+                var link = '@Url.Action("GetTableHistorial", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5&despacho=-6&colonia=-7&km=-8';
+                link = link.replace("-1", id_afiliado);
+                link = link.replace("-2", vehiculo == "" ? null : vehiculo);
+                link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+                link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
+                link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
+                link = link.replace("-6", despacho == "" ? null : despacho);
+                link = link.replace("-7", colonia == "" ? null : colonia);
+                link = link.replace("-8", km == "" ? null : km);
+                if (!($("#tableBtn").is(':visible')))
+                    $("#tableBtn").show().click();
+                MostrarTabla(link);
+            }
+        });
+
+        function MostrarTabla(link)
+        {
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        var row = "";
+                        $.each(data, function (index, value) {
+                            row += "<tr><td>" + value.Vehiculo + "</td><td>" + value.Colonia + "</td><td>" + new Date(parseInt(value.Fecha.substr(6))) + "</td><td>" + value.Estatus + "</td></tr>";
+                        });
+                        $("#tbody-filter").html(row);
+                    }
+                },
+            });
+        }
+
+        $("#local_buscar").on("click", function () {
+
+            $(".error").removeClass("error");
+
+            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
+            var valid = true;
+
+            var vehiculo = $("#local_vehiculo").val();
+            var fecha = $("#local_fecha").val();
+            var desde = $("#local_desde").val();
+            var hasta = $("#local_hasta").val();
+
+            if (vehiculo == "")
+            {
+                valid = false;
+                $("#local_vehiculo").addClass('error');
+            }
+            if (fecha == "") {
+                valid = false;
+                $("#local_fecha").addClass('error');
+            }
+            if (!timeRegex.test(desde)) {
+                valid = false;
+                $("#hist_desde").addClass('error');
+            }
+            if (!timeRegex.test(hasta)) {
+                valid = false;
+                $("#hist_hasta").addClass('error');
+            }
+
+            if (valid) {
+                CargarUbicacionesVehiculo();
+            }
+        });
+
+        $("#tableBtn").on("click", function () {
+            if ($(this).val() == ">") {
+                $("#div-table-filter").hide();
+                $('#map').removeClass();
+                $('#map').addClass('col-lg-12');
+            }
+            else {
+                $('#map').removeClass();
+                $('#map').addClass('col-lg-8');
+                $("#div-table-filter").show();
+            }
+            $(this).val($(this).val() == ">" ? "<" : ">");
+        });
+
+    </script>
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
+}
+ 

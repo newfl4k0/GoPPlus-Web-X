@@ -1,0 +1,60 @@
+﻿@model GoPS.Models.Estatus
+
+
+@{
+    ViewBag.Title = "Eliminar Status de Servicio";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Status > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? 
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    @if (ViewBag.MostrarEmpresas)
+                    {
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ID_Empresa)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empresas.Nombre)
+                        </dd>
+                    }
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Imagen)
+                    </dt>
+
+                    <dd>
+                        @*@Html.DisplayFor(model => model.Imagen)*@
+                        @if (!String.IsNullOrEmpty(Model.Imagen))
+                        {
+                            <img class="dbs-images" src="@Url.Content("~/images/Uploads/" + Model.Imagen)" alt="" />
+                        }
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

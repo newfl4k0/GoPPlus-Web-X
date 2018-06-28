@@ -6,7 +6,7 @@
 
 @Html.Hidden("Permiso", "Clientes")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Clientes Habituales > Detalles"); }
+    @{Html.RenderPartial("NavBar_CatClienteHabitual", "Detalles"); }
     <div class="row">
         <div class="col-lg-12">
             <div>
@@ -51,31 +51,7 @@
                     <dd>
                         @Html.DisplayFor(model => model.Servicios_Automaticos)
                     </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ID_Calle)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Calles.Nombre)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero_Exterior)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Numero_Exterior)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero_Interior)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Numero_Interior)
-                    </dd>
-
+                    
                     <dt>
                         @Html.DisplayNameFor(model => model.Fecha_Alta)
                     </dt>
@@ -102,8 +78,7 @@
 
                 </dl>
             </div>
-            <p class="div_actions">
-                @Html.EncodedActionLink("Editar", "Edit", "ClientesHabituales", new { id = Model.ID_ClienteHabitual }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+            <p class="div_actions">                
                 @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
             </p>
         </div>

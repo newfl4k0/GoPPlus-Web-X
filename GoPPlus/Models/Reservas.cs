@@ -51,6 +51,7 @@ namespace GoPS.Models
         public Nullable<int> ID_TarjetaCredito { get; set; }
         public string ID_Codigo { get; set; }
         public Nullable<int> ID_Reserva_Anterior { get; set; }
+        public Nullable<decimal> kmAR { get; set; }
     
         public virtual Calles Calles { get; set; }
         public virtual Calles Calles1 { get; set; }

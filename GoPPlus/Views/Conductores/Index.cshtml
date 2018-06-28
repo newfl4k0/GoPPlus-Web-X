@@ -18,7 +18,7 @@
             }
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Apellido" data-sort-order="asc">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Apellido" data-sort-order="asc">
                         <thead>
                             <tr>
                                 <th data-field="Apellido" data-sortable="true" data-sorter="customSorter">
@@ -62,7 +62,8 @@
                                     @Html.EncodedActionLink("Asignar Usuario", "AssignUser", "Conductores", new { id = item.ID_Conductor }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
                                     @Html.EncodedActionLink("Editar", "Edit", "Conductores", new { id = item.ID_Conductor }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
                                     @Html.EncodedActionLink("Detalles", "Details", "Conductores", new { id = item.ID_Conductor }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
-                                    @Html.EncodedActionLink("Eliminar", "Delete", "Conductores", new { id = item.ID_Conductor }, new { @class = "_Edicion" })
+                                    @Html.EncodedActionLink("Eliminar", "Delete", "Conductores", new { id = item.ID_Conductor }, new { @class = "_Edicion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.EncodedActionLink("Enviar Mensaje", "SendMessage", "Chats", new { id = item.ID_Conductor }, new { @class = "_Edicion" })
                                 </td>
                             </tr>
                         }

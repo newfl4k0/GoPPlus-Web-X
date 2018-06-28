@@ -40,7 +40,11 @@ namespace GoPS.Controllers
             TarjetasCredito tarjetasCredito = db.TarjetasCredito.Find(id);
             if (tarjetasCredito == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarjetas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tarjetasCredito);
         }
@@ -84,7 +88,11 @@ namespace GoPS.Controllers
             TarjetasCredito tarjetasCredito = db.TarjetasCredito.Find(id);
             if (tarjetasCredito == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarjetas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tarjetasCredito);
         }
@@ -120,8 +128,13 @@ namespace GoPS.Controllers
             TarjetasCredito tarjetasCredito = db.TarjetasCredito.Find(id);
             if (tarjetasCredito == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTarjetas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(tarjetasCredito);
         }
 

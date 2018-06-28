@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Elemento no encontrado";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+@Html.AntiForgeryToken()
+<div class="main">
+    @{ 
+        string _bar;
+        string _link;
+
+        _bar = ViewBag.NavBar;
+        _link = ViewBag.BackLink;
+
+        Html.RenderPartial(_bar, "Eliminar");
+     }
+    <div class="row">
+      <div class="col-lg-12">
+        <br />
+        <div class="alert bg-warning" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> @ViewBag.Mess.ToString()</div>
+        <a href="@{@_link}" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+      </div>
+    </div>
+</div>

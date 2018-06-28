@@ -1,0 +1,176 @@
+﻿@model GoPS.Models.Conductores
+
+@{
+    ViewBag.Title = "Eliminar Conductor";
+}
+
+<h2>Eliminar</h2>
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro? Se eliminarán los registros de Vehículos, Sanciones y Chats asociados a este Conductor.
+            </h3>
+            <div>
+                <h4>Conductores</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Apellido)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Apellido)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Celular)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RFC)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RFC)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoLicencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoLicencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Vigencia_Licencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Vigencia_Licencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoTarjeton)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoTarjeton)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Vigencia_Tarjeton)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Vigencia_Tarjeton)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Nacimiento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Liquido)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Liquido)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Flota)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Flotas.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Turno)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Turnos.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserID_Conductor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUsers.UserName)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -41,7 +41,11 @@ namespace GoPS.Controllers
             FormasPago formasPago = db.FormasPago.Find(id);
             if (formasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFormaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(formasPago);
         }
@@ -85,7 +89,11 @@ namespace GoPS.Controllers
             FormasPago formasPago = db.FormasPago.Find(id);
             if (formasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFormaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(formasPago);
         }
@@ -121,8 +129,13 @@ namespace GoPS.Controllers
             FormasPago formasPago = db.FormasPago.Find(id);
             if (formasPago == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFormaPago";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             ViewBag.Eliminar = db.Conductores.Where(c => c.Flotas.ID_FormaPago == formasPago.ID_FormaPago).Count() == 0;
             return View(formasPago);
         }

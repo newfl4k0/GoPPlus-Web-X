@@ -19,13 +19,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class VehiculosController : Controller
+    public class VehiculosController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Vehiculos
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -55,7 +50,11 @@ namespace GoPS.Controllers
             Vehiculos vehiculos = db.Vehiculos.Find(id);
             if (vehiculos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatVehiculo";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(vehiculos);
         }
@@ -126,7 +125,11 @@ namespace GoPS.Controllers
             Vehiculos vehiculos = db.Vehiculos.Find(id);
             if (vehiculos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatVehiculo";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ObtenerGeografiaSelectList(vehiculos);
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
@@ -179,8 +182,13 @@ namespace GoPS.Controllers
             Vehiculos vehiculos = db.Vehiculos.Find(id);
             if (vehiculos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatVehiculo";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound"); 
             }
+            ViewBag.Mess = MensajeDelete;
             return View(vehiculos);
         }
 
@@ -218,14 +226,6 @@ namespace GoPS.Controllers
                 ViewBag.ID_Ciudad = new SelectList(estado.Ciudades.OrderBy(o => o.Poblacion), "ID_Ciudad", "Poblacion", vehiculos.ID_Ciudad);
             }
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

@@ -39,9 +39,10 @@ namespace GoPS.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayName("Fecha de Finalización")]
         public System.DateTime Fecha_Fin { get; set; }
+
+
+        //[Range(typeof(int), "1", "100", ErrorMessage = "El valor del campo Descuento debe ser un número entero mayor a 0 y menor o igual a 100.")]
         [Required(ErrorMessage = "El campo Descuento es requerido")]
-        [Range(typeof(int), "1", "100", ErrorMessage = "El valor del campo Descuento debe ser un número entero mayor a 0 y menor o igual a 100.")]
-        [DisplayFormat(DataFormatString = @"{0:#\%}")]
         [DisplayName("Descuento")]
         public decimal Descuento { get; set; }
         [DisplayName("¿Primer Servicio?")]

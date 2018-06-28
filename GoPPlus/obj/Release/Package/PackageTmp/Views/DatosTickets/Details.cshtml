@@ -1,0 +1,209 @@
+﻿@model GoPS.Models.DatosTickets
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Ticket";
+}
+
+@Html.Hidden("Permiso", "Configuraciones")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Tickets > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_1)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_1)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_2)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_2)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_3)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_3)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_4)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_4)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_5)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_5)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_6)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_6)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_7)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_7)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_8)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_8)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_9)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_9)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Texto_10)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Texto_10)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Imagen)
+                    </dt>
+
+                    <dd>
+                        @if (!String.IsNullOrEmpty(Model.Imagen))
+                        {
+                            <img class="db-image" src="@Url.Content("~/images/Uploads/" + Model.Imagen)" alt=" " />
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Bordo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Bordo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Finalizacion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Finalizacion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.No_Taxi)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.No_Taxi)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Placas)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Placas)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre_Cliente)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre_Cliente)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Origen)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Origen)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Destino)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Destino)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Importe)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Importe)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Despacho)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Despacho)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Codigo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Codigo)
+                    </dd>
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "DatosTickets", new { id = Model.ID_DatoTicket }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

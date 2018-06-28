@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
 using Microsoft.AspNet.Identity;
@@ -12,7 +11,6 @@ using GoPS.Classes;
 using GoPS.ViewModels;
 using GoPS.CustomFilters;
 using GoPS.Filters;
-using System.Data.Entity.Validation;
 
 namespace GoPS.Controllers
 {
@@ -20,13 +18,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class FlotasController : Controller
+    public class FlotasController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Flotas
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Index()
@@ -42,7 +35,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Flotas/Details/5
-         
+
         [HasPermission("Vehiculos_Visualizacion")]
         public ActionResult Details(int? id)
         {
@@ -53,7 +46,11 @@ namespace GoPS.Controllers
             Flotas flotas = db.Flotas.Find(id);
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(flotas);
         }
@@ -107,7 +104,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Flotas/Edit/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Edit(int? id)
         {
@@ -118,7 +115,11 @@ namespace GoPS.Controllers
             Flotas flotas = db.Flotas.Find(id);
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -157,7 +158,7 @@ namespace GoPS.Controllers
 
 
         // GET: Flotas/Assign/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Assign(int? id)
         {
@@ -169,7 +170,11 @@ namespace GoPS.Controllers
             FlotasViewModel flotasViewModel = new FlotasViewModel(flotas, "assign");
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(flotasViewModel);
         }
@@ -185,7 +190,7 @@ namespace GoPS.Controllers
             int ID_Flota = int.Parse(Request["ID_Flota"].ToString());
             List<Conductores> conductoresList = db.Flotas.Find(ID_Flota).Conductores.ToList();
             string IDs = "";
-            foreach(Conductores cond in conductoresList)
+            foreach (Conductores cond in conductoresList)
             {
                 int i = cond.ID_Conductor;
                 Vehiculos_Conductores vh = cond.Vehiculos_Conductores.Where(vc => vc.Activo).OrderByDescending(vc => vc.Fecha_Asignacion).FirstOrDefault();
@@ -216,7 +221,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Flotas/Liquidate/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Liquidate(int? id)
         {
@@ -228,7 +233,11 @@ namespace GoPS.Controllers
             FlotasViewModel flotasViewModel = new FlotasViewModel(flotas, "liquidate");
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(flotasViewModel);
         }
@@ -282,7 +291,7 @@ namespace GoPS.Controllers
                 }
                 db.SaveChanges();
             }
-            
+
         }
 
         private void InhabilitarConductorYVehiculoConductor(Conductores conductor_sancionado)
@@ -323,7 +332,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Flotas/Transfer/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Transfer(int? id)
         {
@@ -335,7 +344,11 @@ namespace GoPS.Controllers
             FlotasViewModel flotasViewModel = new FlotasViewModel(flotas, "transfer");
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(flotasViewModel);
         }
@@ -357,7 +370,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Flotas/Delete/5
-         
+
         [HasPermission("Vehiculos_Edicion")]
         public ActionResult Delete(int? id)
         {
@@ -368,9 +381,14 @@ namespace GoPS.Controllers
             Flotas flotas = db.Flotas.Find(id);
             if (flotas == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatFlotas";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ViewBag.Eliminar = db.Conductores.Where(c => c.ID_Flota == flotas.ID_Flota).Count() == 0;
+            ViewBag.Mess = MensajeDelete;
             return View(flotas);
         }
 
@@ -408,13 +426,5 @@ namespace GoPS.Controllers
             return Json(flotas, JsonRequestBehavior.AllowGet);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

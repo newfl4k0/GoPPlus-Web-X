@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
@@ -33,7 +32,6 @@ namespace GoPS.Controllers
         private ApplicationRoleManager _roleManager;
 
         #endregion
-
         
         #region Constructores
 
@@ -125,7 +123,6 @@ namespace GoPS.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -143,7 +140,7 @@ namespace GoPS.Controllers
             {
                 return View(model);
             }
-            AspNetUsers getUser = db.AspNetUsers.Where(e => e.Email.ToLower() == model.Email.ToLower() || e.UserName.ToLower() == model.Email.ToLower()).SingleOrDefault();
+            AspNetUsers getUser = db.AspNetUsers.Where(e => e.Email.ToLower().Trim() == model.Email.ToLower().Trim() || e.UserName.ToLower() == model.Email.ToLower().Trim()).SingleOrDefault();
 
             if (getUser == null)
             {
@@ -358,23 +355,17 @@ namespace GoPS.Controllers
                 user.PositionID = model.PositionID;
                 user.DateOfBirth = Convert.ToDateTime(model.DateOfBirth);
                 user.IsLoged_in = false;
+                
                 user.PicturePath = isRolPic ? GetFileName(model, File_PicturePath) : "";
                 var result = await UserManager.CreateAsync(user, model.Password);
-
+                
                 if (result.Succeeded)
                 {
-                    //Comment the following line to prevent log in until the user is confirmed:
-                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-
-                    try
+                   try
                     {
                         // send email
                         string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Account confirmation");
+
                     }
                     catch (Exception)
                     {
@@ -472,7 +463,8 @@ namespace GoPS.Controllers
 
         
         [HasPermission("General_Edicion")]
-        public ActionResult Edit(int id)
+        [EncryptedActionParameter]
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -483,7 +475,11 @@ namespace GoPS.Controllers
 
             if (aspNetUser == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAccount";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
 
             var UserDB = (from m in db.AspNetUsers
@@ -506,7 +502,6 @@ namespace GoPS.Controllers
                               LockoutEndDateUtc = m.LockoutEndDateUtc,
                               LockoutEnabled = m.LockoutEnabled,
                               AccessFailedCount = m.AccessFailedCount
-
                           }).FirstOrDefault();
             ViewBag.PositionID = new SelectList(db.Positions.OrderBy(o => o.Position), "Id", "Position", UserDB.PositionID);
             UserDB.role = string.Join(",", aspNetUser.AspNetUserRoles.Select(p => p.AspNetRoles).Select(a => a.Id).ToArray());
@@ -525,46 +520,46 @@ namespace GoPS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HasPermission("General_Edicion")]
-        public async Task<ActionResult> Edit(RegisterViewModel UserEdit, HttpPostedFileBase File_PicturePath)
+        public async Task<ActionResult> Edit(RegisterViewModel UsserEdit, HttpPostedFileBase File_PicturePath)
         {
             ModelState["Password"].Errors.Clear(); ModelState["ConfirmPassword"].Errors.Clear();
-            ClearErrors(UserEdit, File_PicturePath != null);
+            ClearErrors(UsserEdit, File_PicturePath != null);
 
-            bool isRolPic = util.RolNeedsPicture(UserEdit.role);
+            bool isRolPic = util.RolNeedsPicture(UsserEdit.role);
 
             if (isRolPic)
-                GetTempFileName(UserEdit, File_PicturePath);
-            valid.ValidarUser(ModelState, UserEdit, isRolPic);
+                GetTempFileName(UsserEdit, File_PicturePath);
+            valid.ValidarUser(ModelState, UsserEdit, isRolPic);
             if (ModelState.IsValid)
             {
-                AspNetUsers getUser = db.AspNetUsers.Where(e => e.Email == UserEdit.Email).SingleOrDefault();
-                getUser.Id = UserEdit.Id;
-                getUser.PicturePath = isRolPic ? GetFileName(UserEdit, File_PicturePath) : "";
-                getUser.PasswordHash = UserEdit.PasswordHash;
-                getUser.SecurityStamp = UserEdit.SecurityStamp;
-                getUser.Email = UserEdit.Email;
-                getUser.UserName = UserEdit.UserName;
-                getUser.EmailConfirmed = UserEdit.EmailConfirmed;
-                getUser.PhoneNumber = UserEdit.PhoneNumber;
-                getUser.PhoneNumberConfirmed = UserEdit.PhoneNumberConfirmed;
-                getUser.TwoFactorEnabled = UserEdit.TwoFactorEnabled;
-                getUser.LockoutEndDateUtc = UserEdit.LockoutEndDateUtc;
-                getUser.LockoutEnabled = UserEdit.LockoutEnabled;
-                getUser.AccessFailedCount = UserEdit.AccessFailedCount;
-                getUser.PositionID = UserEdit.PositionID;
-                getUser.DateOfBirth = Convert.ToDateTime(UserEdit.DateOfBirth);
+                AspNetUsers getUser = db.AspNetUsers.Where(e => e.Email == UsserEdit.Email).SingleOrDefault();
+                getUser.Id = UsserEdit.Id;
+                getUser.PicturePath = isRolPic ? GetFileName(UsserEdit, File_PicturePath) : "";
+                getUser.PasswordHash = UsserEdit.PasswordHash;
+                getUser.SecurityStamp = UsserEdit.SecurityStamp;
+                getUser.Email = UsserEdit.Email;
+                getUser.UserName = UsserEdit.UserName;
+                getUser.EmailConfirmed = UsserEdit.EmailConfirmed;
+                getUser.PhoneNumber = UsserEdit.PhoneNumber;
+                getUser.PhoneNumberConfirmed = UsserEdit.PhoneNumberConfirmed;
+                getUser.TwoFactorEnabled = UsserEdit.TwoFactorEnabled;
+                getUser.LockoutEndDateUtc = UsserEdit.LockoutEndDateUtc;
+                getUser.LockoutEnabled = UsserEdit.LockoutEnabled;
+                getUser.AccessFailedCount = UsserEdit.AccessFailedCount;
+                getUser.PositionID = UsserEdit.PositionID;
+                getUser.DateOfBirth = Convert.ToDateTime(UsserEdit.DateOfBirth);
                 db.Entry(getUser).State = EntityState.Modified;
                 db.SaveChanges();
-                await AgregarRoles(UserEdit.role, UserEdit.afiliados, getUser);
+                await AgregarRoles(UsserEdit.role, UsserEdit.afiliados, getUser);
                 return RedirectToAction("Index");
             }
-            ViewBag.PositionID = new SelectList(db.Positions.OrderBy(o => o.Position), "Id", "Position", UserEdit.PositionID);
-            UserEdit.rolesList = util.ObtenerRadioButtonRolesList(UserEdit.role, User.Identity.GetUserId());
+            ViewBag.PositionID = new SelectList(db.Positions.OrderBy(o => o.Position), "Id", "Position", UsserEdit.PositionID);
+            UsserEdit.rolesList = util.ObtenerRadioButtonRolesList(UsserEdit.role, User.Identity.GetUserId());
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
-            UserEdit.afiliadosListChecks = util.ObtenerCheckBoxAfiliadosList(UserEdit.afiliados, ID_Afiliados, User.Identity.GetUserId());
-            UserEdit.afiliadosListRadios = util.ObtenerRadioButtonAfiliadosList(UserEdit.afiliados, ID_Afiliados, User.Identity.GetUserId());
-            return View(UserEdit);
+            UsserEdit.afiliadosListChecks = util.ObtenerCheckBoxAfiliadosList(UsserEdit.afiliados, ID_Afiliados, User.Identity.GetUserId());
+            UsserEdit.afiliadosListRadios = util.ObtenerRadioButtonAfiliadosList(UsserEdit.afiliados, ID_Afiliados, User.Identity.GetUserId());
+            return View(UsserEdit);
         }
 
         private void ClearErrors(RegisterViewModel UserEdit, bool picture)
@@ -588,7 +583,7 @@ namespace GoPS.Controllers
         }
 
         [HasPermission("General_Visualizacion")]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -599,13 +594,17 @@ namespace GoPS.Controllers
 
             if (aspNetUser == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAccount";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(aspNetUser);
         }
 
         [HasPermission("General_Edicion")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -616,8 +615,13 @@ namespace GoPS.Controllers
 
             if (aspNetUser == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatAccount";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(aspNetUser);
         }
 
@@ -648,8 +652,19 @@ namespace GoPS.Controllers
             }
 
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+
             var IsConfirmed = ConfirmUserEmail(userId);
-            return View(result.Succeeded && IsConfirmed ? "ConfirmEmail" : "Error");
+            AspNetUsers use = db.AspNetUsers.Where(p => p.Id == userId).FirstOrDefault();
+            if (use.AspNetUserRoles.FirstOrDefault().RoleId != "949b92e6-dc35-4d15-9a81-33c0f91e1f07")
+            {
+                return View(result.Succeeded && IsConfirmed ? "ConfirmEmail" : "Error");
+            }
+            else
+            {
+                return View(result.Succeeded && IsConfirmed ? "ConfirmEmailDriver" : "Error2");
+            }
+
+
         }
 
         private bool ConfirmUserEmail(string UserId)
@@ -671,28 +686,13 @@ namespace GoPS.Controllers
         {
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = userID, code = code }, protocol: Request.Url.Scheme);
-            subject = "Confirmar acceso a GoPPlus";
+            subject = "Confirmar Acceso a la Plataforma GoPPlus";
             MailMessage correo = new MailMessage
             {
                 Subject = subject
             };
-            correo.To.Add(UserManager.GetEmail(userID));
-            // correo.From
-            /*using (var smtp = new SmtpClient())
-            {
-                var credential = new NetworkCredential
-                {
-                    UserName = ConfigurationManager.AppSettings.Get("GmailUserName"),
-                    Password = ConfigurationManager.AppSettings.Get("GmailPassword")
-                };
-                smtp.Credentials = credential;
-                smtp.Host = ConfigurationManager.AppSettings.Get("GmailHost");
-                smtp.Port = Int32.Parse(ConfigurationManager.AppSettings.Get("GmailPort"));
-                smtp.EnableSsl = bool.Parse(ConfigurationManager.AppSettings.Get("GmailSsl2"));
-                await smtp.SendMailAsync(correo);
-                return RedirectToAction("Sent");
-            }*/
-            await UserManager.SendEmailAsync(userID, subject, "<p style='text-align: center;'><strong>Bienvenido</strong><strong>a</strong>&nbsp;<img src='https://gopplus.azurewebsites.net/images/logoemail.png' alt='' width='136' height='98' /></p><p style='text-align: center;'> &nbsp;</p><p style='text-align: center;'><strong> Es necesario confirmar su correo electr&oacute;nico para ingresar por primera vez al sistema.</strong ></p><p style='text-align: center;'><strong>Por favor confirme su cuenta dando clic <a href=\"" + callbackUrl + "\">aquí</a></strong></p><p style='text-align: justify;'> &nbsp;</p><p><strong> &nbsp;</strong></p>");
+            correo.To.Add(UserManager.GetEmail(userID));            
+            await UserManager.SendEmailAsync(userID, subject, "<p style='text-align: center;'><strong>Bienvenido</strong><strong>(a)</strong>&nbsp;<img src='https://gopplustest.azurewebsites.net/images/logoemail.png' alt='' width='136' height='98' /></p><p style='text-align: center;'> &nbsp;</p><p style='text-align: center;'><strong> Es necesario confirmar su correo electr&oacute;nico para ingresar por primera vez al sistema.</strong ></p><p style='text-align: center;'><strong>Por favor confirme su cuenta dando clic <a href=\"" + callbackUrl + "\">aquí</a></strong></p><p style='text-align: justify;'> &nbsp;</p><p><strong> &nbsp;</strong></p>");
             return callbackUrl;
         }
 
@@ -944,7 +944,7 @@ namespace GoPS.Controllers
                 {
                     AspNetUsers getUser = db.AspNetUsers.Where(e => e.Id == user).SingleOrDefault();
                     getUser.LastLogoutDate = util.ConvertToMexicanDate(DateTime.Now);
-                    getUser.IsLoged_in = false;
+                    getUser.IsLoged_in = false;                    
                     db.Entry(getUser).State = EntityState.Modified;
                     db.SaveChanges();
                     AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

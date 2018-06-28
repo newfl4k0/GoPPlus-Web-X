@@ -1,0 +1,110 @@
+﻿@model GoPS.ViewModels.FlotasViewModel
+
+@{
+    ViewBag.Title = "Liquidar Cuota de Conductores";
+}
+
+<style>
+    .error {
+        border: 2px solid #A94442;
+    }
+</style>
+
+@Html.Hidden("Permiso", "Vehiculos")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="main">
+        @{Html.RenderPartial("Breadcrumb", "Flotas > Liquidar"); }
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "No se pudieron liquidar los conductores. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                    @Html.Hidden("ID_Flota", Model.flotas.ID_Flota)
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.Label("Flota")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.flotas.Nombre)
+                        </dd>
+
+                        <dt>
+                            @Html.Label("Cuota")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.flotas.Afiliados.Cuota_Conductor)
+                        </dd>
+
+                        <dt>
+                            @Html.Label("Frecuencia")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.flotas.Afiliados.FrecuenciasPago.Nombre)
+                        </dd>
+                    </dl>
+                    @if (Model.conductores.Count > 0)
+                    {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.Label("Conductores")
+                                </th>
+                                <th>
+                                    @Html.Label("¿Liquidó?")
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.conductores)
+                        {
+                            <tr class="@(item.Liquido ? "" : "error")">
+                                <td>
+                                    @Html.Hidden("ID_Conductor_" + item.ID_Conductor, item.ID_Conductor)
+                                    @Html.Label(item.Nombre + " " + item.Apellido)
+                                    @if (!item.Liquido)
+                                    {
+                                        <br />
+                                        @Html.Label("Conductor Sancionado", new { @class = "text-danger" })
+                                    }
+                                </td>
+                                <td>
+                                    @Html.CheckBox("Liquido_" + item.ID_Conductor, true)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Liquidar" class="btn btn-default" />
+                        </div>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                No existen conductores en esta Flota.
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

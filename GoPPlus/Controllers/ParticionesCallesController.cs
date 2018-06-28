@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
 using Microsoft.AspNet.Identity;
@@ -18,13 +16,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class ParticionesCallesController : Controller
+    public class ParticionesCallesController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: ParticionesCalles
         [HasPermission("Mapas_Visualizacion")]
         public ActionResult Index()
@@ -34,7 +27,7 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var particionesCalles = db.ParticionesCalles.Include(p => p.Calles);
+            var particionesCalles = db.ParticionesCalles.Include(p => p.Calles).Where(p=>p.Calles.ID_Colonia<2000);
             return View(particionesCalles.ToList());
         }
 
@@ -50,7 +43,11 @@ namespace GoPS.Controllers
             ParticionesCalles particionesCalles = db.ParticionesCalles.Find(id);
             if (particionesCalles == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatParticionesCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(particionesCalles);
         }
@@ -66,7 +63,7 @@ namespace GoPS.Controllers
         [HasPermission("Mapas_Visualizacion")]
         public ActionResult ConsultaLocalizacion()
         {
-            var particionesCalles = db.ParticionesCalles.Include(p => p.Calles.Colonias).ToList();
+            var particionesCalles = db.ParticionesCalles.Include(p => p.Calles.Colonias).Where(p=>p.Calles.ID_Colonia<2000).ToList();
             return View(particionesCalles);
         }
 
@@ -122,7 +119,11 @@ namespace GoPS.Controllers
             ParticionesCalles particionesCalles = db.ParticionesCalles.Find(id);
             if (particionesCalles == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatParticionesCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ObtenerGeografiaSelectList(particionesCalles);
             return View(particionesCalles);
@@ -162,8 +163,13 @@ namespace GoPS.Controllers
             ParticionesCalles particionesCalles = db.ParticionesCalles.Find(id);
             if (particionesCalles == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatParticionesCalles";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(particionesCalles);
         }
 
@@ -206,14 +212,6 @@ namespace GoPS.Controllers
             var localizacion = db.ParticionesCalles.Where(c => c.ID_ParticionCalle == ID_ParticionCalle).Select(x => new { x.Latitud, x.Longitud }).FirstOrDefault();
             return Json(localizacion, JsonRequestBehavior.AllowGet);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

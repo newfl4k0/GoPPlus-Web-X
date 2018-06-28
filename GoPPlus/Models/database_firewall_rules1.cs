@@ -20,5 +20,6 @@ namespace GoPS.Models
         public string end_ip_address { get; set; }
         public System.DateTime create_date { get; set; }
         public System.DateTime modify_date { get; set; }
+        public bool Eliminado { get; set; }
     }
 }

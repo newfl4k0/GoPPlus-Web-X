@@ -13,7 +13,6 @@ namespace GoPS.Models
     
     public partial class DashboardGrafico_Result
     {
-        public Nullable<int> MesNro { get; set; }
         public string Mes { get; set; }
         public Nullable<int> Servicios { get; set; }
     }

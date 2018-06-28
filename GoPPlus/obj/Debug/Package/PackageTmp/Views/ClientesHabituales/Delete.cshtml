@@ -6,11 +6,11 @@
 
 @Html.Hidden("Permiso", "Clientes")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Clientes Habituales > Eliminar"); }
+    @{Html.RenderPartial("NavBar_CatClienteHabitual", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
             <h3>
-                ¿Estás seguro de eliminar este registro?
+                @ViewBag.Mess
             </h3>
             <div>
                 <hr />
@@ -54,31 +54,7 @@
                     <dd>
                         @Html.DisplayFor(model => model.Servicios_Automaticos)
                     </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ID_Calle)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Calles.Nombre)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero_Exterior)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Numero_Exterior)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero_Interior)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Numero_Interior)
-                    </dd>
-
+                    
                     <dt>
                         @Html.DisplayNameFor(model => model.Fecha_Alta)
                     </dt>

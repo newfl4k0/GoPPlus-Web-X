@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
 using GoPS.Classes;
@@ -19,13 +18,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class TurnosController : Controller
+    public class TurnosController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        DBServicios serv = new DBServicios();
-        DBValidaciones valid = new DBValidaciones();
-        Utilities util = new Utilities();
-
         // GET: Turnos
         [HasPermission("Configuraciones_Visualizacion")]
         public ActionResult Index()
@@ -53,7 +47,11 @@ namespace GoPS.Controllers
             Turnos turnos = db.Turnos.Find(id);
             if (turnos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTurnos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             turnos.diasList = util.ObtenerDiasList(turnos.Dias, true);
             return View(turnos);
@@ -113,7 +111,11 @@ namespace GoPS.Controllers
             Turnos turnos = db.Turnos.Find(id);
             if (turnos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTurnos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -162,8 +164,13 @@ namespace GoPS.Controllers
             Turnos turnos = db.Turnos.Find(id);
             if (turnos == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTurnos";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             turnos.diasList = util.ObtenerDiasList(turnos.Dias, true);
             ViewBag.Eliminar = db.Conductores.Where(c => c.ID_Turno == turnos.ID_Turno).Count() == 0;
             return View(turnos);
@@ -191,15 +198,6 @@ namespace GoPS.Controllers
         {
             var turnos = new SelectList(db.Turnos.ToList().Where(c => c.ID_Afiliado == ID_Afiliado).OrderBy(o => o.Nombre), "ID_Turno", "Nombre");
             return Json(turnos, JsonRequestBehavior.AllowGet);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        }        
     }
 }

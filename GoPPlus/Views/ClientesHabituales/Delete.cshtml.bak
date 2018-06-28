@@ -1,0 +1,119 @@
+﻿@model GoPS.Models.ClientesHabituales
+
+@{
+    ViewBag.Title = "Eliminar Cliente Habitual";
+}
+
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Clientes Habituales > Eliminar"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>
+                ¿Estás seguro de eliminar este registro?
+            </h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Afiliado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Afiliados.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Servicios_Automaticos)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Servicios_Automaticos)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Calle)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Calles.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Exterior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Exterior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero_Interior)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero_Interior)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Alta)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Alta)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Baja)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Baja)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoAviso)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposAvisos.Nombre)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color div_actions">
+                        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

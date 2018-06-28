@@ -45,7 +45,11 @@ namespace GoPS.Controllers
             DatosTickets datosTickets = db.DatosTickets.Find(id);
             if (datosTickets == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDatosTicket";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(datosTickets);
         }
@@ -114,7 +118,11 @@ namespace GoPS.Controllers
             DatosTickets datosTickets = db.DatosTickets.Find(id);
             if (datosTickets == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDatosTicket";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -158,8 +166,13 @@ namespace GoPS.Controllers
             DatosTickets datosTickets = db.DatosTickets.Find(id);
             if (datosTickets == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatDatosTicket";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(datosTickets);
         }
 

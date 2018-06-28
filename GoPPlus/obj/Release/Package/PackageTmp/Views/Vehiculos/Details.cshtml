@@ -1,0 +1,223 @@
+﻿@model GoPS.Models.Vehiculos
+@using GoPS.Helpers;
+@{
+    ViewBag.Title = "Ver Detalles de Vehículo";
+}
+
+@Html.Hidden("Permiso", "Vehiculos")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Vehículos > Detalles"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Matricula)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Matricula)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Alta)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Alta)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha_Baja)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha_Baja)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono_Seguro)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono_Seguro)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono_Seguro_EsCelular)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono_Seguro_EsCelular)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Poliza)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Poliza)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Serie)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Serie)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Habilitado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Habilitado)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Externo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Externo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoLicencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoLicencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoTarjeton)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoTarjeton)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoPermiso)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoPermiso)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Vigencia_Permiso)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Vigencia_Permiso)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NoTransporte)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NoTransporte)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RevistaMecanica)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RevistaMecanica)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.KmInicial)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.KmInicial)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.KmFinal)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.KmFinal)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Version)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Version)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Ciudad")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ciudades.Poblacion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Flota)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Flotas.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Modelo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modelos.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Color)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Colores.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_TipoVehiculo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TiposVehiculos.Nombre)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_Seguro)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Seguros.Nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p class="div_actions">
+                @Html.EncodedActionLink("Editar", "Edit", "Vehiculos", new { id = Model.ID_Vehiculo }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+            </p>
+        </div>
+    </div>
+</div>

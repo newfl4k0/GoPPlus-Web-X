@@ -1,4 +1,4 @@
-﻿@model GoPS.Models.Chat
+﻿@model IEnumerable<GoPS.Models.Chat>
 
 @{
     ViewBag.Title = "Ver Detalles de Chat";
@@ -6,66 +6,68 @@
 
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Chats > Detalles"); }
+    @{Html.RenderPartial("NavBar_CatChats", "Detalles"); }
     <div class="row">
-        <div class="col-lg-12">
-            <div>
+        <div class="col-lg-12">            
                 <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Fecha)
-                    </dt>
+                <div class="panel panel-default chat">
+                    <div class="panel-heading">Chat con <strong class="primary-font">@Model.FirstOrDefault().Conductores.NombreCompleto</strong>
+                        
+                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Es_Conductor == 1)
+                                {
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="http://placehold.it/60/30a5ff/fff" alt="Símbolo de Usuario" class="img-circle" />
+                                        </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header"><strong class="primary-font">@item.Conductores.NombreCompleto </strong> <small class="text-muted">@item.Fecha.ToString("dddd d MMMM, yyyy. HH:mm")</small></div>
+                                            <p>@item.Mensaje</p>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    if (@item.ID_Despacho == null)
+                                    {
+                                        <li class="right clearfix">
+                                            <span class="chat-img pull-right">
+                                                <img src="http://placehold.it/60/dde0e6/5f6468" alt="Símbolo de Usuario" class="img-circle" />
+                                            </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header"><strong class="pull-left primary-font">Central</strong> <small class="text-muted">@item.Fecha.ToString("dddd d MMMM, yyyy. HH:mm")</small></div>
+                                                <p>@item.Mensaje</p>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="right clearfix">
+                                            <span class="chat-img pull-right">
+                                                <img src="http://placehold.it/60/dde0e6/5f6468" alt="Símbolo de Usuario" class="img-circle" />
+                                            </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header"><strong class="pull-left primary-font">@item.Despachos.Reservas.Clientes.Nombre</strong> <small class="text-muted">@item.Fecha.ToString("dddd d MMMM, yyyy. HH:mm")</small></div>
+                                                <p>@item.Mensaje</p>
+                                            </div>
+                                        </li>
+                                    }
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Fecha)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Mensaje)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Mensaje)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Es_Conductor)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Es_Conductor)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ID_Operador)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Operadores.Nombre)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ID_Conductor)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Conductores.Nombre)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Despachos.Observaciones)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Despachos.Observaciones)
-                    </dd>
-
-                </dl>
-            </div>
+                                }
+                            }                          
+                        </ul>
+                    </div>
+                    
+                
+                </div><!--/.col-->
+        </div>
             <p class="div_actions">                
                 @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
             </p>
-        </div>        
-    </div>
-  
+    </div>        
 </div>

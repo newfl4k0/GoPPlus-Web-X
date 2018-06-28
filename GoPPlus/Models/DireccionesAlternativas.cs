@@ -22,6 +22,7 @@ namespace GoPS.Models
         public Nullable<int> ID_ClienteAbonado { get; set; }
         public Nullable<int> ID_ClienteHabitual { get; set; }
         public System.DateTime Fecha_Creacion { get; set; }
+        public bool Eliminado { get; set; }
     
         public virtual Calles Calles { get; set; }
         public virtual Clientes Clientes { get; set; }

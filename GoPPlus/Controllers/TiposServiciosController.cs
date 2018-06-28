@@ -37,7 +37,11 @@ namespace GoPS.Controllers
             TiposServicios tiposServicios = db.TiposServicios.Find(id);
             if (tiposServicios == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposServicios";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposServicios);
         }
@@ -81,7 +85,11 @@ namespace GoPS.Controllers
             TiposServicios tiposServicios = db.TiposServicios.Find(id);
             if (tiposServicios == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposServicios";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(tiposServicios);
         }
@@ -117,8 +125,13 @@ namespace GoPS.Controllers
             TiposServicios tiposServicios = db.TiposServicios.Find(id);
             if (tiposServicios == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatTiposServicios";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             ViewBag.Eliminar = db.Conductores.Where(c => c.Flotas.Afiliados.ID_TipoServicio == tiposServicios.ID_TipoServicio).Count() == 0;
             return View(tiposServicios);
         }

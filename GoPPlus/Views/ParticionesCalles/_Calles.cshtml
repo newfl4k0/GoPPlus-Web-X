@@ -26,7 +26,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Latitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control required latitud GetLatCalle" } })
+                            @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control required latitud GetLatCalle", onkeydown = "return ValidateNumber(event);" } })
                             @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-4 field-required" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control required longitud GetLangCalle" } })
+                            @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control required longitud GetLangCalle", onkeydown = "return ValidateNumber(event);" } })
                             @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -175,3 +175,13 @@
             }
         };
     </script>
+<script type="text/javascript">
+        function ValidateNumber(e) {
+            var evt = (e) ? e : window.event;
+            var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 190) {
+                return false;
+            }
+            return true;
+        };
+</script>

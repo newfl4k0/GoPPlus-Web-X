@@ -1,0 +1,223 @@
+﻿@model GoPS.ViewModels.DespachosViewModel
+
+@{
+    ViewBag.Title = "Despachos";
+}
+
+<style>
+.error {
+    border:2px solid red;
+}
+
+tr.atraso-white td {
+    background-color: white;
+}
+
+tr.atraso-yellow td {
+    background-color: yellow;
+}
+
+tr.atraso-red td {
+    background-color: red;
+    color:white;
+}
+</style>
+
+@Html.Hidden("Permiso", "Monitoreo")
+<div class="main">
+    @{Html.RenderPartial("NavBar_CatOperaciones", "Despachos"); }
+    <div class="row">
+        <div class="col-lg-12">            
+            @Html.HiddenFor(model => model.search)
+            <div class="panel panel-default">
+                @using (Html.BeginForm())
+                {
+                    <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+                        @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 despachos-estatus estatus-checks">
+                            @Html.HiddenFor(model => model.estatusVehiculo)
+                            @Html.EditorFor(model => model.estatusVehiculosList, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <input id="btnInterval" type="button" value="Detener Actualización" class="btn btn-default" />
+                <div class="panel-body" style="font-size:small;">
+                        <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-maintain-selected="true data-select-item-name="toolbar1" data-sort-name="Abordo" data-sort-order="asc">
+                            <thead>
+                                <tr>
+                                    <th data-field="Peticion" data-sortable="true" data-sorter="dateSorter">
+                                        @Html.Label("Peticion")
+                                    </th>
+                                    <th data-field="Abordo" data-sortable="true" data-sorter="dateSorter">
+                                        @Html.Label("Abordo")
+                                    </th>
+                                    <th data-field="Finalización" data-sortable="true" data-sorter="dateSorter">
+                                        @Html.Label("Finalización")
+                                    </th>
+                                    <th data-field="Origen" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Origen")
+                                    </th>
+                                    <th data-field="Destino" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Destino")
+                                    </th>
+                                    <th data-field="Costo" data-sortable="true" data-sorter="numberSorter">
+                                        @Html.Label("Costo")
+                                    </th>
+                                    <th data-field="Calificacion" data-sortable="true" data-sorter="numberSorter">
+                                        @Html.Label("Calificación")
+                                    </th>
+                                    <th data-field="Estatus" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Estatus")
+                                    </th>
+                                    <th data-field="Cancelacion" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Cancelación")
+                                    </th>
+                                    <th data-field="Vehiculo" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Vehículo")
+                                    </th>
+                                    <th data-field="Transporte_Ejecutivo" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("No. Transporte Ejecutivo")
+                                    </th>
+                                    <th data-field="Conductor" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Conductor")
+                                    </th>
+                                    <th data-field="Atraso" data-sortable="true" data-sorter="numberSorter">
+                                        @Html.Label("Atraso")
+                                    </th>
+                                    <th data-field="Cliente" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Cliente")
+                                    </th>
+                                    <th data-field="Observaciones" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Obv")
+                                    </th>
+                                    <th data-field="Mapa" data-sortable="true" data-sorter="customSorter">
+                                        @Html.Label("Mapa")
+                                    </th>                                    
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model.despachos)
+                            {
+                        <tr class="@(item.ClassName)">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Peticion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Abordo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Finalizacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Origen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Destino)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Costo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Calificacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cancelacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vehiculo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Transporte_Ejecutivo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Conductor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Atraso)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Observaciones)
+                            </td>
+                            <td>
+                                @if (item.Estatus.StartsWith("Fin"))
+                                {    
+                                <div class="show_file_image">
+                                    <a onclick="window.open('https://maps.googleapis.com/maps/api/staticmap?size=500x500&path=color:0xff0000ff|weight:5|@(item.Mapa)&key=AIzaSyAaxU4-c1ifle2YqKr6NHGQLoPncjq7fWY', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes, title=Ruta Final del Servicio');">       
+                                    <img src="https://maps.googleapis.com/maps/api/staticmap?size=100x100&path=color:0xff0000ff|weight:5|@(item.Mapa)&key=AIzaSyAaxU4-c1ifle2YqKr6NHGQLoPncjq7fWY"                                         
+                                          width="100" height="100" />
+                                   </a>
+                                </div> 
+                                }
+                            </td>
+                            <td>                                
+                            </td>
+                        </tr>
+                            }
+                        </table>
+                </div>
+                }
+            </div>            
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/ActualizarEstatusList.js"></script>
+    <script src="~/js/ActualizarDespachosPorEstatus.js"></script>
+    <script type="text/javascript">
+        var interval;
+        var dialog;
+        $(document).ready(function () {
+           
+            dialog = $("#my-dialog").dialog({
+                autoOpen: false,
+                width: 600,
+                resizable: false,
+                modal: true,
+                buttons: {
+                    "Enviar": sendMessage,
+                    "Cancelar": resetDialog
+                },
+                close: function () {
+                    resetDialog();
+                }
+            });
+
+            $(".modalLink").click(function () {
+                $("#my-dialog").load(this.href, function () {
+                    $(this).dialog("open");
+                });
+                return false;
+            });
+            
+        function sendMessage() {
+            if ($("#Mensaje").val() == "") {
+                $("#Mensaje").addClass("error");
+                $("#error-dialog").show();
+            }
+            else {
+                dialog.find("form").submit();
+                resetDialog();
+            }
+        }
+
+        function resetDialog() {
+            $("#Mensaje").val("").removeClass("error");
+            $("#error-dialog").hide();
+            dialog.dialog("close");
+        }
+
+        $('#ID_Afiliado').change(function () {
+            $("form").submit()
+        });
+
+    </script>
+}

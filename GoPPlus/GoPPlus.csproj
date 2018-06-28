@@ -18,8 +18,8 @@
     <AssemblyName>GoPPlus</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
-    <Use64BitIISExpress />
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -80,9 +80,11 @@
     <Compile Include="Classes\DBServicios.cs" />
     <Compile Include="Classes\DBValidaciones.cs" />
     <Compile Include="Classes\EncryptedActionParameterAttribute.cs" />
+    <Compile Include="Classes\getGoogleGeocode.cs" />
     <Compile Include="Classes\GmailEmailService.cs" />
     <Compile Include="Classes\MyExtensions.cs" />
     <Compile Include="Classes\RedirectOnError.cs" />
+    <Compile Include="Classes\resultGeocode.cs" />
     <Compile Include="Classes\StringValidationAttribute.cs" />
     <Compile Include="Classes\Utilities.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Controllers\CuponesController.cs" />
     <Compile Include="Controllers\DatosTicketsController.cs" />
     <Compile Include="Controllers\DespachosController.cs" />
+    <Compile Include="Controllers\DespachosMovController.cs" />
     <Compile Include="Controllers\DiasFestivosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EstatusController.cs" />
@@ -410,6 +413,9 @@
       <DependentUpon>GoPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashboardGrafico2_Result.cs">
       <DependentUpon>GoPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DashboardGrafico_Result.cs">
@@ -1117,6 +1123,7 @@
     <Content Include="js\jquery-ui-1.9.2.min.js" />
     <Content Include="js\jquery-ui-timepicker-addon.js" />
     <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.cookie.js" />
     <Content Include="js\jquery.validate.date.js" />
     <Content Include="js\jquery.validate.globalize.js" />
     <Content Include="js\jquery.validate.js" />
@@ -1248,6 +1255,7 @@
     <Content Include="EdoCta02.xss">
       <DependentUpon>EdoCta02.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="GoPSDDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>GoPSDDataSet.Designer.cs</LastGenOutput>
@@ -1272,6 +1280,7 @@
     <Content Include="Reportes\MyataSet.xsc">
       <DependentUpon>MyataSet.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\gopplustest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\gopplustest - Web Deploy.pubxml" />
     <None Include="Reportes\MyataSet.xsd">
       <SubType>Designer</SubType>
@@ -1461,6 +1470,7 @@
     <Content Include="webErr\images\search-bg.png" />
     <Content Include="webErr\images\search_btn.png" />
     <Content Include="webErr\images\sitemap-bg.png" />
+    <Content Include="webErr\index.html" />
     <Content Include="webErr\js\jquery.tablesorter.js" />
     <Content Include="webErr\styless.css" />
     <Content Include="css\bootstrap-theme.css.map" />
@@ -1868,6 +1878,35 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Shared\NavBar_CatSanciones.cshtml" />
+    <Content Include="Views\Account\ConfirmEmailDriver.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\Error2.cshtml" />
+    <Content Include="Views\Shared\ItemNotFound.cshtml" />
+    <Content Include="Views\Conductores\Unassign.cshtml" />
+    <Content Include="Views\Conductores\Logout.cshtml" />
+    <Content Include="Views\Conductores\UnassignUser.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatAccount.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatAspNetRoles.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatParticionesCalles2.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatClienteHabitual.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatPosiciones.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatPermisos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatDiasFestivos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatFormaPago.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatFrecuenciaPago.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatMensajes.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatEstatus.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatServAux.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTarjetas.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatTiposPagos.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatOperaciones.cshtml" />
+    <Content Include="Views\Shared\NavBar_CatChats.cshtml" />
+    <Content Include="Views\Chats\Send.cshtml" />
+    <Content Include="Views\DespachosMov\Index.cshtml" />
+    <Content Include="Views\Chats\IrChat.cshtml" />
+    <Content Include="Views\Home\TrazaRuta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2051,7 +2090,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63471</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8085/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

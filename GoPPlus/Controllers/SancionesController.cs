@@ -53,7 +53,11 @@ namespace GoPS.Controllers
             Sanciones sanciones = db.Sanciones.Find(id);
             if (sanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(sanciones);
         }
@@ -109,7 +113,11 @@ namespace GoPS.Controllers
             Sanciones sanciones = db.Sanciones.Find(id);
             if (sanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             ObtenerConductorFlotaSelectList(sanciones);
             //List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
@@ -155,7 +163,11 @@ namespace GoPS.Controllers
             Sanciones sanciones = db.Sanciones.Find(id);
             if (sanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(sanciones);
         }
@@ -187,8 +199,13 @@ namespace GoPS.Controllers
             Sanciones sanciones = db.Sanciones.Find(id);
             if (sanciones == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatSanciones";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(sanciones);
         }
 

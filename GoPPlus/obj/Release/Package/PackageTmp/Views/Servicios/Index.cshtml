@@ -1,0 +1,165 @@
+﻿@model IEnumerable<GoPS.Models.Reservas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud_Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud_Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud_Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud_Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Actualizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Calle_Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Calle_Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Exterior_Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Exterior_Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Finalizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Interior_Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero_Interior_Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientesAbonados.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientesHabituales.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus_Afiliados.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus_Reserva.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Operadores.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TiposVehiculos.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Actualizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Calle_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Calle_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Exterior_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Exterior_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Finalizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Interior_Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Interior_Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientesAbonados.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientesHabituales.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus_Afiliados.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus_Reserva.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Operadores.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TiposVehiculos.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Reserva }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Reserva }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Reserva })
+        </td>
+    </tr>
+}
+
+</table>

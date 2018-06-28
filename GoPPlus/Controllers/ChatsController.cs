@@ -17,11 +17,8 @@ namespace GoPS.Controllers
     [OutputCache(NoStore = true, Duration = 0)]
     [EncryptedActionParameter]
     [ValidateInput(false)]
-    public class ChatsController : Controller
+    public class ChatsController : _GeneralController
     {
-        private GoPSEntities db = new GoPSEntities();
-        Utilities util = new Utilities();
-
         // GET: Chats
         [HasPermission("Monitoreo_Visualizacion")]
         public ActionResult Index()
@@ -32,7 +29,8 @@ namespace GoPS.Controllers
                 TempData.Remove("Delete");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
-            var chat = db.Chat.Where(o => ID_Afiliados.Contains(o.Conductores.Flotas.ID_Afiliado)).Include(c => c.Operadores).Include(c => c.Conductores).Include(c => c.Despachos);
+            ViewBag.ID_Conductor = new SelectList(db.Conductores.Where(o=>o.Habilitado==true), "ID_Conductor", "Nombre" + "Apellido");
+            var chat = db.Chat.Where(o => ID_Afiliados.Contains(o.Conductores.Flotas.ID_Afiliado)).OrderBy(p=>p.Fecha).Include(c => c.Operadores).Include(c => c.Conductores).Include(c => c.Despachos);
             return View(chat.ToList());
         }
 
@@ -49,9 +47,22 @@ namespace GoPS.Controllers
             Chat chat = db.Chat.Find(id);
             if (chat == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatChats";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
-            return View(chat);
+            IQueryable<Chat> chats;
+            if (chat.ID_Despacho==null)
+            {
+                chats = db.Chat.Where(p => p.ID_Despacho == null && p.ID_Conductor == chat.ID_Conductor).OrderBy(p=>p.Fecha);                
+            }
+            else
+            {
+                chats = db.Chat.Where(p => p.ID_Despacho == chat.ID_Despacho).OrderBy(p => p.Fecha);                
+            }
+            return View(chats);
         }
 
         // GET: Chats/Create
@@ -89,8 +100,8 @@ namespace GoPS.Controllers
         }
 
         // GET: Chats/Create
-        //[HasPermission("Monitoreo_Edicion")]
-        public ActionResult SendMessage(int id)
+        [HasPermission("Monitoreo_Edicion")]
+        public ActionResult SendMessage(int id,string iii="0")
         {
             int id_afiliado = db.Conductores.Find(id).Flotas.ID_Afiliado;
             int id_operador = db.Operadores.Where(o => o.ID_Afiliado == id_afiliado).FirstOrDefault().ID_Operador;
@@ -98,6 +109,31 @@ namespace GoPS.Controllers
             chat.ID_Conductor = id;
             chat.ID_Operador = id_operador;
             chat.Conductores = db.Conductores.Find(chat.ID_Conductor);
+            if (iii=="1")
+            {
+                chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
+                chat.Es_Conductor = 0;
+                if (chat.Mensaje.Trim().Length>0 && chat.ID_Conductor>0 && chat.ID_Operador > 0)
+                {
+                    try
+                    {
+                        db.Chat.Add(chat);
+                        db.SaveChanges();
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        var v=e.Data;
+                        throw;
+                    }
+                    finally
+                    {
+                        ViewBag.Ira = 1;
+                        
+                    }
+                    
+                }
+            }
             return PartialView("SendMessage_PopUp", chat);
         }
 
@@ -109,13 +145,15 @@ namespace GoPS.Controllers
         [HasPermission("Monitoreo_Edicion")]
         public ActionResult SendMessage([Bind(Include = "ID_Chat,ID_Conductor,ID_Operador,Fecha,Mensaje,Es_Conductor,ID_Despacho")] Chat chat)
         {
+            ViewBag.Ira = 0;
             chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
             chat.Es_Conductor = 0;
             if (ModelState.IsValid)
-            {
+            {                
                 db.Chat.Add(chat);
                 db.SaveChanges();
-                return RedirectToAction("Index","Despachos");
+                //return RedirectToAction("Index","Conductores");
+                ViewBag.Ira= 1;
             }
             chat.Conductores = db.Conductores.Find(chat.ID_Conductor);
             return PartialView("SendMessage_PopUp", chat);
@@ -133,7 +171,11 @@ namespace GoPS.Controllers
             Chat chat = db.Chat.Find(id);
             if (chat == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatChats";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.ID_Operador = new SelectList(db.Operadores.Where(o => ID_Afiliados.Contains(o.ID_Afiliado)).OrderBy(o => o.Nombre), "ID_Operador", "Nombre", chat.ID_Operador);
@@ -175,8 +217,13 @@ namespace GoPS.Controllers
             Chat chat = db.Chat.Find(id);
             if (chat == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatChats";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(chat);
         }
 
@@ -193,13 +240,52 @@ namespace GoPS.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        // GET: Chats/Create
+        [HasPermission("Monitoreo_Edicion")]
+        public ActionResult IrChat(int? id)
         {
-            if (disposing)
+            if (id == null)
             {
-                db.Dispose();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            base.Dispose(disposing);
+            Chat chat = db.Chat.Find(id);
+            if (chat == null)
+            {
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatChats";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
+            }
+            IQueryable<Chat> chats;
+            if (chat.ID_Despacho == null)
+            {
+                chats = db.Chat.Where(p => p.ID_Despacho == null && p.ID_Conductor == chat.ID_Conductor).OrderBy(p => p.Fecha);
+            }
+            else
+            {
+                chats = db.Chat.Where(p => p.ID_Despacho == chat.ID_Despacho).OrderBy(p => p.Fecha);
+            }
+            return View(chats);
+        }
+
+        // POST: Chats/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [HasPermission("Monitoreo_Edicion")]
+        public ActionResult IrChat([Bind(Include = "ID_Chat,ID_Conductor,ID_Operador,Fecha,Mensaje,Es_Conductor,ID_Despacho")] Chat chat)
+        {
+            chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
+            chat.Es_Conductor = 0;            
+            if (ModelState.IsValid)
+            {
+                db.Chat.Add(chat);
+                db.SaveChanges();                
+            }
+            chat = db.Chat.Find(chat.ID_Chat);
+            return IrChat(chat.ID_Chat);
         }
     }
 }

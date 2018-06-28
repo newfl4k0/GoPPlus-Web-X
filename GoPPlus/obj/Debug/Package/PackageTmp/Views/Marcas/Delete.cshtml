@@ -6,11 +6,11 @@
 
 @Html.Hidden("Permiso", "Vehiculos")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Marcas > Eliminar"); }
+    @{Html.RenderPartial("NavBar_CatMarcas", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
             <h3>
-                ¿Estás seguro de eliminar este registro? Se eliminarán los registros de Modelos asociados a esta Marca.
+                @ViewBag.Mess
             </h3>
             <div>
                 <hr />

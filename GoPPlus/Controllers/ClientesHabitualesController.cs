@@ -44,7 +44,11 @@ namespace GoPS.Controllers
             ClientesHabituales clientesHabituales = db.ClientesHabituales.Find(id);
             if (clientesHabituales == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteHabitual";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             return View(clientesHabituales);
         }
@@ -107,7 +111,11 @@ namespace GoPS.Controllers
             ClientesHabituales clientesHabituales = db.ClientesHabituales.Find(id);
             if (clientesHabituales == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteHabitual";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -153,8 +161,13 @@ namespace GoPS.Controllers
             ClientesHabituales clientesHabituales = db.ClientesHabituales.Find(id);
             if (clientesHabituales == null)
             {
-                return HttpNotFound();
+                TempData["Mess"] = MensajeNotFound;
+                TempData["NavBar"] = "NavBar_CatClienteHabitual";
+                TempData["BackLink"] = "Index";
+
+                return RedirectToAction("ItemNotFound");
             }
+            ViewBag.Mess = MensajeDelete;
             return View(clientesHabituales);
         }
 

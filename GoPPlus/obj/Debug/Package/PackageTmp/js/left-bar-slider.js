@@ -1,7 +1,7 @@
 ﻿$('#sidebarbtn').click(function () {
     var resizedWindowWidth = $(window).width();
     if ($('#sidebar-collapse').css('display') == 'none') {
-        //$('#sidebar-collapse').slideDown("slow");
+       // $('#sidebar-collapse').slideDown("slow");
         $('#sidebar-collapse').show();
         initializeSliderWidth(resizedWindowWidth);
     }

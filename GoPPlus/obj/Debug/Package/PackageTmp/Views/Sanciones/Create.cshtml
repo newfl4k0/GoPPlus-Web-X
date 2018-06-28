@@ -28,7 +28,7 @@
     });
     </script>
     <div class="main">
-        @{Html.RenderPartial("Breadcrumb", "Sanciones > Crear"); }
+        @{Html.RenderPartial("NavBar_CatSanciones", "Nuevo"); }
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-horizontal">
@@ -90,19 +90,17 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Crear" class="btn btn-default guardar" />
+                            <input type="submit" value="Guardar" class="btn btn-default guardar" />
                         </div>
                     </div>
                 </div>
                 <div>
-                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion confirmLink" })
+                    @*@Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion confirmLink" })*@
+                    <a href="~/Sanciones/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
                 </div>
 
             </div>
         </div>
-    </div>
-    <div id="leaveDialog" title="Confirmación">
-        <p>Se han realizado cambios a la información pero no se han guardado, ¿Deseas salir sin guardar los cambios? </p>
     </div>
 }
 

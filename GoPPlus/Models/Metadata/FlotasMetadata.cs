@@ -53,7 +53,7 @@ namespace GoPS.Models
         [DisplayName("Celular")]
         public string Celular { get; set; }
         [Required(ErrorMessage = "El campo RFC es requerido")]
-        [StringLength(13, MinimumLength = 12, ErrorMessage = "El campo RFC debe tener una longitud de 13 o 14 caracteres")]
+        [StringLength(13, MinimumLength = 12, ErrorMessage = "El campo RFC debe tener una longitud de 12 o 13 caracteres")]
         [DisplayName("RFC")]
         public string RFC { get; set; }
         [Required(ErrorMessage = "El campo Banco es requerido")]

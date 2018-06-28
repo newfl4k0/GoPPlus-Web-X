@@ -1,8 +1,12 @@
 ﻿@using Microsoft.AspNet.Identity
+@using GoPS.Models;
 @{
-    ViewBag.Title = "Principal";
+    ViewBag.Title = "Indicadores";
 }    
-    <div class="main">
+    <div class="main">	    
+        <input type="hidden" value="@ViewBag.data0" id="Meses" />
+        <input type="hidden" value="@ViewBag.data1" id="Finalizados" />
+        <input type="hidden" value="@ViewBag.data2" id="Cancelados" />
         <div class="row5">
             <ol class="breadcrumb">
                 <li>
@@ -91,18 +95,17 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/.row-->
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Resumen de uso del servicio GoPPlus
-                        
-                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                     </div>
                     <div class="panel-body">
                         <div class="canvas-wrapper">
-                            <canvas class="main-chart" id="line-chart" height="100" width="400"></canvas>
+                            <canvas class="main-chart" id="line-chart" height="100" width="400" ></canvas>
                         </div>
                     </div>
                 </div>
@@ -143,10 +146,6 @@
             </div>
         </div>       
     </div>
-
-
-    
-
 @section Scripts {
 <script>
 		!function ($) {
@@ -164,14 +163,36 @@
 		})
 </script>
 <script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+        var txtFile = "~/js/chart-data.js";
+        var file = new File(txtFile);
+        var str = "";
+    
+        file.open("w"); // open file with write access
+        while (!file.eof) {
+            // read each line of text
+            str += file.readln();
+            if (str.startsWith("labels"))
+            {
+                str = "labels: ['ene', 'feb', 'mar', 'abr', 'may', 'jun'],";
+                file.writeln(str);
+            }
+            if (str.startsWith("data:") 
+            {
+                str = "data: [" + Finalizados[0].value + "," + Finalizados[1].value + "," + Finalizados[2].value + "]";
+                file.writeln(str);
+            }
+        }
+        file.close();
+        window.onload = function () {
+            var Finalizados = document.getElementById("Finalizados").value;
+            var Cancelados = document.getElementById("Cancelados").value;
+            var Meses = document.getElementById("Meses").value;            
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+                responsive: true
+            });
+        };
 </script>
+
 }

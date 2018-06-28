@@ -6,11 +6,11 @@
 
 @Html.Hidden("Permiso", "Configuraciones")
 <div class="main">
-    @{Html.RenderPartial("Breadcrumb", "Sanciones > Eliminar"); }
+    @{Html.RenderPartial("NavBar_CatSanciones", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
             <h3>
-                ¿Estás seguro de eliminar este registro?
+                @ViewBag.Mess
             </h3>
             <div>
                 <hr />

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GoPS.Models.Rutas>
+@{
+    ViewBag.Title = "Rutas";
+}
+@Html.Hidden("Permiso", "Clientes")
+<div class="main">
+    @{Html.RenderPartial("Breadcrumb", "Catálogo de Rutas"); }
+    <div class="row">
+        <div class="col-lg-12">
+            <br />
+            <p>
+                @Html.ActionLink("Nuevo", "Create", null, htmlAttributes: new { @class = "btn btn-default _Edicion" })
+            </p>
+            @if (ViewBag.Delete != null)
+            {
+                <p class="text-success">Registro Eliminado Exitosamente</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                        <thead>
+                            <tr>
+                                <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Ruta")
+                                </th>
+                                <th data-field="UsuariosAbonados.Nombre" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Usuario")
+                                </th>
+                                <th data-field="Habilitado" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Habilitado")
+                                </th>
+                                <th data-field="Direccion_Origen" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Dirección Origen")
+                                </th>
+                                <th data-field="Direccion_Destino" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Dirección Destino")
+                                </th>
+                                <th>@Html.Label("Acciones")</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UsuariosAbonados.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Habilitado)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion_Origen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion_Destino)
+                                </td>
+                                <td class="div_actions">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_Ruta }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_Ruta }, new { @class = "_Visualizacion" })<span class="_Visualizacion pipe"> | </span>
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Ruta }, new { @class = "_Edicion" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

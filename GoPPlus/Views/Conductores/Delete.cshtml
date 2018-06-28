@@ -3,14 +3,13 @@
 @{
     ViewBag.Title = "Eliminar Conductor";
 }
-
-<h2>Eliminar</h2>
 @Html.Hidden("Permiso", "Vehiculos")
 <div class="main">
+    @{Html.RenderPartial("NavBar_CatConductores", "Eliminar"); }
     <div class="row">
         <div class="col-lg-12">
             <h3>
-                ¿Estás seguro de eliminar este registro? 
+                @ViewBag.Mess
             </h3>
             <div>
                 <h4>Conductores</h4>
@@ -118,14 +117,6 @@
 
                     <dd>
                         @Html.DisplayFor(model => model.Habilitado)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Liquido)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Liquido)
                     </dd>
 
                     <dt>

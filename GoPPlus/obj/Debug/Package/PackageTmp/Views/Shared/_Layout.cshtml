@@ -6,13 +6,32 @@
     @*<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />*@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/js/jquery.cookie.js"></script>
     <script language="JavaScript">
         var cambio; //VAriablle para identificar si en los formularios ha cambiado algun valor antes de avandonar la pantalla sin guardar la información
         cambio = false;
+        
+        //********************************************************
+        // Codigo para recordar si el menu esta colapsado o abierto - Inicio
+        //********************************************************
+
+        function colapsarBar() {
+
+        }
+
+        if (typeof $.cookie('staticCollapse') === 'undefined') {
+            //no cookie
+            $.cookie("staticCollapse", "0"); // Sample 1
+        }
+
+        colapsarBar.staticCollapse = $.cookie("staticCollapse");
+
+        // Codigo para recordar si el menu esta colapsado o abierto - Fin
+        
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title - Sitio Backend GoPS</title>
+    <title>@ViewBag.Title - Sitio Backend GoPPlus</title>
     <link href="~/Content/custom-style.css" rel="stylesheet" />
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
@@ -22,8 +41,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-
 </head>
 <body>
     <section id="container">
@@ -32,18 +49,17 @@
             string Logo_DB = this.ViewContext.RouteData.Values["Logo"] == null ?
                                         ViewBag.Logo : this.ViewContext.RouteData.Values["Logo"].ToString();
             string Color_DB = this.ViewContext.RouteData.Values["Color"] == null ?
-                                ViewBag.Color : this.ViewContext.RouteData.Values["Color"].ToString();
-            if (!User.Identity.IsAuthenticated || !Request.IsAuthenticated)
-            {
-                Response.RedirectToRoute("GetIn");
-            }
+                                ViewBag.Color : this.ViewContext.RouteData.Values["Color"].ToString();            
             GoPSEntities db = new GoPSEntities();
-            string NM = (db.DashboardMensajesNuevos().FirstOrDefault() ?? 0).ToString();
+            string NM = db.DashboardMensajesNuevos().FirstOrDefault().ToString();
+            
+                string ver = db.ObtenerConfiguracion("versionweb").FirstOrDefault();
+                ViewBag.ver = ver;
         }
 
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">            
             <div class="container-fluid" style="background-color:@(Color_DB);">
-                <div class="navbar-header" style="background-color:@(Color_DB);">
+                <div class="navbar-header" style="background-color:@(Color_DB);">                    
                     <button type="button" class="glyphicon navbar-toggle" data-toggle="collapse" id="sidebarbtn">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -52,7 +68,7 @@
                     </button>
                     <div id="divLogo">
                         <a class="navbar-brand confirmLink" href="~/Home/Index"><img class="logo" style="align-content:center;" max-width: 99%; height="60" width="80" src="~/images/Uploads/logogopplus.png" /></a>
-                    </div>
+                    </div>                    
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -73,14 +89,12 @@
                 </div>
             </div>
         </nav>
-
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-            <hr />
-            <div class="profile-sidebar">
-
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">            
+            <div class="profile-sidebar">                
+                <hr />
                 <div class="profile-userpic">
                     <img src="~/images/user.jpg" class="img-responsive" alt="" />
-                </div>
+                </div>                
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div class="profile-usertitle">
@@ -218,18 +232,23 @@
                     }
                 </ul>
             }
-        </div>
-
-        <section id="main-content" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-            <fieldset>
-                @RenderBody()
-            </fieldset>
+        </div>     
+      <!-- <div class="container body-content" >
+            RenderBody()
             <footer>
-                <p align="center">&copy; @DateTime.Now.Year - Sitio Administrativo GoPPlus Web ver. 11.0 </p>
-            </footer>
-            <div class="clearfix"></div>
-        </section>
-        <div id="footer" style="background-color:@(Color_DB);"></div>
+                <p align="center">&copy; DateTime.Now.Year - Sitio Administrativo GoPPlus Web ver. 11.6 </p>
+            </footer>        
+        </div>-->
+        <div id="main-content" class="left col-sm-9 col-sm-offset-2 col-lg-10 col-lg-offset-2">
+           
+                @RenderBody()
+                        
+            <footer>
+                <p align="center">&copy; @DateTime.Now.Year - Sitio Administrativo GoPPlus Web ver. @ViewBag.ver.ToString() </p>
+            </footer>            
+            <div id="footer" style="background-color:@(Color_DB);"></div>
+        </div>
+        
     </section>
     <div id="leaveDialog" title="Confirmación">
         <p>Se han realizado cambios a la información pero no se han guardado, ¿Deseas salir sin guardar los cambios? </p>
@@ -239,6 +258,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/js/left-bar-slider.js"></script>
     @RenderSection("scripts", required: false)    
+
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/chart.min.js"></script>
     <script src="~/js/chart-data.js"></script>
@@ -274,11 +294,45 @@
 
             });
 
+     
+
             $('.guardar').click(function () {
                 //alert('guardando...');
                 cambio = false;
             });
 
+            //********************************************************
+            // Codigo para recordar si el menu esta colapsado o abierto - Inicio
+            //********************************************************
+
+            if (colapsarBar.staticCollapse == "0") {
+                $("#sidebar-collapse").toggle(true);
+                $('#main-content').removeClass("col-sm-12").addClass("col-sm-9");
+                $('#main-content').addClass("col-sm-offset-3");
+                $('#main-content').removeClass("col-lg-12").addClass("col-lg-10");
+                $('#main-content').addClass("col-sm-offset-2");
+            }
+            else {
+                $("#sidebar-collapse").toggle(false);
+                $('#main-content').removeClass("col-sm-9").addClass("col-sm-12");
+                $('#main-content').removeClass("col-lg-10").addClass("col-lg-12");
+                $('#main-content').removeClass("col-sm-offset-3");   
+                $('#main-content').removeClass("col-lg-offset-2");
+                $("#main-content").toggle(true);
+            }
+
+            $("#sidebarbtn").click(function (e) {
+
+                if (colapsarBar.staticCollapse == "0") 
+                    $.cookie("staticCollapse", "1");
+
+                else
+                    $.cookie("staticCollapse", "0");
+
+                colapsarBar.staticCollapse = $.cookie("staticCollapse");
+            });
+
+            // Codigo para recordar si el menu esta colapsado o abierto - Final
 
             $(".confirmLink").click(function (e) {
                 e.preventDefault();
@@ -457,5 +511,7 @@
             if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
         })
     </script>
+    
+
 </body>
 </html>
