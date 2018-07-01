@@ -1084,12 +1084,21 @@ namespace GoPS.Classes
 
         #region ParticionesCalles
 
-        public void ValidarLocalizacion(ModelStateDictionary ModelState, ParticionesCalles particiones)
+        public void ValidarLocalizacion(ModelStateDictionary ModelState, ParticionesCalles particiones, bool edit=false)
         {
-            bool error = db.ParticionesCalles.Where(x => x.Latitud == particiones.Latitud).Count() > 0;            
+            bool error = db.ParticionesCalles.Where(x => x.Latitud == particiones.Latitud).Count() > 0;
+            if (edit)
+            {
+                error = false;
+            }
             if (error)                
                 ModelState.AddModelError("Latitud", "La Latitud especificada ya se encuentra registrada.");
+
             error = db.ParticionesCalles.Where(x => x.Longitud == particiones.Longitud).Count() > 0;
+            if (edit)
+            {
+                error = false;
+            }
             if (error)
                 ModelState.AddModelError("Longitud", "La Longitud especificada ya se encuentra registrada.");
             if (particiones.Latitud < -90 || particiones.Latitud > 90)

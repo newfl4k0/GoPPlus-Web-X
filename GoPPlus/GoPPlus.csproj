@@ -836,6 +836,7 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\OperadoresViewModel.cs" />
     <Compile Include="ViewModels\TurnosViewModel.cs" />
+    <Compile Include="ViewModels\RutasViewModel.cs" />
     <Compile Include="ViewModels\UnidadesViewModel.cs" />
     <Compile Include="ViewModels\VehiculosViewModel.cs" />
   </ItemGroup>
@@ -1907,6 +1908,8 @@
     <Content Include="Views\DespachosMov\Index.cshtml" />
     <Content Include="Views\Chats\IrChat.cshtml" />
     <Content Include="Views\Home\TrazaRuta.cshtml" />
+    <Content Include="Views\Home\MuestraConductores.cshtml" />
+    <Content Include="Views\Home\MuestraUnidades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

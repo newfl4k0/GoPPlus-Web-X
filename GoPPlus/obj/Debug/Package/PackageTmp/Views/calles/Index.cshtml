@@ -18,7 +18,7 @@
             }
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                    <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1">
                         <thead>
                             <tr>
                                 <th data-field="Nombre" data-sortable="true" data-sorter="customSorter">
@@ -26,6 +26,9 @@
                                 </th>
                                 <th data-field="Colonias.Nombre" data-sortable="true" data-sorter="customSorter">
                                     @Html.Label("Colonia")
+                                </th>
+                                <th data-field="Colonias.Ciudades.Poblacion" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("Ciudad")
                                 </th>
                                 <th>@Html.Label("Acciones")</th>
                             </tr>
@@ -38,6 +41,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Colonias.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Colonias.Ciudades.Poblacion)
                                 </td>
                                 <td class="div_actions">
                                     @Html.EncodedActionLink("Editar", "Edit", "Calles", new { id = item.ID_Calle }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>

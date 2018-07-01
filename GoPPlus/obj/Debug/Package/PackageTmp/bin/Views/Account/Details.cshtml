@@ -13,6 +13,29 @@
             <div>
                 <hr />
                 <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </dt>
+
+                    @if (ViewBag.role.ToUpper() == ("DRIVER"))
+                    {
+                        <dd>                            
+                            <img class="db-image" src="~/images/Uploads/@Model.PicturePath" alt=" " />
+                            @Html.DisplayFor(model => model.UserName)
+                        </dd>
+                    }
+                    else
+                    {
+                            <dd>
+                                @Html.DisplayFor(model => model.UserName)
+                            </dd>
+                    }
+
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserName)
+                    </dd>
                     <dt>
                         @Html.DisplayNameFor(model => model.Email)
                     </dt>
@@ -35,63 +58,7 @@
 
                     <dd>
                         @Html.DisplayFor(model => model.PhoneNumber)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.TwoFactorEnabled)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.LockoutEndDateUtc)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LockoutEnabled)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.LockoutEnabled)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.AccessFailedCount)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.AccessFailedCount)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.UserName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.UserName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PositionID)
-                    </dt>
-
-                    <dd>
-                       @Html.DisplayFor(model => model.Positions.Position)
-                    </dd>
+                    </dd>                    
 
                     <dt>
                         @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -101,10 +68,72 @@
                         @Html.DisplayFor(model => model.DateOfBirth)
                     </dd>
 
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PositionID)
+                    </dt>
+
+                    <dd>
+                       @Html.DisplayFor(model => model.Positions.Position)
+                    </dd>                   
+
+                    <dt>
+                        @Html.Label("Perfil")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUserRoles.FirstOrDefault().AspNetRoles.Name)
+                    </dd>
+
+                    @if (ViewBag.role.ToUpper()==("ADMINISTRADOR") || ViewBag.role.ToUpper().StartsWith("CE") || ViewBag.role.ToUpper().StartsWith("DR"))
+                    {
+                        <dt>
+                            @Html.Label("Afiliados")
+                        </dt>
+                        foreach (var item in ViewBag.afiliados)
+                        {
+                            <dd>
+                               @Html.DisplayFor(modelItem => item)
+                            </dd>
+                        }                        
+                    }                 
+                   
+                    <dt>
+                        @Html.Label("Último Login")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastLoginDate)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Último Logout")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastLogoutDate)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Estatus:")
+                    </dt>
+
+                    @if (Model.IsLoged_in == true)
+                    {
+                        <dd>
+                            @Html.Label("Online", new { @class = "btn-sm btn-success" })
+                        </dd>
+                    }
+                    else
+                    {
+                        <dd>
+                            @Html.Label("Offline",new { @class = "btn btn-sm btn-danger" })
+                        </dd>
+                    }
+
                 </dl>
             </div>
             <p class="div_actions">
-                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.EncodedActionLink("Editar", "Edit", "Account", new { id = Model.newId }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
                 @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
             </p>
         </div>

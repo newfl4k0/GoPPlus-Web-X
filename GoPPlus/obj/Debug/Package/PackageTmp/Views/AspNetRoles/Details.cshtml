@@ -27,10 +27,22 @@
                     <dd>
                         @Html.DisplayFor(model => model.Afiliado)
                     </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.permisos)
+                    </dt>
+
+                    
+                    @foreach (var item in Model.Permissions)
+                        {
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.Name)  
+                            </dd>
+                        }                                       
                 </dl>
             </div>
             <p class="div_actions">
-                @Html.EncodedActionLink("Editar", "Edit", "AspNetRoles", new { id = Model.Id }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
+                @Html.EncodedActionLink("Editar", "Edit", "AspNetRoles", new { id = Model.newId }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>
                 @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
             </p>
         </div>

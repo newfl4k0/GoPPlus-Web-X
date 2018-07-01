@@ -53,7 +53,7 @@ namespace GoPS.CustomFilters
             {
                 userId = filterContext.HttpContext.User.Identity.GetUserId();
                 AspNetUsers userR = db.AspNetUsers.Find(userId);
-                userRole = db.AspNetUserRoles.Where(h => h.RoleId == userR.roles.ToString() && h.UserId == userR.Id).FirstOrDefault();
+                userRole = db.AspNetUserRoles.Where(h => h.RoleId == userR.roles.ToString() && h.UserId == userId).FirstOrDefault();                
                 permisosUser = userRole.AspNetRoles.Permissions.Select(p => p.Name).Distinct().ToList();
                 filterContext.RouteData.Values.Add("PermisosUser", permisosUser.ToArray());
                 filterContext.RouteData.Values.Add("SAdministrador", userRole.AspNetRoles.Name.ToUpper() == "SADMINISTRADOR");
@@ -68,6 +68,7 @@ namespace GoPS.CustomFilters
                     List<int> ID_Afiliados = userRole.AspNetRoles.Name.ToUpper() == "SADMINISTRADOR" && empresa.ToUpper() == "SPEQTRUM" ?
                                                 db.Afiliados.Select(a => a.ID_Afiliado).ToList()
                                                 : (userRole.AspNetRoles.Afiliado ?
+                                                
                                                 userRole.Afiliados.Where(e => e.Empresas.Nombre == empresa).Select(a => a.ID_Afiliado).ToList()
                                                 : db.Afiliados.Where(e => e.Empresas.Nombre == empresa).Select(a => a.ID_Afiliado).ToList());
                     filterContext.RouteData.Values.Add("ID_Afiliados", ID_Afiliados);

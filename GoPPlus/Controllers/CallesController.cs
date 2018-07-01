@@ -4,8 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Collections.Generic;
 using GoPS.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using GoPS.Classes;
 using GoPS.CustomFilters;
 using GoPS.Filters;
@@ -42,7 +45,51 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var calles = db.Calles.Include(c => c.Colonias).Where(x => x.Colonias.ID_Ciudad == 1 && x.Colonias.ID_Colonia<2000);            
+            string usuario=User.Identity.GetUserId();
+            AspNetUsers cUser = db.AspNetUsers.Find(usuario);
+            string[] listaafiliados = cUser.afiliados.Split(Convert.ToChar(","));
+            List<Afiliados> afi = new List<Afiliados>();
+            List<List<Calles>> calless = new List<List<Calles>>();
+            List<Calles> calles = new List<Calles>();
+
+            foreach (var item in listaafiliados)
+            {
+                int idaf = item.ToString().Trim().Length>0 ? Convert.ToInt32(item.ToString()) : 0;
+                if (idaf==0)
+                {
+                    List<Afiliados> af = db.Afiliados.OrderBy(x=>x.ID_Afiliado).ToList();
+                    //hardcode para pruebas. quitar afiliados solo dejar león
+                    int[] id = new int[af.Count];
+                    for (int i = 0; i < af.Count - 1; i++)
+                    {
+                        id[i] = af[i].ID_Afiliado;
+
+                    }
+                    int idAfiliadoActual = 0;
+                    for (int i = 0; i < 1; i++)
+                    {
+                        idAfiliadoActual = id[i];
+                        if (!(idAfiliadoActual==0))
+                        {
+                            Afiliados lisafi = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idAfiliadoActual).FirstOrDefault();
+                            Colonias col = db.Colonias.Where(co => co.ID_Colonia == lisafi.Calles.ID_Colonia).FirstOrDefault();
+                            calless.Add(db.Calles.Include(c => c.Colonias).Include(ci => ci.Colonias.Ciudades).Where(c => c.Colonias.ID_Ciudad == col.ID_Ciudad).ToList());
+                        }
+                       
+                    }
+                }
+                else
+                {
+                    Afiliados lisafi2 = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idaf).FirstOrDefault();
+                    Colonias col2 = db.Colonias.Where(co => co.ID_Colonia == lisafi2.Calles.ID_Colonia).FirstOrDefault();
+                    calless.Add(db.Calles.Include(c => c.Colonias).Include(ci=> ci.Colonias.Ciudades).Where(c => c.Colonias.ID_Ciudad == col2.ID_Ciudad).ToList());                   
+                }                
+            }
+            for (int i = 0; i < calless.Count; i++)
+            {
+                calles = calles.Union(calless[i]).ToList();
+            }
+            calles = calles.OrderBy(x=>x.Colonias.ID_Ciudad.ToString()).OrderBy(x => x.Nombre).ToList();
             return View(calles);
 
         }

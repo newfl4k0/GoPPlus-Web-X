@@ -251,7 +251,7 @@ namespace GoPS.Controllers
         public ActionResult TrazaRuta()
         {
             Utilities util = new Utilities();
-            UnidadesViewModel viewModel = new UnidadesViewModel();
+            RutasViewModel viewModel = new RutasViewModel();
             ViewBag.Message = "Vista para trazado de rutas.";
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -267,8 +267,18 @@ namespace GoPS.Controllers
             }
             else
                 ViewBag.hist_colonia = new SelectList(Enumerable.Empty<SelectListItem>());
-            viewModel.tiposVehiculosList = util.ObtenerTiposVehiculosList();
+            viewModel.Conductores = db.Conductores.Where(c => c.Habilitado == true).ToList();
+            viewModel.Unidades = db.Vehiculos.Where(v => v.Habilitado == true).ToList();
+            viewModel.FechaFin = new DateTime();
+            viewModel.FechaInicio = new DateTime();
             return View(viewModel);
+        }
+
+        [HasPermission("Monitoreo_Visualizacion")]
+        public ActionResult MuestraUnidades()
+        {
+            VehiculosViewModel unidads = new VehiculosViewModel(db.Vehiculos.Where(v => v.Habilitado == true).OrderBy(v => v.Fecha_Creacion).ToList());               
+            return PartialView(unidads);
         }
 
         [HasPermission("Configuraciones_Visualizacion")]

@@ -600,6 +600,21 @@ namespace GoPS.Controllers
 
                 return RedirectToAction("ItemNotFound");
             }
+            ViewBag.role = aspNetUser.AspNetUserRoles.FirstOrDefault().AspNetRoles.Name;
+            string[] afArr = aspNetUser.afiliados.Split(Convert.ToChar(","));
+            List<string> afList = afArr.ToList();
+            List<string> afList2 = new List<string>();
+            int x = 1;
+            foreach (var item in afList)
+            {
+                    if (!(item.ToString()=="" || item==null))
+                    {
+                        afList2.Add(db.Afiliados.Find(Convert.ToInt32(item.ToString())).Nombre);
+                    }
+                
+                x = x++;
+            }
+            ViewBag.afiliados = afList2;
             return View(aspNetUser);
         }
 
@@ -621,6 +636,21 @@ namespace GoPS.Controllers
 
                 return RedirectToAction("ItemNotFound");
             }
+            ViewBag.role = aspNetUser.AspNetUserRoles.FirstOrDefault().AspNetRoles.Name;
+            string[] afArr = aspNetUser.afiliados.Split(Convert.ToChar(","));
+            List<string> afList = afArr.ToList();
+            List<string> afList2 = new List<string>();
+            int x = 1;
+            foreach (var item in afList)
+            {
+                if (!(item.ToString() == "" || item == null))
+                {
+                    afList2.Add(db.Afiliados.Find(Convert.ToInt32(item.ToString())).Nombre);
+                }
+
+                x = x++;
+            }
+            ViewBag.afiliados = afList2;
             ViewBag.Mess = MensajeDelete;
             return View(aspNetUser);
         }

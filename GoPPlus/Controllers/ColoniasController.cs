@@ -6,6 +6,7 @@ using System.Net;
 using System.Web.Mvc;
 using GoPS.Models;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using GoPS.Classes;
 using GoPS.CustomFilters;
 using GoPS.Filters;
@@ -27,8 +28,53 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var colonias = db.Colonias.Where(c=>c.ID_Colonia<2000).Include(c => c.Ciudades).Where(c=>c.ID_Ciudad ==1 );
-            return View(colonias.ToList());
+            string usuario = User.Identity.GetUserId();
+            AspNetUsers cUser = db.AspNetUsers.Find(usuario);
+            string[] listaafiliados = cUser.afiliados.Split(Convert.ToChar(","));
+            List<Afiliados> afi = new List<Afiliados>();
+            List<List<Colonias>> coloniass = new List<List<Colonias>>();
+            List<Colonias> colonias = new List<Colonias>();
+
+            foreach (var item in listaafiliados)
+            {
+                int idaf = item.ToString().Trim().Length > 0 ? Convert.ToInt32(item.ToString()) : 0;
+                if (idaf == 0)
+                {
+                    List<Afiliados> af = db.Afiliados.OrderBy(x => x.ID_Afiliado).ToList();
+                    //hardcode para pruebas. quitar afiliados solo dejar león
+                    int[] id = new int[af.Count];
+                    for (int i = 0; i < af.Count - 1; i++)
+                    {
+                        id[i] = af[i].ID_Afiliado;
+
+                    }
+                    int idAfiliadoActual = 0;
+                    for (int i = 0; i < 1; i++)
+                    {
+                        idAfiliadoActual = id[i];
+                        if (!(idAfiliadoActual == 0))
+                        {
+                            Afiliados lisafi = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idAfiliadoActual).FirstOrDefault();
+                            Colonias col = db.Colonias.Where(co => co.ID_Colonia == lisafi.Calles.ID_Colonia).FirstOrDefault();
+                            colonias.Add(col);
+                        }
+
+                    }
+                }
+                else
+                {
+                    Afiliados lisafi2 = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idaf).FirstOrDefault();
+                    Colonias col2 = db.Colonias.Where(co => co.ID_Colonia == lisafi2.Calles.ID_Colonia).FirstOrDefault();
+                    colonias.Add(col2);
+                }
+            }
+            for (int i = 0; i < coloniass.Count; i++)
+            {
+                colonias = colonias.Union(coloniass[i]).ToList();
+            }
+            colonias = colonias.OrderBy(x => x.ID_Ciudad.ToString()).OrderBy(x => x.Nombre).ToList();
+            //var colonias = db.Colonias.Where(c=>c.ID_Colonia<2000).Include(c => c.Ciudades).Where(c=>c.ID_Ciudad ==1 );
+            return View(colonias);
         }
 
         // GET: Colonias/Details/5

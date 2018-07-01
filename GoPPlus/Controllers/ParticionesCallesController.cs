@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using GoPS.Classes;
 using GoPS.CustomFilters;
 using GoPS.Filters;
+using System.Collections.Generic;
 
 namespace GoPS.Controllers
 {
@@ -27,8 +28,61 @@ namespace GoPS.Controllers
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
-            var particionesCalles = db.ParticionesCalles.Include(p => p.Calles).Where(p=>p.Calles.ID_Colonia<2000);
-            return View(particionesCalles.ToList());
+            string usuario = User.Identity.GetUserId();
+            AspNetUsers cUser = db.AspNetUsers.Find(usuario);
+            string[] listaafiliados = cUser.afiliados.Split(Convert.ToChar(","));
+            List<Afiliados> afi = new List<Afiliados>();
+            List<List<ParticionesCalles>> Locss = new List<List<ParticionesCalles>>();
+            List<ParticionesCalles> Locs = new List<ParticionesCalles>();
+            List<List<Calles>> call = new List<List<Calles>>();
+            List<Calles> calls = new List<Calles>();
+
+            foreach (var item in listaafiliados)
+            {
+                int idaf = item.ToString().Trim().Length > 0 ? Convert.ToInt32(item.ToString()) : 0;
+                if (idaf == 0)
+                {
+                    List<Afiliados> af = db.Afiliados.OrderBy(x => x.ID_Afiliado).ToList();
+                    //hardcode para pruebas. quitar afiliados solo dejar león
+                    int[] id = new int[af.Count];
+                    for (int i = 0; i < af.Count - 1; i++)
+                    {
+                        id[i] = af[i].ID_Afiliado;
+
+                    }
+                    
+                    
+                    int idAfiliadoActual = 0;
+                    for (int i = 0; i < 1; i++)
+                    {
+                        idAfiliadoActual = id[i];
+                        if (!(idAfiliadoActual == 0))
+                        {
+                            Afiliados lisafi = db.Afiliados.Include(c => c.Calles).Include(u=>u.Calles.Colonias).Include(l => l.Calles.ParticionesCalles).Where(c => c.ID_Afiliado == idAfiliadoActual).FirstOrDefault();
+                            Colonias col = db.Colonias.Where(co => co.ID_Colonia == lisafi.Calles.ID_Colonia).FirstOrDefault();
+                            call.Add(db.Calles.Include(c => c.Colonias).Include(ci => ci.Colonias.Ciudades).Where(c => c.Colonias.ID_Ciudad == col.ID_Ciudad).ToList());
+                        }
+                    }
+                }
+                else
+                {
+                    Afiliados lisafi2 = db.Afiliados.Include(c => c.Calles).Include(u => u.Calles.Colonias).Include(l => l.Calles.ParticionesCalles).Where(a => a.ID_Afiliado == idaf).FirstOrDefault();
+                    Colonias col2 = db.Colonias.Where(co => co.ID_Colonia == lisafi2.Calles.ID_Colonia).FirstOrDefault();
+                    call.Add(db.Calles.Include(c => c.Colonias).Include(ci => ci.Colonias.Ciudades).Where(c => c.Colonias.ID_Ciudad == col2.ID_Ciudad).ToList());
+                }
+            }
+            for (int i = 0; i < call.Count; i++)
+            {
+                calls = calls.Union(call[i]).ToList();
+            }
+            //Locs = db.ParticionesCalles.Where(p=>p.ID_Calle == calls.)
+            for (int i = 0; i < calls.Count; i++)
+            {
+                int idcalle = calls[i].ID_Calle;
+                Locs = Locs.Union(db.ParticionesCalles.Where(h => h.ID_Calle == idcalle)).ToList();
+            }
+            //var particionesCalles = db.ParticionesCalles.Include(p => p.Calles).Where(p => p.Calles.ID_Colonia < 2000);
+            return View(Locs);
         }
 
         // GET: ParticionesCalles/Details/5
@@ -137,7 +191,7 @@ namespace GoPS.Controllers
         [HasPermission("Mapas_Edicion")]
         public ActionResult Edit([Bind(Include = "ID_ParticionCalle,ID_Calle,Latitud,Longitud,Numero,Fecha_Creacion,Fecha_Actualizacion,UserID")] ParticionesCalles particionesCalles)
         {
-            valid.ValidarLocalizacion(ModelState, particionesCalles);
+            valid.ValidarLocalizacion(ModelState, particionesCalles, true);
             if (ModelState.IsValid)
             {
                 particionesCalles.Numero = 1;
