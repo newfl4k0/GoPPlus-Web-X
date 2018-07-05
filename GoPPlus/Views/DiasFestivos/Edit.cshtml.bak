@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div>
-                    <a href="~/Colores/Index" class="_Visualizacion confirmLink"><em class="fa fa-arrow-left"></em> Regresar</a>
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
                 </div>
             </div>
         </div>

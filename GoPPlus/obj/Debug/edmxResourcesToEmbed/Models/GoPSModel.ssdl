@@ -635,7 +635,7 @@
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserID_Operador" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="Eliminado" Type="bit" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" />
   </EntityType>
   <EntityType Name="ParticionesCalles">
     <Key>
@@ -2791,6 +2791,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <Parameter Name="destino" Type="nvarchar" Mode="In" />
     <Parameter Name="id_cupon" Type="int" Mode="In" />
     <Parameter Name="id_codigo" Type="nvarchar" Mode="In" />
+    <Parameter Name="km" Type="decimal" Mode="In" />
   </Function>
   <Function Name="ClientIsActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="email" Type="nvarchar" Mode="In" />
@@ -2891,6 +2892,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <Parameter Name="latitud" Type="decimal" Mode="In" />
     <Parameter Name="longitud" Type="decimal" Mode="In" />
   </Function>
+  <Function Name="IndexarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Ins_Payworks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tipo" Type="varchar" Mode="In" />
     <Parameter Name="respuesta" Type="varchar(max)" Mode="In" />
@@ -3106,6 +3108,9 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
     <Parameter Name="idcolonia" Type="int" Mode="In" />
     <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="search_sprocs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="searchforthis" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SetDriverNewPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="pass" Type="nvarchar" Mode="In" />

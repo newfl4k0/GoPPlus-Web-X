@@ -1265,15 +1265,7 @@
     <FunctionImportMapping FunctionImportName="DashboardUnidadesActivas_0" FunctionName="GoPSModel.Store.DashboardUnidadesActivas_0" />
     <FunctionImportMapping FunctionImportName="ReportesDespachos" FunctionName="GoPSModel.Store.ReportesDespachos">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="GoPSModel.ReportesDespachos_Result">
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Transporte_Ejecutivo" ColumnName="Transporte_Ejecutivo" />
-          <ScalarProperty Name="Conductor" ColumnName="Conductor" />
-          <ScalarProperty Name="Monto" ColumnName="Monto" />
-          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
-          <ScalarProperty Name="Origen" ColumnName="Origen" />
-          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-        </ComplexTypeMapping>
+        <ComplexTypeMapping TypeName="GoPSModel.ReportesDespachos_Result" />
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="EliminarSancion" FunctionName="GoPSModel.Store.EliminarSancion" />
@@ -2225,5 +2217,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="DashboardGrafico2" FunctionName="GoPSModel.Store.DashboardGrafico2" />
+    <FunctionImportMapping FunctionImportName="IndexarUsuarios" FunctionName="GoPSModel.Store.IndexarUsuarios" />
+    <FunctionImportMapping FunctionImportName="search_sprocs" FunctionName="GoPSModel.Store.search_sprocs" />
   </EntityContainerMapping>
 </Mapping>

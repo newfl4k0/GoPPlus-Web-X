@@ -60,9 +60,10 @@
                     }
             </td>
             <td>
-                @if (item.PicturePath != null)
+                @if (item.PicturePath != null || item.PicturePath.Trim()!="")
                 {
-                    <img class="db-image" src="~/images/Uploads/@item.PicturePath" />
+                    <img class="dbs-images" src="~/images/Uploads/@item.PicturePath" />
+                    
                 }
             </td>
             <td class="div_actions">

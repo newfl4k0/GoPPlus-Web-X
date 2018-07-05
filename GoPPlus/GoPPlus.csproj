@@ -1033,6 +1033,7 @@
     <Content Include="images\Uploads\img212-28072017141809745.jpg" />
     <Content Include="images\Uploads\img213-08082017162449606.jpg" />
     <Content Include="images\Uploads\img213-28072017141809286.jpg" />
+    <Content Include="images\Uploads\instagramAvatar-26062018173646661.png" />
     <Content Include="images\Uploads\Libre.png" />
     <Content Include="images\Uploads\logogopplus-08092017234541954.png" />
     <Content Include="images\Uploads\logogopplus.png" />
@@ -1045,6 +1046,7 @@
     <Content Include="images\Uploads\UBER-08082017162449600.png" />
     <Content Include="images\Uploads\ULA-28072017141808800.png" />
     <Content Include="images\Uploads\upwork-28072017141808279.png" />
+    <Content Include="images\Uploads\userGoPPlus.jpeg" />
     <Content Include="images\Uploads\usuario.jpg" />
     <Content Include="images\Uploads\WhatsApp Image 2017-01-30 at 4.38.26 PM-27072017232541320.jpeg" />
     <Content Include="images\Uploads\WhatsApp Image 2017-01-30 at 4.38.26 PM-28072017141800395.jpeg" />
@@ -1277,6 +1279,7 @@
       <DependentUpon>GoPSDDataSetuu.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\gopplusdev - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\gopplusGO - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\gopplusprueba - Web Deploy.pubxml" />
     <Content Include="Reportes\MyataSet.xsc">
       <DependentUpon>MyataSet.xsd</DependentUpon>
@@ -1908,8 +1911,8 @@
     <Content Include="Views\DespachosMov\Index.cshtml" />
     <Content Include="Views\Chats\IrChat.cshtml" />
     <Content Include="Views\Home\TrazaRuta.cshtml" />
-    <Content Include="Views\Home\MuestraConductores.cshtml" />
     <Content Include="Views\Home\MuestraUnidades.cshtml" />
+    <Content Include="Views\Home\MuestraConductores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

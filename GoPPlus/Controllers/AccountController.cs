@@ -169,6 +169,7 @@ namespace GoPS.Controllers
             {
                 case SignInStatus.Success:
                     Session.Timeout = 20;
+                    Session["band"] = "u";
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -721,7 +722,7 @@ namespace GoPS.Controllers
             {
                 Subject = subject
             };
-            correo.To.Add(UserManager.GetEmail(userID));            
+            correo.To.Add(UserManager.GetEmail(userID));                   
             await UserManager.SendEmailAsync(userID, subject, "<p style='text-align: center;'><strong>Bienvenido</strong><strong>(a)</strong>&nbsp;<img src='https://gopplustest.azurewebsites.net/images/logoemail.png' alt='' width='136' height='98' /></p><p style='text-align: center;'> &nbsp;</p><p style='text-align: center;'><strong> Es necesario confirmar su correo electr&oacute;nico para ingresar por primera vez al sistema.</strong ></p><p style='text-align: center;'><strong>Por favor confirme su cuenta dando clic <a href=\"" + callbackUrl + "\">aquí</a></strong></p><p style='text-align: justify;'> &nbsp;</p><p><strong> &nbsp;</strong></p>");
             return callbackUrl;
         }

@@ -2118,6 +2118,7 @@
       <Parameter Name="destino" Mode="In" Type="String" />
       <Parameter Name="id_cupon" Mode="In" Type="Int32" />
       <Parameter Name="id_codigo" Mode="In" Type="String" />
+      <Parameter Name="km" Mode="In" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="ClientUpdatePassword">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -2691,6 +2692,10 @@
     </FunctionImport>
     <EntitySet Name="Configuraciones" EntityType="GoPSModel.Configuraciones" />
     <FunctionImport Name="DashboardGrafico2" ReturnType="Collection(GoPSModel.DashboardGrafico2_Result)" />
+    <FunctionImport Name="IndexarUsuarios" />
+    <FunctionImport Name="search_sprocs">
+      <Parameter Name="searchforthis" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="true" />
@@ -4207,16 +4212,7 @@
     <Property Type="DateTime" Name="Fecha_Actualizacion1" Nullable="true" Precision="23" />
     <Property Type="String" Name="UserID1" Nullable="false" MaxLength="128" />
   </ComplexType>
-  <ComplexType Name="ReportesDespachos_Result">
-    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-    <Property Type="String" Name="Transporte_Ejecutivo" Nullable="false" MaxLength="12" />
-    <Property Type="String" Name="Conductor" Nullable="false" MaxLength="101" />
-    <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Int32" Name="Calificacion" Nullable="false" />
-    <Property Type="String" Name="Origen" Nullable="false" MaxLength="154" />
-    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Destino" Nullable="false" />
-  </ComplexType>
+  <ComplexType Name="ReportesDespachos_Result" />
   <Association Name="FK_Estatus_Empresas">
     <End Type="GoPSModel.Empresas" Role="Empresas" Multiplicity="1" />
     <End Type="GoPSModel.Estatus" Role="Estatus" Multiplicity="*" />

@@ -16,7 +16,7 @@ namespace GoPS.CustomFilters
         private string role { get; set; }
         IOwinContext context;
         string userId;
-        List<string> permisosUser;
+        List<string> permisosUser= new List<string>();
         AspNetUserRoles userRole;
         private GoPSEntities db;
 

@@ -15,7 +15,7 @@
           <Property Name="Model" Type="varbinary(max)" Nullable="false" />
           <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="Eliminado" Type="bit" Nullable="false" />
-        </EntityType>	
+        </EntityType>
         <EntityType Name="Afiliados">
           <Key>
             <PropertyRef Name="ID_Afiliado" />
@@ -640,7 +640,7 @@
           <Property Name="Fecha_Actualizacion" Type="datetime" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="UserID_Operador" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Eliminado" Type="bit" Nullable="true" />
+          <Property Name="Eliminado" Type="bit" />
         </EntityType>
         <EntityType Name="ParticionesCalles">
           <Key>
@@ -2796,6 +2796,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           <Parameter Name="destino" Type="nvarchar" Mode="In" />
           <Parameter Name="id_cupon" Type="int" Mode="In" />
           <Parameter Name="id_codigo" Type="nvarchar" Mode="In" />
+          <Parameter Name="km" Type="decimal" Mode="In" />
         </Function>
         <Function Name="ClientIsActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="nvarchar" Mode="In" />
@@ -2896,6 +2897,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           <Parameter Name="latitud" Type="decimal" Mode="In" />
           <Parameter Name="longitud" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="IndexarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Ins_Payworks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipo" Type="varchar" Mode="In" />
           <Parameter Name="respuesta" Type="varchar(max)" Mode="In" />
@@ -3111,6 +3113,9 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           <Parameter Name="Fecha_Fin" Type="datetime" Mode="In" />
           <Parameter Name="idcolonia" Type="int" Mode="In" />
           <Parameter Name="ID_Afiliado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="search_sprocs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchforthis" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SetDriverNewPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
@@ -5806,6 +5811,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
             <Parameter Name="destino" Mode="In" Type="String" />
             <Parameter Name="id_cupon" Mode="In" Type="Int32" />
             <Parameter Name="id_codigo" Mode="In" Type="String" />
+            <Parameter Name="km" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ClientUpdatePassword">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -6379,6 +6385,10 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           </FunctionImport>
           <EntitySet Name="Configuraciones" EntityType="GoPSModel.Configuraciones" />
           <FunctionImport Name="DashboardGrafico2" ReturnType="Collection(GoPSModel.DashboardGrafico2_Result)" />
+          <FunctionImport Name="IndexarUsuarios" />
+          <FunctionImport Name="search_sprocs">
+            <Parameter Name="searchforthis" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="IniciarSesion_Result">
           <Property Type="Int32" Name="id" Nullable="true" />
@@ -7896,14 +7906,6 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           <Property Type="String" Name="UserID1" Nullable="false" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="ReportesDespachos_Result">
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Transporte_Ejecutivo" Nullable="false" MaxLength="12" />
-          <Property Type="String" Name="Conductor" Nullable="false" MaxLength="101" />
-          <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="Calificacion" Nullable="false" />
-          <Property Type="String" Name="Origen" Nullable="false" MaxLength="154" />
-          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Destino" Nullable="false" />
         </ComplexType>
         <Association Name="FK_Estatus_Empresas">
           <End Type="GoPSModel.Empresas" Role="Empresas" Multiplicity="1" />
@@ -9885,13 +9887,6 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
           <FunctionImportMapping FunctionImportName="ReportesDespachos" FunctionName="GoPSModel.Store.ReportesDespachos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GoPSModel.ReportesDespachos_Result">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Transporte_Ejecutivo" ColumnName="Transporte_Ejecutivo" />
-                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
-                <ScalarProperty Name="Origen" ColumnName="Origen" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -10844,6 +10839,8 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DashboardGrafico2" FunctionName="GoPSModel.Store.DashboardGrafico2" />
+          <FunctionImportMapping FunctionImportName="IndexarUsuarios" FunctionName="GoPSModel.Store.IndexarUsuarios" />
+          <FunctionImportMapping FunctionImportName="search_sprocs" FunctionName="GoPSModel.Store.search_sprocs" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

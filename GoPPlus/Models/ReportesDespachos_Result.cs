@@ -13,13 +13,5 @@ namespace GoPS.Models
     
     public partial class ReportesDespachos_Result
     {
-        public System.DateTime Fecha { get; set; }
-        public string Transporte_Ejecutivo { get; set; }
-        public string Conductor { get; set; }
-        public Nullable<decimal> Monto { get; set; }
-        public int Calificacion { get; set; }
-        public string Origen { get; set; }
-        public string Cliente { get; set; }
-        public string Destino { get; set; }
     }
 }

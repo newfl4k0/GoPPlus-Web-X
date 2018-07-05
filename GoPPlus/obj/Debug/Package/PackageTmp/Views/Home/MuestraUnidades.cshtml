@@ -24,10 +24,9 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-
+                        <tr>
                         @foreach (var item in Model.vehiculos)
-                        {
-                            <tr>
+                        {                           
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Matricula)
                                 </td>                               
@@ -37,11 +36,15 @@
                                 </td>                            
                                 
                                 <td>
-                                    @Html.EncodedActionLink("Seleccionar", "SelectUnidad", "Home", new { id = item.ID_Vehiculo }, new { @class = "btn-success" })
+                                    @Html.EncodedActionLink("Seleccionar", "SelectUnidad", "Home", new { id = item.ID_Vehiculo, matr=item.Matricula, item.ID_Modelo }, new { @class = "btn-success" })
                                 </td>
-                            </tr>
                          }
+                            <td>
+                                @Html.ActionLink("Regresar", "Index", null, new { @class = "_Visualizacion" })
+                            </td>
+                        </tr>
                     </table>
+                    
                 </div>
             </div>
         </div>

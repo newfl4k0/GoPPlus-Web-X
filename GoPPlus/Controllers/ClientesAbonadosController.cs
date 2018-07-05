@@ -150,6 +150,7 @@ namespace GoPS.Controllers
             {
                 clientesAbonados.Fecha_Actualizacion = util.ConvertToMexicanDate(DateTime.Now);
                 clientesAbonados.UserID = User.Identity.GetUserId();
+                //clientesAbonados.Limite_Credito=clientesAbonados.
                 db.Entry(clientesAbonados).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

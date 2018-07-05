@@ -27,9 +27,9 @@ namespace GoPS.Models
         [StringLength(10, ErrorMessage = "El campo Clave Automática debe tener una longitud máxima de 10 caracteres")]
         [DisplayName("Clave Automática")]
         public string Codigo { get; set; }
-        [Required(ErrorMessage = "El campo Cantidad es requerido")]
-        [Range(1, int.MaxValue, ErrorMessage = "El campo Cantidad debe ser mayor a cero, número entero y no mayor a 2,147,483,647.")]
-        [DisplayName("Cantidad")]
+        [Required(ErrorMessage = "El campo No. de Cupones es requerido")]
+        [Range(1, int.MaxValue, ErrorMessage = "El campo No. de Cupones debe ser mayor a cero, número entero y no mayor a 2,147,483,647.")]
+        [DisplayName("No. de Cupones")]
         public int Cantidad { get; set; }
         [Required(ErrorMessage = "El campo Fecha de Inicio es requerido")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

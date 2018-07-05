@@ -537,6 +537,6 @@ C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\bin\System.Web.Razor.xml
 C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\bin\System.Web.WebPages.xml
 C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\bin\System.Web.WebPages.Deployment.xml
 C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\bin\System.Web.WebPages.Razor.xml
-C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache
 C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\obj\Debug\GoPPlus.dll
 C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\obj\Debug\GoPPlus.pdb
+C:\Users\ctorres\Documents\GitHub\GoPPlus-Web-X\GoPPlus\obj\Debug\GoPPlus.csprojResolveAssemblyReference.cache

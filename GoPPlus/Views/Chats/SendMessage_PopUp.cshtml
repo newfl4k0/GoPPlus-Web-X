@@ -5,54 +5,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Hidden("Permiso", "Monitoreo")
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
     <div class="main">
-        @{Html.RenderPartial("NavBar_CatConductores", "Enviar Mensaje"); }
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="form-horizontal">
-                    @if (ViewBag.Ira == 1)
-                    {
-                        <p class="text-success">Mensaje Enviado.</p>
-                    }
-                    @Html.ValidationSummary(true, "No se pudo crear el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.ID_Conductor)
-                    @Html.HiddenFor(model => model.ID_Operador)
+    @{Html.RenderPartial("NavBar_CatConductores", "Enviar Mensaje");}
+    @using (Html.BeginForm("SendMessage", "Chats", new { iii = 1 }, FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="row">
+                @if (ViewBag.Ira == 1)
+                {
+                    <p class="label-success" style="color:aliceblue;">Mensaje Enviado.</p>
+                }
+                @Html.ValidationSummary(true, "No se pudo crear el registro. Por favor, corrija los campos en rojo e intente de nuevo.", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID_Conductor)
+                @Html.HiddenFor(model => model.ID_Operador)
+                <div class="col-md-12">
+                    <span id="error-dialog" class="text-danger" style="display:none">El campo Mensaje es requerido.</span>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <span id="error-dialog" class="text-danger" style="display:none">El campo Mensaje es requerido.</span>
-                        </div>
+                <div class="form-group has-success">
+                    <div class="col-md-4">
+                        @Html.Label("Enviar mensaje a " + Model.Conductores.NombreCompleto, new { @class = "form-control" })
                     </div>
-                    
-                    <div class="form-group has-success">
-                        <div class="col-md-4 text-left">
-                            @Html.Label("Enviar mensaje a: ")
-                            @Html.Label(Model.Conductores.NombreCompleto, new { @class = "form-control" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
-                        </div>
-                        @Html.ActionLink("Enviar", "SendMessage", "Chats", new { id = Model.ID_Conductor, iii = 1 }, new { @class = "btn btn-sm btn-primary" })
-                        <!--<button type="submit" class="btn btn-sm btn-info">Enviar</button>-->
-                    </div>
-                    @if (ViewBag.Ira == 1)
-                    {
-
-                         @Html.EncodedActionLink("Ir al Chat...", "IrChat","Chats",new { id=Model.ID_Chat, iii="0" }, new { @class="btn btn-sm btn-success" })
-                       
-                    }
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @id="mes",@name="mes",@class = "form-control",@style="resize:none;" } })                    
+                    @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-sm btn-outline-success">Enviar</button>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <div class="">
+                    @if (ViewBag.Ira == 1)
+                    {@Html.EncodedActionLink("Ir al Chat...", "IrChat", "Chats", new { id = Model.ID_Chat, iii = "0" }, new { @class = "btn btn-sm btn-success" })}
+                    @Html.EncodedActionLink("Conductores", "Index", "Conductores", null, new { @class = "btn btn-lg btn-warning" })
+                    @Html.EncodedActionLink("Despachos", "Index", "Despachos", null, new { @class = "btn btn-lg btn-warning" })
+                </div>
+
+            </div>
         </div>
-    </div>
-}
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    }
+</div>
+
+
+  
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+

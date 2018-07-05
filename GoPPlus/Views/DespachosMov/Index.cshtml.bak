@@ -1,5 +1,7 @@
 ﻿@model GoPS.ViewModels.DespachosViewModel
-
+@using GoPS.Helpers;
+@using GoPS.Classes;
+@using System.Threading.Tasks;
 @{
     ViewBag.Title = "Despachos";
 }
@@ -25,7 +27,7 @@ tr.atraso-red td {
 
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
-    @{Html.RenderPartial("NavBar_CatOperaciones", "Despachos"); }
+    @{Html.RenderPartial("NavBar_CatOperaciones", "Despachos Movilidad"); }
     <div class="row">
         <div class="col-lg-12">            
             @Html.HiddenFor(model => model.search)
@@ -165,7 +167,8 @@ tr.atraso-red td {
                         </table>
                 </div>
                 }
-            </div>            
+            </div>
+<div id="my-dialog" title="Enviar Mensaje"></div>
         </div>
     </div>
 </div>

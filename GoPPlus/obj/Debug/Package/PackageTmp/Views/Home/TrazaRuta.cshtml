@@ -1,4 +1,4 @@
-﻿@model GoPS.ViewModels.RutasViewModel
+﻿@model GoPS.ViewModels.RutasViewModel        
     @using GoPS.Helpers;
 @{
     ViewBag.Title = "Trazado de Rutas";
@@ -181,43 +181,207 @@
 @Html.Hidden("Permiso", "Monitoreo")
 <div class="main">
     @{Html.RenderPartial("NavBar_CatOperaciones", "Trazado de Rutas"); }
-    <div class="row checkBoxes">
-        <label><input type="checkbox" id="autoupdate" checked="checked" value="Actualizar">Actualizar Mapa</label>
-        @Html.EncodedActionLink("Unidades", "MuestraUnidades", "Home", null, new { @class = "btn btn-sm btn-info" })<span class="_Edicion pipe"> | </span>
-        @Html.EncodedActionLink("Conductores", "MuestraConductores", "Home", null, new { @class = "btn btn-sm btn-info" })
-        @Html.EditorFor(model=>model.FechaInicio, new { htmlAttributes = new { @class = "form-control datepicker ", @readonly = "readonly" } })
-        @Html.EditorFor(model=>model.FechaFin, new { htmlAttributes = new { @class = "form-control datepicker", @readonly = "readonly" } })
+    <div class="row table-responsive checkBoxes">
+@using (Html.BeginForm("TrazaRuta", "Home", null, FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+                @Html.Hidden("lat", (object)ViewBag.lat)
+                @Html.Hidden("lon", (object)ViewBag.lon)
+                @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-2 form-group">
+                <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal">Unidades</button>
+                <!--Seccion Modal Unidades-->
+                <div id="myModal" class="modal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Selecciona la Unidad a consultar:</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
+                                                                @Html.Label("Matrícula")
+                                                            </th>
+                                                            <th data-field="Flota" data-sortable="true" data-sorter="customSorter">
+                                                                @Html.Label("Flota")
+                                                            </th>
+                                                            <th data-field=" data-sortable="true" data-sorter="customSorter">
+                                                                @Html.Label("No. Transporte Ejecutivo")
+                                                            </th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach (var item in Model.TrazaRutaUnidades)
+                                                            {
+
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Matricula)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Flotas.Nombre)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.NoTransporte)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idv = item.ID_Vehiculo>0 ? item.ID_Vehiculo : 0 }, new { @class = "btn-success" })
+                                                                </td>
+
+                                                            </tr>
+                                                            }
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 form-group">
+                <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal2">Conductores</button>
+                <!--Seccion Modal Conductores-->
+                <div id="myModal2" class="modal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Selecciona el Conductor a consultar:</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-field="NombreCompleto" data-sortable="true" data-sorter="customSorter">
+                                                                @Html.Label("Nombre")
+                                                            </th>
+                                                            <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
+                                                                @Html.Label("Unidad Asignada")
+                                                            </th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach (var item in Model.TrazaRutaConductores)
+                                                    {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                                                </td>
+
+                                                                @{ var vehicC = item.Vehiculos_Conductores.Where(vc => vc.Activo == true).FirstOrDefault();
+                                                                    }
+                                                                    @if (!(vehicC == null))
+                                                                    {
+                                                                        string placas = vehicC.Vehiculos.Matricula;
+                                                                    <td>
+                                                                        @Html.Label(placas)
+                                                                    </td>
+                                                                     }
+                                                                            else
+                                                                            {
+                                                                    <td>
+                                                                        @Html.Label("Sin Asignar")
+                                                                    </td>
+                                                                            }
+                                                                
+                                                                <td>
+                                                                    @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idv = item.ID_Conductor > 0 ? item.ID_Conductor : 0 }, new { @class = "btn-success" })                                                       
+                                                                </td>
+                                                            </tr>
+                                                                            }
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-lg-6 form-group has-success">
+                    @Html.Label("Selección:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @if (ViewBag.actselect == null)
+                        {
+                            <label class="form-control col-md-2" placeholder="Conductor / Unidad"> @ViewBag.actselect</label>
+                        }
+                        else
+                        {
+                            <label class="form-control col-md-2" placeholder="">@ViewBag.actselect</label>
+                        }
+                    </div>
+                </div>
+                    <div class="col-lg-6 form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="autoupdate" checked="checked" class="datepi" value="Actualizar">Actualizar</label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 form-group has-success">
+                        @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8 form-group">
+                            @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 form-group has-success">
+                        @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8 form-group">
+                            @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        </div>
+                    </div>
+
+        </div>
+            
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
-            @Html.Hidden("lat", (object)ViewBag.lat)
-            @Html.Hidden("lon", (object)ViewBag.lon)
-            @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
+        <div id="container-map" class="row">
+            @Html.Hidden("idDivVehiculo")
+            <div class="col-lg-12">
+                <div id='state-legend' class='legend'></div>
+                <div class="row" style="margin-left:30px;margin-right:30px">
+                    <div class="col-lg-12" id="map"></div>
+                </div>
             </div>
         </div>
-        
+}
+
     </div>
-    <div id="container-map" class="row">
-        @Html.Hidden("idDivVehiculo")
-        <div class="col-lg-12">
-            <div id='state-legend' class='legend'>
-                       </div>
-            <div class="row">
-                <div class="col-lg-8" id="map"></div>
-                
-            </div>
-        </div>
     </div>
-</div>
+       
+    
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/js/ActualizarSegTiposVehiculosList.js"></script>
     <script type="text/javascript">
-
         var id_afiliado;
         var interval;
         var map;

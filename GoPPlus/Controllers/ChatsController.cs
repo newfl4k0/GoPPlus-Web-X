@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Data;
 using GoPS.Filters;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GoPS.Models;
@@ -23,20 +23,29 @@ namespace GoPS.Controllers
         [HasPermission("Monitoreo_Visualizacion")]
         public ActionResult Index()
         {
+            //string qs = Request.QueryString.Get("is");
+            //string qa = Session["band"].ToString();
             if (TempData["Delete"] != null)
             {
                 ViewBag.Delete = true;
                 TempData.Remove("Delete");
             }
+            /*if (qa=="s")
+            {
+                db.ReportesDespachos(DateTime.Now, DateTime.Now, "a", 0, 0, 0, 0);
+                Session["band"] = "0";
+            }*/
+            
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.ID_Conductor = new SelectList(db.Conductores.Where(o=>o.Habilitado==true), "ID_Conductor", "Nombre" + "Apellido");
             var chat = db.Chat.Where(o => ID_Afiliados.Contains(o.Conductores.Flotas.ID_Afiliado)).OrderBy(p=>p.Fecha).Include(c => c.Operadores).Include(c => c.Conductores).Include(c => c.Despachos);
             return View(chat.ToList());
         }
 
+        
         // GET: Chats/Details/5
 
-         
+
         [HasPermission("Monitoreo_Visualizacion")]
         public ActionResult Details(int? id)
         {
@@ -99,9 +108,11 @@ namespace GoPS.Controllers
             return View(chat);
         }
 
+
+
         // GET: Chats/Create
         [HasPermission("Monitoreo_Edicion")]
-        public ActionResult SendMessage(int id,string iii="0")
+        public ActionResult SendMessage(int id, string iii = "0", string mess = "")
         {
             int id_afiliado = db.Conductores.Find(id).Flotas.ID_Afiliado;
             int id_operador = db.Operadores.Where(o => o.ID_Afiliado == id_afiliado).FirstOrDefault().ID_Operador;
@@ -113,6 +124,9 @@ namespace GoPS.Controllers
             {
                 chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
                 chat.Es_Conductor = 0;
+                //Request{collection}
+                chat.Mensaje = mess;
+                ViewBag.Ira = 1;
                 if (chat.Mensaje.Trim().Length>0 && chat.ID_Conductor>0 && chat.ID_Operador > 0)
                 {
                     try
@@ -137,13 +151,13 @@ namespace GoPS.Controllers
             return PartialView("SendMessage_PopUp", chat);
         }
 
-        // POST: Chats/Create
+        // POST: Chats/SendMessage
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HasPermission("Monitoreo_Edicion")]
-        public ActionResult SendMessage([Bind(Include = "ID_Chat,ID_Conductor,ID_Operador,Fecha,Mensaje,Es_Conductor,ID_Despacho")] Chat chat)
+        public ActionResult SendMessage([Bind(Include = "ID_Chat,ID_Conductor,ID_Operador,Fecha,Mensaje,Es_Conductor,ID_Despacho")] Chat chat, string iii="")
         {
             ViewBag.Ira = 0;
             chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
@@ -151,8 +165,7 @@ namespace GoPS.Controllers
             if (ModelState.IsValid)
             {                
                 db.Chat.Add(chat);
-                db.SaveChanges();
-                //return RedirectToAction("Index","Conductores");
+                db.SaveChanges();                
                 ViewBag.Ira= 1;
             }
             chat.Conductores = db.Conductores.Find(chat.ID_Conductor);
@@ -266,6 +279,7 @@ namespace GoPS.Controllers
             {
                 chats = db.Chat.Where(p => p.ID_Despacho == chat.ID_Despacho).OrderBy(p => p.Fecha);
             }
+            ViewBag.chat = id;
             return View(chats);
         }
 
@@ -278,7 +292,8 @@ namespace GoPS.Controllers
         public ActionResult IrChat([Bind(Include = "ID_Chat,ID_Conductor,ID_Operador,Fecha,Mensaje,Es_Conductor,ID_Despacho")] Chat chat)
         {
             chat.Fecha = util.ConvertToMexicanDate(DateTime.Now);
-            chat.Es_Conductor = 0;            
+            chat.Es_Conductor = 0;
+            chat.Conductores = db.Conductores.Find(chat.ID_Conductor);
             if (ModelState.IsValid)
             {
                 db.Chat.Add(chat);

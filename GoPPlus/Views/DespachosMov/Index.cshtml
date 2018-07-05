@@ -178,8 +178,9 @@ tr.atraso-red td {
     <script type="text/javascript">
         var interval;
         var dialog;
-        $(document).ready(function () {
-           
+        $(document).ready(function () {            
+            const _intervalo_recarga = 15000;
+
             dialog = $("#my-dialog").dialog({
                 autoOpen: false,
                 width: 600,
@@ -201,6 +202,19 @@ tr.atraso-red td {
                 return false;
             });
             
+ $("#btnInterval").click(function (e) {
+                var detener = $(this).val() == "Detener Actualización";
+                $(this).val(detener ? "Reiniciar Actualización" : "Detener Actualización");
+                if (detener) {
+                    clearInterval(interval);
+                }
+                else {
+                    interval = setInterval(function () { $("form").submit(); }, _intervalo_recarga);
+                }
+            });
+
+            interval = setInterval(function () { $("form").submit(); }, _intervalo_recarga);
+        });
         function sendMessage() {
             if ($("#Mensaje").val() == "") {
                 $("#Mensaje").addClass("error");

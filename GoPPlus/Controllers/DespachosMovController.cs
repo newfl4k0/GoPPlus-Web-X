@@ -120,7 +120,7 @@ namespace GoPS.Controllers
         }
 
         // GET: Despachos/MoreDetails/5
-         
+        [HasPermission("Monitoreo_Visualizacion")]
         public ActionResult MoreDetails(int? id)
         {
             if (id == null)

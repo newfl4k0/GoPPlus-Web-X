@@ -52,8 +52,7 @@
                                 ViewBag.Color : this.ViewContext.RouteData.Values["Color"].ToString();            
             GoPSEntities db = new GoPSEntities();
             string NM = db.DashboardMensajesNuevos().FirstOrDefault().ToString();
-            
-                string ver = db.ObtenerConfiguracion("versionweb").FirstOrDefault();
+            string ver = db.ObtenerConfiguracion("versionweb").FirstOrDefault();
                 ViewBag.ver = ver;
         }
 
@@ -67,22 +66,22 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div id="divLogo">
-                        <a class="navbar-brand confirmLink" href="~/Home/Index"><img class="logo" style="align-content:center;" max-width: 99%; height="60" width="80" src="~/images/Uploads/logogopplus.png" /></a>
+                        <a class="navbar-brand confirmLink" href="~/Home/Index"><img class="logo" style="align-content:center;max-width: 99%;" height="60" width="80" src="~/images/Uploads/logogopplus.png" /></a>
                     </div>                    
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <em class="fa fa-bell"></em><span class="label label-info"></span>
-                            </a>
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="~/Chats/Index/">
+                                <em class="fa fa-bell"></em><span class="label label-info">@(NM)</span>
+                            </a><a href="~/Chats/Index/"></a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a href="#">
+                                    <a href="~/Chats/Index/" >
                                         <div>
-                                            <em class="fa fa-envelope"></em> @(NM) Nuevos Mensajes                                           
+                                            <em class="fa fa-envelope"></em> @(NM) Nuevo(s) mensaje(s)
+                                            <span class="pull-right text-muted small"></span>
                                         </div>
                                     </a>
-                                </li>
-                                <li class="divider"></li>
+                                </li>                                
                             </ul>
                         </li>
                     </ul>

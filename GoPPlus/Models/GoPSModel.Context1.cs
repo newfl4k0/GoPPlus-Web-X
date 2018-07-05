@@ -1391,7 +1391,7 @@ namespace GoPS.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ClientHistory_Result>("ClientHistory", useridParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> ClienteAltaServicio(Nullable<decimal> lat_origen, Nullable<decimal> lng_origen, Nullable<decimal> lat_destino, Nullable<decimal> lng_destino, string userid, Nullable<int> id_cliente, string observaciones, string int_origen, Nullable<int> ext_origen, string int_destino, Nullable<int> ext_destino, Nullable<int> id_tipovehiculo, Nullable<int> id_afiliado, Nullable<int> id_tarjetacredito, string origen, string destino, Nullable<int> id_cupon, string id_codigo)
+        public virtual ObjectResult<Nullable<int>> ClienteAltaServicio(Nullable<decimal> lat_origen, Nullable<decimal> lng_origen, Nullable<decimal> lat_destino, Nullable<decimal> lng_destino, string userid, Nullable<int> id_cliente, string observaciones, string int_origen, Nullable<int> ext_origen, string int_destino, Nullable<int> ext_destino, Nullable<int> id_tipovehiculo, Nullable<int> id_afiliado, Nullable<int> id_tarjetacredito, string origen, string destino, Nullable<int> id_cupon, string id_codigo, Nullable<decimal> km)
         {
             var lat_origenParameter = lat_origen.HasValue ?
                 new ObjectParameter("lat_origen", lat_origen) :
@@ -1465,7 +1465,11 @@ namespace GoPS.Models
                 new ObjectParameter("id_codigo", id_codigo) :
                 new ObjectParameter("id_codigo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ClienteAltaServicio", lat_origenParameter, lng_origenParameter, lat_destinoParameter, lng_destinoParameter, useridParameter, id_clienteParameter, observacionesParameter, int_origenParameter, ext_origenParameter, int_destinoParameter, ext_destinoParameter, id_tipovehiculoParameter, id_afiliadoParameter, id_tarjetacreditoParameter, origenParameter, destinoParameter, id_cuponParameter, id_codigoParameter);
+            var kmParameter = km.HasValue ?
+                new ObjectParameter("km", km) :
+                new ObjectParameter("km", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ClienteAltaServicio", lat_origenParameter, lng_origenParameter, lat_destinoParameter, lng_destinoParameter, useridParameter, id_clienteParameter, observacionesParameter, int_origenParameter, ext_origenParameter, int_destinoParameter, ext_destinoParameter, id_tipovehiculoParameter, id_afiliadoParameter, id_tarjetacreditoParameter, origenParameter, destinoParameter, id_cuponParameter, id_codigoParameter, kmParameter);
         }
     
         public virtual int ClientUpdatePassword(Nullable<int> id, string clave, string newclave)
@@ -3255,6 +3259,20 @@ namespace GoPS.Models
         public virtual ObjectResult<DashboardGrafico2_Result> DashboardGrafico2()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DashboardGrafico2_Result>("DashboardGrafico2");
+        }
+    
+        public virtual int IndexarUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IndexarUsuarios");
+        }
+    
+        public virtual int search_sprocs(string searchforthis)
+        {
+            var searchforthisParameter = searchforthis != null ?
+                new ObjectParameter("searchforthis", searchforthis) :
+                new ObjectParameter("searchforthis", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("search_sprocs", searchforthisParameter);
         }
     }
 }
