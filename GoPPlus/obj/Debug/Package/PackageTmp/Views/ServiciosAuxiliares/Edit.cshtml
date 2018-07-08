@@ -33,34 +33,34 @@
                     @Html.HiddenFor(model => model.EsCelular, htmlAttributes: new { @id = "hdnEsCelular" })
 
                     <div class="form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
-                        @Html.LabelFor(model => model.ID_Afiliado, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        @Html.LabelFor(model => model.ID_Afiliado, new { @class = "control-label col-md-2 field-required" })
                         <div class="col-md-10">
-                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control validar_cambio" })
+                            @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", new { @class = "form-control validar_cambio" })
                             @Html.ValidationMessageFor(model => model.ID_Afiliado, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        @Html.LabelFor(model => model.Nombre,  new { @class = "control-label col-md-2 field-required" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.EditorFor(model => model.Nombre,  new { @class = "form-control validar_cambio" } )
                             @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2 field-required" })
+                        @Html.LabelFor(model => model.Telefono, new { @class = "control-label col-md-2 field-required" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control validar_cambio" } })
+                            @Html.EditorFor(model => model.Telefono, new { @class = "form-control validar_cambio" } )
                             @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.EsCelular, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.EsCelular, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <div class="checkbox">
-                                @Html.EditorFor(model => model.EsCelular, new { htmlAttributes = new { @class = "validar_cambio" } })
+                                @Html.CheckBoxFor(model => model.EsCelular, new { @class = "validar_cambio" } )
                                 @Html.ValidationMessageFor(model => model.EsCelular, "", new { @class = "text-danger" })
                             </div>
                         </div>

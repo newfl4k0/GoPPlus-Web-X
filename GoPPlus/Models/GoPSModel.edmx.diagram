@@ -193,6 +193,8 @@
         <EntityTypeShape EntityType="GoPSModel.UbicacionesServicios" Width="1.5" PointX="30.125" PointY="51.125" />
         <AssociationConnector Association="GoPSModel.FK_UbicacionesServicios_Despachos" />
         <EntityTypeShape EntityType="GoPSModel.Configuraciones" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GoPSModel.RutasEstatus1" Width="1.5" PointX="12" PointY="37.875" />
+        <AssociationConnector Association="GoPSModel.FK_Estatus_Afiliados" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

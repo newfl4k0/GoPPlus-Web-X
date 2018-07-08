@@ -43,7 +43,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <section id="container">
+    <section id="container" style="overflow-x:hidden;">
         @{
 
             string Logo_DB = this.ViewContext.RouteData.Values["Logo"] == null ?
@@ -53,7 +53,7 @@
             GoPSEntities db = new GoPSEntities();
             string NM = db.DashboardMensajesNuevos().FirstOrDefault().ToString();
             string ver = db.ObtenerConfiguracion("versionweb").FirstOrDefault();
-                ViewBag.ver = ver;
+            ViewBag.ver = ver;
         }
 
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">            
@@ -72,7 +72,7 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="~/Chats/Index/">
                                 <em class="fa fa-bell"></em><span class="label label-info">@(NM)</span>
-                            </a><a href="~/Chats/Index/"></a>
+                            </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
                                     <a href="~/Chats/Index/" >

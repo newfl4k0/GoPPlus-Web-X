@@ -4,6 +4,11 @@
     ViewBag.Title = "Trazado de Rutas";
 }
 <style type='text/css'>
+
+   .body {
+        overflow-x: hidden;
+    }
+
     .error {
         border:2px solid red;
      }
@@ -21,6 +26,8 @@
         
         display:block;
     }
+
+
 
     #info {
         display: block;
@@ -159,34 +166,17 @@
     .datepicker {
         padding: 0px;
         border-radius: 0;
-    }
-
-    /*#div-table-filter {
-        padding:10px;
-        width: 20%;
-        position: relative;
-        right: 0;
-        background-color: black;
-        color: white;
-        transition: all .25s;
-    }*/
-
-    /*#div-table-filter.collapsed {
-        right: -20%;
-        margin-left: -20%;
-    }*/
+    }    
 
 </style>
 
 @Html.Hidden("Permiso", "Monitoreo")
-<div class="main">
+<div class="main" style="overflow:no-content;">
     @{Html.RenderPartial("NavBar_CatOperaciones", "Trazado de Rutas"); }
-    <div class="row table-responsive checkBoxes">
-@using (Html.BeginForm("TrazaRuta", "Home", null, FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
-{
-    <div class="form-group">
-        <div class="row">
-            <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "show" : "hide")">
+    <div class="row table-responsive checkBoxes" style="overflow-x:hidden;">
+        @using (Html.BeginForm("TrazaRuta", "Home", null, FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
+        {
+            <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "hide" : "show")">
                 @Html.Hidden("lat", (object)ViewBag.lat)
                 @Html.Hidden("lon", (object)ViewBag.lon)
                 @Html.Label("Afiliados", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -194,616 +184,333 @@
                     @Html.DropDownList("ID_Afiliado", null, "-Seleccione-", htmlAttributes: new { @class = "form-control" })
                 </div>
             </div>
-            <div class="col-md-2 form-group">
-                <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal">Unidades</button>
-                <!--Seccion Modal Unidades-->
-                <div id="myModal" class="modal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Selecciona la Unidad a consultar:</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-body">
-                                                <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
-                                                                @Html.Label("Matrícula")
-                                                            </th>
-                                                            <th data-field="Flota" data-sortable="true" data-sorter="customSorter">
-                                                                @Html.Label("Flota")
-                                                            </th>
-                                                            <th data-field=" data-sortable="true" data-sorter="customSorter">
-                                                                @Html.Label("No. Transporte Ejecutivo")
-                                                            </th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    @foreach (var item in Model.TrazaRutaUnidades)
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3 form-group" style="margin-left:25px;">
+                        <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal">Unidades</button>
+                        <!--Seccion Modal Unidades-->
+                        <div id="myModal" class="modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Selecciona la Unidad a consultar:</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Matrícula")
+                                                                    </th>
+                                                                    <th data-field="Flota" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Flota")
+                                                                    </th>
+                                                                    <th data-field="NoTransporte" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("No. Transporte Ejecutivo")
+                                                                    </th>
+                                                                    <th data-field="Afiliado" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Afiliado")
+                                                                    </th>
+                                                                    <th>Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            @foreach (var item in Model.trazaRutaUnidades)
                                                             {
 
-                                                            <tr>
-                                                                <td>
-                                                                    @Html.DisplayFor(modelItem => item.Matricula)
-                                                                </td>
-                                                                <td>
-                                                                    @Html.DisplayFor(modelItem => item.Flotas.Nombre)
-                                                                </td>
-                                                                <td>
-                                                                    @Html.DisplayFor(modelItem => item.NoTransporte)
-                                                                </td>
-                                                                <td>
-                                                                    @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idv = item.ID_Vehiculo>0 ? item.ID_Vehiculo : 0 }, new { @class = "btn-success" })
-                                                                </td>
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Matricula)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Flotas.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.NoTransporte)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Flotas.Afiliados.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idv = item.ID_Vehiculo > 0 ? item.ID_Vehiculo : 0 }, new { @class = "btn-success" })
+                                                        </td>
 
-                                                            </tr>
+                                                    </tr>
                                                             }
-                                                </table>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 form-group">
-                <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal2">Conductores</button>
-                <!--Seccion Modal Conductores-->
-                <div id="myModal2" class="modal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Selecciona el Conductor a consultar:</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-body">
-                                                <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
-                                                    <thead>
-                                                        <tr>
-                                                            <th data-field="NombreCompleto" data-sortable="true" data-sorter="customSorter">
-                                                                @Html.Label("Nombre")
-                                                            </th>
-                                                            <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
-                                                                @Html.Label("Unidad Asignada")
-                                                            </th>
-                                                            <th>Acciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    @foreach (var item in Model.TrazaRutaConductores)
-                                                    {
-                                                            <tr>
-                                                                <td>
-                                                                    @Html.DisplayFor(modelItem => item.NombreCompleto)
-                                                                </td>
-
-                                                                @{ var vehicC = item.Vehiculos_Conductores.Where(vc => vc.Activo == true).FirstOrDefault();
-                                                                    }
-                                                                    @if (!(vehicC == null))
-                                                                    {
-                                                                        string placas = vehicC.Vehiculos.Matricula;
-                                                                    <td>
-                                                                        @Html.Label(placas)
-                                                                    </td>
-                                                                     }
-                                                                            else
-                                                                            {
-                                                                    <td>
-                                                                        @Html.Label("Sin Asignar")
-                                                                    </td>
-                                                                            }
-                                                                
-                                                                <td>
-                                                                    @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idv = item.ID_Conductor > 0 ? item.ID_Conductor : 0 }, new { @class = "btn-success" })                                                       
-                                                                </td>
-                                                            </tr>
-                                                                            }
-                                                </table>
-                                            </div>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <button type="button" class="form-control btn btn-sm btn-info" data-toggle="modal" data-target="#myModal2">Conductores</button>
+                        <!--Seccion Modal Conductores-->
+                        <div id="myModal2" class="modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Selecciona el Conductor a consultar:</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1" data-sort-name="Nombre" data-sort-order="asc">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="NombreCompleto" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Nombre")
+                                                                    </th>
+                                                                    <th data-field="Matricula" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Unidad Asignada")
+                                                                    </th>
+                                                                    <th data-field="Flota" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Flota")
+                                                                    </th>
+                                                                    <th data-field="Afiliado" data-sortable="true" data-sorter="customSorter">
+                                                                        @Html.Label("Afiliado")
+                                                                    </th>
+                                                                    <th>Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            @foreach (var item in Model.trazaRutaConductores)
+                                                            {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                                        </td>
+
+                                                        @{ var vehicC = item.Vehiculos_Conductores.Where(vc => vc.Activo == true).FirstOrDefault();
+                                                        }
+                                                        @if (!(vehicC == null))
+                                                        {
+                                                            string placas = vehicC.Vehiculos.Matricula;
+                                                                <td>
+                                                                    @Html.Label(placas)
+                                                                </td>
+                                                        }
+                                                        else
+                                                        {
+                                                                <td>
+                                                                    @Html.Label("Sin Asignar")
+                                                                </td>
+                                                        }
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Flotas.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Flotas.Afiliados.Nombre)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Seleccionar", "SelUni", "Home", new { idc = item.ID_Conductor > 0 ? item.ID_Conductor : 0 }, new { @class = "btn-success" })
+                                                        </td>
+                                                    </tr>
+                                                            }
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>                 
                 </div>
-            </div>
-
-                <div class="col-lg-6 form-group has-success">
-                    @Html.Label("Selección:", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-8">
-                        @if (ViewBag.actselect == null)
-                        {
-                            <label class="form-control col-md-2" placeholder="Conductor / Unidad"> @ViewBag.actselect</label>
-                        }
-                        else
-                        {
-                            <label class="form-control col-md-2" placeholder="">@ViewBag.actselect</label>
-                        }
-                    </div>
-                </div>
-                    <div class="col-lg-6 form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="autoupdate" checked="checked" class="datepi" value="Actualizar">Actualizar</label>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-6 form-group has-success">
-                        @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-8 form-group">
-                            @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                        </div>
-                    </div>
-                    <div class="col-lg-6 form-group has-success">
-                        @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-8 form-group">
-                            @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                        </div>
-                    </div>
-
-        </div>
-            
-    </div>
-        <div id="container-map" class="row">
-            @Html.Hidden("idDivVehiculo")
-            <div class="col-lg-12">
-                <div id='state-legend' class='legend'></div>
-                <div class="row" style="margin-left:30px;margin-right:30px">
-                    <div class="col-lg-12" id="map"></div>
-                </div>
-            </div>
-        </div>
-}
-
-    </div>
-    </div>
-       
-    
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/js/ActualizarSegTiposVehiculosList.js"></script>
-    <script type="text/javascript">
-        var id_afiliado;
-        var interval;
-        var map;
-        var marker;
-        var directionsService;
-        var directionsDisplay;
-        var directionsDisplays = [];
-        var directionsServices = [];
-        var bounds = null;
-        var icon_start = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_house|2ECC71';
-        var icon_end = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_flag|EC1C24';
-        var myLatLng = { lat: 23.634501, lng: -102.552784 };
-        var gmarkers = [];
-        var apply_filters;
-        var idDivVehiculo;
-
-        $("#intro").hide();
-        $("#seguimientoDiv").hide();
-        $("#avanzadoDiv").hide();
-        $("#historicoDiv").hide();
-        $("#localizacionDiv").hide();
-
-        function initMap() {
-            // Create a map object and specify the DOM element for display.
-            $("#state-legend").hide();
-            $("#tableBtn").click().hide();
-            apply_filters = false;
-            idDivVehiculo = "";
-            id_afiliado = $('#ID_Afiliado').val();
-            ObtenerEstatus(id_afiliado);
-
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: myLatLng,
-                scrollwheel: true,
-                zoom: 6,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-
-            if (id_afiliado > 0) {
-                changeCenter(parseFloat($('#lat').val()), parseFloat($('#lon').val()), 12);
-            }
-
-            interval = setInterval(function () { updateMap() }, 2000);
-        }
-
-        function clearMarkers() {
-            for (var i = 0; i < gmarkers.length; i++) {
-                gmarkers[i].setMap(null);
-            }
-            gmarkers = [];
-        }
-
-        function EnglishDate(spanishDate)
-        {
-            var spanish = spanishDate.split("/");
-            var dd = spanish[0];
-            var mm = spanish[1];
-            var yyyy = spanish[2];
-            var english = mm + "/" + dd + "/" + yyyy;
-            return english;
-        }
-
-        function CompleteHour(hour)
-        {
-            var vec = hour.split(":");
-            var complete = vec.length > 1 ? hour : hour + ":00";
-            return complete;
-        }
-
-        function CargarUbicacionesVehiculo()
-        {
-            clearMarkers();
-            var vehiculo = $("#local_vehiculo").val();
-            var fecha = $("#local_fecha").val();
-            var desde = $("#local_desde").val();
-            var hasta = $("#local_hasta").val();
-            if (!id_afiliado)
-                id_afiliado = 0;
-
-            var link = '@Url.Action("GetLocationsVehiculo", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5';
-            link = link.replace("-1", id_afiliado);
-            link = link.replace("-2", vehiculo == "" ? null : vehiculo);
-            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
-            link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
-            link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
-            $.ajax({
-                type: "GET",
-                url: link,
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data != null) {
-                        $.each(data, function (index, value) {
-                            var latLng = { lat: value.Latitud, lng: value.Longitud };
-                            var icon = value.Icon;                           
-                            var content = '<b>Hora:</b>: ' + value.Hora + '.';
-                            makeMarker(latLng, icon, map, content);
-                        });
+                <div class="row">
+                    @if (ViewBag.actselect == null)
+                    {
+                            <div class="col-lg-6 form-group has-error" style="margin-left:25px;">
+                                <label class="form-control" placeholder="Conductor / Unidad" />
+                            </div>
                     }
-                },
-            });
-        }
-
-        function CargarVehiculos() {
-            clearMarkers();
-            var ocultar_servicios = $("#Ocultar").is(":checked");
-            var tiposVehiculos = $("#seg_tiposVehiculos").val();
-            var vehiculo = idDivVehiculo != "" ? $("#" + idDivVehiculo).val() : "";
-            if (!id_afiliado)
-                id_afiliado = 0;
-
-            var link = '@Url.Action("GetLocation", "Home")?ocultar=-1&id_afiliado=-2&id_tiposveh=-3&vehiculo=-4';
-            link = link.replace("-1", ocultar_servicios);
-            link = link.replace("-2", id_afiliado);
-            link = link.replace("-3", tiposVehiculos);
-            link = link.replace("-4", vehiculo);
-            $.ajax({
-                type: "GET",
-                url: link,
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data != null) {
-                        $.each(data, function (index, value) {
-                            var latLng = { lat: value.Latitud_Actual, lng: value.Longitud_Actual };
-                            var icon = value.Icon;
-                            //if (value.Estatus.toUpperCase() == "libre")
-                            //   icon = 'https://gopplus.azurewebsites.net/images/Libre.png';
-                            //else if (value.Estatus.toUpperCase() == "asignado")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Asignado.png';
-                            //else if (value.Estatus.toUpperCase() == "ausente")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Ausente.png';
-                            //else if (value.Estatus.toUpperCase() == "ocupado")
-                            //    icon = 'https://gopplus.azurewebsites.net/images/Ocupado.png';
-
-                            var content = '<b>Conductor:</b>: ' + value.Conductor + '.<br />' +
-                                            '<b>Vehículo:</b> ' + value.Marca + ' ' + value.Modelo + ' ' + value.Color + '.<br />' +
-                                            '<b>Matrícula:</b> ' + value.Matricula + '.';
-
-                            makeMarker(latLng, icon, map, content);
-                        });
-                    }
-                },
-            });
-        }
-
-        function MostrarRutas() {
-            clearRoutes();
-            var tiposVehiculos = $("#seg_tiposVehiculos").val();
-            var vehiculo = idDivVehiculo != "" ? $("#" + idDivVehiculo).val() : "";
-            if (!id_afiliado)
-                id_afiliado = 0;
-
-            var link = '@Url.Action("GetRoutes", "Home")?id_afiliado=-1&id_tiposveh=-2&vehiculo=-3';
-            link = link.replace("-1", id_afiliado);
-            link = link.replace("-2", tiposVehiculos);
-            link = link.replace("-3", vehiculo);
-
-            $.ajax({
-                type: "GET",
-                url: link,
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data != null) {
-                        $.each(data, function (index, value) {
-
-                            var locations = new Array();
-                            //var bounds = new google.maps.LatLngBounds();
-
-                            locations.push(new google.maps.LatLng(value.Latitud_Origen, value.Longitud_Origen));
-                            //bounds.extend(locations[locations.length - 1]);
-
-                            var ubicaciones = value.Ubicaciones.split(',');
-
-                            if (ubicaciones.length > 0) {
-                                $.each(ubicaciones, function (index, value) {
-                                    var latlong = value.split(' ');
-                                    locations.push(new google.maps.LatLng(latlong[0], latlong[1]));
-                                    //bounds.extend(locations[locations.length - 1]);
-                                });
-                            }
-
-                            locations.push(new google.maps.LatLng(value.Latitud_Destino, value.Longitud_Destino));
-                            //bounds.extend(locations[locations.length - 1]);
-
-                            //map.fitBounds(bounds);
-                            //google.maps.event.addDomListener(window, 'resize', function () {
-                            //    google.maps.event.trigger(map, 'resize');
-                            //    map.fitBounds(bounds);
-                            //});
-
-                            if (locations.length <= 25) {
-                                drawRouteMap(locations);
-                            }
-                            else {
-                                var index = 0;
-                                var waypt = 25;
-                                var stop = waypt;
-
-                                while (index <= locations.length) {
-                                    var tmp_locations = new Array();
-                                    for (var i = index; i < stop; i++) {
-                                        tmp_locations.push(locations[i]);
-                                    }
-                                    drawRouteMap(tmp_locations);
-                                    index = stop;
-                                    stop = index + waypt;
-                                    if (stop > locations.length)
-                                        stop = locations.length - index;
-                                    if((locations.length - stop) < 3)
-                                    {
-                                        stop = stop - 1;
-                                        waypt = locations.length - stop + 1;
-                                    }
-
+                    else
+                    {
+                            <div class="col-lg-6 form-group has-success" style="margin-left:25px;">
+                                @if (Session["vOc"].ToString() == "c")
+                                {
+                                    <label class="form-control"><span class="glyphicon glyphicon-user color-teal">  @Session["selid"].ToString()</span></label>
                                 }
-                            }
-                            //requestDirections(latLngOrigen, latLngDestino, waypoints);
-                        });
+                                else
+                                {
+                                    <label class="form-control"><span class="glyphicon glyphicon-road color-blue">  @Session["selid"].ToString()</span></label>
+                                }
+                            </div>
                     }
-                },
-            });
-        }
-
-        function clearRoutes()
-        {
-            for (var i = 0; i < directionsDisplays.length; i++) {
-                directionsDisplays[i].setMap(null);
-            }
-        }
-
-        function drawRouteMap(locations) {
-
-            var start, end;
-            var waypts = [];
-
-            for (var k = 0; k < locations.length; k++) {
-                if (k >= 1 && k <= locations.length - 2) {
-                    waypts.push({
-                        location: locations[k],
-                        stopover: false
-                    });
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 form-group" style="margin-left:25px;">                        
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" id="FechaInicio" name="FechaInicio" placeholder="Fecha y Hora Inicial"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>                        
+                    </div>
+                    <div class="col-lg-3 form-group ">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" id="FechaFin" name="FechaFin" placeholder="Fecha y Hora Final" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>            
+                        
+                    </div>
+                </div>
+                @if (!(ViewBag.actselect == null))
+                {
+                    <div class="row">
+                        <div class="col-lg-3 form-group" style="margin-left:25px;">                       
+                            @Html.ActionLink("Procesar", "TrazaRuta", "Home", new { h = ViewBag.selID }, new { @class = "form-control btn btn-sm btn-success", @id="btnProcesar", @name="btnProcesar" })                        
+                        </div>
+                    </div>
                 }
-                if (k == 0)
-                    start = locations[k];
+            </div>
+            <div class="@(@ViewBag.tab != 1 ? "hide" : "form-group")" style="margin-left:25px;margin-right:25px;overflow-x:hidden;" >
+                    <div class="panel panel-default">
+                        <div class="panel-body tabs">
+                            <ul class="nav nav-pills">
+                                
+                                @if (ViewBag.tab == 1)
+                                {                                   
+                                    <li class="active"><a href="#ubicaciones" data-toggle="tab"><label>Ubicaciones (@Model.trazaRutaListas.ubicaciones.Count())</label></a></li>
+                                    <li><a href="#seguimientos" data-toggle="tab"><label>Seguimientos (@Model.trazaRutaListas.seguimientos_Despacho.Count())</label></a></li>
+                                }
+                                else
+                                {
+                                    <li class="active"><a href="#ubicaciones" data-toggle="tab">Ubicaciones</a></li>
+                                    <li><a href="#seguimientos" data-toggle="tab">Seguimientos</a></li>
+                                }                                
+                            </ul>
+                            <div class="tab-content">                              
+                                <div class="tab-pane fade" id="ubicaciones">
+                                    <table class="table table-striped table-hover" data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="Fecha" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Fecha")
+                                                </th>
+                                                <th data-field="Estatus" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Estatus")
+                                                </th>
+                                                <th data-field="NoUbicaciones" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("No. Ubicaciones")
+                                                </th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        @if (ViewBag.tab == 1)
+                                        {
+                                            foreach (var item in Model.trazaRutaListas.ubicaciones)
+                                            {
 
-                if (k == locations.length - 1)
-                    end = locations[k];
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Fecha_Ubicacion)
+                                                    </td>
+                                                    <td>
+                                                        @Html.Label(item.Estatus == 1 ? "Libre" : item.Estatus == 4 ? "Ausente" : "Asignado")
+                                                    </td>
+                                                    <td>
+                                                        @Model.trazaRutaListas.ubicaciones.Count()
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Ver en Mapa", "VerMapa", "Home", null, new { @class = "btn-success" })
+                                                    </td>
 
-            }
-            var request = {
-                origin: start,
-                destination: end,
-                waypoints: waypts,
-                optimizeWaypoints: true,
-                travelMode: google.maps.TravelMode.DRIVING
-            };
-            console.log(request);
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="seguimientos">
+                                    <table class="table table-striped table-hover" data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th data-field="Fecha" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Fecha")
+                                                </th>
+                                                <th data-field="Origen" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Origen")
+                                                </th>
+                                                <th data-field="Destino" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Destino")
+                                                </th>
+                                                <th data-field="step" data-sortable="true" data-sorter="customSorter">
+                                                    @Html.Label("Calificación")
+                                                </th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        @if (ViewBag.tab == 1)
+                                        {
+                                            foreach (var item in Model.trazaRutaListas.seguimientos_Despacho)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Model.trazaRutaListas.despachos.Where(d => d.ID_Despacho == item.ID_Despacho).FirstOrDefault().Fecha_Domicilio
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Inicio)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Fin)
+                                                    </td>
+                                                    <td>
+                                                        @Model.trazaRutaListas.despachos.Where(d => d.ID_Despacho == item.ID_Despacho).FirstOrDefault().Encuesta
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Ver en Mapa", "VerMapa", "Home", null, new { @class = "btn-success" })
+                                                    </td>
 
-            directionsServices.push(new google.maps.DirectionsService());
-            var instance = directionsServices.length - 1;
-            directionsDisplays.push(new google.maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true }));
-            directionsDisplays[instance].setMap(map);
-            directionsServices[instance].route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    console.log(status);
-                    //if (!bounds) bounds = response.bounds;
-                    //else bounds.union(response.bounds);
-                    directionsDisplays[instance].setDirections(response);
-                    //if (instance > 0) map.fitBounds(bounds);
-                    var leg = response.routes[0].legs[0];
-                    var content_start = leg.start_address;
-                    var content_end = leg.end_address;
-                    makeMarker(leg.start_location, icon_start, map, content_start);
-                    makeMarker(leg.end_location, icon_end, map, content_end);
-                }
-            });
-        }
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.panel-->
+                
+            </div>
+}
+    </div>
+</div>
 
-        function makeMarker(position, icon, map, content) {
-            var marker = new google.maps.Marker({
-                position: position,
-                map: map,
-                icon: icon,
-                clickable: true
-            });
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                    <script src="~/js/ActualizarSegTiposVehiculosList.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker();
+                        });
+                    </script>
+                    <script type="text/javascript">
+        
 
-            var markerinfowindow = new google.maps.InfoWindow()
-
-            google.maps.event.addListener(marker, 'click', (function (marker, content, markerinfowindow) {
-                return function () {
-                    markerinfowindow.setContent(content);
-                    markerinfowindow.open(map, marker);
-                };
-            })(marker, content, markerinfowindow));
-            gmarkers.push(marker);
-        }
-
-        function requestDirections(start, end, waypts) {
-            directionsService.route({
-                origin: start,
-                destination: end,
-                waypoints: waypts,
-                optimizeWaypoints: true,
-                travelMode: google.maps.DirectionsTravelMode.DRIVING
-            }, function (result, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    renderDirections(result);
-                }
-            });
-        }
-
-        function renderDirections(result) {
-            var renderer = new google.maps.DirectionsRenderer();
-            renderer.setMap(map);
-            renderer.setDirections(result);
-            //var step = 1;
-            //var infow = new google.maps.InfoWindow();
-            //infow.setContent(result.routes[0].legs[0].steps[step].distance.text + "<br>" + result.routes[0].legs[0].steps[step].duration.text + " ");
-            //infow.setPosition(result.routes[0].legs[0].steps[step].end_location);
-            //infow.open(map);
-        }
-
-        //google.maps.event.addDomListener(window, 'load', initMap);
-
-        function updateMap() {
-            var ocultar_servicios = $("#Ocultar").is(":checked");
-            var mostrar_ruta = $("#Mostrar_Ruta").is(":checked");
-            if (!id_afiliado)
-                id_afiliado = 0;
-            CargarVehiculos();
-            if (!ocultar_servicios && mostrar_ruta)
-                MostrarRutas();
-            if (idDivVehiculo != "")
-                $("#" + idDivVehiculo).click();
-        }
-
-        $('.btnfilter').click(function (e) {
-            $('#intro').slideToggle();
-            $(this).text($(this).text() == 'Ocultar Filtros' ? "Mostrar Filtros" : "Ocultar Filtros"); // using ternary operator.
-        });
-
-        $("#autoupdate").on("change", function () {
-            if ($("#autoupdate").is(":checked")) {
-                interval = setInterval(function () { updateMap() }, 2000);
-            }
-            else {
-                clearInterval(interval);
-            }
-        });
-
-        $("#Ocultar").on("change", function () {
-            var ocultar_servicios = $(this).is(":checked");
-            CargarVehiculos();
-            if (ocultar_servicios) {
-                $('#Mostrar_Ruta').prop("disabled", true);
-                $('#Mostrar_Ruta').prop("checked", false);
-                clearRoutes();
-            }
-            else {
-                $("#Mostrar_Ruta").prop("disabled", false);
-            }
-        });
-
-        $("#seguimientoBtn").on("click", function () {
-            $("#avanzadoDiv").hide();
-            $("#historicoDiv").hide();
-            $("#localizacionDiv").hide();
-            $("#seguimientoDiv").show();
-        });
-
-        $("#avanzadoBtn").on("click", function () {
-            $("#seguimientoDiv").hide();
-            $("#historicoDiv").hide();
-            $("#localizacionDiv").hide();
-            $("#avanzadoDiv").show();
-        });
-
-        $("#historicoBtn").on("click", function () {
-            $("#seguimientoDiv").hide();
-            $("#avanzadoDiv").hide();
-            $("#localizacionDiv").hide();
-            $("#historicoDiv").show();
-        });
-
-        $("#localizacionBtn").on("click", function () {
-            $("#seguimientoDiv").hide();
-            $("#avanzadoDiv").hide();
-            $("#historicoDiv").hide();
-            $("#localizacionDiv").show();
-        });
-
-        $("#Check_TiposVehiculos").on("change", function () {
-            var check = $(this).is(":checked");
-            if (check) {
-                $('#seguimientoDiv input:checkbox').prop('checked', true);
-            }
-            else {
-                $('#seguimientoDiv input:checkbox').prop('checked', false);
-            }
-        });
-
-        $("#Mostrar_Ruta").on("change", function () {
-            var mostrar_ruta = $(this).is(":checked");
-            CargarVehiculos();
-            if (mostrar_ruta) {
-                MostrarRutas();
-            }
-            else {
-                clearRoutes();
-            }
-        });
-
-        function ObtenerEstatus(id_afiliado)
-        {
-            $.getJSON('/Home/GetEstatus/', { ID_Afiliado: id_afiliado }, function (result) {
+        
+        function ObtenerEstatusRuta(id_afiliado) {
+            $.getJSON('/Home/GetRutasEstatus/', { ID_Afiliado: id_afiliado }, function (result) {
                 if (result != null) {
-                    var str = "<h4>Estatus</h4>";
+                    var str = "<h4>Guías</h4>";
                     for (var key in result) {
                         str = str + "<div><img src='" + result[key] + "' />" + key.toUpperCase() + "</div>";
                     }
@@ -816,225 +523,11 @@
             });
         }
 
-        $('#ID_Afiliado').on('change', function () {
-
-            id_afiliado = $(this).val();
-            //actualizar posicion (centro) del mapa
-            if (id_afiliado && id_afiliado > 0) {
-                $.getJSON('/Afiliados/ObtenerCoordenadasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
-                    if (result != null) {
-                        changeCenter(result.Latitud, result.Longitud, 12);
-                    }
-                    else
-                        changeCenter(23.634501, -102.552784, 6);
-                });
-                ObtenerEstatus(id_afiliado);
-            }
-            else
-            {          
-                changeCenter(23.634501, -102.552784, 6);
-                $("#state-legend").hide();
-            }
+       
 
 
-            //actualizar vehiculos por afiliado
-            updateMap();
 
-            //actualizar DDL de colonias
-            var dll_hist_colonia = $('#hist_colonia');
-            dll_hist_colonia.empty();
-            $(document.createElement('option')).attr('value', '').text('-Seleccione-').appendTo(dll_hist_colonia);
-            if (id_afiliado) {
-                $.getJSON('/Colonias/ObtenerColoniasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
-                    $(result).each(function () {
-                        $(document.createElement('option'))
-                            .attr('value', this.Value)
-                            .text(this.Text)
-                            .appendTo(dll_hist_colonia);
-                    });
-                });
-            }
-        });
 
-        function changeCenter(latitude, longitude, zoom) {
-            var position = new google.maps.LatLng(latitude, longitude);
-            map.panTo(position);
-            map.setZoom(zoom);
-            $("html, body").animate({ scrollTop: 0 }, "100");
-        }
-
-        $("#clearBtn").on("click", function () {
-            $("#avanzadoDiv").hide();
-            $("#seguimientoDiv").hide();
-            $("#historicoDiv").hide();
-            $("#localizacionDiv").hide();
-            var aux = $("#intro:input[text]");
-            $("#intro").find('input:text').val("");
-            $('#hist_colonia').prop('selectedIndex', 0);
-            idDivVehiculo = "";
-            updateMap();
-        });
-
-        $("#seg_filtrar").on("click", function () {
-            CargarVehiculos();
-            var mostrar_ruta = $(this).is(":checked");
-            if (mostrar_ruta) {
-                MostrarRutas();
-            }
-            var tiposVehiculos = $("#seg_tiposVehiculos").val();
-            var link = '@Url.Action("GetTableTiposVehiculos", "Home")?id_afiliado=-1&id_tiposveh=-2';
-            link = link.replace("-1", id_afiliado);
-            link = link.replace("-2", tiposVehiculos);
-            if (!($("#tableBtn").is(':visible')))
-                $("#tableBtn").show().click();
-            MostrarTabla(link);
-        });
-
-        $("#loc_buscar").on("click", function () {
-            idDivVehiculo = "loc_vehiculo";
-            CargarVehiculos();
-            var mostrar_ruta = $(this).is(":checked");
-            if (mostrar_ruta) {
-                MostrarRutas();
-            }
-            var vehiculo = $("#loc_vehiculo").val();
-            var fecha = $("#loc_fecha").val();
-            var link = '@Url.Action("GetTableLocalizacion", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3';
-            link = link.replace("-1", id_afiliado);
-            link = link.replace("-2", vehiculo);
-            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
-            if (!($("#tableBtn").is(':visible')))
-                $("#tableBtn").show().click();
-            MostrarTabla(link);
-        });
-
-        $("#hist_ver").on("click", function () {
-
-            $(".error").removeClass("error");
-            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
-            var intRegex = /^\d+$/;
-            var valid = true;
-
-            var vehiculo = $("#hist_vehiculo").val();
-            var fecha = $("#hist_fecha").val();
-            var desde = $("#hist_desde").val();
-            var hasta = $("#hist_hasta").val();
-            var despacho = $("#hist_despacho").val();
-            var colonia = $("#hist_colonia").val();
-            var km = $("#hist_km").val();
-
-            if (!timeRegex.test(desde))
-            {
-                valid = false;
-                $("#hist_desde").addClass('error');
-            }
-            if (!timeRegex.test(hasta)) {
-                valid = false;
-                $("#hist_hasta").addClass('error');
-            }
-            if (despacho != "" && !intRegex.test(despacho)) {
-                valid = false;
-                $("#hist_despacho").addClass('error');
-            }
-            if (colonia != "" && km != "" && !intRegex.test(km)) {
-                valid = false;
-                $("#hist_km").addClass('error');
-            }
-
-            if (valid) {
-                idDivVehiculo = "hist_vehiculo";
-                CargarVehiculos();
-                var mostrar_ruta = $(this).is(":checked");
-                if (mostrar_ruta) {
-                    MostrarRutas();
+                    </script>
+                    
                 }
-
-                var link = '@Url.Action("GetTableHistorial", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5&despacho=-6&colonia=-7&km=-8';
-                link = link.replace("-1", id_afiliado);
-                link = link.replace("-2", vehiculo == "" ? null : vehiculo);
-                link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
-                link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
-                link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
-                link = link.replace("-6", despacho == "" ? null : despacho);
-                link = link.replace("-7", colonia == "" ? null : colonia);
-                link = link.replace("-8", km == "" ? null : km);
-                if (!($("#tableBtn").is(':visible')))
-                    $("#tableBtn").show().click();
-                MostrarTabla(link);
-            }
-        });
-
-        function MostrarTabla(link)
-        {
-            $.ajax({
-                type: "GET",
-                url: link,
-                async: false,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data != null) {
-                        var row = "";
-                        $.each(data, function (index, value) {
-                            row += "<tr><td>" + value.Vehiculo + "</td><td>" + value.Colonia + "</td><td>" + new Date(parseInt(value.Fecha.substr(6))) + "</td><td>" + value.Estatus + "</td></tr>";
-                        });
-                        $("#tbody-filter").html(row);
-                    }
-                },
-            });
-        }
-
-        $("#local_buscar").on("click", function () {
-
-            $(".error").removeClass("error");
-
-            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
-            var valid = true;
-
-            var vehiculo = $("#local_vehiculo").val();
-            var fecha = $("#local_fecha").val();
-            var desde = $("#local_desde").val();
-            var hasta = $("#local_hasta").val();
-
-            if (vehiculo == "")
-            {
-                valid = false;
-                $("#local_vehiculo").addClass('error');
-            }
-            if (fecha == "") {
-                valid = false;
-                $("#local_fecha").addClass('error');
-            }
-            if (!timeRegex.test(desde)) {
-                valid = false;
-                $("#hist_desde").addClass('error');
-            }
-            if (!timeRegex.test(hasta)) {
-                valid = false;
-                $("#hist_hasta").addClass('error');
-            }
-
-            if (valid) {
-                CargarUbicacionesVehiculo();
-            }
-        });
-
-        $("#tableBtn").on("click", function () {
-            if ($(this).val() == ">") {
-                $("#div-table-filter").hide();
-                $('#map').removeClass();
-                $('#map').addClass('col-lg-12');
-            }
-            else {
-                $('#map').removeClass();
-                $('#map').addClass('col-lg-8');
-                $("#div-table-filter").show();
-            }
-            $(this).val($(this).val() == ">" ? "<" : ">");
-        });
-
-    </script>
-
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
-}
- 

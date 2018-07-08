@@ -108,6 +108,7 @@ namespace GoPS.Models
         public virtual DbSet<Transacciones> Transacciones { get; set; }
         public virtual DbSet<UbicacionesServicios> UbicacionesServicios { get; set; }
         public virtual DbSet<Configuraciones> Configuraciones { get; set; }
+        public virtual DbSet<RutasEstatus1> RutasEstatus1Set { get; set; }
     
         public virtual int CerrarSesion(Nullable<int> conexion_id)
         {
@@ -3273,6 +3274,23 @@ namespace GoPS.Models
                 new ObjectParameter("searchforthis", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("search_sprocs", searchforthisParameter);
+        }
+    
+        public virtual int web_DeleteConfirmed(Nullable<int> id, string idS, string tbl)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var idSParameter = idS != null ?
+                new ObjectParameter("idS", idS) :
+                new ObjectParameter("idS", typeof(string));
+    
+            var tblParameter = tbl != null ?
+                new ObjectParameter("tbl", tbl) :
+                new ObjectParameter("tbl", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("web_DeleteConfirmed", idParameter, idSParameter, tblParameter);
         }
     }
 }

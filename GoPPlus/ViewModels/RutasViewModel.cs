@@ -1,34 +1,32 @@
-﻿using GoPS.Classes;
-using GoPS.Models;
+﻿using GoPS.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+
 
 namespace GoPS.ViewModels
 {
     public class RutasViewModel
     {
-        public List<Vehiculos> Unidades;
-        public List<Conductores> Conductores;
-        public List<Conductores> TrazaRutaConductores;
-        public List<Vehiculos> TrazaRutaUnidades;
+        public List<Vehiculos> unidades;
+        public List<Conductores> conductores;
+        public List<Conductores> trazaRutaConductores;
+        public List<Vehiculos> trazaRutaUnidades;
         [DisplayName("Fecha Inicio")]
-        public DateTime? FechaInicio
+        public DateTime? fechaInicio
         {
             get;
 
             set;
         }
         [DisplayName("Fecha Fin")]
-        public DateTime? FechaFin
+        public DateTime? fechaFin
         {
             get;
 
             set;
         }
+        public TrazaRutaViewModel trazaRutaListas;
 
     }
 }

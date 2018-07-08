@@ -33,7 +33,7 @@
                                 <th data-field="Fecha_Cumpleans" data-sortable="true" data-sorter="customSorter">
                                     @Html.Label("Cumpleaños")
                                 </th>
-                                <th data-field="Activo" data-sortable="true" data-sorter="customSorter" style="text-align:center;">
+                                <th data-field="Activo" data-sortable="true" data-sorter="customSorter" style="text-align:center;" role="checkbox">
                                     @Html.Label("Activo")
                                 </th>
                                 <th>@Html.Label("Acciones")</th>
@@ -57,21 +57,19 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Fecha_Cumpleans)
                                 </td>
-                                <td>
-                                    @if (item.Activo == 1)
-                                    { 
-                                        @Html.CheckBox("Activo",true);
-                                    }
-                                    @if (item.Activo == 0)
-                                    {
-                                        @Html.CheckBox("Activo", false);}
+                                <td>                                   
+		                            @if (true)
+	                                {
+                                            @Html.CheckBox("Activo",item.Activo==1 ? true : false, new {  @disabled="disabled" } )                                            
+	                                }
                                 </td>
                                 <td class="div_actions">
-                                    @Html.EncodedActionLink("Detalles", "Details", "Clientes", new { id = item.ID_Cliente }, new { @class = "_Visualizacion" })                                       
+                                    @Html.EncodedActionLink("Detalles", "Details", "Clientes", new { id = item.ID_Cliente }, new { @class = "_Visualizacion" })
                                 </td>
+                                
                             </tr>
                         }
-                    </table>
+                    </table><input type="checkbox"  />
                 </div>
             </div>
         </div>

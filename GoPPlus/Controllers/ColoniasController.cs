@@ -54,9 +54,10 @@ namespace GoPS.Controllers
                         idAfiliadoActual = id[i];
                         if (!(idAfiliadoActual == 0))
                         {
-                            Afiliados lisafi = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idAfiliadoActual).FirstOrDefault();
-                            Colonias col = db.Colonias.Where(co => co.ID_Colonia == lisafi.Calles.ID_Colonia).FirstOrDefault();
-                            colonias.Add(col);
+                            List<Afiliados> lisafi = db.Afiliados.Include(c => c.Calles).Include(col => col.Calles.Colonias).ToList();
+                            Afiliados lisafi01 = lisafi.Where(a => a.ID_Afiliado == idAfiliadoActual).FirstOrDefault();
+                            colonias = db.Colonias.Where(col => col.ID_Ciudad == lisafi01.Calles.Colonias.ID_Ciudad).ToList();
+                            coloniass.Add(colonias);
                         }
 
                     }
@@ -64,16 +65,15 @@ namespace GoPS.Controllers
                 else
                 {
                     Afiliados lisafi2 = db.Afiliados.Include(c => c.Calles).Include(l => l.Calles.Colonias).Where(a => a.ID_Afiliado == idaf).FirstOrDefault();
-                    Colonias col2 = db.Colonias.Where(co => co.ID_Colonia == lisafi2.Calles.ID_Colonia).FirstOrDefault();
-                    colonias.Add(col2);
+                    colonias = db.Colonias.Where(co => co.ID_Ciudad == lisafi2.Calles.Colonias.ID_Ciudad).ToList();
+                    coloniass.Add(colonias);
                 }
             }
             for (int i = 0; i < coloniass.Count; i++)
             {
                 colonias = colonias.Union(coloniass[i]).ToList();
             }
-            colonias = colonias.OrderBy(x => x.ID_Ciudad.ToString()).OrderBy(x => x.Nombre).ToList();
-            //var colonias = db.Colonias.Where(c=>c.ID_Colonia<2000).Include(c => c.Ciudades).Where(c=>c.ID_Ciudad ==1 );
+            colonias = colonias.OrderBy(x => x.ID_Ciudad.ToString()).OrderBy(x => x.Nombre).ToList();            
             return View(colonias);
         }
 

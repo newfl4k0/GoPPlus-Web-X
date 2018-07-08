@@ -24,7 +24,7 @@ tr.atraso-red td {
 </style>
 
 @Html.Hidden("Permiso", "Monitoreo")
-<div class="main">
+<div class="main" style="overflow-x:no-content;">
     @{Html.RenderPartial("NavBar_CatOperaciones", "Despachos");}
     <div class="row">
         <div class="col-lg-12">            
@@ -46,7 +46,7 @@ tr.atraso-red td {
                     </div>
                     <input id="btnInterval" type="button" value="Detener Actualización" class="btn btn-default" />
                 <div class="panel-body" style="font-size:small;">
-                        <table data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Abordo" data-sort-order="desc">
+                        <table class="table table-striped table-hover" data-toggle="table" data-pagination="true" data-show-refresh="false" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-sort-name="Abordo" data-sort-order="desc">
                             <thead>
                                 <tr>
                                     <th data-field="Abordo" data-sortable="true" data-sorter="dateSorter" >

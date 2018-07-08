@@ -795,6 +795,18 @@ warning 6002: The table/view 'GoPSD.dbo.Payworks' does not have a primary key de
     <Property Name="Fecha_Actualizacion" Type="datetime" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
+  <EntityType Name="RutasEstatus">
+    <Key>
+      <PropertyRef Name="ID_RutasEstatus" />
+    </Key>
+    <Property Name="ID_RutasEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ID_Afiliado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Actualizacion" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
   <EntityType Name="Sanciones">
     <Key>
       <PropertyRef Name="ID_Sancion" />
@@ -1728,6 +1740,18 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
       </Principal>
       <Dependent Role="DireccionesAlternativas">
         <PropertyRef Name="ID_ClienteHabitual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estatus_Afiliados">
+    <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="1" />
+    <End Role="RutasEstatus" Type="Self.RutasEstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="RutasEstatus">
+        <PropertyRef Name="ID_Afiliado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3153,6 +3177,11 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
   <Function Name="VerificaTurno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="conductor_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="web_DeleteConfirmed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idS" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="tbl" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="GoPSModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Afiliados" EntityType="Self.Afiliados" Schema="dbo" store:Type="Tables" />
@@ -3208,6 +3237,7 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <EntitySet Name="Reservas_Rechazadas" EntityType="Self.Reservas_Rechazadas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RutasEstatus" EntityType="Self.RutasEstatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sanciones" EntityType="Self.Sanciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seguimiento_Despacho" EntityType="Self.Seguimiento_Despacho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seguimientos" EntityType="Self.Seguimientos" Schema="dbo" store:Type="Tables" />
@@ -3438,6 +3468,10 @@ warning 6002: The table/view 'GoPSD.dbo.vwClientes' does not have a primary key 
     <AssociationSet Name="FK_DireccionesAlternativas_ClientesHabituales" Association="Self.FK_DireccionesAlternativas_ClientesHabituales">
       <End Role="ClientesHabituales" EntitySet="ClientesHabituales" />
       <End Role="DireccionesAlternativas" EntitySet="DireccionesAlternativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estatus_Afiliados" Association="Self.FK_Estatus_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="RutasEstatus" EntitySet="RutasEstatus" />
     </AssociationSet>
     <AssociationSet Name="FK_Estatus_Afiliados_Afiliados" Association="Self.FK_Estatus_Afiliados_Afiliados">
       <End Role="Afiliados" EntitySet="Afiliados" />

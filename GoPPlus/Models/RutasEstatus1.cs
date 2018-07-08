@@ -12,18 +12,11 @@ namespace GoPS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ServiciosAuxiliares
+    public partial class RutasEstatus1
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ServiciosAuxiliares()
-        {
-            this.EsCelular = true;
-        }
-    
-        public int ID_ServicioAuxiliar { get; set; }
+        public int ID_RutasEstatus { get; set; }
         public string Nombre { get; set; }
-        public string Telefono { get; set; }
-        public bool EsCelular { get; set; }
+        public string Imagen { get; set; }
         public int ID_Afiliado { get; set; }
         public System.DateTime Fecha_Creacion { get; set; }
         public Nullable<System.DateTime> Fecha_Actualizacion { get; set; }

@@ -202,9 +202,20 @@ namespace GoPS.Controllers
             if (id_afiliado.HasValue && id_afiliado.Value > 0)
             {
                 Dictionary<string, string> estatus = db.Estatus_Afiliados.Where(ea => ea.ID_Afiliado == id_afiliado.Value)
-                                                        .ToDictionary(ea => ea.Estatus.Nombre,
-                                                                        ea => Path.Combine(Url.Content("~/images/Uploads/"), ea.Estatus.Imagen));
+                                                        .ToDictionary(ea => ea.Estatus.Nombre, ea => Path.Combine(Url.Content("~/images/Uploads/"), ea.Estatus.Imagen));
                 return Json(estatus, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return null;
+        }
+
+        public JsonResult GetRutasEstatus(int? id_afiliado)
+        {
+            if (id_afiliado.HasValue && id_afiliado.Value > 0)
+            {
+                Dictionary<string, string> rutasestatus = db.RutasEstatus1Set.Where(ea => ea.ID_Afiliado == id_afiliado.Value)
+                                                        .ToDictionary(ea => ea.Nombre, ea => Path.Combine(Url.Content("~/images/Uploads/"), ea.Imagen));                   
+                return Json(rutasestatus, JsonRequestBehavior.AllowGet);
             }
             else
                 return null;
@@ -249,9 +260,10 @@ namespace GoPS.Controllers
         }
 
         [HasPermission("Monitoreo_Visualizacion")]
-        public ActionResult TrazaRuta()
+        public ActionResult TrazaRuta(int h=0)
         {
             Utilities util = new Utilities();
+            ViewBag.tab = 0;
             List<Conductores> conductors;
             List<Vehiculos> unidads;
             RutasViewModel viewModel = new RutasViewModel();
@@ -259,7 +271,8 @@ namespace GoPS.Controllers
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
             int ID_Afiliado = ID_Afiliados.Count == 1 ? ID_Afiliados.FirstOrDefault() : 0;
-            ViewBag.ID_Afiliado = new SelectList(db.Afiliados.ToList().Where(c => ID_Afiliados.Contains(c.ID_Afiliado)).OrderBy(o => o.NombreRFC), "ID_Afiliado", "Nombre", ID_Afiliado);
+            SelectList AFlist = new SelectList(db.Afiliados.ToList().Where(c => ID_Afiliados.Contains(c.ID_Afiliado)).OrderBy(o => o.NombreRFC), "ID_Afiliado", "Nombre", ID_Afiliado);
+            ViewBag.ID_Afiliado = AFlist;            
             if (ID_Afiliado > 0)
             {
                 Calles calle = db.Afiliados.Find(ID_Afiliado).Calles;
@@ -271,26 +284,73 @@ namespace GoPS.Controllers
             else
             {
                 ViewBag.hist_colonia = new SelectList(Enumerable.Empty<SelectListItem>());                
-            }
-                
-            viewModel.Conductores = db.Conductores.Where(c => c.Habilitado == true).ToList();
-            //Render Modelo para Seleccionar Conductores:
-            if (ID_Afiliado>0)
-            {                
-                conductors = (db.Conductores.Include("Vehiculos_Conductores").Include("Flotas").Where(c => c.Habilitado == true)).ToList();
-                conductors = conductors.Where(i => i.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : i.Flotas.ID_Afiliado)).ToList();
-                viewModel.TrazaRutaConductores = conductors.ToList();
-                //Fin Conductores
-                //Render Modelo para Seleccionar una Unidad
-                unidads = db.Vehiculos.Include("Flotas").Include("Vehiculos_Conductores").ToList();
-                unidads = unidads.Where(uu => uu.Habilitado == true && uu.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : uu.Flotas.ID_Afiliado)).ToList();
-                viewModel.TrazaRutaUnidades = unidads;
-            }
-            else
+            }                
+            viewModel.conductores = db.Conductores.Where(c => c.Habilitado == true).ToList();
+            //Render Modelo para Seleccionar Conductores:           
+            conductors = (db.Conductores.Include("Vehiculos_Conductores").Include("Flotas").Where(c => c.Habilitado == true)).ToList();
+            conductors = conductors.Where(i => i.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : i.Flotas.ID_Afiliado)).ToList();
+            viewModel.trazaRutaConductores = conductors.OrderBy(m=>m.Flotas.Afiliados.Nombre).ToList();
+            //Fin Conductores
+            //Render Modelo para Seleccionar una Unidad
+            unidads = db.Vehiculos.Include("Flotas").Include("Vehiculos_Conductores").ToList();
+            unidads = unidads.Where(uu => uu.Habilitado == true && uu.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : uu.Flotas.ID_Afiliado)).ToList();
+            viewModel.trazaRutaUnidades = unidads.OrderBy(m=>m.Flotas.Afiliados.Nombre).ToList();
+            if (h>0)
             {
-                viewModel.TrazaRutaConductores = new List<Conductores>();
-                viewModel.TrazaRutaUnidades = new List<Vehiculos>();
+                //Extrae Info de Ubicaciones:                
+                int idVH = h;
+                
+                List<Conexiones> cons = db.Conexiones.Where(cx => cx.ID_Vehiculo_Conductor == idVH).ToList();
+                List<Ubicaciones> ubis = new List<Ubicaciones>();
+                Ubicaciones ubi;
+                Seguimiento_Despacho_Detalle sddU = new Seguimiento_Despacho_Detalle();
+                List<List<Seguimiento_Despacho_Detalle>> sdd = new List<List<Seguimiento_Despacho_Detalle>>();
+                List<Seguimiento_Despacho_Detalle> sdd0 = new List<Seguimiento_Despacho_Detalle>();
+                List<Seguimiento_Despacho> sd = new List<Seguimiento_Despacho>();
+                Seguimiento_Despacho sdU = new Seguimiento_Despacho();
+                List<Despachos> desps = new List<Despachos>();
+                foreach (Conexiones conex in cons)
+                {
+                    ubi = db.Ubicaciones.Where(ub => ub.ID_Conexion == conex.ID_Conexion && (ub.Estatus == 1 || ub.Estatus==4 || ub.Estatus==3) ).FirstOrDefault();
+                    if (!(ubi==null))
+                    {
+                        ubis.Add(ubi);
+                    }
+                }
+                ubis = ubis.OrderBy(u => u.Fecha_Ubicacion).ToList();
+                ubis = ubis.OrderBy(u => u.Estatus).ToList();
+                
+
+                //Extrae Info de Seguimientos (Despachos)
+                desps = db.Despachos.Where(dd => dd.ID_Vehiculo_Conductor == idVH).ToList();
+                desps = desps.OrderBy(dd => dd.Fecha_Domicilio).ToList();
+                foreach (Despachos de in desps)
+                {
+                    sdU = db.Seguimiento_Despacho.Where(s => s.ID_Despacho == de.ID_Despacho).FirstOrDefault();
+                    if (!(sdU == null))
+                    {
+                        sd.Add(sdU);
+                    }
+                }
+                foreach (Seguimiento_Despacho item in sd)
+                {
+                    sdd0 = db.Seguimiento_Despacho_Detalle.Where(sa => sa.ID_Seguimiento_Despacho == item.ID_Seguimiento_Despacho).ToList();
+                    if (!(sdd0 == null))
+                    {
+                        sdd.Add(sdd0);
+                    }                        
+                }
+                viewModel.trazaRutaListas = new TrazaRutaViewModel();
+                viewModel.trazaRutaListas.seguimientos_Despacho_Detalle = sdd;
+                viewModel.trazaRutaListas.seguimientos_Despacho = sd;
+                viewModel.trazaRutaListas.despachos = desps;
+                viewModel.trazaRutaListas.ubicaciones = ubis;
+                viewModel.trazaRutaListas.conductores = db.Conductores.Where(x => x.Vehiculos_Conductores.Where(f => f.Activo == true).FirstOrDefault().ID_Vehiculo_Conductor == idVH).FirstOrDefault();
+                viewModel.trazaRutaListas.unidades = db.Vehiculos.Where(x => x.Vehiculos_Conductores.Where(f => f.Activo == true).FirstOrDefault().ID_Vehiculo_Conductor == idVH).FirstOrDefault();
+                ViewBag.tab = 1;
+                
             }
+
             
             return View(viewModel);
         }
@@ -307,18 +367,33 @@ namespace GoPS.Controllers
             if (idv > 0)
             {
                 int ID_V = idv.Value;
-                vh = db.Vehiculos.Where(ve => ve.Habilitado == true && ve.ID_Vehiculo == ID_V).FirstOrDefault();                
+                vh = db.Vehiculos.Where(ve => ve.Habilitado == true && ve.ID_Vehiculo == ID_V).FirstOrDefault();
+                if (!(vh == null))
+                {
+                    ViewBag.selID = vh.Vehiculos_Conductores.Where(v => v.Activo == true).FirstOrDefault().ID_Vehiculo_Conductor;
+                    ViewBag.actselect = vh.Matricula == null ? "" : "Placas:  " + vh.Matricula;
+                    Session["selid"] = ViewBag.actselect;
+                    Session["vOc"] = "v";
+                }
+
             }
             if (idc > 0)
             {
                 int ID_C = idc.Value;
                 co = db.Conductores.Where(c => c.ID_Conductor == ID_C).FirstOrDefault();
+                if (!(co == null))
+                {
+                    ViewBag.selID = co.Vehiculos_Conductores.Where(c => c.Activo == true).FirstOrDefault().ID_Vehiculo_Conductor;
+                    ViewBag.actselect = co.NombreCompleto == null ? "" : co.NombreCompleto;
+                    Session["selid"] = ViewBag.actselect;
+                    Session["vOc"] = "c";
+                }
             }
             conductors.Add(co);
             unidads.Add(vh);
-            viewModel.Conductores = conductors;
-            viewModel.Unidades = unidads;
-
+            viewModel.conductores = conductors;
+            viewModel.unidades = unidads;
+            
             ViewBag.Message = "Vista para trazado de rutas.";
             List<int> ID_Afiliados = RouteData.Values["ID_Afiliados"] as List<int>;
             ViewBag.MostrarAfiliados = ID_Afiliados.Count > 1;
@@ -336,7 +411,15 @@ namespace GoPS.Controllers
             {
                 ViewBag.hist_colonia = new SelectList(Enumerable.Empty<SelectListItem>());
             }
-            return View(viewModel);
+            conductors = (db.Conductores.Include("Vehiculos_Conductores").Include("Flotas").Where(c => c.Habilitado == true)).ToList();
+            conductors = conductors.Where(i => i.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : i.Flotas.ID_Afiliado)).ToList();
+            viewModel.trazaRutaConductores = conductors.OrderBy(m => m.Flotas.Afiliados.Nombre).ToList();
+            //Fin Conductores
+            //Render Modelo para Seleccionar una Unidad
+            unidads = db.Vehiculos.Include("Flotas").Include("Vehiculos_Conductores").ToList();
+            unidads = unidads.Where(uu => uu.Habilitado == true && uu.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : uu.Flotas.ID_Afiliado)).ToList();
+            viewModel.trazaRutaUnidades = unidads.OrderBy(m => m.Flotas.Afiliados.Nombre).ToList();
+            return View("TrazaRuta",viewModel);
         }
 
         // POST: TrazaRuta/Index
@@ -360,18 +443,18 @@ namespace GoPS.Controllers
                 ViewBag.lon = calle.Longitud;
                 int ID_Ciudad = calle.Colonias.Ciudades.ID_Ciudad;
                 ViewBag.hist_colonia = new SelectList(db.Colonias.Where(c => c.ID_Ciudad == ID_Ciudad).OrderBy(o => o.Nombre), "ID_Colonia", "Nombre");
-                viewModel.Conductores = db.Conductores.Where(c => c.Habilitado == true).ToList();
-                ViewBag.Cond = viewModel.Conductores;
+                viewModel.conductores = db.Conductores.Where(c => c.Habilitado == true).ToList();
+                ViewBag.Cond = viewModel.conductores;
                 //Render Modelo para Seleccionar Conductores:
                 List<Conductores> conductors;
                 conductors = (db.Conductores.Include("Vehiculos_Conductores").Include("Flotas").Where(c => c.Habilitado == true)).ToList();
                 conductors = conductors.Where(i => i.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : i.Flotas.ID_Afiliado)).ToList();
-                viewModel.TrazaRutaConductores = conductors.ToList();
+                viewModel.trazaRutaConductores = conductors.ToList();
                 //Fin Conductores
                 //Render Modelo para Seleccionar una Unidad
                 List<Vehiculos> unidads = db.Vehiculos.Include("Flotas").Include("Vehiculos_Conductores").ToList();
                 unidads = unidads.Where(uu => uu.Habilitado == true && uu.Flotas.ID_Afiliado == (ID_Afiliado > 0 ? ID_Afiliado : uu.Flotas.ID_Afiliado)).ToList();
-                viewModel.TrazaRutaUnidades = unidads;
+                viewModel.trazaRutaUnidades = unidads;
             }            
             //copia
 

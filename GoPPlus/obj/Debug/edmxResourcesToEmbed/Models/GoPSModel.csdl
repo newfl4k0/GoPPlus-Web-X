@@ -41,6 +41,7 @@
     <NavigationProperty Name="FrecuenciasPago" Relationship="GoPSModel.FK_Afiliados_FrecuenciasPago" FromRole="Afiliados" ToRole="FrecuenciasPago" />
     <NavigationProperty Name="TiposPagos" Relationship="GoPSModel.FK_Afiliados_TiposPagos" FromRole="Afiliados" ToRole="TiposPagos" />
     <NavigationProperty Name="TiposVehiculos_Afiliados" Relationship="GoPSModel.FK_TiposVehiculos_Afiliados_Afiliados" FromRole="Afiliados" ToRole="TiposVehiculos_Afiliados" />
+    <NavigationProperty Name="RutasEstatus1" Relationship="GoPSModel.FK_Estatus_Afiliados" FromRole="Afiliados" ToRole="RutasEstatus1" />
   </EntityType>
   <EntityType Name="Bancos">
     <Key>
@@ -568,7 +569,7 @@
     <Property Name="ID_ServicioAuxiliar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="EsCelular" Type="Boolean" Nullable="false" />
+    <Property Name="EsCelular" Type="Boolean" DefaultValue="true" Nullable="false" />
     <Property Name="ID_Afiliado" Type="Int32" Nullable="false" />
     <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
@@ -2695,6 +2696,16 @@
     <FunctionImport Name="IndexarUsuarios" />
     <FunctionImport Name="search_sprocs">
       <Parameter Name="searchforthis" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="RutasEstatus1Set" EntityType="GoPSModel.RutasEstatus1" />
+    <AssociationSet Name="FK_Estatus_Afiliados" Association="GoPSModel.FK_Estatus_Afiliados">
+      <End Role="Afiliados" EntitySet="Afiliados" />
+      <End Role="RutasEstatus1" EntitySet="RutasEstatus1Set" />
+    </AssociationSet>
+    <FunctionImport Name="web_DeleteConfirmed">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idS" Mode="In" Type="String" />
+      <Parameter Name="tbl" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
@@ -4921,4 +4932,29 @@
     <Property Type="String" Name="Mes" Nullable="true" />
     <Property Type="Int32" Name="Servicios" Nullable="true" />
   </ComplexType>
+  <EntityType Name="RutasEstatus1">
+    <Key>
+      <PropertyRef Name="ID_RutasEstatus" />
+    </Key>
+    <Property Name="ID_RutasEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imagen" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Afiliado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fecha_Actualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Afiliados" Relationship="GoPSModel.FK_Estatus_Afiliados" FromRole="RutasEstatus1" ToRole="Afiliados" />
+  </EntityType>
+  <Association Name="FK_Estatus_Afiliados">
+    <End Type="GoPSModel.Afiliados" Role="Afiliados" Multiplicity="1" />
+    <End Type="GoPSModel.RutasEstatus1" Role="RutasEstatus1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliados">
+        <PropertyRef Name="ID_Afiliado" />
+      </Principal>
+      <Dependent Role="RutasEstatus1">
+        <PropertyRef Name="ID_Afiliado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

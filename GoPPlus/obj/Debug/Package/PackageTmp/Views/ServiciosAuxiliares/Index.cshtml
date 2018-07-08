@@ -27,6 +27,9 @@
                                 <th data-field="Telefono" data-sortable="true" data-sorter="customSorter">
                                     @Html.Label("Teléfono")
                                 </th>
+                                <th data-field="EsCelular" data-sortable="true" data-sorter="customSorter">
+                                    @Html.Label("¿Es Celular?")
+                                </th>
                                 <th>@Html.Label("Acciones")</th>
                             </tr>
                         </thead>
@@ -38,6 +41,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(modelItem => item.EsCelular, new { @disabled="disabled" } )
                                 </td>
                                 <td class="div_actions">
                                     @Html.EncodedActionLink("Editar", "Edit", "ServiciosAuxiliares", new { id = item.ID_ServicioAuxiliar }, new { @class = "_Edicion" })<span class="_Edicion pipe"> | </span>

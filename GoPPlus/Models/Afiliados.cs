@@ -32,6 +32,7 @@ namespace GoPS.Models
             this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
             this.Operadores = new HashSet<Operadores>();
             this.TiposVehiculos_Afiliados = new HashSet<TiposVehiculos_Afiliados>();
+            this.RutasEstatus1 = new HashSet<RutasEstatus1>();
         }
     
         public int ID_Afiliado { get; set; }
@@ -87,5 +88,7 @@ namespace GoPS.Models
         public virtual TiposPagos TiposPagos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TiposVehiculos_Afiliados> TiposVehiculos_Afiliados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RutasEstatus1> RutasEstatus1 { get; set; }
     }
 }

@@ -721,6 +721,9 @@
     <Compile Include="Models\Rutas.cs">
       <DependentUpon>GoPSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RutasEstatus1.cs">
+      <DependentUpon>GoPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sanciones.cs">
       <DependentUpon>GoPSModel.tt</DependentUpon>
     </Compile>
@@ -835,6 +838,7 @@
     <Compile Include="ViewModels\FlotasViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\OperadoresViewModel.cs" />
+    <Compile Include="ViewModels\TrazaRutaViewModel.cs" />
     <Compile Include="ViewModels\TurnosViewModel.cs" />
     <Compile Include="ViewModels\RutasViewModel.cs" />
     <Compile Include="ViewModels\UnidadesViewModel.cs" />
@@ -951,6 +955,10 @@
     <Content Include="images\RazonesLlamadas.svg" />
     <Content Include="images\RazonesRechazos.svg" />
     <Content Include="images\Rutas.svg" />
+    <Content Include="images\RutasAsignado.png" />
+    <Content Include="images\RutasAusente.png" />
+    <Content Include="images\RutasEnDespacho.png" />
+    <Content Include="images\RutasLibre.png" />
     <Content Include="images\Sanciones.svg" />
     <Content Include="images\search-icon.png" />
     <Content Include="images\segactual.png" />
@@ -1461,6 +1469,7 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\ServiciosAuxiliares\Index.cshtml" />
     <Content Include="Views\Shared\NavBar_CatBancos.cshtml" />
     <Content Include="Views\Shared\NavBar_CatColores.cshtml" />
     <Content Include="Views\Shared\NavBar_CatConfiguraciones.cshtml" />
@@ -1770,7 +1779,6 @@
     <Content Include="Views\ServiciosAuxiliares\Delete.cshtml" />
     <Content Include="Views\ServiciosAuxiliares\Details.cshtml" />
     <Content Include="Views\ServiciosAuxiliares\Edit.cshtml" />
-    <Content Include="Views\ServiciosAuxiliares\Index.cshtml" />
     <Content Include="Views\Servicios\Create.cshtml" />
     <Content Include="Views\Servicios\Details.cshtml" />
     <Content Include="Views\Servicios\Index.cshtml" />
@@ -1910,9 +1918,9 @@
     <Content Include="Views\Chats\Send.cshtml" />
     <Content Include="Views\DespachosMov\Index.cshtml" />
     <Content Include="Views\Chats\IrChat.cshtml" />
-    <Content Include="Views\Home\TrazaRuta.cshtml" />
     <Content Include="Views\Home\MuestraUnidades.cshtml" />
     <Content Include="Views\Home\MuestraConductores.cshtml" />
+    <Content Include="Views\Home\TrazaRuta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

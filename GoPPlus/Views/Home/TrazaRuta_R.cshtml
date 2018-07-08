@@ -4,11 +4,6 @@
     ViewBag.Title = "Trazado de Rutas";
 }
 <style type='text/css'>
-
-   .body {
-        overflow-x: hidden;
-    }
-
     .error {
         border:2px solid red;
      }
@@ -26,8 +21,6 @@
         
         display:block;
     }
-
-
 
     #info {
         display: block;
@@ -166,14 +159,29 @@
     .datepicker {
         padding: 0px;
         border-radius: 0;
-    }    
+    }
+
+    /*#div-table-filter {
+        padding:10px;
+        width: 20%;
+        position: relative;
+        right: 0;
+        background-color: black;
+        color: white;
+        transition: all .25s;
+    }*/
+
+    /*#div-table-filter.collapsed {
+        right: -20%;
+        margin-left: -20%;
+    }*/
 
 </style>
 
 @Html.Hidden("Permiso", "Monitoreo")
-<div class="main" style="overflow:no-content;">
+<div class="main">
     @{Html.RenderPartial("NavBar_CatOperaciones", "Trazado de Rutas"); }
-    <div class="row table-responsive checkBoxes" style="overflow-x:hidden;">
+    <div class="row table-responsive checkBoxes">
         @using (Html.BeginForm("TrazaRuta", "Home", null, FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
         {
             <div class="col-lg-6 form-group @(@ViewBag.MostrarAfiliados ? "hide" : "show")">
@@ -373,24 +381,39 @@
                     </div>
                 }
             </div>
-            <div class="form-group" style="margin-left:25px;margin-right:25px;overflow-x:hidden;" >                          
+            <div class="form-group" style="margin-left:25px;">
+                <div class="row">                   
                     <div class="panel panel-default">
                         <div class="panel-body tabs">
                             <ul class="nav nav-pills">
-                                
+                                <li class="active"><a href="#mapa" data-toggle="tab">Mapa</a></li>
                                 @if (ViewBag.tab == 1)
                                 {                                   
-                                    <li class="active"><a href="#ubicaciones" data-toggle="tab"><label>Ubicaciones (@Model.trazaRutaListas.ubicaciones.Count())</label></a></li>
+                                    <li><a href="#ubicaciones" data-toggle="tab"><label>Ubicaciones (@Model.trazaRutaListas.ubicaciones.Count())</label></a></li>
                                     <li><a href="#seguimientos" data-toggle="tab"><label>Seguimientos (@Model.trazaRutaListas.seguimientos_Despacho.Count())</label></a></li>
                                 }
                                 else
                                 {
-                                    <li class="active"><a href="#ubicaciones" data-toggle="tab">Ubicaciones</a></li>
+                                    <li><a href="#ubicaciones" data-toggle="tab">Ubicaciones</a></li>
                                     <li><a href="#seguimientos" data-toggle="tab">Seguimientos</a></li>
                                 }                                
                             </ul>
-                            <div class="tab-content">                              
-                                <div class="tab-pane fade" id="ubicaciones">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="mapa">
+                                    <div class="col-md-8 checkbox">
+                                        <label><input type="checkbox" id="autoupdate" checked="checked" class="" value="Actualizar">Actualizar Mapa</label>
+                                    </div>
+                                    <div id="container-map" class="row">
+                                        @Html.Hidden("idDivVehiculo")
+                                        <div class="col-lg-12">
+                                            <div id='state-legend' class='legend'></div>
+                                            <div class="row" style="margin-left:30px;margin-right:30px">
+                                                <div class="col-lg-12" id="map"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ubicaciones">                                    
                                     <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1">
                                         <thead>
                                             <tr>
@@ -420,7 +443,7 @@
                                                     </td>
                                                     <td>
                                                         @Model.trazaRutaListas.ubicaciones.Count()
-                                                    </td>
+                                                    </td>                                               
                                                     <td>
                                                         @Html.ActionLink("Ver en Mapa", "VerMapa", "Home", null, new { @class = "btn-success" })
                                                     </td>
@@ -430,7 +453,7 @@
                                         }
                                     </table>
                                 </div>
-                                <div class="tab-pane fade" id="seguimientos">
+                                <div class="tab-pane fade" id="seguimientos">                                    
                                     <table data-toggle="table" data-pagination="false" data-show-refresh="false" data-show-toggle="false" data-show-columns="false" data-search="false" data-select-item-name="toolbar1">
                                         <thead>
                                             <tr>
@@ -445,7 +468,7 @@
                                                 </th>
                                                 <th data-field="step" data-sortable="true" data-sorter="customSorter">
                                                     @Html.Label("Calificación")
-                                                </th>
+                                                </th>                                                
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -459,14 +482,14 @@
                                                         @Model.trazaRutaListas.despachos.Where(d => d.ID_Despacho == item.ID_Despacho).FirstOrDefault().Fecha_Domicilio
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.Inicio)
+                                                        @Html.DisplayFor(modelItem=> item.Inicio)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.Fin)
                                                     </td>
                                                     <td>
-                                                        @Model.trazaRutaListas.despachos.Where(d => d.ID_Despacho == item.ID_Despacho).FirstOrDefault().Encuesta
-                                                    </td>
+                                                        @Model.trazaRutaListas.despachos.Where(d=> d.ID_Despacho == item.ID_Despacho).FirstOrDefault().Encuesta
+                                                    </td>                                              
                                                     <td>
                                                         @Html.ActionLink("Ver en Mapa", "VerMapa", "Home", null, new { @class = "btn-success" })
                                                     </td>
@@ -479,7 +502,7 @@
                             </div>
                         </div>
                     </div><!--/.panel-->
-                
+                </div>
             </div>
 }
     </div>
@@ -489,9 +512,45 @@
                     @Scripts.Render("~/bundles/jqueryval")
                     <script src="~/js/ActualizarSegTiposVehiculosList.js"></script>
                     <script type="text/javascript">
-        
+        var id_afiliado;
+        var interval;
+        var map;
+        var marker;
+        var directionsService;
+        var directionsDisplay;
+        var directionsDisplays = [];
+        var directionsServices = [];
+        var bounds = null;
+        var icon_start = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_house|2ECC71';
+        var icon_end = 'http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_flag|EC1C24';
+        var myLatLng = { lat: 23.634501, lng: -102.552784 };
+        var gmarkers = [];
+        var apply_filters;
+        var idDivVehiculo;
 
-        
+        function initMap() {
+            // Create a map object and specify the DOM element for display.
+            $("#state-legend").hide();
+            $("#tableBtn").click().hide();
+            apply_filters = false;
+            idDivVehiculo = "";
+            id_afiliado = $('#ID_Afiliado').val();
+            ObtenerEstatusRuta(id_afiliado);
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: true,
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            if (id_afiliado > 0) {
+                changeCenter(parseFloat($('#lat').val()), parseFloat($('#lon').val()), 12);
+            }
+
+            interval = setInterval(function () { updateMap() }, 2000);
+        }
+
         function ObtenerEstatusRuta(id_afiliado) {
             $.getJSON('/Home/GetRutasEstatus/', { ID_Afiliado: id_afiliado }, function (result) {
                 if (result != null) {
@@ -508,11 +567,469 @@
             });
         }
 
-       
+        function clearMarkers() {
+            for (var i = 0; i < gmarkers.length; i++) {
+                gmarkers[i].setMap(null);
+            }
+            gmarkers = [];
+        }
+
+        function EnglishDate(spanishDate)
+        {
+            var spanish = spanishDate.split("/");
+            var dd = spanish[0];
+            var mm = spanish[1];
+            var yyyy = spanish[2];
+            var english = mm + "/" + dd + "/" + yyyy;
+            return english;
+        }
+
+        function CompleteHour(hour)
+        {
+            var vec = hour.split(":");
+            var complete = vec.length > 1 ? hour : hour + ":00";
+            return complete;
+        }
+
+        function CargarUbicacionesVehiculo()
+        {
+            clearMarkers();
+            var vehiculo = $("#local_vehiculo").val();
+            var fecha = $("#local_fecha").val();
+            var desde = $("#local_desde").val();
+            var hasta = $("#local_hasta").val();
+            if (!id_afiliado)
+                id_afiliado = 0;
+
+            var link = '@Url.Action("GetLocationsVehiculo", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", vehiculo == "" ? null : vehiculo);
+            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+            link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
+            link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (index, value) {
+                            var latLng = { lat: value.Latitud, lng: value.Longitud };
+                            var icon = value.Icon;
+                            var content = '<b>Hora:</b>: ' + value.Hora + '.';
+                            makeMarker(latLng, icon, map, content);
+                        });
+                    }
+                },
+            });
+        }
+
+        function CargarVehiculos() {
+            clearMarkers();
+            var ocultar_servicios = $("#Ocultar").is(":checked");
+            var tiposVehiculos = $("#seg_tiposVehiculos").val();
+            var vehiculo = idDivVehiculo != "" ? $("#" + idDivVehiculo).val() : "";
+            if (!id_afiliado)
+                id_afiliado = 0;
+
+            var link = '@Url.Action("GetLocation", "Home")?ocultar=-1&id_afiliado=-2&id_tiposveh=-3&vehiculo=-4';
+            link = link.replace("-1", ocultar_servicios);
+            link = link.replace("-2", id_afiliado);
+            link = link.replace("-3", tiposVehiculos);
+            link = link.replace("-4", vehiculo);
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (index, value) {
+                            var latLng = { lat: value.Latitud_Actual, lng: value.Longitud_Actual };
+                            var icon = value.Icon;
+                            var content = '<b>Conductor:</b>: ' + value.Conductor + '.<br />' +
+                                            '<b>Vehículo:</b> ' + value.Marca + ' ' + value.Modelo + ' ' + value.Color + '.<br />' +
+                                            '<b>Matrícula:</b> ' + value.Matricula + '.';
+                            makeMarker(latLng, icon, map, content);
+                        });
+                    }
+                },
+            });
+        }
+
+
+        function clearRoutes()
+        {
+            for (var i = 0; i < directionsDisplays.length; i++) {
+                directionsDisplays[i].setMap(null);
+            }
+        }
+
+        function drawRouteMap(locations) {
+
+            var start, end;
+            var waypts = [];
+
+            for (var k = 0; k < locations.length; k++) {
+                if (k >= 1 && k <= locations.length - 2) {
+                    waypts.push({
+                        location: locations[k],
+                        stopover: false
+                    });
+                }
+                if (k == 0)
+                    start = locations[k];
+
+                if (k == locations.length - 1)
+                    end = locations[k];
+
+            }
+            var request = {
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            console.log(request);
+
+            directionsServices.push(new google.maps.DirectionsService());
+            var instance = directionsServices.length - 1;
+            directionsDisplays.push(new google.maps.DirectionsRenderer({ suppressMarkers: true, preserveViewport: true }));
+            directionsDisplays[instance].setMap(map);
+            directionsServices[instance].route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    console.log(status);
+                    //if (!bounds) bounds = response.bounds;
+                    //else bounds.union(response.bounds);
+                    directionsDisplays[instance].setDirections(response);
+                    //if (instance > 0) map.fitBounds(bounds);
+                    var leg = response.routes[0].legs[0];
+                    var content_start = leg.start_address;
+                    var content_end = leg.end_address;
+                    makeMarker(leg.start_location, icon_start, map, content_start);
+                    makeMarker(leg.end_location, icon_end, map, content_end);
+                }
+            });
+        }
+
+        function makeMarker(position, icon, map, content) {
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                icon: icon,
+                clickable: true
+            });
+
+            var markerinfowindow = new google.maps.InfoWindow()
+
+            google.maps.event.addListener(marker, 'click', (function (marker, content, markerinfowindow) {
+                return function () {
+                    markerinfowindow.setContent(content);
+                    markerinfowindow.open(map, marker);
+                };
+            })(marker, content, markerinfowindow));
+            gmarkers.push(marker);
+        }
+
+        function requestDirections(start, end, waypts) {
+            directionsService.route({
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            }, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    renderDirections(result);
+                }
+            });
+        }
+
+        function renderDirections(result) {
+            var renderer = new google.maps.DirectionsRenderer();
+            renderer.setMap(map);
+            renderer.setDirections(result);
+        }
+
+        function updateMap() {
+            var ocultar_servicios = $("#Ocultar").is(":checked");
+            var mostrar_ruta = $("#Mostrar_Ruta").is(":checked");
+            if (!id_afiliado)
+                id_afiliado = 0;
+            CargarVehiculos();
+            if (!ocultar_servicios && mostrar_ruta)
+                MostrarRutas();
+            if (idDivVehiculo != "")
+                $("#" + idDivVehiculo).click();
+        }
+
+        $('.btnfilter').click(function (e) {
+            $('#intro').slideToggle();
+            $(this).text($(this).text() == 'Ocultar Filtros' ? "Mostrar Filtros" : "Ocultar Filtros"); // using ternary operator.
+                        });
+
+                        $('.btnProcesar').click(function (e) {
+                            ObtenerEstatusRuta(id_afiliado);
+                        })
+
+        $("#autoupdate").on("change", function () {
+            if ($("#autoupdate").is(":checked")) {
+                interval = setInterval(function () { updateMap() }, 2000);
+            }
+            else {
+                clearInterval(interval);
+            }
+        });
+
+
+
+
+        $("#Check_TiposVehiculos").on("change", function () {
+            var check = $(this).is(":checked");
+            if (check) {
+                $('#seguimientoDiv input:checkbox').prop('checked', true);
+            }
+            else {
+                $('#seguimientoDiv input:checkbox').prop('checked', false);
+            }
+        });
+
+        $("#Mostrar_Ruta").on("change", function () {
+            var mostrar_ruta = $(this).is(":checked");
+            CargarVehiculos();
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            else {
+                clearRoutes();
+            }
+        });
+
+        $('#ID_Afiliado').on('change', function () {
+
+            id_afiliado = $(this).val();
+            //actualizar posicion (centro) del mapa
+            if (id_afiliado && id_afiliado > 0) {
+                $.getJSON('/Afiliados/ObtenerCoordenadasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
+                    if (result != null) {
+                        changeCenter(result.Latitud, result.Longitud, 12);
+                    }
+                    else
+                        changeCenter(23.634501, -102.552784, 6);
+                });
+                this.ID_Afiliado = id_afiliado;
+                ObtenerEstatus(id_afiliado);
+            }
+            else
+            {
+                changeCenter(23.634501, -102.552784, 6);
+                $("#state-legend").hide();
+            }
+
+
+            //actualizar vehiculos por afiliado
+            updateMap();
+
+            //actualizar DDL de colonias
+            var dll_hist_colonia = $('#hist_colonia');
+            dll_hist_colonia.empty();
+            $(document.createElement('option')).attr('value', '').text('-Seleccione-').appendTo(dll_hist_colonia);
+            if (id_afiliado) {
+                $.getJSON('/Colonias/ObtenerColoniasPorAfiliado/', { ID_Afiliado: id_afiliado }, function (result) {
+                    $(result).each(function () {
+                        $(document.createElement('option'))
+                            .attr('value', this.Value)
+                            .text(this.Text)
+                            .appendTo(dll_hist_colonia);
+                    });
+                });
+            }
+        });
+
+        function changeCenter(latitude, longitude, zoom) {
+            var position = new google.maps.LatLng(latitude, longitude);
+            map.panTo(position);
+            map.setZoom(zoom);
+            $("html, body").animate({ scrollTop: 0 }, "100");
+        }
+
+        $("#clearBtn").on("click", function () {
+            $("#avanzadoDiv").hide();
+            $("#seguimientoDiv").hide();
+            $("#historicoDiv").hide();
+            $("#localizacionDiv").hide();
+            var aux = $("#intro:input[text]");
+            $("#intro").find('input:text').val("");
+            $('#hist_colonia').prop('selectedIndex', 0);
+            idDivVehiculo = "";
+            updateMap();
+        });
+
+        $("#seg_filtrar").on("click", function () {
+            CargarVehiculos();
+            var mostrar_ruta = $(this).is(":checked");
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            var tiposVehiculos = $("#seg_tiposVehiculos").val();
+            var link = '@Url.Action("GetTableTiposVehiculos", "Home")?id_afiliado=-1&id_tiposveh=-2';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", tiposVehiculos);
+            if (!($("#tableBtn").is(':visible')))
+                $("#tableBtn").show().click();
+            MostrarTabla(link);
+        });
+
+        $("#loc_buscar").on("click", function () {
+            idDivVehiculo = "loc_vehiculo";
+            CargarVehiculos();
+            var mostrar_ruta = $(this).is(":checked");
+            if (mostrar_ruta) {
+                MostrarRutas();
+            }
+            var vehiculo = $("#loc_vehiculo").val();
+            var fecha = $("#loc_fecha").val();
+            var link = '@Url.Action("GetTableLocalizacion", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3';
+            link = link.replace("-1", id_afiliado);
+            link = link.replace("-2", vehiculo);
+            link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+            if (!($("#tableBtn").is(':visible')))
+                $("#tableBtn").show().click();
+            MostrarTabla(link);
+        });
+
+        $("#hist_ver").on("click", function () {
+
+            $(".error").removeClass("error");
+            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
+            var intRegex = /^\d+$/;
+            var valid = true;
+
+            var vehiculo = $("#hist_vehiculo").val();
+            var fecha = $("#hist_fecha").val();
+            var desde = $("#hist_desde").val();
+            var hasta = $("#hist_hasta").val();
+            var despacho = $("#hist_despacho").val();
+            var colonia = $("#hist_colonia").val();
+            var km = $("#hist_km").val();
+
+            if (!timeRegex.test(desde))
+            {
+                valid = false;
+                $("#hist_desde").addClass('error');
+            }
+            if (!timeRegex.test(hasta)) {
+                valid = false;
+                $("#hist_hasta").addClass('error');
+            }
+            if (despacho != "" && !intRegex.test(despacho)) {
+                valid = false;
+                $("#hist_despacho").addClass('error');
+            }
+            if (colonia != "" && km != "" && !intRegex.test(km)) {
+                valid = false;
+                $("#hist_km").addClass('error');
+            }
+
+            if (valid) {
+                idDivVehiculo = "hist_vehiculo";
+                CargarVehiculos();
+                var mostrar_ruta = $(this).is(":checked");
+                if (mostrar_ruta) {
+                    MostrarRutas();
+                }
+
+                var link = '@Url.Action("GetTableHistorial", "Home")?id_afiliado=-1&vehiculo=-2&fecha=-3&hora_desde=-4&hora_hasta=-5&despacho=-6&colonia=-7&km=-8';
+                link = link.replace("-1", id_afiliado);
+                link = link.replace("-2", vehiculo == "" ? null : vehiculo);
+                link = link.replace("-3", fecha == "" ? null : EnglishDate(fecha));
+                link = link.replace("-4", desde == "" ? null : CompleteHour(desde));
+                link = link.replace("-5", hasta == "" ? null : CompleteHour(hasta));
+                link = link.replace("-6", despacho == "" ? null : despacho);
+                link = link.replace("-7", colonia == "" ? null : colonia);
+                link = link.replace("-8", km == "" ? null : km);
+                if (!($("#tableBtn").is(':visible')))
+                    $("#tableBtn").show().click();
+                MostrarTabla(link);
+            }
+        });
+
+        function MostrarTabla(link)
+        {
+            $.ajax({
+                type: "GET",
+                url: link,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        var row = "";
+                        $.each(data, function (index, value) {
+                            row += "<tr><td>" + value.Vehiculo + "</td><td>" + value.Colonia + "</td><td>" + new Date(parseInt(value.Fecha.substr(6))) + "</td><td>" + value.Estatus + "</td></tr>";
+                        });
+                        $("#tbody-filter").html(row);
+                    }
+                },
+            });
+        }
+
+        $("#local_buscar").on("click", function () {
+
+            $(".error").removeClass("error");
+
+            var timeRegex = /^(?:[0-1]?[0-9]|2[0-3])(?::[0-5][0-9])?$/;
+            var valid = true;
+
+            var vehiculo = $("#local_vehiculo").val();
+            var fecha = $("#local_fecha").val();
+            var desde = $("#local_desde").val();
+            var hasta = $("#local_hasta").val();
+
+            if (vehiculo == "")
+            {
+                valid = false;
+                $("#local_vehiculo").addClass('error');
+            }
+            if (fecha == "") {
+                valid = false;
+                $("#local_fecha").addClass('error');
+            }
+            if (!timeRegex.test(desde)) {
+                valid = false;
+                $("#hist_desde").addClass('error');
+            }
+            if (!timeRegex.test(hasta)) {
+                valid = false;
+                $("#hist_hasta").addClass('error');
+            }
+
+            if (valid) {
+                CargarUbicacionesVehiculo();
+            }
+        });
+
+        $("#tableBtn").on("click", function () {
+            if ($(this).val() == ">") {
+                $("#div-table-filter").hide();
+                $('#map').removeClass();
+                $('#map').addClass('col-lg-12');
+            }
+            else {
+                $('#map').removeClass();
+                $('#map').addClass('col-lg-8');
+                $("#div-table-filter").show();
+            }
+            $(this).val($(this).val() == ">" ? "<" : ">");
+        });
 
 
 
 
                     </script>
-                    
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1QcV84xOLBurOHEq1GQwTAxEiBwfGfn0&callback=initMap" async defer></script>
                 }
